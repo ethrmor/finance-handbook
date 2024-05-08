@@ -1,0 +1,73 @@
+---
+import '@fontsource/geist-mono';
+import '@fontsource/geist-sans';
+import { ViewTransitions } from 'astro:transitions';
+import { SITE_TITLE } from '../consts';
+import '../styles/globals.css';
+
+interface Props {
+	title: string;
+	description: string;
+	frontmatter?: {
+		title?: string;
+		description?: string;
+		order?: number;
+	};
+	image?: string;
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const { title, description } = Astro.props.frontmatter || Astro.props;
+---
+
+<!doctype html>
+<html lang='en'>
+	<head>
+		<!-- Global Metadata -->
+		<meta charset='utf-8' />
+		<meta name='viewport' content='width=device-width,initial-scale=1' />
+		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+		<meta name='generator' content={Astro.generator} />
+
+		<!-- Canonical URL -->
+		<link rel='canonical' href={canonicalURL} />
+
+		<!-- Primary Meta Tags -->
+		<title>{title} | {SITE_TITLE}</title>
+		<meta name='title' content={title} />
+		<meta name='description' content={description} />
+
+		<!-- Open Graph / Facebook -->
+		<meta property='og:type' content='website' />
+		<meta property='og:url' content={Astro.url} />
+		<meta property='og:title' content={title} />
+		<meta property='og:description' content={description} />
+		<!-- <meta property='og:image' content={new URL(image, Astro.url)} /> -->
+
+		<!-- Twitter -->
+		<meta property='twitter:card' content='summary_large_image' />
+		<meta property='twitter:url' content={Astro.url} />
+		<meta property='twitter:title' content={title} />
+		<meta property='twitter:description' content={description} />
+		<!-- <meta property='twitter:image' content={new URL(image, Astro.url)} /> -->
+
+		<!-- View Transitions -->
+		<ViewTransitions />
+	</head>
+	<body
+		class='flex min-h-screen max-w-screen-lg mx-auto flex-wrap md:flex-row flex-col gap-4 md:gap-16 px-4'>
+		<header class='md:sticky top-0 h-screen basis-1/3 flex flex-col justify-between pt-12 md:py-12'>
+			<section>
+				<p class='font-mono text-4xl font-bold'>
+					{SITE_TITLE}
+				</p>
+				<slot name='header' />
+			</section>
+			<footer>Copyright &copy; Ethan Morris</footer>
+		</header>
+		<main class='flex-1 py-12 prose'>
+			<slot />
+		</main>
+	</body>
+</html>
