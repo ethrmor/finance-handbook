@@ -1,0 +1,65 @@
+---
+import {
+	Breadcrumb,
+	BreadcrumbItem,
+	BreadcrumbLink,
+	BreadcrumbList,
+	BreadcrumbPage,
+	BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
+import { getCollection } from 'astro:content';
+
+const { pathname } = Astro.url;
+const pathSegments = pathname.split('/').filter((segment) => segment !== '');
+
+const posts = (await getCollection('basics')).sort(
+	(a, b) => a.data.order.valueOf() - b.data.order.valueOf()
+);
+
+const currentPost = posts.find((post) => post.slug === pathSegments[pathSegments.length - 1]);
+
+const breadcrumbs = [
+	{ segment: 'Home', url: '/' },
+	...pathSegments.map((segment, index) => {
+		const url = `/${pathSegments.slice(0, index + 1).join('/')}`;
+		const isLast = index === pathSegments.length - 1;
+		const segment_display =
+			isLast && currentPost
+				? currentPost.data.title
+				: segment.charAt(0).toUpperCase() + segment.slice(1);
+		return { segment: segment_display, url };
+	}),
+];
+---
+
+<Breadcrumb className='mt-4 font-mono'>
+	<BreadcrumbList>
+		{
+			breadcrumbs.map((crumb, index) => (
+				<>
+					<BreadcrumbItem>
+						{index === breadcrumbs.length - 1 ? (
+							<BreadcrumbPage>{crumb.segment}</BreadcrumbPage>
+						) : (
+							<BreadcrumbLink href={crumb.url}>{crumb.segment}</BreadcrumbLink>
+						)}
+					</BreadcrumbItem>
+					{index < breadcrumbs.length - 1 && <BreadcrumbSeparator />}
+				</>
+			))
+		}
+	</BreadcrumbList>
+</Breadcrumb>
+
+<br />
+<ol class='list-decimal list-inside space-y-2 pt-2'>
+	{
+		posts?.map((post) => (
+			<li>
+				<a href={`/basics/${post.slug}/`} class='inline-block'>
+					<h4>{post.data.title}</h4>
+				</a>
+			</li>
+		))
+	}
+</ol>

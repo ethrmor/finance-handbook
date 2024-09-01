@@ -1,14 +1,13 @@
 ---
-import Layout from '@/layouts/BaseLayout.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import Layout from '@/layouts/BaseLayout.astro'
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts'
 
-import { buttonVariants } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
-import { ArrowRightIcon } from 'lucide-react';
+import { buttonVariants } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
+import { ArrowRightIcon } from 'lucide-react'
 ---
 
 <Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-	<nav slot='header'></nav>
 	<article class='prose'>
 		<h1 class='text-3xl'>A Simpler Approach to Personal Finance</h1>
 		<p>
@@ -31,7 +30,9 @@ import { ArrowRightIcon } from 'lucide-react';
 		</p>
 	</article>
 	<div class='flex justify-end items-center mt-5'>
-		<a href='/blog' class={cn(buttonVariants({ variant: 'default', size: 'sm' }), 'no-underline')}>
+		<a
+			href='/basics'
+			class={cn(buttonVariants({ variant: 'default', size: 'sm' }), 'no-underline')}>
 			Get Started
 			<ArrowRightIcon className='ml-2 size-4' />
 		</a>

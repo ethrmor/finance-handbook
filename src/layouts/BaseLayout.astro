@@ -1,24 +1,24 @@
 ---
-import '@fontsource/geist-mono';
-import '@fontsource/geist-sans';
-import { ViewTransitions } from 'astro:transitions';
-import { SITE_TITLE } from '../consts';
-import '../styles/globals.css';
+import '@fontsource/geist-mono'
+import '@fontsource/geist-sans'
+import { ViewTransitions } from 'astro:transitions'
+import { SITE_TITLE } from '../consts'
+import '../styles/globals.css'
 
 interface Props {
-	title: string;
-	description: string;
+	title: string
+	description: string
 	frontmatter?: {
-		title?: string;
-		description?: string;
-		order?: number;
-	};
-	image?: string;
+		title?: string
+		description?: string
+		order?: number
+	}
+	image?: string
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 
-const { title, description } = Astro.props.frontmatter || Astro.props;
+const { title, description } = Astro.props.frontmatter || Astro.props
 ---
 
 <!doctype html>
