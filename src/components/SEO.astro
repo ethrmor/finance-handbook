@@ -1,0 +1,99 @@
+---
+interface Props {
+  title: string
+  description?: string
+  image?: string
+  canonical?: string
+  noindex?: boolean
+  type?: "website" | "article"
+  publishedTime?: string
+  modifiedTime?: string
+  author?: string
+  tags?: string[]
+}
+
+const {
+  title,
+  description = "A practical guide to personal finance, explained in plain English.",
+  image = "/og-image.png",
+  canonical,
+  noindex = false,
+  type = "website",
+  publishedTime,
+  modifiedTime,
+  author,
+  tags,
+} = Astro.props
+
+const site = Astro.site?.toString() || "https://financialhandbook.dev"
+const pathname = Astro.url.pathname
+const canonicalURL = canonical ? new URL(canonical, site) : new URL(pathname, site)
+const ogImageURL = new URL(image, site)
+---
+
+<!-- Basic Meta Tags -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalURL} />
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+{!noindex && <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />}
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImageURL} />
+<meta property="og:site_name" content="Financial Handbook" />
+<meta property="og:locale" content="en_US" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={ogImageURL} />
+
+<!-- Article-specific meta tags (only for article pages) -->
+{type === "article" && publishedTime && (
+  <meta property="article:published_time" content={publishedTime} />
+)}
+{type === "article" && modifiedTime && (
+  <meta property="article:modified_time" content={modifiedTime} />
+)}
+{type === "article" && author && (
+  <meta property="article:author" content={author} />
+)}
+{type === "article" && tags && tags.map((tag) => (
+  <meta property="article:tag" content={tag} />
+))}
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": type === "article" ? "Article" : "WebPage",
+  "headline": title,
+  "description": description,
+  "url": canonicalURL,
+  "image": ogImageURL,
+  ...(type === "article" && {
+    "datePublished": publishedTime,
+    "dateModified": modifiedTime || publishedTime,
+    "author": {
+      "@type": "Organization",
+      "name": author || "Financial Handbook"
+    }
+  }),
+  "publisher": {
+    "@type": "Organization",
+    "name": "Financial Handbook",
+    "url": site,
+    "logo": {
+      "@type": "ImageObject",
+      "url": new URL("/favicon.svg", site)
+    }
+  }
+})} />
