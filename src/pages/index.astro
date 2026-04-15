@@ -1,17 +1,147 @@
 ---
 import Layout from "@/layouts/main.astro"
-import { Button } from "@/components/ui/button"
+
+const seo = {
+  title: "Financial Handbook | Personal Finance Explained in Plain English",
+  description: "A practical guide to personal finance, explained in plain English. No jargon. No judgment. Just practical guidance on budgeting, saving, investing, and more.",
+}
+
+const featuredTopics = [
+  {
+    title: "Budgeting & Saving",
+    description: "The foundation of every financial decision. Learn how to track income, control spending, and build a system that actually sticks.",
+    href: "/topics/budgeting-and-saving",
+    number: "01",
+    accent: "from-amber-500/10 to-orange-500/5",
+  },
+  {
+    title: "Emergency Funds",
+    description: "Life happens. A solid emergency fund is your financial shock absorber—here's how much you need, where to keep it, and how to build it fast.",
+    href: "/topics/emergency-funds",
+    number: "02",
+    accent: "from-emerald-500/10 to-teal-500/5",
+  },
+  {
+    title: "Debt Management",
+    description: "Strategies to tackle debt systematically. From avalanche to snowball methods, learn how to eliminate debt and avoid common traps.",
+    href: "/topics/debt-management",
+    number: "03",
+    accent: "from-rose-500/10 to-pink-500/5",
+  },
+  {
+    title: "Credit Scores",
+    description: "Understand what affects your score, how to build credit from scratch, and myths that can actually hurt your financial standing.",
+    href: "/topics/credit-scores",
+    number: "04",
+    accent: "from-cyan-500/10 to-sky-500/5",
+  },
+  {
+    title: "Banking Basics",
+    description: "Checking, savings, CDs, high-yield accounts. Understand the tools banks offer and how to use them to your advantage.",
+    href: "/topics/banking-basics",
+    number: "05",
+    accent: "from-blue-500/10 to-indigo-500/5",
+  },
+  {
+    title: "Investing 101",
+    description: "Stocks, bonds, index funds, 401(k)s, IRAs. Learn how to make your money work for you without needing a finance degree.",
+    href: "/topics/investing-101",
+    number: "06",
+    accent: "from-violet-500/10 to-purple-500/5",
+  },
+]
 ---
 
-<Layout>
-  <div class="flex min-h-svh p-6">
-    <div class="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-      <div>
-        <h1 class="font-medium">Project ready!</h1>
-        <p>You may now add components and start building.</p>
-        <p>We've already added the button component for you.</p>
-        <Button client:load className="mt-2">Button</Button>
+<Layout seo={seo}>
+  <div class="py-12 px-8">
+    <!-- Hero -->
+    <div class="mb-16 max-w-2xl">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="h-px w-8 bg-primary/60"></div>
+        <span class="text-xs font-heading text-primary uppercase tracking-widest">Financial Handbook</span>
       </div>
+      <h1 class="font-heading text-4xl font-semibold tracking-tight sm:text-5xl leading-tight">
+        Personal finance,<br />
+        <span class="text-muted-foreground">explained in plain English.</span>
+      </h1>
+      <p class="mt-6 text-lg text-muted-foreground leading-relaxed max-w-xl">
+        No jargon. No judgment. Just practical guidance on the essential topics
+        everyone should understand to build a stable financial life.
+      </p>
+    </div>
+
+    <!-- Featured Topics -->
+    <div class="space-y-1">
+      <div class="flex items-center justify-between mb-6">
+        <div class="flex items-center gap-3">
+          <span class="text-xs font-heading text-foreground font-medium uppercase tracking-widest">Start here</span>
+          <div class="h-px w-12 bg-border/50"></div>
+        </div>
+        <a 
+          href="/topics" 
+          class="group flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <span>View all topics</span>
+          <svg 
+            class="h-4 w-4 transition-transform group-hover:translate-x-0.5" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor" 
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+          </svg>
+        </a>
+      </div>
+      
+      <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {featuredTopics.map((topic) => (
+          <a
+            href={topic.href}
+            class={`group relative overflow-hidden rounded-lg bg-gradient-to-br ${topic.accent} p-px transition-all duration-300 hover:scale-[1.02] hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2`}
+          >
+            <div class="relative h-full rounded-lg bg-background/80 backdrop-blur-sm p-6 transition-colors group-hover:bg-background/60">
+              <span class="absolute right-4 top-4 font-heading text-4xl font-bold text-foreground/[0.04] transition-all group-hover:text-foreground/[0.08] group-hover:scale-110">
+                {topic.number}
+              </span>
+              
+              <div class="relative flex flex-col h-full">
+                <h2 class="font-heading text-lg font-semibold mb-3 pr-12">
+                  <span class="relative inline-block">
+                    {topic.title}
+                    <span class="absolute -bottom-1 left-0 h-px w-0 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                  </span>
+                </h2>
+                
+                <p class="text-sm text-muted-foreground leading-relaxed flex-1">
+                  {topic.description}
+                </p>
+                
+                <div class="mt-5 flex items-center gap-2 text-sm font-medium">
+                  <span class="text-foreground/60 transition-colors group-hover:text-primary">Read</span>
+                  <svg 
+                    class="h-4 w-4 text-foreground/40 transition-all duration-300 group-hover:text-primary group-hover:translate-x-1" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor" 
+                    stroke-width="2"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- Bottom note -->
+    <div class="mt-12 pt-8 border-t border-border/50">
+      <p class="text-sm text-muted-foreground">
+        <span class="text-foreground font-medium">22 topics total.</span> These six cover the essentials. 
+        <a href="/topics" class="underline underline-offset-2 hover:text-foreground transition-colors">Browse everything</a> when you're ready.
+      </p>
     </div>
   </div>
 </Layout>
