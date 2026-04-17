@@ -1,0 +1,150 @@
+---
+import Layout from "@/layouts/main.astro"
+import { getNextTopic } from "@/lib/topicNavigation"
+
+const seo = {
+  title: "Budgeting & Saving | Financial Handbook",
+  description: "The foundation of every financial decision. Learn how to track income, control spending, and build a budget system that actually sticks.",
+}
+
+const nextTopic = getNextTopic("/topics/budgeting-and-saving")
+---
+
+<Layout currentPath="/topics/budgeting-and-saving" seo={seo}>
+  <article class="py-12 px-8 max-w-3xl">
+    <!-- Hero -->
+    <h1 class="font-heading text-4xl font-semibold tracking-tight sm:text-5xl">Budgeting & Saving</h1>
+    <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
+      The foundation of every financial decision. Learn how to track income, control spending, and build a system that actually sticks.
+    </p>
+
+    <!-- The Big Idea -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Big Idea</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        A budget is simply a plan for your money before you spend it. Think of it like a roadmap: without one, you're driving blind and hoping you end up somewhere good. With one, you choose your destination and the best route to get there. Saving is what happens when your plan leaves room for the future instead of spending every dollar the moment it arrives.
+      </p>
+    </section>
+
+    <!-- Why It Matters -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Why It Matters</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        Picture this: it's the end of the month, and you're checking your bank balance with that familiar knot in your stomach. You made decent money—where did it all go? The subscriptions you forgot about. The takeout you ordered three times a week. The impulse purchases that felt necessary in the moment. Without a budget, money evaporates like water through your fingers. You're not broke because you don't earn enough; you're broke because you don't tell your money where to go.
+      </p>
+      <p class="mt-4 text-base text-foreground leading-relaxed">
+        A budget flips that dynamic. Instead of wondering where your money went, you decide where it's going—before you spend a single dollar. That shift from reactive to proactive is the single most powerful financial move you can make. Everything else—emergency funds, investing, paying off debt—starts with knowing your numbers.
+      </p>
+    </section>
+
+    <!-- The Breakdown -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Breakdown</h2>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">The 50/30/20 Rule</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        The simplest budgeting framework divides your after-tax income into three buckets:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>50% Needs</strong> — rent, groceries, utilities, insurance, minimum debt payments. These are non-negotiable.</li>
+        <li><strong>30% Wants</strong> — dining out, entertainment, hobbies, travel. Life should be enjoyable, not just survivable.</li>
+        <li><strong>20% Savings & Debt Payoff</strong> — emergency fund contributions, extra debt payments, retirement contributions. This is your future self fund.</li>
+      </ul>
+      <p class="mt-3 text-base text-foreground leading-relaxed">
+        These percentages are guidelines, not commandments. If you live in a high-cost city, your needs might eat up 60%. That's fine—just adjust the other categories accordingly. The point is to have <em>intentional</em> proportions, not to hit an exact number.
+      </p>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Zero-Based Budgeting</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        An alternative approach where every single dollar is assigned a job. Income minus all expenses, savings, and debt payments equals zero. Not a penny floats unassigned. This method is more hands-on but gives you maximum control—like giving every employee in a company a specific role so nobody sits idle.
+      </p>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Pay Yourself First</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Instead of saving whatever's left at the end of the month (spoiler: there's usually nothing left), flip the order. The day your paycheck hits, move your savings amount to a separate account immediately. Then live on what remains. It's like packing your gym bag the night before—removing the decision from the moment of temptation.
+      </p>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">The Emergency Buffer</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Before you get fancy with investing or aggressive debt payoff, save at least one month of expenses as a buffer. This prevents a single bad week from derailing your whole plan. Think of it as the guardrails on your financial highway—they're not the point of the drive, but they keep you from going off a cliff.
+      </p>
+    </section>
+
+    <!-- Common Mistakes -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Common Mistakes</h2>
+      <ul class="list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Tracking but not planning.</strong> Knowing you spent $400 on food last month is useless if you don't set a target for next month. A budget is a plan, not an autopsy.</li>
+        <li><strong>Making the budget too tight.</strong> If your plan leaves zero room for fun, you'll abandon it within weeks. A budget you can't stick to is worse than no budget at all.</li>
+        <li><strong>Forgetting irregular expenses.</strong> Car insurance every six months, annual subscriptions, holiday gifts—these aren't monthly, but they're real. Divide annual costs by 12 and budget that amount monthly.</li>
+        <li><strong>Not adjusting when life changes.</strong> Got a raise? Moved to a cheaper apartment? Your budget should evolve. A stale budget is a fantasy document.</li>
+        <li><strong>Confusing gross and net income.</strong> Budget based on what actually hits your bank account (after taxes, retirement contributions, and deductions), not your salary on paper.</li>
+      </ul>
+    </section>
+
+    <!-- Action Steps -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Action Steps</h2>
+      <div class="bg-muted/50 rounded-lg p-6">
+        <ol class="list-decimal pl-5 space-y-3 text-base text-foreground leading-relaxed">
+          <li><strong>Calculate your monthly net income.</strong> Add up every source of after-tax money you receive in a typical month—paychecks, side gigs, consistent gifts. This is your starting number.</li>
+          <li><strong>List every fixed expense.</strong> Rent, car payment, insurance, subscriptions, minimum debt payments. These are your non-negotiables.</li>
+          <li><strong>Track your variable spending for two weeks.</strong> Don't change anything—just observe. Use a notes app, a spreadsheet, or a budgeting app. Awareness alone shifts behavior.</li>
+          <li><strong>Set up automatic savings.</strong> Open a separate savings account (ideally at a different bank than your checking) and schedule an automatic transfer for the day after payday. Start with whatever you can—even $25 creates the habit.</li>
+          <li><strong>Choose a system and commit for 90 days.</strong> Pick the 50/30/20 rule, zero-based budgeting, or any framework that appeals to you. Use it for three full months before judging whether it works. The first month is always messy.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Quick Reference -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Quick Reference</h2>
+      <dl class="space-y-4">
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Net Income</dt>
+          <dd class="text-base text-foreground leading-relaxed">Your take-home pay after taxes, insurance premiums, and retirement contributions are deducted. This is the number you budget from.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Fixed Expenses</dt>
+          <dd class="text-base text-foreground leading-relaxed">Bills that stay roughly the same each month—rent, loan payments, insurance. Predictable and non-negotiable.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Variable Expenses</dt>
+          <dd class="text-base text-foreground leading-relaxed">Costs that fluctuate—groceries, gas, entertainment. These are where you have the most room to adjust.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">50/30/20 Rule</dt>
+          <dd class="text-base text-foreground leading-relaxed">A budgeting guideline: 50% of net income for needs, 30% for wants, 20% for savings and extra debt payments.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Zero-Based Budget</dt>
+          <dd class="text-base text-foreground leading-relaxed">A method where every dollar of income is assigned a specific purpose, so income minus all allocations equals zero.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Pay Yourself First</dt>
+          <dd class="text-base text-foreground leading-relaxed">A strategy where savings contributions are taken out of your paycheck before any spending happens, rather than saving whatever's left over.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <div class="mt-12 pt-8 border-t border-border/50 flex items-center justify-between">
+      <a href="/topics" class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors">
+        ← All topics
+      </a>
+      {nextTopic && (
+        <a href={nextTopic.href} class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors group">
+          <span class="hidden sm:inline">Next:</span> {nextTopic.title}
+          <svg 
+            class="h-4 w-4 transition-transform group-hover:translate-x-0.5" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor" 
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+          </svg>
+        </a>
+      )}
+    </div>
+  </section>
+</Layout>

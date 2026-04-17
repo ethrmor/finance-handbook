@@ -1,0 +1,162 @@
+---
+import Layout from "@/layouts/main.astro"
+import { getNextTopic } from "@/lib/topicNavigation"
+
+const seo = {
+  title: "Banking Basics | Financial Handbook",
+  description: "Checking accounts, savings accounts, CDs, high-yield accounts. Understand the tools banks offer and how to use them to your advantage.",
+}
+
+const nextTopic = getNextTopic("/topics/banking-basics")
+---
+
+<Layout currentPath="/topics/banking-basics" seo={seo}>
+  <section class="py-12 px-8 max-w-3xl">
+    <h1 class="font-heading text-4xl font-semibold tracking-tight sm:text-5xl">
+      Banking Basics
+    </h1>
+    <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
+      Checking accounts, savings accounts, and the tools banks offer — understand how they work so your money works for you.
+    </p>
+
+    <!-- The Big Idea -->
+    <h2 class="font-heading text-2xl font-semibold mt-12 mb-4">The Big Idea</h2>
+    <p class="text-base text-foreground leading-relaxed">
+      A bank is a safe place to store your money that also pays you for keeping it there. The right accounts — used the right way — protect your cash, earn interest, and give you easy access when you need it. The wrong setup costs you fees and leaves money on the table.
+    </p>
+
+    <!-- Why It Matters -->
+    <h2 class="font-heading text-2xl font-semibold mt-12 mb-4">Why It Matters</h2>
+    <p class="text-base text-foreground leading-relaxed">
+      Imagine you keep $5,000 in a shoebox under your bed. Over three years, inflation eats away roughly 15% of its purchasing power. That same $5,000 in a high-yield savings account earning 4.5% APY grows to about $5,700 — and it's FDIC-insured against loss. The difference isn't just $700; it's the gap between money that shrinks and money that grows. Banking isn't optional — it's the plumbing of your financial life. Every paycheck, every bill, every emergency fund runs through it.
+    </p>
+
+    <!-- The Breakdown -->
+    <h2 class="font-heading text-2xl font-semibold mt-12 mb-4">The Breakdown</h2>
+
+    <h3 class="font-heading text-lg font-medium mt-8 mb-2">Checking Accounts</h3>
+    <p class="text-base text-foreground leading-relaxed">
+      Think of a checking account as your financial wallet. Money flows in (paychecks, transfers) and out (rent, groceries, bills) constantly. You access it with a debit card, checks, or electronic transfers. Most checking accounts earn little to no interest — that's not their job. Their job is liquidity: your money is available anytime, anywhere.
+    </p>
+    <ul class="list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed mt-3">
+      <li>Look for accounts with <strong>no monthly maintenance fees</strong> — many banks waive these if you set up direct deposit or maintain a minimum balance.</li>
+      <li>Overdraft protection sounds helpful, but it can mask spending problems. A $35 overdraft fee on a $5 coffee is a 700% penalty.</li>
+      <li>Online banks often offer fee-free checking with better digital tools than traditional banks.</li>
+    </ul>
+
+    <h3 class="font-heading text-lg font-medium mt-8 mb-2">Savings Accounts</h3>
+    <p class="text-base text-foreground leading-relaxed">
+      If checking is your wallet, savings is your vault. The bank pays you interest (APY — Annual Percentage Yield) for parking your money there. Why? Because they lend your deposits to other people as loans and mortgages, and share some of that profit with you.
+    </p>
+    <ul class="list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed mt-3">
+      <li><strong>Traditional savings accounts</strong> at big banks often pay 0.01%–0.05% APY — essentially nothing.</li>
+      <li><strong>High-yield savings accounts (HYSAs)</strong> from online banks typically pay 4%–5% APY as of 2025. Same FDIC insurance, dramatically better returns.</li>
+      <li>Federal Regulation D used to limit you to 6 withdrawals per month from savings. That rule was suspended in 2020, but some banks still enforce it or charge excess-withdrawal fees.</li>
+    </ul>
+
+    <div class="bg-muted/50 rounded-lg p-6 mt-6">
+      <p class="text-base text-foreground leading-relaxed">
+        <strong>Key comparison:</strong> $10,000 in a traditional savings account at 0.05% APY earns $5/year. The same $10,000 in a HYSA at 4.5% APY earns $450/year. That's a $445 difference for doing nothing differently except choosing a different account.
+      </p>
+    </div>
+
+    <h3 class="font-heading text-lg font-medium mt-8 mb-2">Certificates of Deposit (CDs)</h3>
+    <p class="text-base text-foreground leading-relaxed">
+      A CD is like a time-locked treasure chest. You agree to lock your money away for a set period (3 months to 5 years), and in exchange, the bank gives you a fixed interest rate that's usually higher than a savings account. Pull your money out early? You'll pay a penalty — typically 3–12 months of interest. CDs are best for money you absolutely won't need until the CD matures.
+    </p>
+
+    <h3 class="font-heading text-lg font-medium mt-8 mb-2">FDIC Insurance</h3>
+    <p class="text-base text-foreground leading-relaxed">
+      The Federal Deposit Insurance Corporation (FDIC) insures your deposits up to <strong>$250,000 per depositor, per bank, per ownership category</strong>. If your bank fails, the government makes you whole. This is not theoretical — during the 2008 financial crisis and the 2023 banking failures, FDIC insurance worked exactly as promised. Credit unions have equivalent protection through the NCUA with the same $250,000 limit.
+    </p>
+
+    <h3 class="font-heading text-lg font-medium mt-8 mb-2">Credit Unions vs. Banks</h3>
+    <p class="text-base text-foreground leading-relaxed">
+      Credit unions are not-for-profit cooperatives owned by their members. Banks are for-profit corporations owned by shareholders. Credit unions often offer better rates and lower fees, but may have fewer branches and less polished apps. For most people, the best setup is a credit union for savings and an online bank for checking — but either works fine as long as you avoid fees.
+    </p>
+
+    <!-- Common Mistakes -->
+    <h2 class="font-heading text-2xl font-semibold mt-12 mb-4">Common Mistakes</h2>
+    <ul class="list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+      <li><strong>Keeping all your money in checking.</strong> You earn zero interest and it's too easy to spend. Move what you don't need this month into savings.</li>
+      <li><strong>Paying monthly maintenance fees.</strong> There are dozens of fee-free accounts. If your bank charges you $12/month just to hold your money, switch.</li>
+      <li><strong>Ignoring high-yield savings accounts.</strong> Leaving $10,000 in a 0.01% account instead of a 4.5% HYSA costs you ~$450 per year in lost interest.</li>
+      <li><strong>Overdrafting repeatedly.</strong> One overdraft is a mistake. Five is a pattern. Either opt out of overdraft protection (transactions simply decline) or track your balance more carefully.</li>
+      <li><strong>Not verifying FDIC/NCUA coverage.</strong> If you have more than $250,000 at one bank, spread it across institutions to stay fully insured.</li>
+      <li><strong>Using out-of-network ATMs regularly.</strong> A $3 ATM fee here and there adds up. Use your bank's network or get an account that reimburses ATM fees.</li>
+    </ul>
+
+    <!-- Action Steps -->
+    <h2 class="font-heading text-2xl font-semibold mt-12 mb-4">Action Steps</h2>
+    <ol class="list-decimal pl-5 space-y-2 text-base text-foreground leading-relaxed">
+      <li><strong>Open a high-yield savings account</strong> if you don't have one. Ally, Marcus, Discover, and SoFi are popular options — all FDIC-insured with competitive APYs.</li>
+      <li><strong>Audit your current accounts for fees.</strong> Log in, check the last 3 months of statements. If you see maintenance fees, overdraft fees, or ATM surcharges, calculate the total — then switch to a fee-free alternative.</li>
+      <li><strong>Set up direct deposit</strong> to your checking account and schedule an automatic transfer to savings each payday. Even $50/biweekly builds to $1,300/year.</li>
+      <li><strong>Verify your FDIC coverage.</strong> If your combined deposits at any single bank exceed $250,000, move the excess to a different institution.</li>
+      <li><strong>Turn off overdraft protection</strong> on your debit card if you've overdrafted more than once. Declined transactions are embarrassing but free; overdraft fees are quiet and expensive.</li>
+    </ol>
+
+    <!-- Quick Reference -->
+    <h2 class="font-heading text-2xl font-semibold mt-12 mb-4">Quick Reference</h2>
+    <div class="overflow-x-auto">
+      <table class="w-full text-base text-foreground leading-relaxed">
+        <thead>
+          <tr class="border-b border-border">
+            <th class="py-3 pr-4 text-left font-medium">Term</th>
+            <th class="py-3 pr-4 text-left font-medium">Definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-border/50">
+            <td class="py-3 pr-4 font-medium">APY</td>
+            <td class="py-3 pr-4">Annual Percentage Yield — the total interest you earn in one year, including compounding. Always compare APY, not the raw interest rate.</td>
+          </tr>
+          <tr class="border-b border-border/50">
+            <td class="py-3 pr-4 font-medium">FDIC</td>
+            <td class="py-3 pr-4">Federal Deposit Insurance Corporation — insures bank deposits up to $250,000 per depositor, per bank, per ownership category.</td>
+          </tr>
+          <tr class="border-b border-border/50">
+            <td class="py-3 pr-4 font-medium">NCUA</td>
+            <td class="py-3 pr-4">National Credit Union Administration — the credit union equivalent of the FDIC, with the same $250,000 coverage.</td>
+          </tr>
+          <tr class="border-b border-border/50">
+            <td class="py-3 pr-4 font-medium">CD</td>
+            <td class="py-3 pr-4">Certificate of Deposit — a time-locked deposit with a fixed interest rate and maturity date. Early withdrawals incur penalties.</td>
+          </tr>
+          <tr class="border-b border-border/50">
+            <td class="py-3 pr-4 font-medium">HYSA</td>
+            <td class="py-3 pr-4">High-Yield Savings Account — an online savings account offering significantly higher APY than traditional banks (typically 4–5% vs. 0.01%).</td>
+          </tr>
+          <tr class="border-b border-border/50">
+            <td class="py-3 pr-4 font-medium">Overdraft</td>
+            <td class="py-3 pr-4">When you spend more than your account balance. With overdraft protection, the bank covers it — for a fee (typically $35). Without it, the transaction is declined.</td>
+          </tr>
+          <tr>
+            <td class="py-3 pr-4 font-medium">Routing Number</td>
+            <td class="py-3 pr-4">A 9-digit code that identifies your bank. You need it for direct deposits, wire transfers, and linking external accounts.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-border/50 flex items-center justify-between">
+      <a href="/topics" class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors">
+        ← All topics
+      </a>
+      {nextTopic && (
+        <a href={nextTopic.href} class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors group">
+          <span class="hidden sm:inline">Next:</span> {nextTopic.title}
+          <svg 
+            class="h-4 w-4 transition-transform group-hover:translate-x-0.5" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor" 
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+          </svg>
+        </a>
+      )}
+    </div>
+  </section>
+</Layout>

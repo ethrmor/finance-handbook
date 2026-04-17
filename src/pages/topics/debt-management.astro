@@ -1,0 +1,171 @@
+---
+import Layout from "@/layouts/main.astro"
+import { getNextTopic } from "@/lib/topicNavigation"
+
+const seo = {
+  title: "Debt Management | Financial Handbook",
+  description: "Credit cards, student loans, car payments, mortgages. Understand how debt works, when it's dangerous, and how to eliminate it strategically.",
+}
+
+const nextTopic = getNextTopic("/topics/debt-management")
+---
+
+<Layout currentPath="/topics/debt-management" seo={seo}>
+  <article class="mx-auto max-w-3xl px-6 py-12">
+    <!-- Hero -->
+    <a href="/" class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8">
+      ← All Topics
+    </a>
+    <h1 class="font-heading text-4xl font-semibold tracking-tight sm:text-5xl">Debt Management</h1>
+    <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
+      Credit cards, student loans, car payments, mortgages. Understand how debt works, when it's dangerous, and how to eliminate it strategically.
+    </p>
+
+    <!-- The Big Idea -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Big Idea</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        Debt is borrowed money you have to pay back, usually with interest. Not all debt is evil—a mortgage lets you own a home decades earlier than you could with cash alone. But high-interest debt, especially credit cards, is a trap that compounds against you. Managing debt means understanding which debts are worth keeping, which need to go immediately, and having a systematic plan to eliminate the rest. Think of it like a medical triage: treat the life-threatening wounds first, then handle the rest in order of severity.
+      </p>
+    </section>
+
+    <!-- Why It Matters -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Why It Matters</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        Consider two people with the same $5,000 credit card balance at 24% APR. Person A makes minimum payments of $125/month. Person B pays $250/month. Here's the difference: Person A takes over 24 years and pays roughly $9,400 in interest—nearly double the original balance. Person B is done in under 2 years and pays about $1,300 in interest. Same debt, same rate, wildly different outcomes. The minimum payment is designed to keep you paying forever. Understanding how debt actually works is the difference between escaping the trap and living in it.
+      </p>
+      <p class="mt-4 text-base text-foreground leading-relaxed">
+        And it's not just about money. Debt stress is real—it affects sleep, relationships, and career decisions. People stay in jobs they hate because they can't afford a gap in income. They delay starting families, launching businesses, or pursuing education. Debt doesn't just cost interest; it costs opportunities.
+      </p>
+    </section>
+
+    <!-- The Breakdown -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Breakdown</h2>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Good Debt vs. Bad Debt</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Not all borrowing is created equal. The key distinction is whether the debt buys something that <em>appreciates</em> (goes up in value) or <em>depreciates</em> (loses value):
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Generally good:</strong> Mortgages (real estate historically appreciates), federal student loans (low fixed rates, education increases earning power), small business loans (if the business generates income). These are investments in your future.</li>
+        <li><strong>Generally bad:</strong> Credit card debt (high rates, buys consumables), car loans on depreciating assets, payday loans (often 300–400% APR). These charge you for the privilege of owning something worth less tomorrow than today.</li>
+      </ul>
+      <p class="mt-3 text-base text-foreground leading-relaxed">
+        The gray area: a car loan at 3% to buy a reliable vehicle that gets you to work is defensible. A 9% loan on a luxury car you can't afford is not. The rate and the purpose both matter.
+      </p>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">The Debt Avalanche Method</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Pay the <strong>minimum on every debt</strong>, then put all extra money toward the debt with the <strong>highest interest rate</strong>. Once that's gone, redirect the full amount to the next-highest rate. This is the mathematically optimal strategy—you pay the least total interest over time. It's like putting out the biggest fire first.
+      </p>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">The Debt Snowball Method</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Pay the minimum on every debt, then put all extra money toward the debt with the <strong>smallest balance</strong>, regardless of interest rate. Once that's eliminated, move to the next smallest. This isn't mathematically optimal, but it's psychologically powerful—quick wins build momentum and motivation. It's like cleaning a messy room by tackling the easiest piles first; the visible progress keeps you going.
+      </p>
+
+      <div class="bg-muted/50 rounded-lg p-6 mt-4">
+        <p class="text-base text-foreground leading-relaxed">
+          <strong>Which should you pick?</strong> If you're disciplined and motivated by numbers, avalanche saves more money. If you've tried and failed to stick with a plan before, snowball's quick wins might be what keeps you in the game. The best method is the one you'll actually follow through on.
+        </p>
+      </div>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Interest Rate Basics</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Understanding how interest compounds is essential. On a credit card with 24% APR, the daily rate is about 0.0658%. That gets applied to your average daily balance every single day. If you carry a $5,000 balance for a month, you accrue roughly $100 in interest—before you've bought anything new. That's why making only minimum payments feels like running on a treadmill: you're working hard but going nowhere.
+      </p>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">When to Consider Consolidation</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Debt consolidation means rolling multiple debts into one loan with a single (hopefully lower) payment. It can make sense when:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li>You qualify for a significantly lower interest rate than your current debts.</li>
+        <li>The new monthly payment is genuinely affordable (not just stretched out over more years).</li>
+        <li>You've addressed the spending habits that created the debt in the first place.</li>
+      </ul>
+      <p class="mt-3 text-base text-foreground leading-relaxed">
+        Warning: consolidation is a tool, not a cure. If you consolidate credit cards but keep using them, you'll end up with the consolidation loan <em>plus</em> new credit card debt. That's how people end up in worse shape than before.
+      </p>
+    </section>
+
+    <!-- Common Mistakes -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Common Mistakes</h2>
+      <ul class="list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Paying only the minimum.</strong> Credit card companies set minimums low to maximize the interest you pay over time. On a $5,000 balance at 24% APR, minimums alone could take over two decades to clear.</li>
+        <li><strong>Ignoring the interest rate.</strong> Not all debt is equal. A 5% student loan and a 25% credit card balance shouldn't get the same attention. Prioritize the expensive debt.</li>
+        <li><strong>Consolidating without changing habits.</strong> Moving debt around doesn't eliminate it. If the spending patterns that created the debt continue, consolidation just buys you a few months before you're deeper in the hole.</li>
+        <li><strong>Borrowing from retirement accounts.</strong> A 401(k) loan might seem like borrowing from yourself, but you lose investment growth, and if you leave your job, the loan may be due immediately or treated as a taxable distribution with penalties.</li>
+        <li><strong>Closing paid-off credit cards immediately.</strong> Closing cards reduces your total available credit, which can raise your credit utilization ratio and temporarily lower your credit score. Keep them open, use them sparingly, and pay in full each month.</li>
+      </ul>
+    </section>
+
+    <!-- Action Steps -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Action Steps</h2>
+      <div class="bg-muted/50 rounded-lg p-6">
+        <ol class="list-decimal pl-5 space-y-3 text-base text-foreground leading-relaxed">
+          <li><strong>List every debt you owe.</strong> Write down each creditor, the total balance, the interest rate, and the minimum monthly payment. Seeing it all in one place is uncomfortable but essential—it's your battle map.</li>
+          <li><strong>Choose your payoff strategy.</strong> Pick avalanche (highest rate first) or snowball (smallest balance first) based on what will keep you motivated. Commit to it for at least six months before switching.</li>
+          <li><strong>Find your extra payment amount.</strong> After covering needs and minimums, how much money is left? Even $100/month extra makes a dramatic difference over time. Cut one discretionary category and redirect it.</li>
+          <li><strong>Call your credit card companies and ask for a lower rate.</strong> It sounds too simple, but a polite five-minute call can result in a rate reduction, especially if you have a history of on-time payments. Every percentage point saved is money in your pocket.</li>
+          <li><strong>Set up autopay for minimums on every debt.</strong> This ensures you never miss a payment (which triggers late fees and rate hikes), while you manually direct extra payments to your target debt. Automation prevents the costliest mistakes.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Quick Reference -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Quick Reference</h2>
+      <dl class="space-y-4">
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">APR (Annual Percentage Rate)</dt>
+          <dd class="text-base text-foreground leading-relaxed">The yearly cost of borrowing money, expressed as a percentage. Includes the interest rate plus certain fees. A 24% APR on a credit card means you pay roughly 24% of your average balance in interest per year.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Debt Avalanche</dt>
+          <dd class="text-base text-foreground leading-relaxed">A repayment strategy where you pay extra toward the debt with the highest interest rate first. Mathematically optimal—minimizes total interest paid.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Debt Snowball</dt>
+          <dd class="text-base text-foreground leading-relaxed">A repayment strategy where you pay extra toward the debt with the smallest balance first. Psychologically effective—quick wins build motivation to continue.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Debt Consolidation</dt>
+          <dd class="text-base text-foreground leading-relaxed">Combining multiple debts into a single loan, ideally at a lower interest rate. Simplifies payments but doesn't reduce the total amount owed.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Minimum Payment</dt>
+          <dd class="text-base text-foreground leading-relaxed">The smallest amount a lender requires you to pay each month. Usually 1–3% of the balance plus interest. Paying only the minimum extends repayment for years and maximizes total interest paid.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Compounding Interest</dt>
+          <dd class="text-base text-foreground leading-relaxed">Interest calculated on both the original principal and the accumulated interest from previous periods. When you owe money, compounding works against you—interest generates more interest.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <div class="mt-12 pt-8 border-t border-border/50 flex items-center justify-between">
+      <a href="/topics" class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors">
+        ← All topics
+      </a>
+      {nextTopic && (
+        <a href={nextTopic.href} class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors group">
+          <span class="hidden sm:inline">Next:</span> {nextTopic.title}
+          <svg 
+            class="h-4 w-4 transition-transform group-hover:translate-x-0.5" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor" 
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+          </svg>
+        </a>
+      )}
+    </div>
+  </article>
+</Layout>

@@ -1,0 +1,151 @@
+---
+import Layout from "@/layouts/main.astro"
+import { getNextTopic } from "@/lib/topicNavigation"
+
+const seo = {
+  title: "Emergency Funds | Financial Handbook",
+  description: "Life happens. A solid emergency fund is your financial shock absorber. Learn how much you need, where to keep it, and how to build it fast.",
+}
+
+const nextTopic = getNextTopic("/topics/emergency-funds")
+---
+
+<Layout currentPath="/topics/emergency-funds" seo={seo}>
+  <article class="py-12 px-8 max-w-3xl">
+    <!-- Hero -->
+    <h1 class="font-heading text-4xl font-semibold tracking-tight sm:text-5xl">Emergency Funds</h1>
+    <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
+      Life happens. A solid emergency fund is your financial shock absorber—here's how much you need, where to keep it, and how to build it fast.
+    </p>
+
+    <!-- The Big Idea -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Big Idea</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        An emergency fund is cash set aside exclusively for unexpected expenses—job loss, medical bills, car repairs, the stuff you can't predict but know will eventually happen. Think of it as insurance you fund yourself: instead of paying a company a monthly premium, you pay your future self by stashing money in a separate account. When disaster strikes, you're not reaching for a credit card and creating a second crisis.
+      </p>
+    </section>
+
+    <!-- Why It Matters -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Why It Matters</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        Meet Jordan. Jordan had a solid job, a decent apartment, and a car that ran fine—until it didn't. A $2,200 transmission repair landed on a Tuesday, and with only $400 in savings, Jordan put it on a credit card at 24.9% APR. Minimum payments of $66/month seemed manageable, but after a year, Jordan had paid $792 and still owed $1,680. That one car repair cost nearly double its original price.
+      </p>
+      <p class="mt-4 text-base text-foreground leading-relaxed">
+        Now picture the same scenario with a $3,000 emergency fund. Jordan pays cash, skips the credit card entirely, and spends the next few months rebuilding the fund. No debt spiral. No stress. No paying 25% interest on a mechanical failure. The emergency fund didn't prevent the breakdown—it prevented the financial chain reaction that followed.
+      </p>
+      <p class="mt-4 text-base text-foreground leading-relaxed">
+        Federal Reserve data consistently shows that nearly 40% of Americans couldn't cover a $400 unexpected expense with cash. That's not a poverty statistic—it includes middle-class households. The gap between "doing fine" and "in trouble" is far narrower than most people think. An emergency fund widens that gap.
+      </p>
+    </section>
+
+    <!-- The Breakdown -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Breakdown</h2>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">How Much Do You Need?</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        The standard recommendation is <strong>3 to 6 months of essential living expenses</strong>—not your full income, just what you absolutely need to survive: rent, groceries, utilities, insurance, minimum debt payments. Here's how to calibrate:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>3 months</strong> if you're single, healthy, in a stable job market, and could find new work quickly.</li>
+        <li><strong>4–5 months</strong> if you have dependents, work in a specialized field, or have ongoing medical costs.</li>
+        <li><strong>6+ months</strong> if you're self-employed, a single-income household, or in a volatile industry (tech layoffs, seasonal work, commission-based roles).</li>
+      </ul>
+      <p class="mt-3 text-base text-foreground leading-relaxed">
+        A starter goal of $1,000 is better than nothing while you build toward the full amount. That covers most common emergencies—a car repair, a small medical bill, a plane ticket for a family emergency—without triggering debt.
+      </p>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Where to Keep It</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        The emergency fund has three requirements: it must be <strong>liquid</strong> (accessible within 1–2 business days), <strong>safe</strong> (no risk of losing principal), and <strong>separate</strong> (not mixed with spending money). The best options:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>High-yield savings account (HYSA)</strong> — The gold standard. FDIC-insured, earns 4–5% APY (as of 2025), and you can transfer funds to checking in 1–3 business days. Keep it at a different bank than your checking to reduce temptation.</li>
+        <li><strong>Money market account</strong> — Similar to HYSA but may offer debit card access for faster withdrawals. Slightly lower rates sometimes.</li>
+        <li><strong>Not here:</strong> Checking accounts (too easy to spend), investment accounts (could be down when you need it), certificates of deposit (early withdrawal penalties), or cash under the mattress (inflation eats it).</li>
+      </ul>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">How to Build It Fast</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Building an emergency fund isn't about heroic discipline—it's about removing friction and creating momentum:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Automate it.</strong> Set up a recurring transfer from checking to your HYSA the day after payday. If the money moves before you see it, you won't miss it.</li>
+        <li><strong>Start with a windfall.</strong> Tax refund, bonus, birthday cash, side gig income—put at least half of any unexpected money directly into the fund.</li>
+        <li><strong>Trim one subscription.</strong> Cancel one $15/month service and redirect that $180/year. It adds up faster than you'd think.</li>
+        <li><strong>Use the "one more payment" trick.</strong> Just paid off a loan or credit card? Keep making that same payment amount—into your emergency fund instead.</li>
+      </ul>
+    </section>
+
+    <!-- Common Mistakes -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Common Mistakes</h2>
+      <ul class="list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Using it for non-emergencies.</strong> A sale on flights is not an emergency. Holiday gifts are not an emergency. Define "emergency" narrowly: unexpected, necessary, and urgent.</li>
+        <li><strong>Keeping it in the same bank as checking.</strong> When your emergency fund is two clicks away from your debit card, it's too accessible. Out of sight, out of mind.</li>
+        <li><strong>Investing emergency money.</strong> The stock market drops 15% the same month you lose your job—now your fund is worth less when you need it most. Emergency funds trade growth for certainty, and that's the right trade.</li>
+        <li><strong>Waiting to start until you can save "enough."</strong> There's no minimum opening balance for a savings account. Start with $50. Momentum beats perfection.</li>
+        <li><strong>Not replenishing after a withdrawal.</strong> Using the fund is exactly what it's for—but the rebuild phase is critical. Treat replenishment as a non-negotiable bill, not an optional goal.</li>
+      </ul>
+    </section>
+
+    <!-- Action Steps -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Action Steps</h2>
+      <div class="bg-muted/50 rounded-lg p-6">
+        <ol class="list-decimal pl-5 space-y-3 text-base text-foreground leading-relaxed">
+          <li><strong>Calculate your monthly survival number.</strong> Add up rent, groceries, utilities, insurance, transportation, and minimum debt payments. Multiply by 3 for your minimum target, by 6 for your full target.</li>
+          <li><strong>Open a high-yield savings account at a separate bank.</strong> Online banks like Ally, Marcus, or Discover typically offer the best rates and take 10 minutes to set up. Link it to your checking account.</li>
+          <li><strong>Set up automatic transfers.</strong> Schedule a recurring transfer for the day after each payday. Start with an amount that feels almost too small to matter—$50, $100, whatever works. You can always increase it.</li>
+          <li><strong>Save your first $1,000 as fast as possible.</strong> Sell unused items, pick up a weekend gig, redirect a windfall. Getting to four digits creates a psychological milestone that makes continuing feel natural.</li>
+          <li><strong>Build to your 3-month target, then reassess.</strong> Once you hit 3 months of expenses, decide whether your situation warrants pushing to 6. If you're in a stable dual-income household, 3 may be sufficient. If you're self-employed or have health concerns, keep going.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Quick Reference -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Quick Reference</h2>
+      <dl class="space-y-4">
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Emergency Fund</dt>
+          <dd class="text-base text-foreground leading-relaxed">Cash reserved exclusively for genuine emergencies—unexpected, necessary, and urgent expenses. Not for planned purchases or opportunities.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">High-Yield Savings Account (HYSA)</dt>
+          <dd class="text-base text-foreground leading-relaxed">A savings account offering significantly higher interest rates than traditional banks, typically 4–5% APY. FDIC-insured up to $250,000 per depositor.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Liquidity</dt>
+          <dd class="text-base text-foreground leading-relaxed">How quickly and easily you can access your money without penalty or loss. Cash is fully liquid; real estate and investments are not.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Essential Living Expenses</dt>
+          <dd class="text-base text-foreground leading-relaxed">The bare minimum costs to maintain your life: housing, food, utilities, insurance, transportation, and minimum debt payments. Excludes dining out, entertainment, and discretionary spending.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <div class="mt-12 pt-8 border-t border-border/50 flex items-center justify-between">
+      <a href="/topics" class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors">
+        ← All topics
+      </a>
+      {nextTopic && (
+        <a href={nextTopic.href} class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors group">
+          <span class="hidden sm:inline">Next:</span> {nextTopic.title}
+          <svg 
+            class="h-4 w-4 transition-transform group-hover:translate-x-0.5" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor" 
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+          </svg>
+        </a>
+      )}
+    </div>
+  </article>
+</Layout>
