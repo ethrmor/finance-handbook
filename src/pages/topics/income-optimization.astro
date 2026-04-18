@@ -1,0 +1,166 @@
+---
+import Layout from "@/layouts/main.astro"
+import { getNextTopic } from "@/lib/topicNavigation"
+
+const seo = {
+  title: "Income Optimization | Financial Handbook",
+  description: "Negotiating salary, understanding benefits, job hopping strategy, and building multiple income streams.",
+}
+
+const nextTopic = getNextTopic("/topics/income-optimization")
+---
+
+<Layout currentPath="/topics/income-optimization" seo={seo}>
+  <article class="py-12 px-8 max-w-3xl">
+    <!-- Hero -->
+    <h1 class="font-heading text-4xl font-semibold tracking-tight sm:text-5xl">Income Optimization</h1>
+    <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
+      Negotiating salary, understanding benefits, job hopping strategy, and building multiple income streams.
+    </p>
+
+    <!-- The Big Idea -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Big Idea</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        Your income is your most powerful wealth-building tool. While cutting expenses has a floor (you can only cut so much), increasing income has no ceiling. Income optimization isn't about working yourself to exhaustion—it's about being strategic: negotiating what you're worth, understanding the full value of your benefits, knowing when job-hopping accelerates your earnings, and diversifying your income so you're not dependent on a single employer.
+      </p>
+    </section>
+
+    <!-- Why It Matters -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Why It Matters</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        Consider two people starting at $50,000/year. One negotiates a 5% raise annually and job-hops twice for 15% bumps. The other accepts 2% COL adjustments and stays at one company. After 10 years, the first person earns $118,000; the second earns $61,000. That $57,000 annual difference compounds into millions over a career. The skill of optimizing income is more valuable than any investment return because it multiplies everything else you do with money.
+      </p>
+    </section>
+
+    <!-- The Breakdown -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Breakdown</h2>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Salary Negotiation</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Most people don't negotiate because they're afraid of offending the employer. But companies expect negotiation—it's built into their offers. The key is preparation:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Research market rates.</strong> Use Glassdoor, Levels.fyi, PayScale, and Salary.com to understand what your role pays in your location and experience level. Print the data.</li>
+        <li><strong>Know your number.</strong> Have a specific target in mind (not a range—employers hear the bottom number). Be ready to justify it with your research and accomplishments.</li>
+        <li><strong>Practice the conversation.</strong> Rehearse with a friend. The words should feel natural: "I'm excited about this role. Based on my research and the value I'll bring, I was hoping for $X."</li>
+        <li><strong>Consider the whole package.</strong> If base salary is firm, negotiate signing bonuses, extra vacation, remote work, professional development budgets, or stock options. Sometimes these are easier to move than base pay.</li>
+      </ul>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Understanding Your Benefits</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Benefits can be worth 30% or more of your total compensation. Don't ignore them:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>401(k) match.</strong> If your employer matches contributions, contribute at least enough to get the full match—it's free money with a 100% immediate return. A 3% match on $60,000 is $1,800/year.</li>
+        <li><strong>Health insurance.</strong> Compare plans carefully. A lower-premium HDHP with an HSA might save you thousands if you're healthy. Understand deductibles, out-of-pocket maximums, and which doctors are in-network.</li>
+        <li><strong>Stock options/RSUs.</strong> If you have equity, understand vesting schedules, tax implications, and whether to hold or sell. This can be worth more than your salary at growing companies.</li>
+        <li><strong>Other benefits.</strong> Life insurance, disability insurance, commuter benefits, dependent care FSA, tuition reimbursement, employee discounts, wellness stipends—read your employee handbook cover to cover.</li>
+      </ul>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">The Job-Hopping Strategy</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Staying at one company for decades rarely maximizes income. Here's the reality:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Internal raises are small.</strong> Most companies give 2–4% annual raises. Job-hopping can get you 10–20% bumps every 2–3 years.</li>
+        <li><strong>Stay long enough to learn.</strong> Don't hop every 6 months—you won't develop deep skills. Aim for 2–3 years minimum unless the situation is toxic.</li>
+        <li><strong>Build while employed.</strong> Use your current job to develop skills, get certifications, and build a portfolio that makes you more valuable to the next employer.</li>
+        <li><strong>Network constantly.</strong> Stay in touch with recruiters, former colleagues, and industry peers. The best opportunities come through relationships, not job boards.</li>
+        <li><strong>Consider the total picture.</strong> A 15% raise at a terrible company with no growth isn't worth it. Evaluate culture, learning opportunities, career trajectory, and work-life balance alongside compensation.</li>
+      </ul>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Building Multiple Income Streams</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Relying on a single employer is risky. Diversifying your income creates security and accelerates wealth-building:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Side hustles.</strong> Freelance writing, consulting, tutoring, design work, coding projects—monetize skills you already have. Start small and grow.</li>
+        <li><strong>Passive income.</strong> Dividend stocks, REITs, interest from savings, peer-to-peer lending. These require capital but minimal ongoing effort.</li>
+        <li><strong>Rental income.</strong> Rent out a room, a parking space, or invest in rental properties. Real estate can be excellent income but requires significant capital and management.</li>
+        <li><strong>Digital products.</strong> E-books, courses, templates, software. Create once, sell many times. Requires upfront effort but can scale.</li>
+        <li><strong>Start gradually.</strong> Don't try to build five income streams at once. Pick one, get it working, then add another. Your primary job should remain your main focus until side income is substantial.</li>
+      </ul>
+    </section>
+
+    <!-- Common Mistakes -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Common Mistakes</h2>
+      <ul class="list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Not negotiating your first salary.</strong> This sets the baseline for every raise and future job. A $5,000 difference at age 25 compounds into hundreds of thousands over a career.</li>
+        <li><strong>Ignoring benefits value.</strong> A job paying $70,000 with full benefits (health, 401k match, stock) can be worth more than $85,000 with no benefits. Do the math.</li>
+        <li><strong>Job-hopping too fast.</strong> Changing jobs every 6–12 months prevents you from developing deep expertise and can make you appear unreliable. Stay 2–3 years minimum.</li>
+        <li><strong>Staying too long.</strong> On the flip side, staying at one company for 10+ years without significant raises means you're probably underpaid. The market moves faster than internal raises.</li>
+        <li><strong>Starting side hustles that don't scale.</strong> Trading time for money (driving Uber, delivering food) has limited upside. Focus on building skills and assets that can grow without proportional time investment.</li>
+        <li><strong>Not tracking total compensation.</strong> Focus only on salary and ignore equity, bonuses, benefits, and growth potential. Total comp is what matters for wealth-building.</li>
+      </ul>
+    </section>
+
+    <!-- Action Steps -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Action Steps</h2>
+      <div class="bg-muted/50 rounded-lg p-6">
+        <ol class="list-decimal pl-5 space-y-3 text-base text-foreground leading-relaxed">
+          <li><strong>Research your market value.</strong> Use Glassdoor, Levels.fyi, and PayScale to find salary ranges for your role, location, and experience. Document the data.</li>
+          <li><strong>Calculate your total compensation.</strong> Add up salary, bonuses, 401(k) match, health insurance value, stock options, and other benefits. Know your true number.</li>
+          <li><strong>Schedule a performance conversation.</strong> If you haven't had a raise in 12+ months, request a meeting with your manager. Come prepared with accomplishments and market data.</li>
+          <li><strong>Audit your benefits.</strong> Read your employee handbook and benefits guide. Are you getting the full 401(k) match? Using the best health plan? Missing any perks?</li>
+          <li><strong>Start a side income experiment.</strong> Pick one skill you have that others might pay for. Create a simple offer (freelance service, digital product, consulting). Test it with one client or customer.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Quick Reference -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Quick Reference</h2>
+      <dl class="space-y-4">
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Total Compensation</dt>
+          <dd class="text-base text-foreground leading-relaxed">The complete value of your employment: salary + bonuses + benefits (health insurance, 401k match, stock options, etc.). Always evaluate jobs on total comp, not just salary.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">401(k) Match</dt>
+          <dd class="text-base text-foreground leading-relaxed">Free money from your employer. If they match 50% up to 6%, contribute at least 6% to get the full match. This is a 50% immediate return on investment.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Vesting</dt>
+          <dd class="text-base text-foreground leading-relaxed">The schedule for when employer contributions (401k match, stock options) become fully yours. A 4-year vesting schedule means you get 25% per year; leave before fully vested and you forfeit the unvested portion.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Side Hustle</dt>
+          <dd class="text-base text-foreground leading-relaxed">Income earned outside your primary job. Can be active (trading time for money: consulting, tutoring) or passive (create once, sell many: digital products, dividend stocks).</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Passive Income</dt>
+          <dd class="text-base text-foreground leading-relaxed">Money earned with minimal ongoing effort. Examples: dividends from investments, interest from savings, rental income, royalties from creative work, affiliate marketing.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Golden Handcuffs</dt>
+          <dd class="text-base text-foreground leading-relaxed">When high compensation (stock options, bonuses, benefits) keeps you at a job you dislike or that doesn't serve your long-term goals. Be aware of vesting schedules and opportunity costs.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <div class="mt-12 pt-8 border-t border-border/50 flex items-center justify-between">
+      <a href="/topics" class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors">
+        ← All topics
+      </a>
+      {nextTopic && (
+        <a href={nextTopic.href} class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors group">
+          <span class="hidden sm:inline">Next:</span> {nextTopic.title}
+          <svg 
+            class="h-4 w-4 transition-transform group-hover:translate-x-0.5" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor" 
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+          </svg>
+        </a>
+      )}
+    </div>
+  </article>
+</Layout>

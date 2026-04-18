@@ -1,0 +1,171 @@
+---
+import Layout from "@/layouts/main.astro"
+import { getNextTopic } from "@/lib/topicNavigation"
+
+const seo = {
+  title: "Spending Psychology | Financial Handbook",
+  description: "Behavioral economics, impulse control, lifestyle inflation, and understanding your money scripts.",
+}
+
+const nextTopic = getNextTopic("/topics/spending-psychology")
+---
+
+<Layout currentPath="/topics/spending-psychology" seo={seo}>
+  <article class="py-12 px-8 max-w-3xl">
+    <!-- Hero -->
+    <h1 class="font-heading text-4xl font-semibold tracking-tight sm:text-5xl">Spending Psychology</h1>
+    <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
+      Behavioral economics, impulse control, lifestyle inflation, and understanding your money scripts.
+    </p>
+
+    <!-- The Big Idea -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Big Idea</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        Your spending decisions aren't purely rational—they're driven by deep psychological patterns formed in childhood, social pressures, emotional states, and cognitive biases. Understanding spending psychology means recognizing that a budget failure isn't a moral failing; it's often a predictable response to how your brain is wired. The goal isn't perfect discipline—it's designing systems and awareness that work with your psychology instead of against it.
+      </p>
+    </section>
+
+    <!-- Why It Matters -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Why It Matters</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        Consider this: studies show that people spend 12–18% more when using credit cards versus cash. Not because they're irresponsible, but because the pain of paying is dulled when money becomes abstract numbers. Or take lifestyle inflation: the phenomenon where spending rises with income, leaving you no better off despite earning more. These aren't character flaws—they're human psychology. Understanding them is the difference between constantly feeling like you're failing at money and designing a system that actually works for a human brain.
+      </p>
+    </section>
+
+    <!-- The Breakdown -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Breakdown</h2>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Money Scripts: Your Financial Operating System</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Dr. Brad Klontz, a financial psychologist, identified four "money scripts"—unconscious beliefs about money that drive behavior:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Money Avoidance:</strong> Believing money is bad, rich people are greedy, or discussing money is vulgar. Often leads to ignoring finances, not negotiating, and avoiding planning. Common in people who grew up with financial stress or were taught that "money is the root of all evil."</li>
+        <li><strong>Money Worship:</strong> Believing money will solve all problems, more money will make you happy, and you can never have enough. Often leads to workaholism, overspending to impress others, and never feeling satisfied. Common in people who equate net worth with self-worth.</li>
+        <li><strong>Money Status:</strong> Believing your worth equals your net worth, and you must display wealth to be respected. Often leads to buying status symbols, living beyond means, and prioritizing appearance over security. Common in people who tie self-esteem to external validation.</li>
+        <li><strong>Money Vigilance:</strong> Being anxious about money, overly frugal, and secretive about finances. Often leads to excessive saving, difficulty spending even on necessities, and financial anxiety. Common in people who grew up with financial instability or experienced poverty.</li>
+      </ul>
+      <p class="mt-4 text-base text-foreground leading-relaxed">
+        <strong>Important:</strong> Most people have elements of multiple scripts. The goal isn't to eliminate them—it's to recognize when they're driving behavior that doesn't serve your goals. Awareness is the first step to choice.
+      </p>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Cognitive Biases That Affect Spending</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Your brain takes shortcuts that often lead to poor financial decisions:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Present Bias:</strong> Overvaluing immediate rewards and undervaluing future benefits. "I'll start saving next month" feels fine because the future is abstract. The antidote: automation.</li>
+        <li><strong>Loss Aversion:</strong> Feeling the pain of losing $100 more strongly than the pleasure of gaining $100. This makes selling losing investments difficult and encourages holding onto depreciating assets (like cars) too long.</li>
+        <li><strong>Anchoring:</strong> Relying too heavily on the first piece of information. The original price on a sale item anchors your perception of value—even if it was never worth that much.</li>
+        <li><strong>Social Proof:</strong> Following what others do. If everyone at the office buys lunch out, it feels normal—even if packing lunch is objectively smarter for your goals.</li>
+        <li><strong>The Endowment Effect:</strong> Overvaluing things you own. Once you buy something, you value it more than before you bought it—making it hard to sell or return, even if you don't need it.</li>
+      </ul>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Lifestyle Inflation: The Silent Killer</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Lifestyle inflation is the tendency to increase spending as income rises, leaving you no better off financially despite earning more. The $50,000 lifestyle becomes $60,000 when you get a raise, then $75,000, then $100,000—each step feeling "necessary" and "deserved."
+      </p>
+      <p class="mt-4 text-base text-foreground leading-relaxed">
+        <strong>Why it happens:</strong> Hedonic adaptation means you quickly return to a baseline happiness level regardless of income changes. The new car feels amazing for three months, then becomes normal. The bigger apartment feels luxurious until you fill it with stuff and want more space.
+      </p>
+      <p class="mt-4 text-base text-foreground leading-relaxed">
+        <strong>The antidote:</strong> Automate savings increases with raises. When you get a 5% raise, automatically increase your 401(k) contribution by 3% and your savings rate by 2%. Live on the same percentage of income, not the same dollar amount. Keep fixed expenses (housing, car) stable even as income rises. That's where lifestyle inflation does the most damage.
+      </p>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">The Pain of Paying: Making Spending Conscious</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Research shows that the more abstract and disconnected the payment method, the more we spend. Cash hurts because you physically hand over money. Credit cards hurt less because it's plastic. One-click purchasing hurts least because there's no friction at all.
+      </p>
+      <p class="mt-4 text-base text-foreground leading-relaxed">
+        <strong>Strategies to increase the pain of paying:</strong>
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Use cash for discretionary spending.</strong> Studies show people spend 12–18% less with cash. The physical act of handing over money creates friction.</li>
+        <li><strong>Remove saved payment methods.</strong> Delete credit cards from online retailers. Force yourself to manually enter payment info for every purchase. The 30 seconds of friction prevents impulse buys.</li>
+        <li><strong>Use a 48-hour rule.</strong> For non-essential purchases over a certain amount ($50, $100—pick your threshold), wait 48 hours. Most desire evaporates.</li>
+        <li><strong>Calculate cost in hours worked.</strong> That $200 gadget costs 5 hours of your life at $40/hour. Is it worth 5 hours? This reframes spending from abstract dollars to concrete time.</li>
+        <li><strong>Track every dollar for one month.</strong> Not budgeting—just observing. Use a notes app, a spreadsheet, or a budgeting app. Awareness alone typically reduces spending 10–20% because you're no longer on autopilot.</li>
+      </ul>
+    </section>
+
+    <!-- Common Mistakes -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Common Mistakes</h2>
+      <ul class="list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Thinking willpower is the answer.</strong> Willpower is a finite resource that depletes throughout the day. Relying on it to resist spending is a losing strategy. Design systems that don't require willpower.</li>
+        <li><strong>Ignoring emotional spending triggers.</strong> Shopping when bored, sad, stressed, or celebrating. Emotions drive 40–60% of discretionary purchases. Learn your triggers and substitute non-spending coping mechanisms.</li>
+        <li><strong>Comparing to others (social comparison).</strong> Keeping up with friends, neighbors, or Instagram influencers. There's always someone with more. Comparison is the thief of both joy and financial progress.</li>
+        <li><strong>Not tracking spending because it's depressing.</strong> Avoidance feels better in the moment but guarantees continued problems. Knowledge is power—even uncomfortable knowledge.</li>
+        <li><strong>Thinking "I deserve it."</strong> This phrase justifies almost any purchase. You might deserve rest, joy, or a break—but those don't always require spending. Examine what you're really seeking.</li>
+      </ul>
+    </section>
+
+    <!-- Action Steps -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Action Steps</h2>
+      <div class="bg-muted/50 rounded-lg p-6">
+        <ol class="list-decimal pl-5 space-y-3 text-base text-foreground leading-relaxed">
+          <li><strong>Identify your primary money script.</strong> Read through the four money scripts and honestly assess which drives most of your financial behavior. Awareness is the first step to change.</li>
+          <li><strong>Track spending for 30 days.</strong> Not budgeting—just observing. Use an app, spreadsheet, or notebook. Write down every dollar. Don't judge; just collect data.</li>
+          <li><strong>Identify your emotional spending triggers.</strong> When do you shop? When bored? Stressed? Celebrating? Make a list of your top three triggers and alternative activities (walk, call a friend, journal, exercise) for each.</li>
+          <li><strong>Implement one friction point.</strong> Remove saved payment info from one online store you impulse buy from. Or start a 48-hour rule for purchases over $50. Create one barrier that makes you pause.</li>
+          <li><strong>Calculate your real hourly rate.</strong> Take your annual salary, subtract taxes and work-related expenses, divide by actual hours worked (including commute, overtime, answering emails at home). Use this to evaluate purchases: "Is this worth X hours of my life?"</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Quick Reference -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Quick Reference</h2>
+      <dl class="space-y-4">
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Money Scripts</dt>
+          <dd class="text-base text-foreground leading-relaxed">Unconscious beliefs about money formed in childhood that drive financial behavior: avoidance, worship, status, or vigilance. Awareness allows you to choose differently.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Present Bias</dt>
+          <dd class="text-base text-foreground leading-relaxed">The tendency to overvalue immediate rewards and undervalue future benefits. "I'll start saving next month" feels fine because the future is abstract. The antidote: automation.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Lifestyle Inflation</dt>
+          <dd class="text-base text-foreground leading-relaxed">Increasing spending as income rises, leaving you no better off financially despite earning more. The silent killer of wealth-building.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Pain of Paying</dt>
+          <dd class="text-base text-foreground leading-relaxed">The psychological discomfort of spending money. More abstract payment methods (credit cards, one-click) reduce this pain and increase spending.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Hedonic Adaptation</dt>
+          <dd class="text-base text-foreground leading-relaxed">The tendency to quickly return to a baseline level of happiness regardless of major changes in circumstances. The new car feels amazing for a month, then becomes normal.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Loss Aversion</dt>
+          <dd class="text-base text-foreground leading-relaxed">The tendency to feel the pain of losing something more strongly than the pleasure of gaining something of equal value. Makes selling losing investments difficult.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <div class="mt-12 pt-8 border-t border-border/50 flex items-center justify-between">
+      <a href="/topics" class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors">
+        ← All topics
+      </a>
+      {nextTopic && (
+        <a href={nextTopic.href} class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors group">
+          <span class="hidden sm:inline">Next:</span> {nextTopic.title}
+          <svg 
+            class="h-4 w-4 transition-transform group-hover:translate-x-0.5" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor" 
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+          </svg>
+        </a>
+      )}
+    </div>
+  </article>
+</Layout>

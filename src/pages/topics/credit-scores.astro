@@ -1,0 +1,174 @@
+---
+import Layout from "@/layouts/main.astro"
+import { getNextTopic } from "@/lib/topicNavigation"
+
+const seo = {
+  title: "Credit Scores & Reports | Financial Handbook",
+  description: "Your credit score is your financial reputation. Learn what affects it, how to check it, and how to improve it over time.",
+}
+
+const nextTopic = getNextTopic("/topics/credit-scores")
+---
+
+<Layout currentPath="/topics/credit-scores" seo={seo}>
+  <article class="mx-auto max-w-3xl px-6 py-12">
+    <!-- Hero -->
+    <a href="/" class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8">
+      ← All Topics
+    </a>
+    <h1 class="font-heading text-4xl font-semibold tracking-tight sm:text-5xl">Credit Scores & Reports</h1>
+    <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
+      Your credit score is your financial reputation. Learn what affects it, how to check it, and how to improve it over time.
+    </p>
+
+    <!-- The Big Idea -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Big Idea</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        A credit score is a three-digit number that summarizes how reliably you repay borrowed money. Lenders use it to decide whether to approve you for loans, credit cards, apartments, and sometimes even jobs. Think of it like a GPA for your financial life: it doesn't capture everything about you, but it's the quick metric people use to make snap judgments. A high score opens doors and saves you thousands in interest. A low one slams them shut or makes everything more expensive.
+      </p>
+    </section>
+
+    <!-- Why It Matters -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Why It Matters</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        Two people walk into a bank to finance the same $30,000 car over 60 months. One has a credit score of 750 and gets a 5% interest rate—$566/month, $3,968 in total interest. The other has a score of 620 and gets 12%—$667/month, $10,022 in total interest. Same car. Same loan term. The lower score costs an extra $6,054. That's the price of a decent used car, a semester of community college, or a serious chunk of an emergency fund—gone, simply because of a three-digit number.
+      </p>
+      <p class="mt-4 text-base text-foreground leading-relaxed">
+        And it's not just loans. Landlords check credit scores before approving apartment applications. Insurance companies in many states use credit-based insurance scores to set premiums. Some employers run credit checks for positions involving financial responsibility. Your credit score doesn't just affect whether you can borrow—it affects where you live, what you pay for insurance, and in some cases, whether you get hired.
+      </p>
+    </section>
+
+    <!-- The Breakdown -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Breakdown</h2>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">FICO Score Ranges</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        The FICO score is the most widely used credit score, used by 90% of top lenders. It ranges from 300 to 850:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>800–850: Exceptional</strong> — Best rates, easiest approvals. You're in the top tier.</li>
+        <li><strong>740–799: Very Good</strong> — Qualify for most products at favorable rates. No issues.</li>
+        <li><strong>670–739: Good</strong> — The middle of the pack. You'll be approved for most things, but not always at the best rates.</li>
+        <li><strong>580–669: Fair</strong> — You may qualify, but with higher rates and fewer options. Some lenders will decline you.</li>
+        <li><strong>300–579: Poor</strong> — Difficulty getting approved for unsecured credit. You'll need secured cards or credit-builder loans to rebuild.</li>
+      </ul>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">What Makes Up Your Score</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        FICO scores are calculated from five categories, weighted by importance:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Payment History (35%)</strong> — The single most important factor. One 30-day late payment can drop a 780 score by 60–110 points. Pay every bill on time, every time. Set up autopay for at least the minimum on every account.</li>
+        <li><strong>Credit Utilization (30%)</strong> — How much of your available credit you're using. The magic number: stay below 30% overall, and ideally below 10%. On a $10,000 credit limit, that means keeping your balance under $3,000—and under $1,000 for optimal scoring.</li>
+        <li><strong>Length of Credit History (15%)</strong> — How long your accounts have been open, including the average age of all accounts. This is why closing old cards can hurt your score—it shortens your history.</li>
+        <li><strong>Credit Mix (10%)</strong> — Having a variety of credit types (revolving like credit cards, and installment like auto loans or mortgages) shows you can handle different kinds of debt responsibly.</li>
+        <li><strong>New Credit (10%)</strong> — Each "hard inquiry" (when a lender checks your credit for an application) can ding your score by a few points. Multiple inquiries in a short period signal risk—except for rate shopping on mortgages and auto loans, where multiple inquiries within 14–45 days count as one.</li>
+      </ul>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Credit Score vs. Credit Report</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Your credit <em>report</em> is the detailed document—every account you've opened, every payment you've made (or missed), every inquiry on your file. Your credit <em>score</em> is the number derived from that report. Think of the report as your full academic transcript and the score as your GPA. You need to check both: the report for errors and fraud, the score for understanding where you stand.
+      </p>
+
+      <div class="bg-muted/50 rounded-lg p-6 mt-4">
+        <p class="text-base text-foreground leading-relaxed">
+          <strong>Free reports:</strong> By law, you're entitled to one free credit report from each of the three major bureaus (Equifax, Experian, TransUnion) every year via <strong>annualcreditreport.com</strong>. Since 2020, many consumers can access weekly free reports. Stagger your requests—one bureau every four months—for ongoing monitoring at no cost.
+        </p>
+      </div>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Building Credit from Scratch</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        No credit history is almost as problematic as bad credit—lenders have nothing to evaluate. Here's how to start:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Secured credit card</strong> — You put down a refundable deposit (usually $200–$500) which becomes your credit limit. Use it for small purchases and pay in full monthly. After 6–12 months of responsible use, most issuers upgrade you to an unsecured card and return your deposit.</li>
+        <li><strong>Credit-builder loan</strong> — You make fixed monthly payments into a savings account, and the lender reports the payments to credit bureaus. At the end of the term, you get the money back. It's forced savings that builds credit simultaneously.</li>
+        <li><strong>Authorized user</strong> — If a trusted family member adds you to their long-standing credit card, their account history appears on your report. You don't even need to use the card. Choose someone with a perfect payment record and low utilization.</li>
+      </ul>
+    </section>
+
+    <!-- Common Mistakes -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Common Mistakes</h2>
+      <ul class="list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Checking your own score and worrying it'll drop.</strong> Personal credit checks are "soft inquiries" and have zero impact on your score. Only "hard inquiries" from lender applications affect it. Check your score as often as you want.</li>
+        <li><strong>Maxing out cards even if you pay in full.</strong> Utilization is based on your statement balance, not whether you carry debt. If your statement shows $4,000 on a $5,000 limit, you're at 80% utilization—even if you pay it off the next day. Pay before the statement closes to keep reported utilization low.</li>
+        <li><strong>Closing old credit cards.</strong> That 10-year-old card you never use? Closing it reduces your total available credit (raising utilization) and shortens your average account age. Keep it open with a small recurring charge (like a streaming subscription) set to autopay.</li>
+        <li><strong>Ignoring errors on your credit report.</strong> Studies have found that roughly 1 in 5 consumers have an error on at least one credit report. Wrong balances, accounts you never opened, late payments you made on time—these drag down your score unfairly. Dispute them.</li>
+        <li><strong>Paying for credit monitoring when free options exist.</strong> Many credit card companies and banks now offer free FICO score access. Credit Karma provides free VantageScores (similar but not identical to FICO). Paying $20–$30/month for monitoring is usually unnecessary.</li>
+      </ul>
+    </section>
+
+    <!-- Action Steps -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Action Steps</h2>
+      <div class="bg-muted/50 rounded-lg p-6">
+        <ol class="list-decimal pl-5 space-y-3 text-base text-foreground leading-relaxed">
+          <li><strong>Pull your credit reports from all three bureaus.</strong> Go to annualcreditreport.com and request your reports from Equifax, Experian, and TransUnion. Review every account, balance, and payment history entry for accuracy.</li>
+          <li><strong>Dispute any errors you find.</strong> If you spot incorrect information—accounts you don't recognize, wrong balances, payments marked late that you made on time—file a dispute directly with the bureau online. They're required by law to investigate within 30 days.</li>
+          <li><strong>Set up autopay for every credit account.</strong> Even one late payment can devastate your score. Set autopay for at least the minimum due on every card and loan. You can still make manual extra payments—autopay is your safety net.</li>
+          <li><strong>Reduce your credit utilization below 30%.</strong> Pay down balances, request credit limit increases (which lowers utilization without changing your spending), or move some spending to debit while you pay cards down. Under 10% is the sweet spot.</li>
+          <li><strong>Establish a free score monitoring habit.</strong> Check your score once a month through your bank, a credit card app, or Credit Karma. You're watching for sudden drops (which could indicate fraud or errors) and tracking long-term improvement. Don't obsess over small fluctuations—focus on the trend over months.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Quick Reference -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Quick Reference</h2>
+      <dl class="space-y-4">
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">FICO Score</dt>
+          <dd class="text-base text-foreground leading-relaxed">The credit scoring model used by 90% of top lenders, ranging from 300–850. Created by the Fair Isaac Corporation. This is the score that matters most in real-world lending decisions.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">VantageScore</dt>
+          <dd class="text-base text-foreground leading-relaxed">A competing credit score model (also 300–850) created by the three major credit bureaus. Similar to FICO but with slightly different weighting. Often provided free by monitoring services.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Credit Utilization Ratio</dt>
+          <dd class="text-base text-foreground leading-relaxed">The percentage of your total available revolving credit that you're currently using. Below 30% is acceptable; below 10% is optimal. Calculated per-card and overall.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Hard Inquiry</dt>
+          <dd class="text-base text-foreground leading-relaxed">A credit check initiated by a lender when you apply for credit. Can lower your score by a few points and stays on your report for two years. Multiple mortgage or auto inquiries within 14–45 days count as one for scoring purposes.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Soft Inquiry</dt>
+          <dd class="text-base text-foreground leading-relaxed">A credit check that doesn't affect your score—like checking your own credit, pre-qualification offers, or employer background checks. Invisible to lenders.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Secured Credit Card</dt>
+          <dd class="text-base text-foreground leading-relaxed">A credit card backed by a cash deposit that serves as your credit limit. Designed for building or rebuilding credit. The deposit is refundable when you upgrade or close the account in good standing.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Credit Bureau</dt>
+          <dd class="text-base text-foreground leading-relaxed">One of three major companies (Equifax, Experian, TransUnion) that collect and maintain credit history information on consumers. Lenders report to them, and they generate credit reports used to calculate scores.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <div class="mt-12 pt-8 border-t border-border/50 flex items-center justify-between">
+      <a href="/topics" class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors">
+        ← All topics
+      </a>
+      {nextTopic && (
+        <a href={nextTopic.href} class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors group">
+          <span class="hidden sm:inline">Next:</span> {nextTopic.title}
+          <svg 
+            class="h-4 w-4 transition-transform group-hover:translate-x-0.5" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor" 
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+          </svg>
+        </a>
+      )}
+    </div>
+  </article>
+</Layout>
