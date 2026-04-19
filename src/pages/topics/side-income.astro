@@ -1,0 +1,159 @@
+---
+import Layout from "@/layouts/main.astro"
+import { getNextTopic } from "@/lib/topicNavigation"
+
+const seo = {
+  title: "Side Income & Entrepreneurship | Financial Handbook",
+  description: "Freelancing taxes, business structures, and keeping your personal and business finances separate.",
+}
+
+const nextTopic = getNextTopic("/topics/side-income")
+---
+
+<Layout currentPath="/topics/side-income" seo={seo}>
+  <article class="py-12 px-8 max-w-3xl">
+    <!-- Hero -->
+    <h1 class="font-heading text-4xl font-semibold tracking-tight sm:text-5xl">Side Income & Entrepreneurship</h1>
+    <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
+      Freelancing taxes, business structures, and keeping your personal and business finances separate.
+    </p>
+
+    <!-- The Big Idea -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Big Idea</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        Side income and entrepreneurship represent the ultimate form of income diversification—you're building an asset that can eventually replace or exceed your salary. But unlike a regular paycheck, business income comes with complexity: quarterly taxes, business structures, accounting systems, and the critical need to separate personal and business finances. The goal is to build something that scales without requiring proportional time, while maintaining clean financial records that won't trigger an IRS audit.
+      </p>
+    </section>
+
+    <!-- Why It Matters -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Why It Matters</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        Consider this: a side business generating $1,000/month can be worth $300,000–$400,000 if sold at 25–30x monthly profit. That's more than most people save in a decade. But the financial complexity trips up many entrepreneurs. Without proper structure, you can pay unnecessary taxes, lose personal asset protection, and create accounting nightmares. Imagine building a business for five years, then discovering you owe $50,000 in back taxes and penalties because you didn't make quarterly estimated payments. Or losing your house because a business lawsuit pierces your thin veil of informality. The financial infrastructure matters as much as the business itself.
+      </p>
+    </section>
+
+    <!-- The Breakdown -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Breakdown</h2>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Business Structures: Which Entity Is Right?</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Your business structure affects taxes, liability, and complexity. Choose based on your risk level, income, and growth plans:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Sole Proprietorship:</strong> Default if you do nothing. No separate legal entity—you and the business are the same. Simplest structure, but no liability protection. If the business is sued, your personal assets are at risk. All income passes through to your personal tax return (Schedule C). Best for: Very low-risk side hustles just starting out, with minimal income and no significant liability exposure.</li>
+        <li><strong>Partnership:</strong> Similar to sole proprietorship but with two or more owners. Pass-through taxation, no liability protection for general partners. Each partner reports their share of income on personal taxes. Requires a partnership agreement. Best for: Simple businesses with partners who trust each other completely and have minimal liability risk. Most serious partnerships choose LLCs instead.</li>
+        <li><strong>LLC (Limited Liability Company):</strong> Hybrid structure combining partnership taxation with corporate liability protection. Your personal assets are generally protected from business debts and lawsuits (if you maintain corporate formalities). Pass-through taxation by default—profits/losses flow to your personal return. Can elect to be taxed as S-corp for additional savings at higher income levels. Best for: Most side businesses and small businesses. The sweet spot of liability protection and tax simplicity.</li>
+        <li><strong>S Corporation:</strong> Not a business structure per se, but a tax election available to LLCs and corporations. Allows you to split income between salary (subject to payroll taxes) and distributions (not subject to payroll taxes). Can save thousands in self-employment taxes at higher income levels ($60,000+ in profit). Requires reasonable salary, payroll processing, and more complexity. Best for: Profitable businesses (not startups) with consistent $60,000+ annual profit. The tax savings outweigh the added complexity.</li>
+        <li><strong>C Corporation:</strong> Traditional corporation. Separate legal entity with full liability protection. Subject to double taxation—corporation pays tax on profits, then you pay tax on dividends. Can retain earnings, easier to raise investment capital, more complex. Best for: Startups seeking venture capital, businesses planning to go public, or situations where you need to retain significant earnings in the business. Generally not ideal for small side businesses due to double taxation.</li>
+      </ul>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Taxes for Side Income and Freelancing</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Self-employment income comes with tax obligations that employees don't face. Understanding them prevents nasty surprises:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Self-employment tax:</strong> When you're an employee, your employer pays half your Social Security and Medicare taxes (7.65%), and you pay half (7.65%). When self-employed, you're both employer and employee, so you pay the full 15.3% on 92.35% of your net self-employment income. This is on top of regular income tax. Deduction: You can deduct the "employer half" (7.65%) as an adjustment to income.</li>
+        <li><strong>Quarterly estimated taxes:</strong> Since no employer is withholding taxes, you must pay estimated taxes quarterly if you expect to owe $1,000+ when you file. Due dates: April 15, June 15, September 15, and January 15. Calculate using Form 1040-ES or pay 100% of last year's tax liability (110% if income > $150,000) to avoid penalties.</li>
+        <li><strong>Business deductions:</strong> You can deduct ordinary and necessary business expenses—home office (if exclusively used for business), internet/phone portion used for business, equipment, software, professional development, travel, meals (50% deductible), and more. Keep receipts and records. The key is "ordinary and necessary"—would this expense be common and appropriate for your type of business?</li>
+        <li><strong>Qualified Business Income (QBI) deduction:</strong> If your business is a pass-through entity (sole prop, partnership, LLC, S-corp), you may deduct up to 20% of qualified business income. Income limits apply ($191,950 single / $383,900 married for full deduction in 2025, phased out above). Specified service businesses (doctors, lawyers, consultants) face additional limits.</li>
+        <li><strong>Retirement accounts for the self-employed:</strong> You have powerful options: Solo 401(k) (contribute up to $69,000 in 2025 as both employee and employer), SEP IRA (contribute up to 25% of compensation, max $69,000), SIMPLE IRA (easier setup, lower limits). These reduce taxable income and build retirement wealth. If you have no employees, Solo 401(k) usually offers the highest contribution limits.</li>
+        <li><strong>Estimated tax safe harbors:</strong> To avoid penalties, pay at least 90% of current year's tax liability, OR 100% of prior year's liability (110% if prior year AGI was $150,000+). If your income is irregular, the annualized income installment method lets you calculate quarterly based on actual income that quarter rather than estimating the full year.</li>
+      </ul>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Separating Personal and Business Finances</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Keeping business and personal money separate isn't just good practice—it's essential for legal protection, tax compliance, and financial clarity:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Separate bank accounts:</strong> Open a dedicated business checking account. All business income goes in; all business expenses come out. Never use the business account for personal expenses (except owner's draws taken deliberately). This creates a clear paper trail for taxes and legal protection.</li>
+        <li><strong>Business credit card:</strong> Get a business credit card for business expenses. Keeps tracking simple and builds business credit history. Pay it off monthly from the business account.</li>
+        <li><strong>Accounting software:</strong> Use QuickBooks, Xero, FreshBooks, or even a spreadsheet to track all business income and expenses. Categorize transactions. Reconcile accounts monthly. This makes tax time simple and gives you real visibility into profitability.</li>
+        <li><strong>Pay yourself a salary:</strong> Even as a sole proprietor, decide on a regular "draw" or "salary" and transfer that amount from business to personal on a schedule (weekly, biweekly, monthly). This treats your business like a real business and prevents the gradual creep of "taking a little here, a little there."</li>
+        <li><strong>Keep receipts and records:</strong> Save receipts for all business expenses. Digital photos work fine. Keep them organized by year. The IRS can audit you for up to 3 years (6 years if you underreported income by 25%+). Good records are your defense.</li>
+        <li><strong>Corporate veil protection:</strong> If you have an LLC or corporation, commingling personal and business funds can "pierce the corporate veil"—meaning a court could disregard your business entity and hold you personally liable for business debts. Keep them separate to maintain liability protection.</li>
+      </ul>
+    </section>
+
+    <!-- Common Mistakes -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Common Mistakes</h2>
+      <ul class="list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Not separating personal and business finances.</strong> Using one bank account, one credit card, and "sorting it out at tax time." This creates legal liability, tax headaches, and zero visibility into whether your business is actually profitable.</li>
+        <li><strong>Not making quarterly estimated payments.</strong> Waiting until April to pay taxes on self-employment income. This results in penalties and a massive bill you can't afford. Set aside 25–30% of all business income for taxes and pay quarterly.</li>
+        <li><strong>Choosing the wrong business structure.</strong> Staying a sole proprietor when an LLC would provide liability protection. Or forming an S-corp too early when the complexity and costs outweigh the tax savings. Match structure to your actual risk and income level.</li>
+        <li><strong>Not tracking business expenses.</strong> Missing deductions because you didn't keep receipts or didn't realize something was deductible. Ordinary and necessary business expenses reduce your taxable income. Track everything.</li>
+        <li><strong>Mixing retirement accounts.</strong> Not using self-employed retirement options (Solo 401k, SEP IRA) that would allow much higher tax-advantaged savings. These accounts can shelter $50,000+ annually for high earners.</li>
+        <li><strong>Not having a business emergency fund.</strong> Business income is irregular. Without a cash buffer (3–6 months of business expenses), you're forced to take any client or project just to pay bills, compromising quality and long-term growth.</li>
+      </ul>
+    </section>
+
+    <!-- Action Steps -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Action Steps</h2>
+      <div class="bg-muted/50 rounded-lg p-6">
+        <ol class="list-decimal pl-5 space-y-3 text-base text-foreground leading-relaxed">
+          <li><strong>Separate your business finances today.</strong> If you haven't already, open a business checking account and business credit card. Move all business income and expenses to these accounts. If you have an LLC, this is essential for maintaining liability protection.</li>
+          <li><strong>Set up a business accounting system.</strong> Choose software (QuickBooks, Xero, Wave, or even a spreadsheet) and start tracking all income and expenses. Categorize transactions. Set a monthly calendar reminder to reconcile accounts and review profitability.</li>
+          <li><strong>Calculate your quarterly estimated taxes.</strong> If you expect to owe $1,000+ in taxes on self-employment income, you must pay quarterly. Use Form 1040-ES or pay 100% of last year's tax liability to avoid penalties. Set aside 25–30% of all business income specifically for taxes.</li>
+          <li><strong>Evaluate your business structure.</strong> Are you a sole proprietor with significant personal assets at risk? Consider an LLC for liability protection. Are you earning $60,000+ in profit consistently? Consult a CPA about whether S-corp election would save you money on self-employment taxes.</li>
+          <li><strong>Set up a self-employed retirement account.</strong> If you have no employees, open a Solo 401(k) to shelter up to $69,000 in 2025 ($76,500 if age 50+). If you have employees, consider a SEP IRA or SIMPLE IRA. Don't miss this massive tax advantage available only to the self-employed.</li>
+          <li><strong>Create a business emergency fund.</strong> Business income is irregular. Save 3–6 months of business expenses in a separate account. This prevents desperation moves (taking bad clients, slashing prices) during slow periods and lets you invest in growth during good times.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Quick Reference -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Quick Reference</h2>
+      <dl class="space-y-4">
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Sole Proprietorship</dt>
+          <dd class="text-base text-foreground leading-relaxed">Default business structure. No separation between you and the business. Simple but no liability protection. Income reported on Schedule C of personal tax return. Pay self-employment tax (15.3%) on net profit.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">LLC (Limited Liability Company)</dt>
+          <dd class="text-base text-foreground leading-relaxed">Hybrid structure providing liability protection with pass-through taxation. Personal assets generally protected from business debts. Can elect S-corp taxation for additional tax savings. Best for most small businesses with any liability risk.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">S Corporation</dt>
+          <dd class="text-base text-foreground leading-relaxed">Tax election (not a structure) that can save on self-employment taxes. Business pays you a "reasonable salary" (subject to payroll tax), remaining profits distributed as dividends (not subject to self-employment tax). Best for profitable businesses ($60,000+ net income) with no or few employees.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Self-Employment Tax</dt>
+          <dd class="text-base text-foreground leading-relaxed">15.3% tax on net self-employment income, covering Social Security (12.4%) and Medicare (2.9%). Applied to 92.35% of net profit. Paid through quarterly estimated taxes. Deductible: can deduct the "employer half" (7.65%) as an adjustment to income.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Quarterly Estimated Taxes</dt>
+          <dd class="text-base text-foreground leading-relaxed">Required payments for self-employment tax and income tax if you expect to owe $1,000+ when filing. Due April 15, June 15, September 15, and January 15. Pay 100% of prior year's tax or 90% of current year's tax to avoid penalties.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Solo 401(k)</dt>
+          <dd class="text-base text-foreground leading-relaxed">Retirement account for self-employed with no employees (except spouse). 2025 contribution limit: $69,000 ($76,500 if age 50+). Contribute as both employee (up to $23,500) and employer (up to 25% of compensation). Massive tax advantage for the self-employed.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <div class="mt-12 pt-8 border-t border-border/50 flex items-center justify-between">
+      <a href="/topics" class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors">
+        ← All topics
+      </a>
+      {nextTopic && (
+        <a href={nextTopic.href} class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors group">
+          <span class="hidden sm:inline">Next:</span> {nextTopic.title}
+          <svg 
+            class="h-4 w-4 transition-transform group-hover:translate-x-0.5" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor" 
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+          </svg>
+        </a>
+      )}
+    </div>
+  </article>
+</Layout>

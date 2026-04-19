@@ -1,0 +1,166 @@
+---
+import Layout from "@/layouts/main.astro"
+import { getNextTopic } from "@/lib/topicNavigation"
+
+const seo = {
+  title: "Investing 101 | Financial Handbook",
+  description: "Stocks, bonds, index funds, 401(k)s, IRAs. Learn how to make your money work for you without needing a finance degree.",
+}
+
+const nextTopic = getNextTopic("/topics/investing-101")
+---
+
+<Layout currentPath="/topics/investing-101" seo={seo}>
+  <section class="py-12 px-8 max-w-3xl">
+    <h1 class="font-heading text-4xl font-semibold tracking-tight sm:text-5xl">
+      Investing 101
+    </h1>
+    <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
+      Stocks, bonds, index funds, retirement accounts — learn how to make your money grow without needing a finance degree.
+    </p>
+
+    <!-- The Big Idea -->
+    <h2 class="font-heading text-2xl font-semibold mt-12 mb-4">The Big Idea</h2>
+    <p class="text-base text-foreground leading-relaxed">
+      Investing is how you turn money you don't need today into more money for tomorrow. Instead of letting inflation erode your savings, you buy assets — pieces of companies, loans, real estate — that historically grow in value over time. The magic is compounding: your returns earn returns, which earn returns, snowballing over decades into serious wealth.
+    </p>
+
+    <!-- Why It Matters -->
+    <h2 class="font-heading text-2xl font-semibold mt-12 mb-4">Why It Matters</h2>
+    <p class="text-base text-foreground leading-relaxed">
+      Meet two people, both 25. Alex invests $300/month starting now. Jordan waits until 35 to invest $300/month. Both earn the stock market's historical average of ~10% per year. At age 65, Alex has about $1.1 million. Jordan has about $570,000. Alex invested $36,000 more out of pocket (10 extra years × $300/month), but ends up with over $500,000 more. Those first 10 years of compounding were worth more than the last 30. Time is the single most powerful force in investing — and it's the one thing you can't get back once it's gone.
+    </p>
+
+    <!-- The Breakdown -->
+    <h2 class="font-heading text-2xl font-semibold mt-12 mb-4">The Breakdown</h2>
+
+    <h3 class="font-heading text-lg font-medium mt-8 mb-2">Stocks</h3>
+    <p class="text-base text-foreground leading-relaxed">
+      When you buy a stock, you're buying a tiny ownership stake in a real company — Apple, Microsoft, your local bank. If the company does well, the stock price rises and you profit. Some companies also pay dividends — regular cash payments to shareholders, like a thank-you bonus for owning the stock. Stocks are volatile day-to-day but have historically returned about 10% per year on average over long periods. Think of individual stocks as betting on a single horse; they can win big or stumble.
+    </p>
+
+    <h3 class="font-heading text-lg font-medium mt-8 mb-2">Bonds</h3>
+    <p class="text-base text-foreground leading-relaxed">
+      A bond is a loan you make — to a company (corporate bond), a city (municipal bond), or the federal government (Treasury bond). In return, the borrower pays you regular interest and returns your principal when the bond matures. Bonds are generally less risky than stocks but also return less — typically 3–5% annually. They're the ballast in your portfolio, keeping things steady when stocks swing.
+    </p>
+
+    <h3 class="font-heading text-lg font-medium mt-8 mb-2">Index Funds & ETFs</h3>
+    <p class="text-base text-foreground leading-relaxed">
+      Instead of picking individual stocks, an index fund buys a little bit of every company in a market index — like the S&P 500 (the 500 largest US companies). You instantly own a slice of the entire stock market in one purchase. Exchange-traded funds (ETFs) work the same way but trade throughout the day like stocks.
+    </p>
+    <ul class="list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed mt-3">
+      <li><strong>Why index funds win:</strong> Over 20-year periods, about 87% of actively managed mutual funds underperform the S&P 500. The professionals can't consistently beat the market — and they charge fees for trying.</li>
+      <li><strong>Low cost is everything:</strong> A fund charging 0.03% (like many Vanguard and Fidelity index funds) vs. one charging 1.0% means $970 more in your pocket per $100,000 invested, every single year.</li>
+      <li>Think of an index fund as buying the entire orchard instead of trying to guess which single tree will produce the most fruit.</li>
+    </ul>
+
+    <h3 class="font-heading text-lg font-medium mt-8 mb-2">Retirement Accounts</h3>
+    <p class="text-base text-foreground leading-relaxed">
+      The government wants you to save for retirement, so they created accounts with major tax advantages:
+    </p>
+    <ul class="list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed mt-3">
+      <li><strong>401(k)</strong> — offered through your employer. Contributions come from your paycheck pre-tax (lowering your taxable income now), and your money grows tax-deferred. Many employers match your contributions — typically 50% of what you put in, up to 6% of your salary. That match is free money; not taking it is leaving thousands of dollars on the table every year. The 2025 contribution limit is $23,500.</li>
+      <li><strong>Roth IRA</strong> — you contribute after-tax money, but all growth and withdrawals in retirement are completely tax-free. Think of it as a treasure chest with a time lock: you put after-tax coins in now, and decades later you open it to find everything inside is yours, tax-free. The 2025 contribution limit is $7,000 (or $8,000 if you're 50+). Income limits apply — single filers earning above $161,000 start losing eligibility.</li>
+      <li><strong>Traditional IRA</strong> — similar tax deduction to a 401(k), but you open it yourself at any brokerage. Same $7,000 contribution limit. Good if your employer doesn't offer a 401(k).</li>
+    </ul>
+
+    <div class="bg-muted/50 rounded-lg p-6 mt-6">
+      <p class="text-base text-foreground leading-relaxed">
+        <strong>The order of operations for investing:</strong> (1) 401(k) up to the employer match — it's free money. (2) Pay off high-interest debt (credit cards at 20%+ beat any investment return). (3) Build an emergency fund. (4) Max out your Roth IRA. (5) Go back and max your 401(k). (6) Invest in a taxable brokerage account with whatever's left.
+      </p>
+    </div>
+
+    <h3 class="font-heading text-lg font-medium mt-8 mb-2">Diversification & Risk</h3>
+    <p class="text-base text-foreground leading-relaxed">
+      Diversification means not putting all your eggs in one basket. If you own one stock and that company tanks, you lose everything. If you own 500 stocks through an index fund, one company going under barely registers. A simple, diversified portfolio might be: 80% in a total US stock market index fund and 20% in a total international stock market index fund. As you get closer to retirement, gradually shift some money into bonds to reduce volatility.
+    </p>
+
+    <!-- Common Mistakes -->
+    <h2 class="font-heading text-2xl font-semibold mt-12 mb-4">Common Mistakes</h2>
+    <ul class="list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+      <li><strong>Waiting to "have enough money" to start.</strong> Most brokerages let you start with $0 and buy fractional shares. Even $25/month into an index fund is infinitely better than $0.</li>
+      <li><strong>Trying to time the market.</strong> Studies consistently show that the best days and worst days cluster together. Missing the 10 best days in a 20-year period cuts your returns in half. Nobody — not Wall Street, not your uncle, not a newsletter — can reliably predict market tops and bottoms.</li>
+      <li><strong>Picking individual stocks.</strong> Even professionals underperform index funds over time. If you want to "play" with individual stocks, limit it to 5–10% of your portfolio and treat it as entertainment, not your retirement strategy.</li>
+      <li><strong>Ignoring fees.</strong> A 1% annual fee on a $100,000 portfolio costs you $1,000/year. Over 30 years, that 1% fee can eat up $250,000+ of your potential returns. Always check expense ratios.</li>
+      <li><strong>Selling during downturns.</strong> The S&P 500 has suffered double-digit drops in 15 of the last 50 years. It has also recovered every single time. Selling in a panic locks in losses permanently.</li>
+      <li><strong>Not taking the employer 401(k) match.</strong> A 50% match on 6% of a $60,000 salary is $1,800/year of free money. Over 30 years at 8% growth, that's over $200,000 you walked away from.</li>
+    </ul>
+
+    <!-- Action Steps -->
+    <h2 class="font-heading text-2xl font-semibold mt-12 mb-4">Action Steps</h2>
+    <ol class="list-decimal pl-5 space-y-2 text-base text-foreground leading-relaxed">
+      <li><strong>Check your employer's 401(k) match.</strong> Log into your benefits portal. If they offer a match, sign up for at least enough to capture the full match. It takes 10 minutes and is literally free money.</li>
+      <li><strong>Open a Roth IRA</strong> at a low-cost brokerage (Vanguard, Fidelity, or Schwab). Set up automatic contributions — even $100/month is a powerful start. Invest in a total market or S&P 500 index fund with an expense ratio below 0.10%.</li>
+      <li><strong>Choose a simple portfolio.</strong> For beginners, a single target-date index fund (which automatically adjusts your stock/bond mix as you age) or a two-fund combo (US index + international index) is all you need. Complexity is not your friend.</li>
+      <li><strong>Automate everything.</strong> Set up automatic contributions to your investment accounts on payday. Remove the decision — the money invests before you can spend it.</li>
+      <li><strong>Check your portfolio once or twice a year.</strong> Rebalance if your allocation has drifted significantly (e.g., stocks grew from 80% to 90% of your portfolio). Otherwise, leave it alone. Obsessive checking leads to emotional decisions.</li>
+    </ol>
+
+    <!-- Quick Reference -->
+    <h2 class="font-heading text-2xl font-semibold mt-12 mb-4">Quick Reference</h2>
+    <div class="overflow-x-auto">
+      <table class="w-full text-base text-foreground leading-relaxed">
+        <thead>
+          <tr class="border-b border-border">
+            <th class="py-3 pr-4 text-left font-medium">Term</th>
+            <th class="py-3 pr-4 text-left font-medium">Definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-border/50">
+            <td class="py-3 pr-4 font-medium">Stock</td>
+            <td class="py-3 pr-4">A share of ownership in a company. Its price fluctuates based on the company's performance and market conditions.</td>
+          </tr>
+          <tr class="border-b border-border/50">
+            <td class="py-3 pr-4 font-medium">Bond</td>
+            <td class="py-3 pr-4">A loan you make to a company or government. They pay you interest and return your principal at maturity. Lower risk, lower return than stocks.</td>
+          </tr>
+          <tr class="border-b border-border/50">
+            <td class="py-3 pr-4 font-medium">Index Fund</td>
+            <td class="py-3 pr-4">A fund that tracks a market index (like the S&P 500) by buying all its components. Low fees, broad diversification, historically outperforms most active managers.</td>
+          </tr>
+          <tr class="border-b border-border/50">
+            <td class="py-3 pr-4 font-medium">ETF</td>
+            <td class="py-3 pr-4">Exchange-Traded Fund — works like an index fund but trades on an exchange throughout the day like a stock. Often more tax-efficient than mutual funds.</td>
+          </tr>
+          <tr class="border-b border-border/50">
+            <td class="py-3 pr-4 font-medium">Expense Ratio</td>
+            <td class="py-3 pr-4">The annual fee a fund charges, expressed as a percentage of your investment. 0.03% = $3 per $10,000 invested. 1.0% = $100 per $10,000. Always go lower.</td>
+          </tr>
+          <tr class="border-b border-border/50">
+            <td class="py-3 pr-4 font-medium">Dividend</td>
+            <td class="py-3 pr-4">A cash payment some companies make to shareholders, typically quarterly. Not all stocks pay dividends; growth companies often reinvest profits instead.</td>
+          </tr>
+          <tr class="border-b border-border/50">
+            <td class="py-3 pr-4 font-medium">401(k)</td>
+            <td class="py-3 pr-4">Employer-sponsored retirement account with pre-tax contributions and tax-deferred growth. 2025 contribution limit: $23,500. Employer match is free money.</td>
+          </tr>
+          <tr>
+            <td class="py-3 pr-4 font-medium">Roth IRA</td>
+            <td class="py-3 pr-4">Individual retirement account with after-tax contributions and tax-free growth/withdrawals. 2025 limit: $7,000. Income limits apply for eligibility.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-border/50 flex items-center justify-between">
+      <a href="/topics" class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors">
+        ← All topics
+      </a>
+      {nextTopic && (
+        <a href={nextTopic.href} class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors group">
+          <span class="hidden sm:inline">Next:</span> {nextTopic.title}
+          <svg 
+            class="h-4 w-4 transition-transform group-hover:translate-x-0.5" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor" 
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+          </svg>
+        </a>
+      )}
+    </div>
+  </section>
+</Layout>

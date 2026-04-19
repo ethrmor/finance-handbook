@@ -1,0 +1,190 @@
+---
+import Layout from "@/layouts/main.astro"
+import { getNextTopic } from "@/lib/topicNavigation"
+
+const seo = {
+  title: "Retirement Planning | Financial Handbook",
+  description: "401(k) vs IRA deep dives, withdrawal strategies, social security, and figuring out when you can actually retire.",
+}
+
+const nextTopic = getNextTopic("/topics/retirement-planning")
+---
+
+<Layout currentPath="/topics/retirement-planning" seo={seo}>
+  <article class="py-12 px-8 max-w-3xl">
+    <!-- Hero -->
+    <h1 class="font-heading text-4xl font-semibold tracking-tight sm:text-5xl">Retirement Planning</h1>
+    <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
+      401(k) vs IRA deep dives, withdrawal strategies, social security, and figuring out when you can actually retire.
+    </p>
+
+    <!-- The Big Idea -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Big Idea</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        Retirement planning is the art of ensuring your future self has enough money to stop working while maintaining your desired lifestyle. It's not about age—it's about numbers. The question isn't "When am I 65?" but "When do my investments generate enough passive income to cover my expenses?" The earlier you start, the less you need to save each month because compound interest does the heavy lifting. The later you start, the more aggressive you need to be—but it's never too late to improve your situation.
+      </p>
+    </section>
+
+    <!-- Why It Matters -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Why It Matters</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        Consider this: Social Security was designed to replace about 40% of pre-retirement income, but the average benefit is only about $1,800/month. Could you live on $1,800/month? For most people, that's not enough to cover basic expenses, let alone maintain their lifestyle. Medicare doesn't cover everything either—out-of-pocket healthcare costs in retirement average $300,000–$600,000 per couple. Without your own savings, you're dependent on family, government assistance, or working until you physically can't. Planning isn't optional—it's survival with dignity.
+      </p>
+    </section>
+
+    <!-- The Breakdown -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Breakdown</h2>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">401(k) vs IRA: The Retirement Account Showdown</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Both are tax-advantaged retirement accounts, but they work differently:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>401(k):</strong> Offered through employers. 2025 contribution limit: $23,500 (plus $7,500 catch-up if age 50+). Contributions are pre-tax, reducing your taxable income now. Growth is tax-deferred. You pay taxes when you withdraw in retirement. Many employers offer matching contributions—free money you should always take.</li>
+        <li><strong>Traditional IRA:</strong> Individual account you open yourself. 2025 contribution limit: $7,000 (plus $1,000 catch-up if age 50+). Contributions may be tax-deductible depending on your income and whether you have a workplace plan. Growth is tax-deferred. Taxes are paid on withdrawals in retirement.</li>
+        <li><strong>Roth IRA:</strong> Contributions are after-tax (no deduction now), but growth and withdrawals in retirement are tax-free. 2025 income limits: phase-out starts at $150,000 (single) / $236,000 (married). Contribution limits same as Traditional IRA. Best for those who expect to be in a higher tax bracket in retirement.</li>
+        <li><strong>Roth 401(k):</strong> Increasingly offered by employers. Combines the higher 401(k) contribution limits with Roth tax treatment. No income limits. If available and you expect higher taxes in retirement, consider splitting contributions between traditional and Roth.</li>
+      </ul>
+      <p class="mt-4 text-base text-foreground leading-relaxed">
+        <strong>Which should you choose?</strong> Priority order: (1) 401(k) up to the match—free money first. (2) Max out Roth IRA if eligible—tax flexibility. (3) Max out 401(k) to the $23,500 limit. (4) Taxable brokerage account for additional savings. The traditional vs. Roth decision depends on your current tax bracket vs. expected future bracket—when in doubt, diversify with both.
+      </p>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">The 4% Rule: How Much You Can Withdraw</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        The 4% rule is a guideline for sustainable retirement withdrawals. Based on historical market data, withdrawing 4% of your portfolio in year one of retirement, then adjusting for inflation each year, gives you a high probability of not running out of money over a 30-year retirement.
+      </p>
+      <p class="mt-4 text-base text-foreground leading-relaxed">
+        <strong>How to use it:</strong> Multiply your annual retirement expenses by 25 to get your target nest egg. Need $60,000/year? You need $1.5 million (60,000 × 25). Want to be more conservative? Use 3.5% (multiply by 28.6) or 3% (multiply by 33.3).
+      </p>
+      <p class="mt-4 text-base text-foreground leading-relaxed">
+        <strong>Important caveats:</strong> The 4% rule assumes a 30-year retirement, a balanced portfolio (50–60% stocks), and that you stick to the plan regardless of market conditions. Early retirees (30–40 year retirements) should use a lower rate (3–3.5%). Sequence of returns risk—the danger of poor market returns in your first years of retirement—can derail the plan. Flexibility helps: being able to reduce spending 10–20% in bad years makes the 4% rule much safer.
+      </p>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Social Security: What to Expect</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Social Security is a government program that provides retirement, disability, and survivor benefits. It's funded by payroll taxes (6.2% from you, 6.2% from your employer, up to a wage cap that changes annually).
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>How benefits are calculated:</strong> Based on your 35 highest-earning years, adjusted for inflation. Work fewer than 35 years and zeros are averaged in, reducing your benefit.</li>
+        <li><strong>Full Retirement Age (FRA):</strong> The age when you receive 100% of your calculated benefit. It's 66–67 depending on birth year (66 for those born 1943–1954, gradually increasing to 67 for those born 1960+).</li>
+        <li><strong>Early retirement:</strong> You can start benefits at 62, but they're reduced by about 25–30% compared to FRA. This reduction is permanent.</li>
+        <li><strong>Delayed retirement:</strong> Waiting past FRA increases benefits by about 8% per year until age 70. Delaying from 67 to 70 increases benefits by roughly 24%.</li>
+        <li><strong>Taxation:</strong> Up to 85% of Social Security benefits may be taxable depending on your total income. If Social Security is your only income, it's probably not taxable. But with other retirement income, expect some taxation.</li>
+      </ul>
+      <p class="mt-4 text-base text-foreground leading-relaxed">
+        <strong>When to claim?</strong> The break-even point for delaying is typically in your early 80s. If you live longer than average, delaying pays off. If you have health issues or need the income, claiming earlier makes sense. Married couples have more complex decisions—often one spouse should delay for the higher survivor benefit. Consider working with a financial planner for this decision.
+      </p>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Healthcare in Retirement: Medicare Basics</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Medicare is federal health insurance for people 65+ (and some younger people with disabilities). It's not free, and it doesn't cover everything.
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Part A (Hospital Insurance):</strong> Covers inpatient hospital stays, skilled nursing, hospice, and some home health. Most people don't pay premiums (paid through payroll taxes while working), but there are deductibles and coinsurance.</li>
+        <li><strong>Part B (Medical Insurance):</strong> Covers doctor visits, outpatient care, preventive services, and medical supplies. Premium is income-based (most pay around $175/month in 2025, higher for high earners). Has an annual deductible and typically covers 80% after that—you pay 20%.</li>
+        <li><strong>Part D (Prescription Drug Coverage):</strong> Optional coverage for medications. Premiums vary by plan. Has a coverage gap ("donut hole") where you pay more after initial coverage limits are reached, until catastrophic coverage kicks in.</li>
+        <li><strong>Medigap (Medicare Supplement):</strong> Private insurance that covers what Original Medicare doesn't—deductibles, coinsurance, and foreign travel. You pay an additional premium for this coverage. Best purchased within 6 months of enrolling in Part B when you have guaranteed issue rights.</li>
+        <li><strong>Medicare Advantage (Part C):</strong> An alternative to Original Medicare. Private plans that bundle Parts A, B, and usually D. Often have lower premiums but limited provider networks. May include extras like dental and vision. You generally can't have both Medicare Advantage and Medigap.</li>
+      </ul>
+      <p class="mt-4 text-base text-foreground leading-relaxed">
+        <strong>What Medicare doesn't cover:</strong> Long-term care (nursing homes, assisted living), most dental care, eye exams for glasses, hearing aids, and cosmetic surgery. These out-of-pocket costs average $300,000–$600,000 per couple in retirement. This is why long-term care insurance and additional savings are critical.
+      </p>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Withdrawal Strategies</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Once you're retired, how you withdraw money matters for taxes and longevity:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Tax-efficient withdrawal order:</strong> Generally, withdraw from taxable accounts first, then tax-deferred (traditional 401k/IRA), then tax-free (Roth). This allows tax-advantaged accounts to grow longer. But if your income is low early in retirement, consider Roth conversions to fill low tax brackets.</li>
+        <li><strong>Roth conversions in low-income years.</strong> If you retire before claiming Social Security and before RMDs start, you may have years of low taxable income. Convert traditional IRA money to Roth at low tax rates (10–12%). That money then grows and can be withdrawn tax-free later.</li>
+        <li><strong>Qualified Charitable Distributions (QCDs).</strong> Once you're 70½, you can donate up to $100,000/year directly from your IRA to charity. This counts toward your RMD, isn't taxable income, and doesn't require itemizing. Excellent for those who donate and don't need full RMD income.</li>
+        <li><strong>Dynamic spending.</strong> Instead of rigid 4% withdrawals, adjust based on market performance. Reduce spending 10% after a down year, increase slightly after good years. Flexibility dramatically improves portfolio survival rates.</li>
+        <li><strong>Buckets strategy.</strong> Divide retirement savings into buckets: 1–2 years in cash (stable, accessible), 3–5 years in bonds (moderate growth, less volatile), 6+ years in stocks (growth, higher returns). Replenish buckets as they're used. This manages sequence of returns risk by ensuring you don't sell stocks during market downturns.</li>
+      </ul>
+    </section>
+
+    <!-- Common Mistakes -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Common Mistakes</h2>
+      <ul class="list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Starting too late.</strong> Every decade you delay roughly doubles the monthly savings required to reach the same goal. Starting at 35 instead of 25 means saving 2x as much per month. At 45, it's 4x.</li>
+        <li><strong>Not capturing the full employer match.</strong> Leaving employer 401(k) match on the table is literally refusing free money. A 3% match is a 100% return on that 3% contribution. Always get the full match.</li>
+        <li><strong>Being too conservative with investments.</strong> Keeping retirement savings in cash or bonds in your 20s and 30s is a guaranteed way to fall short. You need stock growth to outpace inflation and reach your goals.</li>
+        <li><strong>Ignoring fees.</strong> A 1% fee on a $500,000 portfolio costs $5,000/year—every year. Over 30 years, that compounds to hundreds of thousands in lost growth. Use low-cost index funds and understand exactly what you're paying.</li>
+        <li><strong>Not having a withdrawal strategy.</strong> Drawing money randomly from accounts in retirement can create unnecessary tax bills. Order matters: taxable first, then traditional, then Roth. Plan withdrawals strategically.</li>
+        <li><strong>Underestimating healthcare costs.</strong> Medicare doesn't cover everything. Long-term care, dental, vision, hearing aids, and many medications are out-of-pocket. Budget $300,000–$600,000 per couple for healthcare in retirement.</li>
+        <li><strong>Claiming Social Security too early.</strong> Claiming at 62 instead of 67 reduces benefits by about 30%—permanently. If you live into your 80s, delaying almost always pays off. Unless you need the income or have health issues, consider waiting.</li>
+      </ul>
+    </section>
+
+    <!-- Action Steps -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Action Steps</h2>
+      <div class="bg-muted/50 rounded-lg p-6">
+        <ol class="list-decimal pl-5 space-y-3 text-base text-foreground leading-relaxed">
+          <li><strong>Calculate your retirement number.</strong> Estimate your annual retirement expenses (aim for 70–80% of current income), multiply by 25 (4% rule), and adjust for inflation. This gives you a target. Don't panic if it's big—you have time.</li>
+          <li><strong>Check your 401(k) match.</strong> Log into your employer's benefits portal and confirm you're contributing enough to get the full match. If not, increase your contribution immediately. This is the highest-return investment available.</li>
+          <li><strong>Open an IRA if you don't have one.</strong> If you have no employer 401(k) or want to supplement it, open an IRA at a low-cost provider (Vanguard, Fidelity, Schwab). Choose Roth if you're in a lower tax bracket now, traditional if you're in a high bracket.</li>
+          <li><strong>Review your investment allocation.</strong> Log into your retirement accounts and check what you're invested in. If you're decades from retirement, you should be mostly in stocks (index funds, not individual stocks). If you're in cash or bonds and under 40, move to a target-date fund or build a simple stock/bond allocation.</li>
+          <li><strong>Check your fees.</strong> Look up the expense ratios on your funds. If you're paying more than 0.5% annually, consider switching to lower-cost index funds. Fees compound into massive differences over decades.</li>
+          <li><strong>Increase contributions by 1%.</strong> Log into your payroll system and bump your 401(k) contribution by just 1%. You likely won't notice the difference in your paycheck, but it compounds significantly over time. Do this every year or every raise.</li>
+          <li><strong>Check your Social Security statement.</strong> Create an account at ssa.gov and review your earnings history. Make sure it's accurate—errors happen and reduce your eventual benefit. See your estimated benefits at different claiming ages.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Quick Reference -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Quick Reference</h2>
+      <dl class="space-y-4">
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">401(k)</dt>
+          <dd class="text-base text-foreground leading-relaxed">Employer-sponsored retirement account. 2025 contribution limit: $23,500 ($31,000 if age 50+). Pre-tax contributions reduce current taxable income; withdrawals in retirement are taxed.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Traditional IRA</dt>
+          <dd class="text-base text-foreground leading-relaxed">Individual retirement account you open yourself. 2025 contribution limit: $7,000 ($8,000 if age 50+). Contributions may be tax-deductible; growth is tax-deferred; withdrawals in retirement are taxed.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Roth IRA</dt>
+          <dd class="text-base text-foreground leading-relaxed">Contributions are after-tax (no deduction now), but growth and withdrawals in retirement are tax-free. 2025 income limits: phase-out starts at $150,000 single / $236,000 married. No RMDs in your lifetime.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">4% Rule</dt>
+          <dd class="text-base text-foreground leading-relaxed">A guideline suggesting you can withdraw 4% of your portfolio in year one of retirement, adjusting for inflation annually, with high probability of not running out over 30 years. Based on historical market data.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">RMD (Required Minimum Distribution)</dt>
+          <dd class="text-base text-foreground leading-relaxed">The amount you must withdraw annually from traditional 401(k)s and IRAs starting at age 73 (as of 2023). Calculated based on life expectancy tables. Failure to take RMDs results in a 25% penalty on the amount not withdrawn.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Full Retirement Age (FRA)</dt>
+          <dd class="text-base text-foreground leading-relaxed">The age when you receive 100% of your calculated Social Security benefit. Currently 66–67 depending on birth year. Claim earlier (62) and benefits are reduced; claim later (up to 70) and benefits increase.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <div class="mt-12 pt-8 border-t border-border/50 flex items-center justify-between">
+      <a href="/topics" class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors">
+        ← All topics
+      </a>
+      {nextTopic && (
+        <a href={nextTopic.href} class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors group">
+          <span class="hidden sm:inline">Next:</span> {nextTopic.title}
+          <svg 
+            class="h-4 w-4 transition-transform group-hover:translate-x-0.5" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor" 
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+          </svg>
+        </a>
+      )}
+    </div>
+  </article>
+</Layout>

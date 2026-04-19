@@ -1,0 +1,162 @@
+---
+import Layout from "@/layouts/main.astro"
+import { getNextTopic } from "@/lib/topicNavigation"
+
+const seo = {
+  title: "Advanced Investing | Financial Handbook",
+  description: "Asset allocation, rebalancing, tax-loss harvesting, and alternative investments for those ready to go deeper.",
+}
+
+const nextTopic = getNextTopic("/topics/advanced-investing")
+---
+
+<Layout currentPath="/topics/advanced-investing" seo={seo}>
+  <article class="py-12 px-8 max-w-3xl">
+    <!-- Hero -->
+    <h1 class="font-heading text-4xl font-semibold tracking-tight sm:text-5xl">Advanced Investing</h1>
+    <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
+      Asset allocation, rebalancing, tax-loss harvesting, and alternative investments for those ready to go deeper.
+    </p>
+
+    <!-- The Big Idea -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Big Idea</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        Advanced investing isn't about finding the next hot stock or timing the market—it's about optimizing the portfolio you already have. Once you've mastered the basics (index funds, diversification, long-term thinking), advanced strategies focus on tax efficiency, precise asset allocation, and rebalancing discipline. These techniques won't make you rich overnight, but they can add hundreds of thousands of dollars to your lifetime returns through the power of compounding optimizations.
+      </p>
+    </section>
+
+    <!-- Why It Matters -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Why It Matters</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        Consider two investors with identical $500,000 portfolios. Investor A buys index funds and ignores them. Investor B optimizes asset location (placing tax-inefficient assets in tax-advantaged accounts), harvests tax losses annually, and rebalances strategically. Over 20 years, with the same underlying investments, Investor B could end up with $100,000–$200,000 more—purely through optimization. Advanced investing isn't about taking more risk; it's about capturing the full return potential of the risk you're already taking.
+      </p>
+    </section>
+
+    <!-- The Breakdown -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Breakdown</h2>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Asset Location: Where You Hold Matters</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Asset allocation is what you own; asset location is where you put it. Different accounts have different tax treatments, so placement affects your after-tax return:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Tax-advantaged accounts (401k, IRA):</strong> Best for tax-inefficient investments—bonds, REITs, actively managed funds with high turnover. These generate regular taxable income, so shelter them. Traditional accounts are also good for assets you expect to grow substantially—you'll pay ordinary income tax on withdrawals, but the tax-deferred growth compounds longer.</li>
+        <li><strong>Roth accounts:</strong> Best for assets with highest growth potential—small-cap stocks, emerging markets, high-risk/high-reward investments. You want your biggest winners in Roth because withdrawals are completely tax-free. Also good for assets you might need before retirement—Roth contributions can be withdrawn anytime without penalty.</li>
+        <li><strong>Taxable brokerage accounts:</strong> Best for tax-efficient investments—index funds, ETFs, individual stocks you hold long-term. These generate minimal taxable events. Taxable accounts also offer tax-loss harvesting opportunities and flexibility (no age restrictions, no RMDs).</li>
+      </ul>
+      <p class="mt-4 text-base text-foreground leading-relaxed">
+        <strong>Example optimal location:</strong> Bonds and REITs in your 401(k). Small-cap and international index funds in your Roth IRA. Total stock market ETF in your taxable brokerage. This maximizes after-tax returns without changing your underlying asset allocation.
+      </p>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Tax-Loss Harvesting</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Tax-loss harvesting is selling investments at a loss to offset capital gains and up to $3,000 of ordinary income, then buying a similar (but not identical) investment to maintain your allocation:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>How it works:</strong> You bought an index fund at $10,000. It's now worth $8,000. Sell it, claim the $2,000 loss on your taxes, and immediately buy a similar but not "substantially identical" fund (different index, different provider). You've maintained your market exposure while capturing the tax benefit.</li>
+        <li><strong>Wash sale rule:</strong> You can't claim a loss if you buy the same or "substantially identical" security within 30 days before or after the sale. This includes buying in a different account (IRA, spouse's account). To avoid this, buy a different fund tracking a different index (e.g., sell S&P 500 fund, buy total stock market fund).</li>
+        <li><strong>Annual limit:</strong> You can use capital losses to offset capital gains dollar-for-dollar. If losses exceed gains, you can deduct up to $3,000 against ordinary income per year. Additional losses carry forward to future years indefinitely.</li>
+        <li><strong>When it works best:</strong> Taxable brokerage accounts (not tax-advantaged accounts where it doesn't matter). Most effective during market downturns when you have unrealized losses. Also effective for rebalancing—harvest losses while adjusting your allocation.</li>
+      </ul>
+      <p class="mt-4 text-base text-foreground leading-relaxed">
+        <strong>Example:</strong> You have $10,000 in unrealized losses in your taxable account. You harvest them over two years, offsetting $3,000 of ordinary income each year (saving perhaps $720 in taxes at 24% bracket) and carrying over $4,000 to offset future gains. Meanwhile, you bought similar funds and maintained your market exposure. The "cost" was temporary tracking error and a small amount of paperwork.
+      </p>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Rebalancing Strategies</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Rebalancing is returning your portfolio to target allocation after market drift. It's essentially selling high and buying low in a disciplined way:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Time-based rebalancing:</strong> Rebalance on a schedule—annually, semi-annually, or quarterly. Simple and disciplined, but may rebalance when unnecessary or miss significant drift between periods.</li>
+        <li><strong>Threshold-based rebalancing:</strong> Rebalance when any asset class drifts a certain percentage from target (e.g., 5% or 10%). More responsive to market movements but requires monitoring. A 60/40 portfolio might rebalance when stocks hit 65% or drop to 55%.</li>
+        <li><strong>Hybrid approach:</strong> Check thresholds quarterly but only rebalance if they're breached. Balances responsiveness with simplicity.</li>
+        <li><strong>Cash flow rebalancing:</strong> Direct new contributions to underweight asset classes instead of selling. If bonds are underweight, put new money there until balance is restored. Minimizes taxes and transaction costs.</li>
+        <li><strong>Tax-aware rebalancing:</strong> In taxable accounts, harvest losses to offset gains when rebalancing. Or rebalance only in tax-advantaged accounts to avoid triggering taxes.</li>
+      </ul>
+      <p class="mt-4 text-base text-foreground leading-relaxed">
+        <strong>How often to rebalance?</strong> Studies show annual rebalancing captures most of the benefit while minimizing costs and taxes. More frequent rebalancing (quarterly or monthly) doesn't improve returns significantly and can increase costs. The "right" frequency matters less than having a system and sticking to it.
+      </p>
+    </section>
+
+    <!-- Common Mistakes -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Common Mistakes</h2>
+      <ul class="list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Not optimizing asset location.</strong> Holding tax-inefficient bonds in taxable accounts while keeping stocks in your 401(k). This backward location can cost thousands in unnecessary taxes.</li>
+        <li><strong>Over-rebalancing.</strong> Rebalancing monthly or whenever the market moves. This creates transaction costs and potential tax events without meaningful benefit. Annual rebalancing is sufficient for most.</li>
+        <li><strong>Not harvesting tax losses during downturns.</strong> Market crashes are opportunities. If you have unrealized losses in taxable accounts, harvest them to offset future gains and income. It's free tax reduction.</li>
+        <li><strong>Ignoring the wash sale rule.</strong> Harvesting losses, then immediately buying back the same security or a "substantially identical" one. This invalidates the loss. Buy a different fund tracking a different index.</li>
+        <li><strong>Chasing complex strategies over the basics.</strong> Worrying about tax-loss harvesting when you haven't maxed out your 401(k) match. Optimize the big things first—savings rate, asset allocation, fees—before fine-tuning with advanced strategies.</li>
+        <li><strong>Not considering tax implications of rebalancing.</strong> Selling appreciated assets in taxable accounts to rebalance, triggering capital gains taxes. Rebalance in tax-advantaged accounts first, or use new contributions to adjust allocation.</li>
+      </ul>
+    </section>
+
+    <!-- Action Steps -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Action Steps</h2>
+      <div class="bg-muted/50 rounded-lg p-6">
+        <ol class="list-decimal pl-5 space-y-3 text-base text-foreground leading-relaxed">
+          <li><strong>Audit your asset location.</strong> List all your investment accounts and what they hold. Are tax-inefficient assets (bonds, REITs) in taxable accounts? Are high-growth assets (small-cap, emerging markets) in Roth accounts? If not, plan moves—being mindful of tax consequences.</li>
+          <li><strong>Set up automatic rebalancing.</strong> Decide on your rebalancing strategy (annual calendar reminder, 5% threshold, or both). Set calendar reminders or enable automatic rebalancing if your brokerage offers it. The key is having a system you'll actually follow.</li>
+          <li><strong>Check for tax-loss harvesting opportunities.</strong> Log into your taxable brokerage account. Do you have any unrealized losses (positions worth less than you paid)? If so, harvest them before year-end to offset gains or income. Remember the wash sale rule—buy a different fund if you want to maintain exposure.</li>
+          <li><strong>Review your fund fees.</strong> Look up the expense ratios on every fund you own. Are you paying more than 0.2% for broad market index funds? If so, consider switching to lower-cost alternatives. Even a 0.5% difference compounds to tens of thousands over decades.</li>
+          <li><strong>Optimize your withdrawal strategy (if retired or near retirement).</strong> Map out your planned account withdrawal order. Generally: taxable accounts first, then traditional tax-deferred, then Roth. But consider filling low tax brackets with Roth conversions, delaying Social Security for higher benefits, and managing Medicare income thresholds. If this feels complex, a fee-only financial planner can help optimize your specific situation.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Quick Reference -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Quick Reference</h2>
+      <dl class="space-y-4">
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Asset Location</dt>
+          <dd class="text-base text-foreground leading-relaxed">Placing investments in the most tax-efficient account type. Tax-inefficient assets (bonds, REITs) go in tax-advantaged accounts. High-growth assets go in Roth accounts. Tax-efficient assets (index funds) go in taxable accounts.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Tax-Loss Harvesting</dt>
+          <dd class="text-base text-foreground leading-relaxed">Selling investments at a loss to offset capital gains and up to $3,000 of ordinary income annually. Must avoid wash sale rule (don't buy same security within 30 days). Losses carry forward indefinitely.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Rebalancing</dt>
+          <dd class="text-base text-foreground leading-relaxed">Returning your portfolio to target allocation after market drift. Can be time-based (annual), threshold-based (when drift exceeds 5–10%), or cash-flow-based (using new contributions). Forces selling high and buying low.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Roth Conversion</dt>
+          <dd class="text-base text-foreground leading-relaxed">Moving money from traditional IRA/401(k) to Roth IRA. Pay taxes now at current rate; future growth and withdrawals are tax-free. Best done in low-income years (early retirement, sabbaticals) to minimize tax impact.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Sequence of Returns Risk</dt>
+          <dd class="text-base text-foreground leading-relaxed">The danger of experiencing poor market returns in the first years of retirement. Withdrawals during downturns permanently reduce portfolio value. Mitigated by cash reserves, flexible spending, or the "buckets" strategy.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Qualified Charitable Distribution (QCD)</dt>
+          <dd class="text-base text-foreground leading-relaxed">Direct transfer from IRA to qualified charity after age 70½. Counts toward RMD, isn't taxable income, and doesn't require itemizing. Up to $100,000/year. Tax-efficient way to give.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <div class="mt-12 pt-8 border-t border-border/50 flex items-center justify-between">
+      <a href="/topics" class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors">
+        ← All topics
+      </a>
+      {nextTopic && (
+        <a href={nextTopic.href} class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors group">
+          <span class="hidden sm:inline">Next:</span> {nextTopic.title}
+          <svg 
+            class="h-4 w-4 transition-transform group-hover:translate-x-0.5" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor" 
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+          </svg>
+        </a>
+      )}
+    </div>
+  </article>
+</Layout>
