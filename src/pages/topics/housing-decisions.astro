@@ -1,0 +1,148 @@
+---
+import Layout from "@/layouts/main.astro"
+import { getNextTopic } from "@/lib/topicNavigation"
+
+const seo = {
+  title: "Housing Decisions | Financial Handbook",
+  description: "Rent vs buy, mortgages, closing costs, and the hidden costs of homeownership nobody talks about.",
+}
+
+const nextTopic = getNextTopic("/topics/housing-decisions")
+---
+
+<Layout currentPath="/topics/housing-decisions" seo={seo}>
+  <article class="py-12 px-8 max-w-3xl">
+    <!-- Hero -->
+    <h1 class="font-heading text-4xl font-semibold tracking-tight sm:text-5xl">Housing Decisions</h1>
+    <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
+      Rent vs buy, mortgages, closing costs, and the hidden costs of homeownership nobody talks about.
+    </p>
+
+    <!-- The Big Idea -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Big Idea</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        Housing is typically your largest expense and potentially your largest asset—but it's also a lifestyle decision that affects your flexibility, commute, social life, and wealth-building trajectory. The rent vs. buy decision isn't just about monthly payments; it's about mobility, maintenance responsibilities, market timing, and whether you view housing as a home or an investment. The right choice depends on your timeline, local market conditions, and personal priorities—not on societal pressure to "stop throwing money away on rent."
+      </p>
+    </section>
+
+    <!-- Why It Matters -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Why It Matters</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        Consider this: the average American spends 30–40% of income on housing. Over a lifetime, that's millions of dollars. Make the wrong housing decision and you're trapped in a financial straitjacket—too much house, too little savings, no flexibility. Buy too much house and you become "house poor"—technically a homeowner but unable to afford other goals. Rent for too long in a rapidly appreciating market and you miss wealth-building opportunities. The stakes are enormous because housing costs are enormous. Making an intentional, informed decision based on your actual situation—not on what you think you "should" do—can mean the difference between financial stress and financial freedom.
+      </p>
+    </section>
+
+    <!-- The Breakdown -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Breakdown</h2>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Rent vs. Buy: The Real Math</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        The conventional wisdom that "renting is throwing money away" is wrong. Both rent and mortgage payments buy you something: rent buys flexibility and freedom from maintenance; a mortgage buys stability and potential appreciation. The better choice depends on the numbers and your situation:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>The 5% rule:</strong> A quick heuristic: multiply the home's value by 5% and compare to annual rent. If you can rent for less than that annually, renting is likely better. For a $400,000 home, 5% is $20,000/year or $1,667/month. Can you rent something equivalent for less? The 5% accounts for the unrecoverable costs of ownership: property taxes, maintenance, insurance, and the opportunity cost of tied-up capital.</li>
+        <li><strong>Time horizon matters:</strong> Buying rarely makes sense if you'll move in under 5 years. Closing costs (2–5% of purchase price) and selling costs (6% realtor commission) eat up short-term appreciation. You need time for appreciation to overcome these transaction costs. The longer you stay, the more buying tends to win—if the property appreciates.</li>
+        <li><strong>Market conditions:</strong> In hot markets where home prices are rising rapidly, buying can build wealth quickly. In flat or declining markets, renting and investing the difference often wins. You can't predict markets, but you can look at price-to-rent ratios in your area. High ratios (20+) suggest renting may be better; low ratios (15 or below) favor buying.</li>
+        <li><strong>Flexibility premium:</strong> Renting lets you move for jobs, relationships, or lifestyle changes without the friction of selling a home. In your 20s and early 30s, when life is volatile, this flexibility is valuable. As you settle into career, family, and community, the value of flexibility decreases and the value of stability increases.</li>
+        <li><strong>Maintenance and hidden costs:</strong> When you rent, a broken water heater is the landlord's $1,000 problem. When you own, it's yours. Budget 1–3% of home value annually for maintenance and repairs. On a $400,000 home, that's $4,000–$12,000/year. Many first-time buyers dramatically underestimate these costs.</li>
+      </ul>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Mortgages: Understanding the Real Cost</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        A mortgage is a loan secured by your home. Understanding the full cost helps you make informed decisions:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Interest rate vs. APR:</strong> The interest rate is what the lender charges. The APR (Annual Percentage Rate) includes the interest rate plus fees (points, origination fees, mortgage insurance), giving you the true cost. Compare loans using APR, not just interest rate.</li>
+        <li><strong>Fixed vs. adjustable:</strong> Fixed-rate mortgages keep the same interest rate for the entire loan term (15 or 30 years). Predictable but initially higher rates. Adjustable-rate mortgages (ARMs) have fixed rates for an initial period (5, 7, or 10 years), then adjust periodically based on market rates. Lower initial rates but unpredictable future payments. ARMs can make sense if you'll sell or refinance before the adjustment period.</li>
+        <li><strong>Loan term trade-offs:</strong> 15-year mortgages have lower rates but higher monthly payments. You build equity faster and pay dramatically less total interest. 30-year mortgages have lower payments but higher total interest costs. You can always pay extra on a 30-year to pay it off early, but you can't lower the payment on a 15-year if money gets tight. Choose based on your cash flow and risk tolerance.</li>
+        <li><strong>Down payment size:</strong> 20% down avoids private mortgage insurance (PMI), typically 0.3–1.5% of loan amount annually. On a $400,000 home with 10% down, that's $1,200–$6,000/year in PMI. But putting 20% down means less money invested elsewhere. The math depends on PMI cost vs. expected investment returns. Also, 20% down provides a cushion if home values drop—you're less likely to be underwater.</li>
+        <li><strong>Closing costs:</strong> Budget 2–5% of home price for closing costs—loan origination fees, appraisal, title insurance, attorney fees, prepaid interest, and escrow reserves. On a $400,000 home, that's $8,000–$20,000 due at closing. Some costs are negotiable; shop lenders. You can sometimes roll closing costs into the loan, but that increases your balance and interest costs.</li>
+        <li><strong>Points:</strong> Paying "points" means prepaying interest to lower your rate. One point = 1% of loan amount. Whether points make sense depends on how long you'll keep the loan. Calculate the break-even point: if points cost $4,000 and save $50/month, you break even in 80 months (6.7 years). If you'll stay in the home longer, points win. If you might refinance or move sooner, skip them.</li>
+      </ul>
+    </section>
+
+    <!-- Common Mistakes -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Common Mistakes</h2>
+      <ul class="list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Buying too much house.</strong> The bank may approve you for a mortgage that's 40–45% of your income. That doesn't mean you should take it. Being "house poor" leaves no room for other goals. Aim for housing costs (mortgage, insurance, taxes, maintenance) under 30% of gross income, ideally 25%.</li>
+        <li><strong>Buying without a 6–12 month stay plan.</strong> Transaction costs (closing costs, realtor fees, moving expenses) mean you need to stay put for years to break even. If you might move for a job, relationship, or lifestyle change within 2–3 years, renting is usually smarter.</li>
+        <li><strong>Skipping the home inspection.</strong> A $400–$500 inspection can reveal $10,000+ in needed repairs. Foundation issues, roof problems, electrical hazards—know before you buy. In hot markets, some waive inspections to win bidding wars. This is financially reckless.</li>
+        <li><strong>Draining your emergency fund for a down payment.</strong> Putting every dollar into a down payment leaves you vulnerable. A home comes with new risks: furnace dies, roof leaks, property tax increases. Keep 3–6 months of expenses liquid even after buying.</li>
+        <li><strong>Not shopping multiple lenders.</strong> Mortgage rates and fees vary significantly. Getting quotes from 3–5 lenders can save thousands. Don't just compare interest rates—compare APR, which includes fees. A lower rate with high points may cost more than a slightly higher rate with no points.</li>
+        <li><strong>Buying for appreciation, not lifestyle.</strong> Treating your primary residence as an investment. Homes are places to live first, investments second. Don't buy more house than you need because you think it'll "appreciate." The costs of ownership often exceed appreciation gains.</li>
+        <li><strong>Ignoring HOA fees and restrictions.</strong> In planned communities, HOA fees can be $200–$500/month and rules can restrict everything from paint colors to pet breeds. Factor these costs and constraints into your decision. An affordable mortgage with high HOA fees may be less affordable than a higher mortgage with no HOA.</li>
+      </ul>
+    </section>
+
+    <!-- Action Steps -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Action Steps</h2>
+      <div class="bg-muted/50 rounded-lg p-6">
+        <ol class="list-decimal pl-5 space-y-3 text-base text-foreground leading-relaxed">
+          <li><strong>Run the rent vs. buy numbers for your market.</strong> Use the 5% rule: multiply home prices by 5% and compare to annual rent. If renting is significantly cheaper, consider continuing to rent and investing the difference. If buying is competitive, start preparing.</li>
+          <li><strong>Check your credit score and report.</strong> Mortgage rates depend heavily on your credit score. A 760+ score gets the best rates; below 620 makes approval difficult. Check all three bureaus at annualcreditreport.com. Dispute errors. Pay down credit card balances to improve utilization.</li>
+          <li><strong>Calculate your target down payment.</strong> Aim for 20% to avoid PMI, but don't drain your emergency fund to get there. If you have $50,000 saved, maybe put $35,000 down and keep $15,000 as an emergency fund. Use a down payment calculator to see what 20% looks like in your target price range.</li>
+          <li><strong>Get pre-approved for a mortgage.</strong> Before house hunting, talk to 2–3 lenders and get pre-approved. This tells you what you can actually afford (not just what the bank will lend) and makes your offers stronger. Compare APR, not just interest rates. Ask about all fees.</li>
+          <li><strong>Research target neighborhoods thoroughly.</strong> Visit at different times of day. Check school ratings (affects resale even if you don't have kids). Look at crime maps. Check commute times during rush hour. Review future development plans. Check HOA fees and rules if applicable. You're buying the neighborhood, not just the house.</li>
+          <li><strong>Build your home-buying team.</strong> You'll need a buyer's agent (represents your interests, not the seller's), a mortgage lender, a home inspector, and possibly a real estate attorney (required in some states, recommended in others). Don't skimp on the inspector—this is your due diligence.</li>
+          <li><strong>Run the total cost of ownership.</strong> Beyond the mortgage payment, budget for: property taxes, homeowner's insurance, HOA fees, maintenance (1–3% of home value annually), utilities (often higher than rentals), and occasional big repairs (roof, HVAC, appliances). A $400,000 home might cost $8,000–$15,000/year beyond the mortgage.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Quick Reference -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Quick Reference</h2>
+      <dl class="space-y-4">
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">5% Rule</dt>
+          <dd class="text-base text-foreground leading-relaxed">A quick rent vs. buy heuristic: multiply home price by 5% and compare to annual rent. If renting is cheaper, consider renting and investing the difference. If buying is competitive, buying may make sense. Accounts for unrecoverable costs of ownership.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">PMI (Private Mortgage Insurance)</dt>
+          <dd class="text-base text-foreground leading-relaxed">Insurance protecting the lender if you default. Required with less than 20% down. Costs 0.3–1.5% of loan amount annually. Automatically cancels at 20% equity (through payments or appreciation), or request cancellation at 80% loan-to-value.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Closing Costs</dt>
+          <dd class="text-base text-foreground leading-relaxed">Fees paid at closing when buying a home. Typically 2–5% of purchase price. Includes loan origination fees, appraisal, title insurance, attorney fees, prepaid interest, and escrow reserves. Budget these in addition to your down payment.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Escrow</dt>
+          <dd class="text-base text-foreground leading-relaxed">A third-party account holding funds during the home buying process. Your earnest money deposit goes into escrow. At closing, escrow manages the transfer of funds and documents. After closing, your lender may maintain an escrow account for property taxes and insurance, collecting monthly and paying bills when due.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Fixed-Rate Mortgage</dt>
+          <dd class="text-base text-foreground leading-relaxed">Mortgage with an interest rate that stays the same for the entire loan term (15 or 30 years). Predictable payments. Interest rates typically higher than ARMs initially, but no risk of increases. Best for those planning to stay long-term and wanting payment certainty.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Adjustable-Rate Mortgage (ARM)</dt>
+          <dd class="text-base text-foreground leading-relaxed">Mortgage with a fixed rate for an initial period (5, 7, or 10 years), then adjusts periodically based on market rates. Lower initial rates than fixed mortgages, but unpredictable future payments. Caps limit how much rates can increase. Best for those who plan to sell or refinance before the adjustment period.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <div class="mt-12 pt-8 border-t border-border/50 flex items-center justify-between">
+      <a href="/topics" class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors">
+        ← All topics
+      </a>
+      {nextTopic && (
+        <a href={nextTopic.href} class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors group">
+          <span class="hidden sm:inline">Next:</span> {nextTopic.title}
+          <svg 
+            class="h-4 w-4 transition-transform group-hover:translate-x-0.5" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor" 
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+          </svg>
+        </a>
+      )}
+    </div>
+  </article>
+</Layout>

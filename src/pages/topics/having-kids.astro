@@ -1,0 +1,223 @@
+---
+import Layout from "@/layouts/main.astro"
+import { getNextTopic } from "@/lib/topicNavigation"
+
+const seo = {
+  title: "Having Kids | Financial Handbook",
+  description: "Childcare costs, 529 plans, tax credits, and adjusting your financial plan for growing families.",
+}
+
+const nextTopic = getNextTopic("/topics/having-kids")
+---
+
+<Layout currentPath="/topics/having-kids" seo={seo}>
+  <article class="py-12 px-8 max-w-3xl">
+    <!-- Hero -->
+    <h1 class="font-heading text-4xl font-semibold tracking-tight sm:text-5xl">Having Kids</h1>
+    <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
+      Childcare costs, 529 plans, tax credits, and adjusting your financial plan for growing families.
+    </p>
+
+    <!-- The Big Idea -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Big Idea</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        Having children is one of life's most significant decisions—emotionally, logistically, and financially. The cost of raising a child to age 18 now exceeds $230,000 on average, not including college. But beyond the sticker shock, children fundamentally reshape your financial priorities: retirement savings may pause temporarily, emergency funds need to grow, and suddenly you're thinking about life insurance and estate planning in a whole new way. The goal isn't just to afford children—it's to raise them without sacrificing your own financial security, while teaching them healthy money habits along the way.
+      </p>
+    </section>
+
+    <!-- Why It Matters -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Why It Matters</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        Consider this: a couple earning $80,000/year has a child. Childcare costs $1,200/month ($14,400/year). Diapers, formula, clothes, and supplies add another $300/month. Suddenly their expenses jump $18,000/year—22% of their income. If they haven't adjusted their budget, they're now running a deficit or draining savings. Many new parents stop contributing to retirement to cover childcare costs, not realizing that pausing retirement savings for even 5 years can cost hundreds of thousands in lost compound growth. Meanwhile, they may be underinsured—if one parent dies, the surviving parent suddenly needs to replace that income while raising the child. The financial stakes of parenthood are enormous because the costs are enormous and the timeline is long. Planning isn't optional—it's how you ensure your family's security.
+      </p>
+    </section>
+
+    <!-- The Breakdown -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Breakdown</h2>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">The Real Cost of Raising Children</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        The USDA estimates it costs $233,610 to raise a child to age 18 (not including college). But averages hide huge variation. Here's where the money goes:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Housing:</strong> 29% of child-rearing costs. Bigger home, extra bedroom, potentially moving to better school district. This is the largest expense and often the most underestimated.</li>
+        <li><strong>Food:</strong> 18% of costs. From formula and baby food to the teenage bottomless pit. Grocery bills grow with the child.</li>
+        <li><strong>Childcare and education:</strong> 16% of costs. Daycare, preschool, before/after school care, activities, tutoring. For working parents, childcare is often the second-largest expense after housing. Infant daycare in urban areas can cost $15,000–$30,000/year.</li>
+        <li><strong>Transportation:</strong> 15% of costs. Larger vehicle, car seats, teen driver insurance, driving them everywhere. The minivan lifestyle.</li>
+        <li><strong>Healthcare:</strong> 9% of costs. Well visits, sick visits, dental, glasses, braces, mental health. Even with insurance, copays and deductibles add up.</li>
+        <li><strong>Clothing:</strong> 6% of costs. Growing kids need new clothes constantly. Hand-me-downs help, but teens want their own style.</li>
+        <li><strong>Miscellaneous:</strong> Everything else—birthday parties, toys, electronics, summer camp, sports equipment, hobbies, school supplies, holiday gifts.</li>
+      </ul>
+      <p class="mt-4 text-base text-foreground leading-relaxed">
+        <strong>Cost variations:</strong> Costs vary dramatically by location (urban vs. rural, high-cost vs. low-cost areas), income level (higher-income families spend more on enrichment activities), and family choices (public vs. private school, working parent vs. stay-at-home parent). The $233,610 figure is an average—your actual costs may be higher or lower. The key is planning for the costs you expect, not hoping they'll be average.
+      </p>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Saving for College: 529 Plans and Alternatives</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        College costs have been rising faster than inflation for decades. Planning ahead is essential:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>529 Plans:</strong> State-sponsored education savings accounts with tax advantages. Contributions are after-tax (no federal deduction, though some states offer deductions), growth is tax-free, and withdrawals for qualified education expenses are tax-free. 2025 contribution limits: up to $18,000/year gift-tax-free (or $90,000 using 5-year gift tax averaging). Can be used for K-12 tuition (up to $10,000/year), college, graduate school, and now up to $35,000 can be rolled over to a Roth IRA for the beneficiary if the account has been open 15+ years.</li>
+        <li><strong>Coverdell Education Savings Accounts (ESA):</strong> Similar to 529s but with lower contribution limits ($2,000/year) and income restrictions. Can be used for K-12 expenses beyond tuition (tutoring, computers, etc.), which 529s couldn't do until recent law changes. Most families are better off with 529s due to higher limits and no income restrictions.</li>
+        <li><strong>UGMA/UTMA accounts:</strong> Custodial accounts that let you save in a child's name. Assets are legally the child's (though you manage them until they reach age 18 or 21, depending on state). Less favorable than 529s because: (1) no tax advantages for education, (2) assets count more heavily against financial aid eligibility, (3) child gets full control at age 18/21 (may not spend on education). Use for money you want to give a child, not specifically for education savings.</li>
+        <li><strong>Taxable brokerage accounts:</strong> Save for college in a regular investment account in your name. Total flexibility—you can use the money for anything, not just education. No contribution limits. But no tax advantages either—you'll pay taxes on dividends and capital gains. Can be a good supplement to 529s or if you're unsure about college plans.</li>
+        <li><strong>Roth IRA:</strong> Intended for retirement, but contributions (not earnings) can be withdrawn anytime without penalty. Earnings can be withdrawn penalty-free for education expenses (though you'll owe income tax if under age 59½). Roth IRAs don't count as assets on FAFSA (financial aid application), unlike 529s. But depleting retirement savings for college is generally not recommended—you can borrow for college, not for retirement.</li>
+        <li><strong>Prepaid tuition plans:</strong> Some states offer plans that let you prepay future tuition at today's rates. Locks in tuition costs, providing inflation protection. But inflexible—usually limited to in-state public colleges, and if your child attends elsewhere, you may get only a return of contributions (not tuition value). Most families are better off with 529 savings plans.</li>
+      </ul>
+      <p class="mt-4 text-base text-foreground leading-relaxed">
+        <strong>How much to save:</strong> Public four-year college currently averages $100,000–$120,000 total (in-state tuition, room, board, books). Private colleges average $200,000–$300,000+. These numbers rise 3–5% annually. Use a college savings calculator to determine monthly contributions needed to reach your goal, accounting for investment growth. Don't try to save 100%—most families use a combination of savings, current income, scholarships, and student loans. Saving even 50% puts you ahead of most families.
+      </p>
+      <p class="mt-4 text-base text-foreground leading-relaxed">
+        <strong>Which plan to choose:</strong> For most families, start with your state's 529 plan if it offers a tax deduction (34 states offer deductions or credits for 529 contributions). If your state doesn't offer tax benefits, or has high-fee plans, consider top-rated plans from states like Utah, New York, or Nevada, which offer low-cost index fund options. You can invest in any state's 529 plan regardless of where you live, though you may lose state tax benefits. Use direct-sold plans (bought directly from the state) rather than advisor-sold plans, which charge additional fees.
+      </p>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Tax Benefits and Credits for Parents</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        The tax code offers several breaks for families with children:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Child Tax Credit:</strong> Up to $2,000 per qualifying child under age 17. Phase-out begins at $200,000 single / $400,000 married. Up to $1,700 is refundable (you can get it even if you owe no tax). This is a direct reduction of your tax bill, not a deduction.</li>
+        <li><strong>Child and Dependent Care Credit:</strong> Credit for childcare expenses so you can work. Up to $3,000 for one child, $6,000 for two or more. Credit percentage depends on income (20–35% of expenses). Not refundable—can only reduce tax to zero. Must be work-related care; summer camps, daycare, and after-school care qualify.</li>
+        <li><strong>Dependent Care FSA:</strong> Employer benefit letting you contribute up to $5,000 pre-tax for dependent care expenses. Reduces taxable income dollar-for-dollar. Can be used alongside the Child and Dependent Care Credit, but the same expenses can't be used for both. Usually better than the credit for higher-income families (saves more in taxes).</li>
+        <li><strong>Head of Household filing status:</strong> If you're unmarried but pay more than half the cost of keeping up a home for a qualifying child or dependent, you can file as Head of Household. This gives you a higher standard deduction and more favorable tax brackets than filing Single. Can save $1,000+ in taxes compared to Single status.</li>
+        <li><strong>Earned Income Tax Credit (EITC):</strong> While not exclusively for parents, this refundable credit disproportionately benefits families with children. Worth up to $7,430 for three or more children. Income limits apply ($59,899 single / $66,819 married with three children in 2025). One of the most valuable credits for low-to-moderate income working families.</li>
+        <li><strong>Adoption Tax Credit:</strong> For parents adopting a child, a credit of up to $15,950 per child in 2025. Covers adoption fees, court costs, attorney fees, and travel expenses. Income phase-out starts at $239,990. Adopting special needs children may qualify for the full credit regardless of actual expenses.</li>
+      </ul>
+      <p class="mt-4 text-base text-foreground leading-relaxed">
+        <strong>Maximizing benefits:</strong> Many parents don't claim all the credits they're entitled to. The Child Tax Credit alone goes unclaimed by about 20% of eligible families. If your income is under certain thresholds, you can use IRS Free File to prepare taxes at no cost and ensure you're claiming everything. For higher earners, a tax professional can help optimize the interplay between credits, deductions, and account contributions. Don't leave money on the table—these credits exist to support families, and you're entitled to them if you qualify.
+      </p>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Life Insurance for Parents</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        If you have children who depend on your income, life insurance isn't optional—it's essential protection for your family:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Why you need it:</strong> If you die, your income disappears. Life insurance replaces that income so your family can maintain their standard of living. It can pay off the mortgage, fund college, cover daily living expenses, and provide time for your family to grieve without immediate financial pressure. If your family depends on your income and you don't have life insurance, you're leaving them vulnerable.</li>
+        <li><strong>How much you need:</strong> Common rule of thumb: 10–12x your annual income. More precise approach: calculate actual needs—pay off debts (mortgage, car loans, credit cards), fund college, provide income replacement for X years. A $500,000 policy might pay off $200,000 mortgage, set aside $100,000 for college, and provide $200,000 for living expenses (roughly 4 years at $50,000/year). Add or subtract based on your specific situation.</li>
+        <li><strong>Term vs. whole life:</strong> Term life insurance is pure protection for a set period (10, 20, or 30 years). Much cheaper—$25–$50/month for $500,000 coverage for a healthy 30-year-old. Whole life combines insurance with an investment component. Costs 5–15x more, has mediocre returns, and is complex. For most parents, term life is the right choice—buy the protection you need, invest the difference elsewhere.</li>
+        <li><strong>Both parents need coverage:</strong> Even if one parent doesn't work outside the home, they need life insurance. A stay-at-home parent provides valuable services—childcare, housekeeping, cooking, transportation—that would cost $30,000–$60,000/year to replace. If that parent dies, the working parent needs to pay for those services while continuing to work. Both parents should have coverage appropriate to their contribution.</li>
+        <li><strong>Policy length:</strong> Choose a term that covers your dependents until they're independent. If you have a newborn, a 20-year term gets them to age 20—possibly through college. A 30-year term gets them to 30, through early career and likely on their own. Longer terms cost more, so balance coverage needs with budget. You can ladder policies—e.g., one 20-year policy for full coverage while kids are young, plus a 10-year policy that drops off when they're older, reducing total cost.</li>
+        <li><strong>Beneficiary designations:</strong> Name your spouse/partner as primary beneficiary. Name contingent beneficiaries (children, trusts) in case you both die together. If leaving money directly to minor children, the court will appoint a guardian to manage it—better to set up a trust and name the trust as beneficiary. Review and update beneficiaries after major life events (marriage, divorce, birth of children).</li>
+      </ul>
+    </section>
+
+    <!-- Common Mistakes -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Common Mistakes</h2>
+      <ul class="list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Not having life insurance.</strong> Parents with dependent children who don't have life insurance are leaving their family vulnerable to financial catastrophe. Term life is cheap—there's no excuse for going without it.</li>
+        <li><strong>Buying whole life insurance instead of term.</strong> Getting sold expensive whole life policies when term would provide more protection at a fraction of the cost. The "investment" component of whole life is rarely worth it.</li>
+        <li><strong>Underinsuring the stay-at-home parent.</strong> Thinking only the breadwinner needs life insurance. A stay-at-home parent's work (childcare, household management) would cost $30,000–$60,000/year to replace. Both parents need coverage.</li>
+        <li><strong>Not updating beneficiaries.</strong> Keeping an ex-spouse as beneficiary on life insurance or retirement accounts after divorce. Beneficiary designations override wills—your ex could get the money even if your will says otherwise.</li>
+        <li><strong>Not having a will or guardianship plan.</strong> Parents with minor children who don't have a will specifying guardianship. If both parents die, the court decides who raises your children. Write a will naming your chosen guardian.</li>
+        <li><strong>Over-saving for college at the expense of retirement.</strong> Prioritizing 529 contributions over 401(k) contributions. You can borrow for college; you can't borrow for retirement. Fund your retirement first, then college savings.</li>
+        <li><strong>Not adjusting the budget for new expenses.</strong> Having a baby and assuming the budget will "work itself out." It won't. Childcare, diapers, medical costs, and reduced income (if one parent stays home or cuts hours) require intentional budget adjustments.</li>
+        <li><strong>Not claiming all available tax credits.</strong> Missing out on the Child Tax Credit, Child and Dependent Care Credit, or EITC. These credits can be worth thousands. Make sure your tax preparer (or tax software) captures everything you're entitled to.</li>
+      </ul>
+    </section>
+
+    <!-- Action Steps -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Action Steps</h2>
+      <div class="bg-muted/50 rounded-lg p-6">
+        <ol class="list-decimal pl-5 space-y-3 text-base text-foreground leading-relaxed">
+          <li><strong>Get life insurance before the baby arrives (or immediately after).</strong> Both parents need term life insurance. Aim for 10–12x income for the working parent, $250,000–$500,000 for the stay-at-home parent. Shop for 20–30 year terms. Get quotes from 3–5 insurers. This is non-negotiable—do it now.</li>
+          <li><strong>Create or update your will.</strong> If you don't have a will, create one. If you have one, update it to name a guardian for your child if both parents die. Choose a guardian who shares your values and is willing to take on the responsibility. Discuss it with them before naming them. Name contingent guardians too. Without this, a court decides who raises your child.</li>
+          <li><strong>Adjust your emergency fund.</strong> With a child, your emergency fund needs to be larger. Aim for 6–12 months of expenses (vs. 3–6 for singles/couples). Children bring new potential emergencies: medical bills, job loss (if a parent quits to care for child), unexpected childcare needs. Don't skimp on this buffer.</li>
+          <li><strong>Review and update beneficiaries.</strong> Make sure your child (or a trust for your child) is named as a contingent beneficiary on all accounts—life insurance, 401(k), IRA. If you die and your spouse is the primary beneficiary, but then your spouse also dies, you want the money to go to your child, not to your spouse's heirs (who might be their parents or siblings, not your child).</li>
+          <li><strong>Adjust your budget for new expenses.</strong> Create a realistic baby budget. Research costs in your area: childcare (often $800–$2,500/month), diapers ($50–$100/month), formula ($100–$200/month if not breastfeeding), clothes, gear, medical costs (prenatal care, delivery, pediatric visits). Adjust your existing budget to accommodate these. If one parent will stay home or reduce hours, factor in the lost income too.</li>
+          <li><strong>Start a 529 plan (once basic financial security is in place).</strong> Before saving for college, make sure you have: emergency fund, high-interest debt paid off, adequate retirement savings on track, life insurance, and will. Then open a 529 plan. Start with whatever you can—even $50/month. Ask grandparents to contribute instead of toys. Many 529 plans allow gift contributions. The power of starting early is enormous—$200/month from birth to age 18 can grow to $75,000+ with reasonable returns.</li>
+          <li><strong>Understand available tax credits.</strong> Research the Child Tax Credit (up to $2,000/child), Child and Dependent Care Credit (for childcare expenses), and Earned Income Tax Credit (if your income qualifies). These can be worth thousands annually. Make sure your tax preparer or software captures all credits. File a new W-4 with your employer to adjust withholding so you get the benefit throughout the year, not just at tax time.</li>
+          <li><strong>Plan for healthcare costs.</strong> Review your health insurance to understand maternity and pediatric coverage. Check deductibles, out-of-pocket maximums, and copays for prenatal care, delivery, and well-child visits. If you have a High Deductible Health Plan, max out your HSA—the tax advantages are enormous, and you can use it for family medical expenses. Budget for the delivery—hospital bills can be $5,000–$15,000 even with insurance, depending on your deductible and coinsurance.</li>
+          <li><strong>Start teaching money lessons early.</strong> Your children are watching how you handle money from toddler age. Model healthy behaviors: talk about budgeting openly, explain why you can't buy everything, involve them in age-appropriate money decisions. Start an allowance around age 5–6 to teach earning and saving. Open a savings account for them and make deposits a ritual. By middle school, teach them about compound interest and investing. By high school, they should understand credit, taxes, and basic budgeting. Your financial habits are your children's financial education.</li>
+        </ul>
+      </section>
+
+      <!-- Common Mistakes -->
+      <section class="mt-12">
+        <h2 class="font-heading text-2xl font-semibold mb-4">Common Mistakes</h2>
+        <ul class="list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+          <li><strong>Not having life insurance.</strong> Parents with dependent children who don't have life insurance are leaving their family vulnerable to financial catastrophe. Term life is cheap—there's no excuse for going without it.</li>
+          <li><strong>Buying whole life insurance instead of term.</strong> Getting sold expensive whole life policies when term would provide more protection at a fraction of the cost. The "investment" component of whole life is rarely worth it.</li>
+          <li><strong>Underinsuring the stay-at-home parent.</strong> Thinking only the breadwinner needs life insurance. A stay-at-home parent's work (childcare, household management) would cost $30,000–$60,000/year to replace. Both parents need coverage.</li>
+          <li><strong>Not updating beneficiaries.</strong> Keeping an ex-spouse as beneficiary on life insurance or retirement accounts after divorce. Beneficiary designations override wills—your ex could get the money even if your will says otherwise.</li>
+          <li><strong>Not having a will or guardianship plan.</strong> Parents with minor children who don't have a will specifying guardianship. If both parents die, the court decides who raises your children. Write a will naming your chosen guardian.</li>
+          <li><strong>Over-saving for college at the expense of retirement.</strong> Prioritizing 529 contributions over 401(k) contributions. You can borrow for college; you can't borrow for retirement. Fund your retirement first, then college savings.</li>
+          <li><strong>Not adjusting the budget for new expenses.</strong> Having a baby and assuming the budget will "work itself out." It won't. Childcare, diapers, medical costs, and reduced income (if one parent stays home or cuts hours) require intentional budget adjustments.</li>
+          <li><strong>Not claiming all available tax credits.</strong> Missing out on the Child Tax Credit, Child and Dependent Care Credit, or EITC. These credits can be worth thousands. Make sure your tax preparer (or tax software) captures everything you're entitled to.</li>
+        </ul>
+      </section>
+
+      <!-- Action Steps -->
+      <section class="mt-12">
+        <h2 class="font-heading text-2xl font-semibold mb-4">Action Steps</h2>
+        <div class="bg-muted/50 rounded-lg p-6">
+          <ol class="list-decimal pl-5 space-y-3 text-base text-foreground leading-relaxed">
+            <li><strong>Get life insurance before the baby arrives (or immediately after).</strong> Both parents need term life insurance. Aim for 10–12x income for the working parent, $250,000–$500,000 for the stay-at-home parent. Shop for 20–30 year terms. Get quotes from 3–5 insurers. This is non-negotiable—do it now.</li>
+            <li><strong>Create or update your will.</strong> If you don't have a will, create one. If you have one, update it to name a guardian for your child if both parents die. Choose a guardian who shares your values and is willing to take on the responsibility. Discuss it with them before naming them. Name contingent guardians too. Without this, a court decides who raises your child.</li>
+            <li><strong>Adjust your emergency fund.</strong> With a child, your emergency fund needs to be larger. Aim for 6–12 months of expenses (vs. 3–6 for singles/couples). Children bring new potential emergencies: medical bills, job loss (if a parent quits to care for child), unexpected childcare needs. Don't skimp on this buffer.</li>
+            <li><strong>Review and update beneficiaries.</strong> Make sure your child (or a trust for your child) is named as a contingent beneficiary on all accounts—life insurance, 401(k), IRA. If you die and your spouse is the primary beneficiary, but then your spouse also dies, you want the money to go to your child, not to your spouse's heirs (who might be their parents or siblings, not your child).</li>
+            <li><strong>Adjust your budget for new expenses.</strong> Create a realistic baby budget. Research costs in your area: childcare (often $800–$2,500/month), diapers ($50–$100/month), formula ($100–$200/month if not breastfeeding), clothes, gear, medical costs (prenatal care, delivery, pediatric visits). Adjust your existing budget to accommodate these. If one parent will stay home or reduce hours, factor in the lost income too.</li>
+            <li><strong>Start a 529 plan (once basic financial security is in place).</strong> Before saving for college, make sure you have: emergency fund, high-interest debt paid off, adequate retirement savings on track, life insurance, and will. Then open a 529 plan. Start with whatever you can—even $50/month. Ask grandparents to contribute instead of toys. Many 529 plans allow gift contributions. The power of starting early is enormous—$200/month from birth to age 18 can grow to $75,000+ with reasonable returns.</li>
+            <li><strong>Understand available tax credits.</strong> Research the Child Tax Credit (up to $2,000/child), Child and Dependent Care Credit (for childcare expenses), and Earned Income Tax Credit (if your income qualifies). These can be worth thousands annually. Make sure your tax preparer or software captures all credits. File a new W-4 with your employer to adjust withholding so you get the benefit throughout the year, not just at tax time.</li>
+            <li><strong>Plan for healthcare costs.</strong> Review your health insurance to understand maternity and pediatric coverage. Check deductibles, out-of-pocket maximums, and copays for prenatal care, delivery, and well-child visits. If you have a High Deductible Health Plan, max out your HSA—the tax advantages are enormous, and you can use it for family medical expenses. Budget for the delivery—hospital bills can be $5,000–$15,000 even with insurance, depending on your deductible and coinsurance.</li>
+            <li><strong>Start teaching money lessons early.</strong> Your children are watching how you handle money from toddler age. Model healthy behaviors: talk about budgeting openly, explain why you can't buy everything, involve them in age-appropriate money decisions. Start an allowance around age 5–6 to teach earning and saving. Open a savings account for them and make deposits a ritual. By middle school, teach them about compound interest and investing. By high school, they should understand credit, taxes, and basic budgeting. Your financial habits are your children's financial education.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Quick Reference -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Quick Reference</h2>
+      <dl class="space-y-4">
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">529 Plan</dt>
+          <dd class="text-base text-foreground leading-relaxed">State-sponsored education savings account with tax advantages. Contributions are after-tax, growth is tax-free, and withdrawals for qualified education expenses are tax-free. Can be used for K-12 tuition (up to $10,000/year), college, and graduate school. 2025 contribution limit: up to $18,000/year gift-tax-free (or $90,000 using 5-year averaging). Up to $35,000 can be rolled over to a Roth IRA after 15 years.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Child Tax Credit</dt>
+          <dd class="text-base text-foreground leading-relaxed">Tax credit worth up to $2,000 per qualifying child under age 17. Phase-out begins at $200,000 single / $400,000 married. Up to $1,700 is refundable (you can receive it even if you owe no tax). A direct reduction of your tax bill, not a deduction.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Child and Dependent Care Credit</dt>
+          <dd class="text-base text-foreground leading-relaxed">Tax credit for childcare expenses so parents can work. Up to $3,000 for one child, $6,000 for two or more. Credit percentage (20–35%) depends on income. Not refundable—can only reduce tax to zero. Must be work-related care; daycare, after-school programs, and summer camps qualify.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Dependent Care FSA</dt>
+          <dd class="text-base text-foreground leading-relaxed">Employer benefit allowing pre-tax contributions up to $5,000/year for dependent care expenses. Reduces taxable income dollar-for-dollar. Can be used alongside the Child and Dependent Care Credit, but not for the same expenses. Usually more valuable than the credit for higher-income families.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Term Life Insurance</dt>
+          <dd class="text-base text-foreground leading-relaxed">Pure life insurance protection for a set period (10, 20, or 30 years). Much cheaper than permanent insurance. Parents of dependent children should have 10–12x their income in coverage. A healthy 30-year-old can get $500,000 of 20-year term coverage for $20–$30/month. Essential protection for parents.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Guardianship</dt>
+          <dd class="text-base text-foreground leading-relaxed">Legal designation of who will raise your minor children if both parents die. Named in your will. Without a named guardian, the court decides—could be a family member you wouldn't have chosen, or even foster care. Choose someone who shares your values, is willing and able to take on the responsibility, and ideally lives nearby so your child doesn't lose their entire support network. Name alternates in case your first choice can't serve.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <div class="mt-12 pt-8 border-t border-border/50 flex items-center justify-between">
+      <a href="/topics" class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors">
+        ← All topics
+      </a>
+      {nextTopic && (
+        <a href={nextTopic.href} class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors group">
+          <span class="hidden sm:inline">Next:</span> {nextTopic.title}
+          <svg 
+            class="h-4 w-4 transition-transform group-hover:translate-x-0.5" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor" 
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+          </svg>
+        </a>
+      )}
+    </div>
+  </article>
+</Layout>

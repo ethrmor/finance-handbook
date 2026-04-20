@@ -1,0 +1,163 @@
+---
+import Layout from "@/layouts/main.astro"
+import { getNextTopic } from "@/lib/topicNavigation"
+
+const seo = {
+  title: "Major Purchases | Financial Handbook",
+  description: "Cars, electronics, appliances—how to think about big spending decisions without regret.",
+}
+
+const nextTopic = getNextTopic("/topics/major-purchases")
+---
+
+<Layout currentPath="/topics/major-purchases" seo={seo}>
+  <article class="py-12 px-8 max-w-3xl">
+    <!-- Hero -->
+    <h1 class="font-heading text-4xl font-semibold tracking-tight sm:text-5xl">Major Purchases</h1>
+    <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
+      Cars, electronics, appliances—how to think about big spending decisions without regret.
+    </p>
+
+    <!-- The Big Idea -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Big Idea</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        Major purchases—cars, appliances, furniture, electronics—represent significant outflows that can derail your financial plan if not handled thoughtfully. Unlike daily spending, which is habitual, major purchases are discrete decisions that deserve analysis: Do I need this? Can I afford it? Is now the right time? The goal isn't to never buy anything expensive—it's to make major purchases intentionally, with full awareness of the trade-offs, so you don't experience buyer's remorse or financial stress.
+      </p>
+    </section>
+
+    <!-- Why It Matters -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Why It Matters</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        Consider this: the average person makes 3–4 major purchase decisions per year (car, appliances, furniture, electronics). Each decision ranges from $500 to $50,000+. A single poor decision—buying a car you can't afford, financing furniture at 24% APR, upgrading appliances unnecessarily—can cost thousands in debt, interest, and opportunity cost. Conversely, thoughtful major purchases can serve you for years: a reliable car that runs for 15 years, quality furniture that doesn't need replacing, energy-efficient appliances that pay for themselves. The difference between financial stress and financial peace often comes down to how you handle these big-ticket decisions.
+      </p>
+    </section>
+
+    <!-- The Breakdown -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Breakdown</h2>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">The Major Purchase Decision Framework</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Before any major purchase, work through these questions:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Is this a need or a want?</strong> Be honest. A functioning car is a need if you commute; a new car when your current one works is a want. A refrigerator that died is a need; upgrading to the smart version is a want. There's nothing wrong with wants, but they deserve more scrutiny than needs.</li>
+        <li><strong>What problem does this solve?</strong> Define the problem clearly. "My car keeps breaking down and leaving me stranded" is different from "I want something newer." The size of the problem should justify the size of the expense.</li>
+        <li><strong>What's the total cost of ownership?</strong> The purchase price is just the beginning. A car has insurance, gas, maintenance, registration. A house has taxes, insurance, repairs. Electronics have subscription costs, accessories, eventual replacement. Calculate the 5-year or 10-year cost, not just the sticker price.</li>
+        <li><strong>Can I afford this without financing?</strong> If you need to finance, you can't afford it. This is controversial, but it's a useful heuristic. Financing means paying interest, which means paying more than the item is worth. Save up and pay cash. Exception: homes (mortgages) and sometimes cars (if you can get very low rates and invest the difference).</li>
+        <li><strong>What am I giving up to buy this?</strong> Every dollar spent on X can't be spent on Y. If you buy the $40,000 car, that's $40,000 not going to retirement, debt payoff, or emergency fund. Is this purchase worth more than those goals? Sometimes yes, often no.</li>
+        <li><strong>Can I wait 30 days?</strong> For wants (not needs), implement a 30-day rule. Wait 30 days before purchasing. If you still want it and can afford it, buy it. Most desires fade. This prevents impulse purchases you'll regret.</li>
+        <li><strong>What's the depreciation curve?</strong> Some items depreciate rapidly (cars lose 20–30% in year one, electronics lose value instantly). Others hold value (quality furniture, real estate, some collectibles). Understanding depreciation helps you buy used when appropriate and time purchases to minimize value loss.</li>
+      </ul>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Buying a Car: The Most Common Major Purchase</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Cars are where most people make their biggest financial mistakes. Here's how to do it right:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Buy used, not new:</strong> New cars depreciate 20–30% in the first year. Let someone else take that hit. Buy a 2–4 year old car with 20,000–40,000 miles. It's nearly new but costs 30–40% less. Have a mechanic inspect it before purchase.</li>
+        <li><strong>Pay cash if possible:</strong> Car loans are where people get in trouble. The average car payment is $700/month—$8,400/year. That's a huge drag on your finances. Save up and pay cash. If you must finance, get the shortest term possible (3 years, not 7), put at least 20% down, and ensure the payment is under 10% of your gross monthly income.</li>
+        <li><strong>Keep the total cost reasonable:</strong> The 20/4/10 rule: put at least 20% down, finance for no more than 4 years, and keep total monthly vehicle costs (payment, insurance, gas, maintenance) under 10% of gross income. Even better: follow the 50% rule—never spend more than 50% of your annual gross income on a vehicle. If you make $60,000, don't buy a $40,000 car. Buy a $20,000 car and invest the difference.</li>
+        <li><strong>Consider total cost of ownership, not just payment:</strong> A cheap car that needs constant repairs isn't a deal. Research reliability ratings (Consumer Reports, J.D. Power). Factor in insurance costs (sports cars and luxury vehicles cost more to insure), gas mileage, and maintenance costs. A fuel-efficient reliable car saves thousands over its lifetime compared to a gas-guzzling lemon.</li>
+        <li><strong>Don't buy based on monthly payment alone:</strong> Dealers love to focus on "what monthly payment can you afford?" because they can extend the loan term to make any car "affordable." A $600/month payment over 7 years is a $50,000 car with $10,000 in interest. Focus on the total price of the car, not the monthly payment. Negotiate the car price first, then discuss financing separately.</li>
+        <li><strong>Don't buy more car than you need:</strong> A single person buying a 3-row SUV "just in case." A couple with one child buying a minivan "for the future." Buy for your current needs, not imagined future scenarios. You can always sell and upgrade later; it's much harder to downsize when you're underwater on a loan.</li>
+      </ul>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Other Major Purchases: Appliances, Furniture, Electronics</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        The same principles apply to other big-ticket items:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Appliances:</strong> Research reliability and repair costs, not just features. Extended warranties are usually not worth it (the retailer makes money on them, which means you lose on average). Buy during sales (Labor Day, Black Friday, Memorial Day). Consider energy efficiency—higher upfront cost often pays for itself in lower utility bills. Keep appliances maintained (clean dryer vents, replace refrigerator coils) to extend lifespan.</li>
+        <li><strong>Furniture:</strong> Quality pieces last decades; cheap pieces last years. For items you use daily (bed, sofa, desk), buy quality even if it means saving longer. For trendy or occasional pieces, budget options are fine. Consider buying quality used furniture (solid wood pieces can be refinished) rather than new particleboard that won't last. Measure twice—returns are expensive and difficult for furniture.</li>
+        <li><strong>Electronics:</strong> Depreciation is rapid; buy refurbished or previous-generation models when possible. A 1-year-old flagship phone is 50% cheaper and nearly identical to the new model. Extended warranties and insurance are usually poor values (self-insure by saving the premiums). Consider total cost of ownership—cheaper devices may need replacement sooner. Don't finance electronics at 20%+ APR through store credit cards. If you can't pay cash, you can't afford it.</li>
+        <li><strong>Timing purchases:</strong> Most categories have seasonal sales. Cars: end of model year (September–October), end of calendar year. Appliances: Labor Day, Memorial Day, Black Friday. Furniture: January (after holidays), July (summer clearance). Electronics: Black Friday, back-to-school (August), after new model releases (previous generation discounts). Plan major purchases around these cycles.</li>
+      </ul>
+    </section>
+
+    <!-- Common Mistakes -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Common Mistakes</h2>
+      <ul class="list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Buying on impulse without research.</strong> Walking into a store and walking out with a $2,000 sofa because it was "such a good deal." Major purchases deserve days or weeks of research, comparison shopping, and consideration. The best deals are still there tomorrow.</li>
+        <li><strong>Financing depreciating assets.</strong> Taking out loans for cars, furniture, or electronics. Paying interest on items that lose value ensures you're underwater (owe more than it's worth) immediately. Save up and pay cash for anything that depreciates.</li>
+        <li><strong>Buying extended warranties.</strong> Retailers push these because they're highly profitable—which means on average, you lose money buying them. Self-insure by saving the warranty cost in an emergency fund. If the item breaks, you have the money. If it doesn't (which is likely), you keep the money.</li>
+        <li><strong>Not negotiating.</strong> Accepting sticker price on cars, furniture, appliances, or electronics. Most major purchases are negotiable. Research fair prices, make an offer, be willing to walk away. A 10% discount on a $5,000 purchase is $500—worth 30 minutes of negotiation.</li>
+        <li><strong>Buying new when used is better value.</strong> Purchasing a new car when a 2-year-old certified pre-owned car is 30% cheaper and nearly identical. Buying new furniture when quality used pieces cost a fraction. New depreciates fastest; let someone else take that hit.</li>
+        <li><strong>Not considering total cost of ownership.</strong> Buying the cheapest option without considering reliability, maintenance, or operating costs. A cheap car that needs constant repairs costs more than a reliable one. An inefficient appliance costs more over time than an efficient one. Calculate the 5-year or 10-year cost, not just the purchase price.</li>
+        <li><strong>Buying emotionally.</strong> Making major purchases when stressed, sad, or celebrating. Using shopping as therapy. Buying status symbols to impress others. Emotion-driven purchases often lead to regret. Implement waiting periods and involve rational analysis.</li>
+      </ul>
+    </section>
+
+    <!-- Action Steps -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Action Steps</h2>
+      <div class="bg-muted/50 rounded-lg p-6">
+        <ol class="list-decimal pl-5 space-y-3 text-base text-foreground leading-relaxed">
+          <li><strong>Implement the 30-day rule for wants.</strong> For any non-essential purchase over $100 (or whatever threshold you set), wait 30 days. Create a "wish list" document. If you still want the item after 30 days and can afford it, buy it. Most desires fade. This single rule prevents most impulse purchases.</li>
+          <li><strong>Calculate the hourly cost of purchases.</strong> Before any major purchase, divide the cost by your real hourly wage (annual income divided by actual hours worked including commute). That $1,000 TV costs 25 hours of your life. Is it worth it? This reframes spending from abstract dollars to concrete time, making decisions more grounded.</li>
+          <li><strong>Research before you shop.</strong> Never walk into a store or visit a website without researching first. For purchases over $500, spend at least a week researching: read reviews, compare prices at multiple retailers, check reliability ratings, understand the features you actually need vs. marketing fluff. Knowledge is power—and savings.</li>
+          <li><strong>Get pre-approved or pre-saved before shopping.</strong> For cars, get pre-approved for a loan from your bank or credit union before visiting dealers. This gives you negotiating power and prevents dealer financing traps. For other purchases, save the money first. If you can't pay cash, you can't afford it (with rare exceptions for appreciating assets like real estate).</li>
+          <li><strong>Negotiate everything.</strong> Prices on cars, furniture, appliances, and electronics are rarely fixed. Research fair prices, then make an offer. Be willing to walk away. Ask "Is that the best you can do?" or "Can you match this competitor's price?" A 10% discount on a major purchase is often hundreds of dollars—worth a few minutes of uncomfortable conversation.</li>
+          <li><strong>Buy quality for things you use daily.</strong> For items you interact with every day (bed, desk chair, computer, kitchen knives), buy the best quality you can reasonably afford. Cheap daily-use items fail quickly and frustrate constantly. One $800 chair that lasts 15 years costs $53/year. Three $300 chairs that each last 5 years cost $180/year. Quality is often cheaper over time.</li>
+          <li><strong>Consider used for depreciating assets.</strong> Cars lose 20–30% of value in year one. Electronics depreciate rapidly. Furniture often sells for 50–70% less used. For assets that don't appreciate, let someone else take the depreciation hit. Buy quality used items and bank the savings. Exception: mattresses and upholstered furniture (hygiene concerns), safety equipment (car seats expire, helmets after impact), and items where warranty matters significantly.</li>
+          <li><strong>Skip the extended warranties.</strong> Retailers push extended warranties because they're highly profitable—which means, on average, you lose money buying them. The expected value is negative. Instead, self-insure: save the warranty cost in your emergency fund. If the item breaks, you have the money. If it doesn't (which is likely), you keep the money. Extended warranties make sense only for items where repair costs would be catastrophic and the failure rate is high (expensive laptops for work, high-end appliances with complex electronics).</li>
+          <li><strong>Time your purchases strategically.</strong> Most product categories have seasonal sales. Cars: end of model year (September–October), end of calendar year. Appliances: Memorial Day, Labor Day, Black Friday. Furniture: January (after holidays), July (summer clearance). Electronics: Black Friday, back-to-school, after new model releases. Patience can save 10–30%.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Quick Reference -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Quick Reference</h2>
+      <dl class="space-y-4">
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">30-Day Rule</dt>
+          <dd class="text-base text-foreground leading-relaxed">For non-essential purchases over a certain amount ($100, $500—set your threshold), wait 30 days before buying. Create a wish list and revisit it after 30 days. Most desires fade. This prevents impulse purchases and ensures you really want something before spending significant money.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Total Cost of Ownership</dt>
+          <dd class="text-base text-foreground leading-relaxed">The full cost of an asset over its lifetime, not just the purchase price. For a car: purchase price + insurance + gas + maintenance + registration – resale value. For an appliance: purchase price + energy costs + maintenance – lifespan. Calculating TCO helps compare options and avoid "cheap" purchases that cost more over time.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Depreciation</dt>
+          <dd class="text-base text-foreground leading-relaxed">The decrease in an asset's value over time. Cars depreciate 20–30% in year one. Electronics lose value rapidly as new models release. Furniture depreciates 50–70% when you take it home. Understanding depreciation helps you decide when to buy used (depreciated assets) vs. new, and when to sell (before further depreciation).</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Extended Warranty</dt>
+          <dd class="text-base text-foreground leading-relaxed">Additional protection plan sold with products, covering repairs beyond the manufacturer's warranty. Retailers push these because they're highly profitable—which means, on average, you lose money buying them. Manufacturer warranties usually suffice. Extended warranties make sense only for expensive items where repair costs would be catastrophic and failure rates are high.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Certified Pre-Owned (CPO)</dt>
+          <dd class="text-base text-foreground leading-relaxed">Used vehicles that have been inspected, refurbished, and certified by the manufacturer or dealer. Typically include extended warranties and roadside assistance. Cost more than regular used cars but less than new. Good middle ground for those who want reliability and warranty protection without new-car depreciation.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Private Mortgage Insurance (PMI)</dt>
+          <dd class="text-base text-foreground leading-relaxed">Insurance that protects the lender if you default on a mortgage with less than 20% down. Costs 0.3–1.5% of loan amount annually, added to your monthly payment. Automatically cancels when you reach 20% equity (through payments or appreciation), or you can request cancellation at 80% loan-to-value. Avoid PMI by putting 20% down or using a piggyback loan (80/10/10 structure).</dd>
+        </div>
+      </dl>
+    </section>
+
+    <div class="mt-12 pt-8 border-t border-border/50 flex items-center justify-between">
+      <a href="/topics" class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors">
+        ← All topics
+      </a>
+      {nextTopic && (
+        <a href={nextTopic.href} class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors group">
+          <span class="hidden sm:inline">Next:</span> {nextTopic.title}
+          <svg 
+            class="h-4 w-4 transition-transform group-hover:translate-x-0.5" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor" 
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+          </svg>
+        </a>
+      )}
+    </div>
+  </article>
+</Layout>
