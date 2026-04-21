@@ -1,0 +1,107 @@
+---
+import Layout from "@/layouts/main.astro"
+import { getNextTopic } from "@/lib/topicNavigation"
+
+const seo = {
+  title: "Job Loss Survival | Financial Handbook",
+  description: "Severance, unemployment benefits, COBRA, and rapid financial triage when income disappears.",
+}
+
+const nextTopic = getNextTopic("/topics/job-loss-survival")
+---
+
+<Layout currentPath="/topics/job-loss-survival" seo={seo}>
+  <article class="py-12 px-8 max-w-3xl">
+    <!-- Hero -->
+    <h1 class="font-heading text-4xl font-semibold tracking-tight sm:text-5xl">Job Loss Survival</h1>
+    <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
+      Severance, unemployment benefits, COBRA, and rapid financial triage when income disappears.
+    </p>
+
+    <!-- The Big Idea -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Big Idea</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        Job loss is one of the most stressful financial events you can experience—suddenly your income stops, but your expenses don't. The key to surviving job loss isn't just having an emergency fund (though that's critical); it's knowing what to do in the first 48 hours, understanding the resources available to you, and making strategic financial decisions to stretch your resources while you find new employment. The goal is to prevent a temporary income disruption from becoming a long-term financial catastrophe. With the right actions, you can weather the storm and emerge with your financial foundation intact.
+      </p>
+    </section>
+
+    <!-- Why It Matters -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Why It Matters</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        Consider this: the average job search takes 3–6 months, sometimes longer depending on your industry, location, and level. If you lose your job and have no emergency fund, no unemployment benefits, and no plan, you're immediately in crisis. Bills go unpaid, credit cards get maxed out, and panic sets in. Many people make desperate decisions: cashing out retirement accounts (with penalties and taxes), taking high-interest loans, or accepting the first job offer regardless of fit or pay. These decisions have long-term consequences. Conversely, someone with a 6-month emergency fund, who understands their COBRA options, files for unemployment immediately, and follows a strategic financial triage plan, can weather a 6-month job search without derailing their long-term financial goals. The difference isn't luck—it's preparation and knowledge.
+      </p>
+    </section>
+
+    <!-- The Breakdown -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Breakdown</h2>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">The First 48 Hours: Immediate Actions</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        What you do immediately after job loss can significantly impact your financial recovery:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Negotiate your exit (if possible):</strong> If you're being laid off (not fired for cause), you may have room to negotiate. Ask for: severance (typically 1–2 weeks per year of service, but sometimes negotiable), extended healthcare coverage, payout of unused PTO, outplacement services (resume help, job search coaching), and a neutral reference. Get everything in writing. Consider having an employment attorney review severance agreements, especially if you're over 40 (age discrimination claims) or have potential legal claims against the employer.</li>
+        <li><strong>Understand your final paycheck and benefits:</strong> When will you receive your final paycheck? Does it include unused PTO (some states require payout; others don't)? When do health benefits end? (Typically the end of the month you were terminated, but policies vary.) Get COBRA election information—you have 60 days to elect COBRA, and coverage is retroactive to your termination date. Understand your 401(k) options: you can leave it (if balance > $5,000), roll it to an IRA, or cash it out (don't do this—taxes and penalties).</li>
+        <li><strong>File for unemployment immediately:</strong> Don't wait. File the day you're terminated or the next business day. Benefits are not retroactive—you lose money for every week you delay. You'll need: Social Security number, driver's license, employment history for the past 18–24 months, reason for termination. If denied, appeal—many initial denials are overturned. Understand your state's requirements: weekly claim filing, work search requirements, and how part-time work affects benefits.</li>
+        <li><strong>Assess your financial situation:</strong> Calculate your available resources: emergency fund balance, unemployment benefit amount and duration, any severance, spouse's income if applicable. List your essential expenses: housing, food, utilities, minimum debt payments, healthcare. Calculate the gap—how long can you survive on existing resources? This determines your timeline and urgency. If the gap is large and timeline is short, you'll need more aggressive action (finding any job quickly, reducing expenses drastically, seeking assistance).</li>
+        <li><strong>Contact creditors proactively:</strong> If you anticipate difficulty making payments, contact creditors before you miss payments. Explain your situation—many have hardship programs: reduced or paused payments, lower interest rates, waived fees. Mortgage: ask about forbearance. Credit cards: ask about hardship programs. Student loans: look into deferment or income-driven repayment. Proactive communication preserves your credit and options; waiting until you've missed payments makes everything harder.</li>
+        <li><strong>Pause discretionary spending:</strong> Immediately stop all non-essential spending. No dining out, no entertainment subscriptions (pause Netflix, Spotify, etc.), no shopping, no travel. Every dollar not spent extends your runway. This isn't forever—it's until you have income again. Communicate with family about the temporary austerity so everyone is on the same page. Track every dollar to maintain accountability.</li>
+        <li><strong>Apply for assistance programs:</strong> If your income has dropped significantly, you may qualify for programs you didn't before: SNAP (food stamps), Medicaid, unemployment health insurance options, rental assistance, utility assistance, WIC (if you have young children). These programs exist to help people through difficult times—there's no shame in using them when you need them. Application processes can take weeks, so apply early.</li>
+      </ul>
+    </section>
+
+    <!-- Quick Reference -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Quick Reference</h2>
+      <dl class="space-y-4">
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Unemployment Insurance</dt>
+          <dd class="text-base text-foreground leading-relaxed">State-provided temporary income replacement if you lose your job through no fault of your own. Typically replaces 40–50% of wages up to a maximum. Duration usually 12–26 weeks, longer during economic downturns. File immediately upon job loss—benefits are not retroactive. Must meet work search requirements and be available for work. Not available if fired for cause or if you quit voluntarily (with some exceptions).</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">COBRA</dt>
+          <dd class="text-base text-foreground leading-relaxed">Federal law allowing you to continue employer health insurance after job loss (or other qualifying events) for 18–36 months. You pay the full premium (employer + employee portion) plus 2% administrative fee. You have 60 days to elect COBRA; coverage is retroactive to your termination date. Expensive but ensures continuity of care. Compare to marketplace options—sometimes COBRA is cheaper, sometimes marketplace plans are better value.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Severance</dt>
+          <dd class="text-base text-foreground leading-relaxed">Compensation provided by employers when terminating employment (usually layoffs, not firings for cause). Typically 1–2 weeks of pay per year of service, but negotiable. May include extended benefits, outplacement services, or continued vesting of stock. Usually requires signing a release of claims against the employer. Get it in writing. Consider having an attorney review if over 40 (age discrimination protections) or if you have potential legal claims.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Financial Triage</dt>
+          <dd class="text-base text-foreground leading-relaxed">The process of rapidly assessing and prioritizing financial obligations during a crisis (like job loss). Involves: calculating available resources, identifying essential vs. discretionary expenses, contacting creditors proactively, suspending non-essential spending, and accessing assistance programs. Goal is to preserve cash and credit while finding new income. Requires difficult short-term decisions to prevent long-term financial damage.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Hardship Programs</dt>
+          <dd class="text-base text-foreground leading-relaxed">Assistance programs offered by creditors for borrowers experiencing financial difficulty. May include: reduced or paused payments, lower interest rates, waived fees, extended terms. Contact creditors proactively before missing payments. Available for mortgages (forbearance), credit cards, student loans (deferment, income-driven repayment), auto loans. Preserves credit score compared to missed payments. Terms vary by lender and situation.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">SNAP (Food Stamps)</dt>
+          <dd class="text-base text-foreground leading-relaxed">Supplemental Nutrition Assistance Program—federal food assistance for low-income individuals and families. Benefits loaded on EBT card, used like debit at grocery stores. Eligibility based on income and assets (varies by state). Unemployment often makes previously ineligible people qualify. Apply through state agency. No shame in using during temporary hardship—program exists for exactly this purpose.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <div class="mt-12 pt-8 border-t border-border/50 flex items-center justify-between">
+      <a href="/topics" class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors">
+        ← All topics
+      </a>
+      {nextTopic && (
+        <a href={nextTopic.href} class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors group">
+          <span class="hidden sm:inline">Next:</span> {nextTopic.title}
+          <svg 
+            class="h-4 w-4 transition-transform group-hover:translate-x-0.5" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor" 
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+          </svg>
+        </a>
+      )}
+    </div>
+  </article>
+</Layout>

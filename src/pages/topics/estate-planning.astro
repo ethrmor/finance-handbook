@@ -1,0 +1,138 @@
+---
+import Layout from "@/layouts/main.astro"
+import { getNextTopic } from "@/lib/topicNavigation"
+
+const seo = {
+  title: "Estate Planning | Financial Handbook",
+  description: "Wills, trusts, beneficiary designations, and power of attorney—not just for rich people.",
+}
+
+const nextTopic = getNextTopic("/topics/estate-planning")
+---
+
+<Layout currentPath="/topics/estate-planning" seo={seo}>
+  <article class="py-12 px-8 max-w-3xl">
+    <!-- Hero -->
+    <h1 class="font-heading text-4xl font-semibold tracking-tight sm:text-5xl">Estate Planning</h1>
+    <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
+      Wills, trusts, beneficiary designations, and power of attorney—not just for rich people.
+    </p>
+
+    <!-- The Big Idea -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Big Idea</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        Estate planning is the process of arranging for the management and disposal of your assets during your life and after death. It's not just for the wealthy—everyone has an estate (your home, car, bank accounts, investments, personal possessions). Without an estate plan, state laws determine who gets your assets, and the process can be expensive, time-consuming, and not aligned with your wishes. Estate planning is really about protecting the people you love: ensuring your children are cared for by the people you choose, your assets go to the right people efficiently, and someone you trust can make decisions for you if you can't.
+      </p>
+    </section>
+
+    <!-- Why It Matters -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Why It Matters</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        Consider this: if you die without a will (intestate), state law determines who inherits your assets. In most states, your spouse gets some portion, your children get some portion, and if you're unmarried without children, your parents or siblings inherit. This may not match your wishes. But worse, if you have minor children and both parents die without naming a guardian, the court decides who raises your children. Your kids could end up with family members you wouldn't have chosen, or even in foster care while the court decides. Meanwhile, your assets are frozen in probate—a court process that can take 6 months to 2 years and cost 3–7% of your estate in attorney and court fees. Your family can't access your accounts to pay bills during this time. All of this is preventable with basic estate planning documents that cost a few hundred dollars to create. The cost of not planning is far higher than the cost of planning.
+      </p>
+    </section>
+
+    <!-- The Breakdown -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Breakdown</h2>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">The Essential Estate Planning Documents</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Everyone should have these core documents, regardless of age or wealth:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Will (Last Will and Testament):</strong> The foundation document. Specifies who gets your assets (beneficiaries), who manages the distribution (executor), and critically, who cares for minor children (guardian). Takes effect only at death. Must go through probate (court process). Can be changed anytime before death. Requirements: written, signed, witnessed (usually by two people), and you must be of sound mind. Handwritten (holographic) wills are valid in some states but risky—type it and have it witnessed properly.</li>
+        <li><strong>Trust (Revocable Living Trust):</strong> A legal entity that holds assets for your benefit during life and distributes them after death. You transfer assets into the trust (retitle them in the trust's name) and manage them as trustee. You name a successor trustee to take over when you die or become incapacitated. Primary benefit: assets in the trust avoid probate entirely—they pass directly to beneficiaries. Privacy (probate is public; trusts are private). Can manage assets if you become incapacitated. Can set conditions for distributions (e.g., children inherit at 25, 30, 35). More complex and expensive to set up than a will ($1,000–$3,000+ vs. $200–$600 for a will). Best for: people with significant assets, complex family situations, property in multiple states, or strong desire to avoid probate. Not necessary for everyone—a simple will may suffice for smaller estates.</li>
+        <li><strong>Durable Power of Attorney (POA):</strong> Legal document giving someone you trust (agent) authority to handle your financial affairs if you become incapacitated. "Durable" means it remains in effect if you become incapacitated (regular POAs terminate upon incapacity). Can be immediate (effective now) or springing (effective only upon incapacity, though proving incapacity can be difficult). Scope can be broad (all financial matters) or limited (specific transactions). Critical for: paying bills, managing investments, filing taxes, accessing accounts if you can't. Without a POA, family may need to go to court for conservatorship—a lengthy, expensive process. Choose your agent carefully—they have enormous power. Name a backup agent too. Review and update periodically.</li>
+        <li><strong>Healthcare Power of Attorney (Medical POA):</strong> Similar to financial POA but specifically for healthcare decisions. Names someone (healthcare agent) to make medical decisions if you can't communicate. Can include specific instructions about treatments you do or don't want. Complements but doesn't replace a living will. Critical for ensuring your healthcare wishes are followed when you can't advocate for yourself. Choose someone who understands your values and can advocate firmly under pressure. Discuss your wishes with them in detail. Name alternates in case your first choice is unavailable.</li>
+        <li><strong>Living Will (Advance Directive):</strong> Document specifying your wishes for end-of-life medical care. Not about who decides (that's the healthcare POA), but what you want. Typically addresses: life support (ventilators, feeding tubes), resuscitation (CPR), pain management, organ donation. Takes effect only when you're terminally ill or permanently unconscious and can't communicate. Legally binding in most states, though healthcare providers can refuse specific requests (must then transfer you to another provider). Reduces burden on family—they don't have to guess your wishes during emotional times. Review periodically; your views may change. Give copies to your healthcare agent, doctor, and family.</li>
+        <li><strong>HIPAA Authorization:</strong> Healthcare providers can't share your medical information with anyone (including family) without your permission under HIPAA privacy rules. A HIPAA authorization allows specific people to access your medical information and speak with your healthcare providers. Often combined with healthcare POA but can be standalone. Critical for: allowing your healthcare agent to get information to make decisions, letting family members know your condition, enabling someone to pick up prescriptions or talk to insurance on your behalf. Without this, even your spouse may be stonewalled by healthcare providers.</li>
+      </ul>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Beneficiary Designations: The Most Overlooked Estate Planning Tool</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Beneficiary designations on financial accounts override your will. This is critical but often misunderstood:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>What has beneficiaries:</strong> Life insurance policies, retirement accounts (401k, IRA), annuities, payable-on-death (POD) bank accounts, transfer-on-death (TOD) investment accounts. Some states allow TOD deeds for real estate.</li>
+        <li><strong>Why they matter:</strong> Assets with valid beneficiary designations pass directly to the named beneficiary without going through probate. This happens immediately upon death, whereas probate can take months or years. Beneficiary designations override whatever your will says. If your will says "everything to my spouse" but your ex-spouse is still named as beneficiary on your 401(k), your ex gets the 401(k).</li>
+        <li><strong>Common mistakes:</strong> Not naming any beneficiary (assets then go to your estate and through probate). Naming minor children directly (courts will appoint a guardian to manage the money; better to name a trust). Not naming contingent beneficiaries (if primary beneficiary dies, you need a backup; otherwise it goes to your estate). Not updating after life changes (divorce, death of beneficiary, birth of children). Naming "my estate" as beneficiary (defeats the purpose of avoiding probate).</li>
+        <li><strong>Best practices:</strong> Name primary and contingent beneficiaries on every account. Be specific—use full names, not "my children" (what if you have more children later? what if a child predeceases you?). Review annually and after major life events. Coordinate with your overall estate plan—make sure beneficiary designations and your will/trust work together, not against each other. Keep copies of beneficiary designation forms with your estate planning documents.</li>
+      </ul>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Probate: What It Is and How to Avoid It</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Probate is the legal process of settling an estate after death. Understanding it helps you decide whether to try to avoid it:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>What probate does:</strong> Validates the will (if there is one), identifies and inventories the deceased's property, appraises property value, pays debts and taxes, and distributes remaining property to heirs. It's a court-supervised process intended to protect creditors and ensure proper distribution.</li>
+        <li><strong>What goes through probate:</strong> Assets owned solely in the deceased's name without beneficiaries. This includes: bank accounts without POD, investment accounts without TOD, real estate without joint ownership or transfer-on-death deed, personal property (furniture, jewelry, art), and business interests. Assets with named beneficiaries or joint ownership skip probate.</li>
+        <li><strong>Timeline and costs:</strong> Probate typically takes 6 months to 2 years, sometimes longer for complex estates. Costs include court fees, attorney fees (often 2–5% of estate value), executor fees, appraisal fees, and accounting fees. Total costs often range from 3–7% of the estate's value. During probate, assets are frozen—your family may not be able to access accounts to pay bills.</li>
+        <li><strong>Public record:</strong> Probate is a public process. Your will becomes public record, as does an inventory of your assets and their values. Anyone can access this information. If privacy matters to you, avoiding probate is desirable.</li>
+        <li><strong>When probate makes sense:</strong> Small, simple estates may not need complex avoidance strategies. Some states have simplified probate for estates under a certain threshold (often $50,000–$150,000). If your estate is small and simple, the cost of probate avoidance (trusts, etc.) may exceed the probate costs. Consult an attorney about your state's thresholds.</li>
+        <li><strong>How to avoid probate:</strong> Name beneficiaries on all accounts (life insurance, retirement, bank POD, investment TOD). Own property jointly with right of survivorship or use transfer-on-death deeds. Create a revocable living trust and transfer assets into it. Use payable-on-death and transfer-on-death designations. Each asset with a named beneficiary or in a trust skips probate entirely.</li>
+      </ul>
+    </section>
+
+    <!-- Quick Reference -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Quick Reference</h2>
+      <dl class="space-y-4">
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Will (Last Will and Testament)</dt>
+          <dd class="text-base text-foreground leading-relaxed">Legal document specifying how your assets will be distributed after death, who will manage the distribution (executor), and who will care for minor children (guardian). Must go through probate. Can be changed anytime before death. Requirements: written, signed, witnessed (usually by two people), and you must be of sound mind.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Trust (Revocable Living Trust)</dt>
+          <dd class="text-base text-foreground leading-relaxed">Legal entity that holds assets for your benefit during life and distributes them after death. You transfer assets into the trust and manage them as trustee. Assets in trust avoid probate entirely. Can provide for incapacity management and set conditions for distributions. More complex and expensive to set up than a will ($1,000–$3,000+). Best for larger estates, complex family situations, or strong desire to avoid probate.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Durable Power of Attorney</dt>
+          <dd class="text-base text-foreground leading-relaxed">Legal document giving someone authority to handle your financial affairs if you become incapacitated. "Durable" means it remains in effect if you become incapacitated. Can be immediate or springing (effective only upon incapacity). Critical for managing bills, investments, and taxes if you can't. Without it, family may need court conservatorship.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Healthcare Power of Attorney</dt>
+          <dd class="text-base text-foreground leading-relaxed">Legal document naming someone to make medical decisions for you if you can't communicate. Different from living will, which specifies what you want, not who decides. Choose someone who understands your values and can advocate under pressure. Name alternates. Essential for ensuring your healthcare wishes are followed when you can't advocate for yourself.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Living Will (Advance Directive)</dt>
+          <dd class="text-base text-foreground leading-relaxed">Document specifying your wishes for end-of-life medical care. Addresses life support, resuscitation, pain management, and organ donation. Takes effect only when you're terminally ill or permanently unconscious and can't communicate. Legally binding in most states. Reduces burden on family—they don't have to guess your wishes during emotional times. Review periodically; your views may change.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Beneficiary Designation</dt>
+          <dd class="text-base text-foreground leading-relaxed">Naming who receives specific assets (life insurance, retirement accounts, bank accounts) upon your death. Takes precedence over your will. Assets with valid beneficiary designations skip probate. Common mistakes: not naming beneficiaries, not naming alternates, not updating after divorce/marriage/death, naming minor children directly (requires court-appointed guardian). Review annually and after major life events.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Probate</dt>
+          <dd class="text-base text-foreground leading-relaxed">The court-supervised legal process of settling an estate after death. Validates the will, inventories assets, pays debts and taxes, and distributes remaining property. Takes 6 months to 2+ years. Costs 3–7% of estate value in fees. Assets are frozen during probate—family may not be able to access accounts to pay bills. Public process—will and asset inventory become public record. Can be avoided with proper beneficiary designations and trusts.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Executor</dt>
+          <dd class="text-base text-foreground leading-relaxed">The person named in your will who manages your estate after death. Responsibilities: gather and inventory assets, pay debts and taxes, distribute assets to beneficiaries, file final tax returns. Choose someone responsible, organized, and trustworthy. Name an alternate in case your first choice can't serve. Can be a family member, friend, or professional (bank, attorney). Discuss with them before naming them—they can decline.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <div class="mt-12 pt-8 border-t border-border/50 flex items-center justify-between">
+      <a href="/topics" class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors">
+        ← All topics
+      </a>
+      {nextTopic && (
+        <a href={nextTopic.href} class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors group">
+          <span class="hidden sm:inline">Next:</span> {nextTopic.title}
+          <svg 
+            class="h-4 w-4 transition-transform group-hover:translate-x-0.5" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor" 
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+          </svg>
+        </a>
+      )}
+    </div>
+  </article>
+</Layout>

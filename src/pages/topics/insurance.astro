@@ -1,0 +1,188 @@
+---
+import Layout from "@/layouts/main.astro"
+import { getNextTopic } from "@/lib/topicNavigation"
+
+const seo = {
+  title: "Insurance | Financial Handbook",
+  description: "Health, auto, life, renters—know what coverage you actually need, how to compare policies, and when you're overpaying.",
+}
+
+const nextTopic = getNextTopic("/topics/insurance")
+---
+
+<Layout currentPath="/topics/insurance" seo={seo}>
+  <section class="mx-auto max-w-3xl px-6 py-12">
+    <a href="/" class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8">
+      ← All Topics
+    </a>
+
+    <h1 class="font-heading text-4xl font-semibold tracking-tight sm:text-5xl">
+      Insurance
+    </h1>
+    <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
+      Health, auto, life, renters, homeowners — understand what coverage you need, what you don't, and how to shop smart.
+    </p>
+
+    <!-- The Big Idea -->
+    <h2 class="font-heading text-2xl font-semibold mt-12 mb-4">The Big Idea</h2>
+    <p class="text-base text-foreground leading-relaxed">
+      Insurance is a bet you make with a company: you pay small amounts regularly (premiums) so that if something catastrophic happens, they pay the enormous bill instead of you. You're not buying a product — you're buying protection against financial ruin. The right insurance means a car crash, a health crisis, or a house fire is a stressful event, not a bankruptcy.
+    </p>
+
+    <!-- Why It Matters -->
+    <h2 class="font-heading text-2xl font-semibold mt-12 mb-4">Why It Matters</h2>
+    <p class="text-base text-foreground leading-relaxed">
+      Consider this: the average cost of a three-day hospital stay is about $30,000. A cancer treatment regimen can exceed $150,000. A house fire causes an average of $77,000 in damage. Without insurance, you'd pay all of that out of pocket — and most Americans don't have $400 in emergency savings, let alone $150,000. Insurance exists because the financial consequences of unlikely events are so devastating that pooling risk across millions of people is the only sane approach. You share the cost of disasters with everyone else paying premiums, and in return, you're protected when disaster strikes you.
+    </p>
+
+    <!-- The Breakdown -->
+    <h2 class="font-heading text-2xl font-semibold mt-12 mb-4">The Breakdown</h2>
+
+    <h3 class="font-heading text-lg font-medium mt-8 mb-2">How Insurance Works: The Core Concepts</h3>
+    <p class="text-base text-foreground leading-relaxed">
+      Every insurance policy shares the same anatomy. Understanding these parts makes it possible to compare any two policies intelligently:
+    </p>
+    <ul class="list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed mt-3">
+      <li><strong>Premium:</strong> The amount you pay regularly (monthly, quarterly, or annually) to keep the policy active. Think of it as a membership fee for the protection club.</li>
+      <li><strong>Deductible:</strong> The amount you pay out of pocket before insurance kicks in. A $1,000 deductible means you pay the first $1,000 of a claim, and the insurer covers the rest (up to your coverage limits). Higher deductibles = lower premiums, and vice versa.</li>
+      <li><strong>Copay:</strong> A flat fee you pay for a specific service — like $25 for a doctor visit or $15 for a prescription. Common in health insurance.</li>
+      <li><strong>Coinsurance:</strong> Your share of costs after the deductible is met, expressed as a percentage. An 80/20 plan means insurance pays 80% and you pay 20% — until you hit your out-of-pocket maximum.</li>
+      <li><strong>Out-of-pocket maximum:</strong> The most you'll pay in a year. Once you hit this cap, insurance covers 100% of covered services for the rest of the year. This is your worst-case scenario — and it's finite.</li>
+      <li><strong>Coverage limit:</strong> The maximum amount the insurer will pay for a covered event. A $100,000 liability limit on auto insurance means they'll pay up to $100,000 — and you're on the hook for anything beyond that.</li>
+    </ul>
+
+    <h3 class="font-heading text-lg font-medium mt-8 mb-2">Health Insurance</h3>
+    <p class="text-base text-foreground leading-relaxed">
+      Health insurance is the one type you're most likely to actually use. The key decision is choosing between a plan with lower premiums but higher out-of-pocket costs (like a High Deductible Health Plan, or HDHP) versus higher premiums but lower costs when you need care (like a PPO or HMO).
+    </p>
+    <ul class="list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed mt-3">
+      <li><strong>HDHP + HSA:</strong> A High Deductible Health Plan (dedible $1,650+ for individuals in 2025) paired with a Health Savings Account. You contribute pre-tax money to the HSA (up to $4,300/year for individuals in 2025), invest it, and use it tax-free for medical expenses. It's the most tax-advantaged account in existence — triple tax-free (contributions, growth, and withdrawals for medical costs). Best for healthy people who don't expect major medical expenses.</li>
+      <li><strong>HMO:</strong> Lower premiums, but you must use network doctors and get referrals for specialists. Good if you're budget-conscious and don't mind the restrictions.</li>
+      <li><strong>PPO:</strong> Higher premiums, but more flexibility — you can see out-of-network providers and don't need referrals. Better if you want choice and can afford it.</li>
+    </ul>
+
+    <h3 class="font-heading text-lg font-medium mt-8 mb-2">Auto Insurance</h3>
+    <p class="text-base text-foreground leading-relaxed">
+      Almost every state requires auto insurance. The main components:
+    </p>
+    <ul class="list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed mt-3">
+      <li><strong>Liability coverage</strong> (required in most states): Pays for damage and injuries you cause to others. State minimums are often absurdly low — like $25,000 bodily injury per person. A serious accident can easily cost $100,000+. Carry at least 100/300/100 ($100K per person, $300K per accident, $100K property damage).</li>
+      <li><strong>Collision:</strong> Pays for damage to your car from an accident, regardless of fault. If your car is worth less than $4,000, consider dropping this — the premiums plus deductible may exceed the car's value.</li>
+      <li><strong>Comprehensive:</strong> Covers non-crash damage — theft, vandalism, hail, hitting a deer. Same logic as collision: drop it on low-value cars.</li>
+      <li><strong>Uninsured/underinsured motorist:</strong> Covers you when the other driver has no or insufficient insurance. About 14% of drivers are uninsured. This coverage is cheap and essential.</li>
+    </ul>
+
+    <h3 class="font-heading text-lg font-medium mt-8 mb-2">Renters & Homeowners Insurance</h3>
+    <p class="text-base text-foreground leading-relaxed">
+      Your landlord's insurance covers the building, not your stuff. Renters insurance covers your belongings, liability (if someone is injured in your apartment), and additional living expenses if your place becomes uninhabitable. It's remarkably cheap — typically $15–$30/month. Homeowners insurance covers the structure, your belongings, liability, and additional living expenses. It's required if you have a mortgage.
+    </p>
+    <ul class="list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed mt-3">
+      <li>Choose <strong>replacement cost</strong> coverage over <strong>actual cash value</strong>. ACV deducts depreciation — a 5-year-old TV that cost $1,000 might only get you $200. Replacement cost pays what it actually costs to buy a new equivalent.</li>
+      <li>Both policies have coverage limits for high-value items (jewelry, electronics, art). If you own a $5,000 engagement ring, you need a <strong>rider or floater</strong> — a separate add-on that covers specific expensive items at their full value.</li>
+    </ul>
+
+    <h3 class="font-heading text-lg font-medium mt-8 mb-2">Life Insurance</h3>
+    <p class="text-base text-foreground leading-relaxed">
+      Life insurance replaces your income if you die. If nobody depends on your income — no spouse, no kids, no aging parents — you probably don't need it. If people do depend on you, it's essential.
+    </p>
+    <ul class="list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed mt-3">
+      <li><strong>Term life insurance:</strong> Pure protection for a set period (10, 20, or 30 years). A healthy 30-year-old can get $500,000 of coverage for about $25–$35/month. It's cheap because most people outlive the term. This is what most people should buy.</li>
+      <li><strong>Whole/universal life insurance:</strong> Combines insurance with an investment component. Premiums are 5–15x higher than term. The investment returns are usually mediocre, the fees are high, and it's complex. Buy term and invest the difference — you'll almost certainly come out ahead.</li>
+      <li><strong>How much?</strong> A common rule of thumb is 10–12x your annual income. More precisely: enough to pay off debts, cover funeral costs, and provide income replacement for your dependents for the years they need it.</li>
+    </ul>
+
+    <div class="bg-muted/50 rounded-lg p-6 mt-6">
+      <p class="text-base text-foreground leading-relaxed">
+        <strong>The insurance hierarchy of needs:</strong> (1) Health insurance — medical debt is the #1 cause of personal bankruptcy. (2) Auto liability — required by law and protects others. (3) Renters/homeowners — cheap protection for everything you own. (4) Term life — if people depend on your income. (5) Umbrella policy — extra liability coverage if you have significant assets to protect. Everything else (whole life, extended warranties, identity theft protection) is optional and often overpriced.
+      </p>
+    </div>
+
+    <!-- Common Mistakes -->
+    <h2 class="font-heading text-2xl font-semibold mt-12 mb-4">Common Mistakes</h2>
+    <ul class="list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+      <li><strong>Carrying minimum auto liability limits.</strong> State minimums are dangerously low. A $50,000 hospital bill after an at-fault accident with $25,000 in coverage leaves you personally on the hook for $25,000. Bump your limits to at least 100/300/100.</li>
+      <li><strong>Skipping renters insurance.</strong> At $15–$30/month, it's one of the best deals in insurance. One burst pipe or break-in can destroy thousands of dollars of belongings.</li>
+      <li><strong>Buying whole life insurance when you need term.</strong> Whole life costs 5–15x more for the same death benefit. The "investment" component typically underperforms a basic index fund after fees. Buy term and invest the difference.</li>
+      <li><strong>Choosing deductibles that are too low.</strong> Low deductibles mean high premiums. If you can absorb a $1,000 deductible from savings (which you should have in your emergency fund), raising your deductible from $250 to $1,000 can cut premiums by 25–40%.</li>
+      <li><strong>Not shopping around.</strong> Insurance rates vary wildly between companies for identical coverage. Get quotes from at least 3–5 providers every 1–2 years. Loyalty to an insurance company rarely pays — switching can save 10–30%.</li>
+      <li><strong>Filing small claims.</strong> Every claim can raise your premiums or get you dropped. If the repair costs slightly more than your deductible, pay out of pocket. Use insurance for the big stuff — that's what it's for.</li>
+    </ul>
+
+    <!-- Action Steps -->
+    <h2 class="font-heading text-2xl font-semibold mt-12 mb-4">Action Steps</h2>
+    <ol class="list-decimal pl-5 space-y-2 text-base text-foreground leading-relaxed">
+      <li><strong>Inventory your current coverage.</strong> List every insurance policy you have: type, premium, deductible, coverage limits, and provider. Most people can't answer these basic questions about their own policies. Now you will.</li>
+      <li><strong>Check your auto liability limits.</strong> If they're at state minimums, raise them to at least 100/300/100. The cost increase is usually modest — often $10–$20/month — but the protection difference is enormous.</li>
+      <li><strong>Get renters insurance</strong> if you rent and don't have it. It takes 15 minutes online, costs about $20/month, and covers everything you own plus liability. Choose replacement cost coverage.</li>
+      <li><strong>Shop your policies every 2 years.</strong> Use comparison sites or an independent broker to get quotes from multiple carriers. Bundle home + auto with the same company for a 10–25% discount on both.</li>
+      <li><strong>If you need life insurance, buy term.</strong> Use an online quoting tool (Haven Life, Bestow, or Policygenius) to compare 20- or 30-year term rates. A healthy 30-year-old can lock in $500,000 for under $30/month. Don't overthink it — buy it and move on.</li>
+    </ol>
+
+    <!-- Quick Reference -->
+    <h2 class="font-heading text-2xl font-semibold mt-12 mb-4">Quick Reference</h2>
+    <div class="overflow-x-auto">
+      <table class="w-full text-base text-foreground leading-relaxed">
+        <thead>
+          <tr class="border-b border-border">
+            <th class="py-3 pr-4 text-left font-medium">Term</th>
+            <th class="py-3 pr-4 text-left font-medium">Definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-border/50">
+            <td class="py-3 pr-4 font-medium">Premium</td>
+            <td class="py-3 pr-4">The amount you pay regularly (monthly/annually) to keep your insurance policy active. Like a subscription fee for protection.</td>
+          </tr>
+          <tr class="border-b border-border/50">
+            <td class="py-3 pr-4 font-medium">Deductible</td>
+            <td class="py-3 pr-4">The amount you pay out of pocket before insurance starts covering costs. Higher deductible = lower premium, and vice versa.</td>
+          </tr>
+          <tr class="border-b border-border/50">
+            <td class="py-3 pr-4 font-medium">Copay</td>
+            <td class="py-3 pr-4">A fixed amount you pay for a specific service (e.g., $25 for a doctor visit). Common in health insurance.</td>
+          </tr>
+          <tr class="border-b border-border/50">
+            <td class="py-3 pr-4 font-medium">Coinsurance</td>
+            <td class="py-3 pr-4">Your percentage share of costs after the deductible. An 80/20 split means insurance pays 80%, you pay 20% — until you hit your out-of-pocket max.</td>
+          </tr>
+          <tr class="border-b border-border/50">
+            <td class="py-3 pr-4 font-medium">Out-of-Pocket Maximum</td>
+            <td class="py-3 pr-4">The most you'll pay in a year for covered services. Once reached, insurance pays 100% for the rest of the year. Your financial worst-case scenario.</td>
+          </tr>
+          <tr class="border-b border-border/50">
+            <td class="py-3 pr-4 font-medium">HSA</td>
+            <td class="py-3 pr-4">Health Savings Account — a triple tax-advantaged account paired with a high-deductible health plan. 2025 contribution limit: $4,300 (individual), $8,550 (family).</td>
+          </tr>
+          <tr class="border-b border-border/50">
+            <td class="py-3 pr-4 font-medium">Term Life</td>
+            <td class="py-3 pr-4">Life insurance that covers you for a set period (10, 20, or 30 years). Much cheaper than whole life. The right choice for most people.</td>
+          </tr>
+          <tr>
+            <td class="py-3 pr-4 font-medium">Umbrella Policy</td>
+            <td class="py-3 pr-4">Extra liability coverage that sits on top of your auto and home insurance. Typically $1M+ in coverage for $150–$300/year. Essential if you have assets to protect.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-border/50 flex items-center justify-between">
+      <a href="/topics" class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors">
+        ← All topics
+      </a>
+      {nextTopic && (
+        <a href={nextTopic.href} class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors group">
+          <span class="hidden sm:inline">Next:</span> {nextTopic.title}
+          <svg 
+            class="h-4 w-4 transition-transform group-hover:translate-x-0.5" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor" 
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+          </svg>
+        </a>
+      )}
+    </div>
+  </section>
+</Layout>

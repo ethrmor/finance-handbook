@@ -1,0 +1,133 @@
+---
+import Layout from "@/layouts/main.astro"
+import { getNextTopic } from "@/lib/topicNavigation"
+
+const seo = {
+  title: "Fraud & Identity Theft | Financial Handbook",
+  description: "Common scams, credit monitoring, recovery steps, and keeping your financial identity secure.",
+}
+
+const nextTopic = getNextTopic("/topics/fraud-and-identity-theft")
+---
+
+<Layout currentPath="/topics/fraud-and-identity-theft" seo={seo}>
+  <article class="py-12 px-8 max-w-3xl">
+    <!-- Hero -->
+    <h1 class="font-heading text-4xl font-semibold tracking-tight sm:text-5xl">Fraud & Identity Theft</h1>
+    <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
+      Common scams, credit monitoring, recovery steps, and keeping your financial identity secure.
+    </p>
+
+    <!-- The Big Idea -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Big Idea</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        Fraud and identity theft are crimes of opportunity, exploiting trust, urgency, or ignorance to separate you from your money or steal your financial identity. In our digital world, the attack surface has expanded exponentially—scammers can reach you via email, phone, text, social media, or fake websites. The good news: most fraud is preventable through awareness, skepticism, and basic security practices. You don't need to be paranoid, but you do need to be vigilant. The cost of prevention—a few minutes of caution, a credit freeze, strong passwords—is trivial compared to the cost of recovering from identity theft, which can take years and thousands of dollars.
+      </p>
+    </section>
+
+    <!-- Why It Matters -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Why It Matters</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        Consider this: in 2023, consumers reported losing over $10 billion to fraud, with the median loss per person around $500. But that's just the reported losses—many frauds go unreported due to shame or confusion. Identity theft affected over 40 million Americans. The average victim spends 200+ hours and $1,000+ recovering their identity. But beyond the numbers, fraud causes significant emotional distress—violation, embarrassment, anxiety, and loss of trust. And some fraud is life-altering: seniors losing life savings to romance scams, families devastated by wire fraud during home purchases, businesses ruined by business email compromise. The worst part? Most of this is preventable. Scammers aren't criminal masterminds—they're casting wide nets and catching the unaware. Basic awareness and simple precautions protect you from the vast majority of fraud.
+      </p>
+    </section>
+
+    <!-- The Breakdown -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Breakdown</h2>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Common Scams and How to Recognize Them</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Scams evolve constantly, but most fall into familiar patterns. Knowing the patterns helps you spot scams regardless of the specific story:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Phishing (email/text/phone):</strong> Scammers impersonate legitimate organizations (banks, IRS, Amazon, employer) to steal login credentials or personal information. Red flags: urgent threats ("account will be closed"), requests to verify personal information, suspicious links, generic greetings ("Dear Customer"), spelling errors. Legitimate organizations won't ask for passwords or sensitive info via email/text. When in doubt, contact the organization directly through official channels, not through the message you received.</li>
+        <li><strong>Impersonation scams:</strong> Scammers pretend to be someone you trust: grandchild in jail needing bail money, friend stranded abroad, utility company threatening to shut off service, Social Security Administration claiming your number was suspended. Red flags: urgent requests for money, pressure to act immediately, requests for unusual payment methods (gift cards, wire transfers, cryptocurrency). Verify by contacting the person or organization directly through known numbers, not the contact info provided by the caller.</li>
+        <li><strong>Romance scams:</strong> Scammers create fake online dating profiles, build emotional relationships over weeks or months, then invent emergencies requiring money (medical bills, plane tickets to visit, business problems). Victims lose an average of $10,000+. Red flags: relationship moves quickly, person can't video chat or meet in person (always has excuses), profession requires overseas travel (military, oil rig, doctor), requests for money or gift cards. Never send money to someone you haven't met in person, no matter how compelling their story.</li>
+        <li><strong>Investment and cryptocurrency scams:</strong> Promises of guaranteed high returns with little or no risk. Ponzi schemes, pump-and-dump schemes, fake cryptocurrency exchanges, romance scams that pivot to investment "opportunities." Red flags: guaranteed returns (legitimate investments carry risk), pressure to buy immediately, unsolicited investment advice, complex strategies you don't understand, requests to send crypto to wallets you don't control. If it sounds too good to be true, it's a scam. Legitimate wealth building is slow and boring.</li>
+        <li><strong>Employment and business opportunity scams:</strong> Fake job offers requiring upfront fees for training or equipment. Pyramid schemes disguised as "multi-level marketing." Work-from-home scams (envelope stuffing, reshipping scams). Red flags: employer asks you to pay for anything upfront, job promises unrealistic pay for little work, vague job descriptions, requirement to recruit others. Legitimate employers don't ask you to pay to work for them.</li>
+        <li><strong>Wire fraud and real estate scams:</strong> Scammers hack email accounts of real estate agents, title companies, or attorneys and send fake wire instructions to home buyers. Victims wire closing funds to scammers and lose the money permanently. Red flags: last-minute changes to wire instructions, slight variations in email addresses, requests to wire to unusual accounts, pressure to wire immediately. Verify wire instructions by phone using a known number, not by replying to the email. Never wire money based solely on email instructions.</li>
+      </ul>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Protecting Yourself: Security Best Practices</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Prevention is infinitely easier than recovery. Adopt these practices:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Freeze your credit:</strong> A credit freeze prevents new creditors from accessing your credit report, making it nearly impossible for identity thieves to open new accounts in your name. Free to place and remove at all three bureaus (Experian, Equifax, TransUnion). Keep accounts frozen by default; temporarily lift only when applying for legitimate credit. Children can also have credit frozen (child identity theft is common because parents don't monitor). This is the single most effective protection against financial identity theft.</li>
+        <li><strong>Use strong, unique passwords:</strong> Don't reuse passwords across sites. Use a password manager (1Password, Bitwarden, Dashlane) to generate and store complex passwords. Enable two-factor authentication (2FA) everywhere, especially on email, financial accounts, and password managers. Use an authenticator app (Google Authenticator, Authy) rather than SMS 2FA, which can be SIM-swapped.</li>
+        <li><strong>Monitor your accounts:</strong> Check bank and credit card statements weekly for unauthorized charges. Set up account alerts for transactions over a certain amount, new payees, or balance changes. Review your credit reports annually at AnnualCreditReport.com (free weekly reports through 2025). Consider credit monitoring services if you've been breached, but know they're reactive, not preventive.</li>
+        <li><strong>Secure your devices:</strong> Keep software updated (enable automatic updates). Use antivirus software on Windows (Windows Defender is fine; free options like Malwarebytes for supplemental scans). Be cautious with public Wi-Fi—use a VPN or avoid sensitive transactions. Don't click links or download attachments from unknown senders. Verify sender email addresses carefully—scammers use slight misspellings.</li>
+        <li><strong>Protect your mail and documents:</strong> Use a locked mailbox or PO Box. Shred documents with personal information before discarding (credit card offers, bank statements, medical records). Don't carry your Social Security card in your wallet. Keep important documents (birth certificates, passports, wills) in a fireproof safe or safe deposit box.</li>
+        <li><strong>Be skeptical:</strong> Develop a healthy skepticism toward unsolicited contact. The IRS doesn't call demanding immediate payment. Tech companies don't call about computer viruses. Your bank won't email asking for your password. When in doubt, hang up and call the organization directly using a known number. Trust but verify.</li>
+        <li><strong>Have a data breach response plan:</strong> If you're notified of a data breach: Change passwords immediately on the affected account and any other accounts using the same password. Enable 2FA if not already on. Freeze your credit if not already frozen. Monitor accounts closely for unauthorized activity. Consider credit monitoring for a year. File your taxes early (prevents tax refund fraud). Most breaches result in no direct financial loss if you respond promptly, but vigilance is required.</li>
+      </ul>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">If You Become a Victim: Recovery Steps</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        If you fall victim to fraud or identity theft, act quickly:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Immediate financial fraud:</strong> If you sent money to a scammer: Contact your bank or wire transfer service immediately—some transfers can be reversed if caught quickly. File a police report (needed for insurance and recovery efforts). Report to the FTC at ReportFraud.ftc.gov. If you gave credit card info, contact your card issuer to dispute charges and get a new card. Monitor accounts obsessively for follow-up fraud.</li>
+        <li><strong>Identity theft:</strong> If your identity is stolen: Place fraud alerts or credit freezes with all three bureaus immediately (freezes are stronger). File an identity theft report with the FTC at IdentityTheft.gov (creates a recovery plan and official report). File a police report. Contact affected creditors to dispute fraudulent accounts. Change passwords on all accounts. Review credit reports and dispute fraudulent accounts. Continue monitoring for years—identity theft often involves multiple attempts over time. Keep detailed records of all communications and steps taken.</li>
+        <li><strong>Account takeover:</strong> If someone gains access to your accounts: Change passwords immediately on the affected account and any others using the same password. Enable 2FA if not already on. Contact the company/financial institution to report unauthorized access. Dispute any unauthorized transactions. Check for changes to account settings (email address, phone number, security questions) and revert them. Review account activity for the past 90 days. Consider placing a fraud alert or credit freeze if financial accounts were involved.</li>
+        <li><strong>Tax identity theft:</strong> If someone files a tax return using your SSN: File your legitimate return as soon as possible (the IRS rejects duplicate SSNs, so first filed wins). Complete IRS Form 14039 (Identity Theft Affidavit). Contact the IRS Identity Protection Specialized Unit. Request an Identity Protection PIN (IP PIN) for future filings. File a police report. Monitor your credit and accounts closely. Tax identity theft often indicates broader identity theft—be extra vigilant.</li>
+        <li><strong>Medical identity theft:</strong> If someone uses your identity for medical services: Review your medical records and Explanation of Benefits (EOB) statements from your health insurer for services you didn't receive. Contact your healthcare providers to correct records. Notify your health insurer's fraud department. File a police report. Contact the three credit bureaus to place fraud alerts or freezes. Request copies of your medical records and review for errors. Medical identity theft can be particularly damaging because incorrect information in your medical records can affect your healthcare.</li>
+        <li><strong>Emotional recovery:</strong> Beyond the financial and logistical steps, acknowledge the emotional impact. Many fraud victims feel shame, embarrassment, anger, and violation. These feelings are normal. Talk to trusted friends or family—keeping it secret amplifies shame. Consider speaking with a therapist if you're struggling. Remember: scammers are professionals. Being victimized doesn't mean you're stupid or careless—it means you encountered a skilled predator. Focus on what you can control: taking recovery steps, learning from the experience, and helping others avoid the same trap.</li>
+      </ul>
+    </section>
+
+    <!-- Quick Reference -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Quick Reference</h2>
+      <dl class="space-y-4">
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Credit Freeze</dt>
+          <dd class="text-base text-foreground leading-relaxed">A security measure that prevents new creditors from accessing your credit report, making it nearly impossible for identity thieves to open new accounts in your name. Free to place and remove at all three bureaus. Most effective protection against financial identity theft. Keep frozen by default; temporarily lift only when applying for legitimate credit.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Fraud Alert</dt>
+          <dd class="text-base text-foreground leading-relaxed">A notice on your credit report warning creditors to take extra steps to verify your identity before opening accounts. Lasts one year (can be renewed). Weaker than a credit freeze but doesn't restrict access to your credit report. Free to place. Good temporary measure if you suspect identity theft but don't want the full restriction of a freeze.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Phishing</dt>
+          <dd class="text-base text-foreground leading-relaxed">Fraudulent attempts to obtain sensitive information by disguising as trustworthy entities via email, text, or phone. Often includes urgent threats, suspicious links, or requests for passwords. Legitimate organizations won't ask for sensitive info via email. When in doubt, contact the organization directly through known channels, not through the message received.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Identity Theft</dt>
+          <dd class="text-base text-foreground leading-relaxed">The fraudulent acquisition and use of someone's personal information, typically for financial gain. Types include financial (opening accounts, credit cards), tax (filing fraudulent returns), medical (using your identity for healthcare), and criminal (giving your identity when arrested). Recovery requires placing credit freezes, filing reports with FTC and police, disputing fraudulent accounts, and years of monitoring.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Two-Factor Authentication (2FA)</dt>
+          <dd class="text-base text-foreground leading-relaxed">A security method requiring two forms of verification to access accounts: something you know (password) and something you have (phone for text/app code, security key). Dramatically reduces account takeover risk. Enable on all financial accounts, email, and password managers. Use authenticator apps (Google Authenticator, Authy) rather than SMS when possible, as SMS can be SIM-swapped.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Password Manager</dt>
+          <dd class="text-base text-foreground leading-relaxed">Software that generates, stores, and autofills complex, unique passwords for all your accounts. Essential because: (1) you can't remember unique, complex passwords for dozens of accounts, (2) reusing passwords means one breach compromises all accounts, (3) password managers generate truly random passwords resistant to cracking. Examples: 1Password, Bitwarden, Dashlane. Master password must be strong and memorable—this is the one password you need to remember.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <div class="mt-12 pt-8 border-t border-border/50 flex items-center justify-between">
+      <a href="/topics" class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors">
+        ← All topics
+      </a>
+      {nextTopic && (
+        <a href={nextTopic.href} class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors group">
+          <span class="hidden sm:inline">Next:</span> {nextTopic.title}
+          <svg 
+            class="h-4 w-4 transition-transform group-hover:translate-x-0.5" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor" 
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+          </svg>
+        </a>
+      )}
+    </div>
+  </article>
+</Layout>

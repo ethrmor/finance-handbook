@@ -1,0 +1,171 @@
+---
+import Layout from "@/layouts/main.astro"
+import TaxBracketVisualizer from "@/components/TaxBracketVisualizer"
+import { getNextTopic } from "@/lib/topicNavigation"
+
+const seo = {
+  title: "Taxes Simplified | Financial Handbook",
+  description: "Demystify tax brackets, deductions, credits, and filing. Know what you owe, what you can save, and how to stay organized.",
+}
+
+const nextTopic = getNextTopic("/topics/taxes-simplified")
+---
+
+<Layout currentPath="/topics/taxes-simplified" seo={seo}>
+  <section class="mx-auto max-w-3xl px-6 py-12">
+    <a href="/" class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8">
+      ← All Topics
+    </a>
+
+    <h1 class="font-heading text-4xl font-semibold tracking-tight sm:text-5xl">
+      Taxes Simplified
+    </h1>
+    <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
+      W-4s, deductions, credits, and filing — taxes don't have to be intimidating. Here's what you actually need to know.
+    </p>
+
+    <!-- The Big Idea -->
+    <h2 class="font-heading text-2xl font-semibold mt-12 mb-4">The Big Idea</h2>
+    <p class="text-base text-foreground leading-relaxed">
+      The US tax system is a pay-as-you-go arrangement: you earn income, the government takes a cut, and once a year you settle up to see if you paid too much (refund) or too little (you owe more). Most of the complexity exists because the tax code offers dozens of ways to reduce your bill — if you know they exist. Understanding the basics means you keep more of your money and avoid costly surprises.
+    </p>
+
+    <!-- Why It Matters -->
+    <h2 class="font-heading text-2xl font-semibold mt-12 mb-4">Why It Matters</h2>
+    <p class="text-base text-foreground leading-relaxed">
+      Picture this: you get your first real job making $55,000/year. You fill out your W-4 without really understanding it. Each paycheck, about $900 disappears to federal taxes. At tax time, you discover you've been overpaying all year — you get a $2,400 refund. Sounds great, right? But that refund means you gave the government a $2,400 interest-free loan. You could have had an extra $200/month in your paycheck to invest or pay down debt. On the flip side, if you underpay, you might owe hundreds — plus penalties — in April. Neither outcome is ideal. Understanding how taxes work lets you calibrate your withholding, claim every deduction and credit you're entitled to, and keep more money in your pocket throughout the year.
+    </p>
+
+    <!-- The Breakdown -->
+    <h2 class="font-heading text-2xl font-semibold mt-12 mb-4">The Breakdown</h2>
+
+    <h3 class="font-heading text-lg font-medium mt-8 mb-2">How Tax Brackets Actually Work</h3>
+    <p class="text-base text-foreground leading-relaxed">
+      The biggest misconception about taxes is that earning more money can leave you with less. It can't — because the US uses a <strong>progressive, marginal</strong> tax system. Think of it like a series of buckets. The first bucket (up to $11,925 for single filers in 2025) is taxed at 10%. The second bucket ($11,926–$48,475) is taxed at 12%. The third ($48,476–$103,350) at 22%. And so on. Only the money in each bucket gets taxed at that rate. If you get a raise that pushes you from the 12% bracket into the 22% bracket, only the dollars above $48,475 are taxed at 22%. The rest stays at the lower rates.
+    </p>
+
+    <div class="mt-6">
+      <TaxBracketVisualizer client:load />
+    </div>
+
+    <h3 class="font-heading text-lg font-medium mt-8 mb-2">Deductions vs. Credits</h3>
+    <p class="text-base text-foreground leading-relaxed">
+      These are the two main ways to lower your tax bill, and they work differently:
+    </p>
+    <ul class="list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed mt-3">
+      <li><strong>Deductions</strong> reduce your taxable income. If you're in the 22% bracket, a $1,000 deduction saves you $220 in taxes. Think of it as shrinking the pie the government gets to take a slice of.</li>
+      <li><strong>Credits</strong> reduce your tax bill dollar-for-dollar. A $1,000 credit saves you $1,000 in taxes — regardless of your bracket. Some credits (called refundable credits) can even give you money back if your tax bill is already zero. Credits are always more valuable than deductions of the same amount.</li>
+    </ul>
+
+    <h3 class="font-heading text-lg font-medium mt-8 mb-2">Standard Deduction vs. Itemizing</h3>
+    <p class="text-base text-foreground leading-relaxed">
+      When you file taxes, you get to subtract either the <strong>standard deduction</strong> (a flat amount set by the government) or your <strong>itemized deductions</strong> (the actual total of your deductible expenses) — whichever is larger. For 2025, the standard deduction is <strong>$15,050 for single filers</strong> and <strong>$30,100 for married filing jointly</strong>. About 90% of taxpayers take the standard deduction because it's higher than what they could itemize. You'd only itemize if your deductible expenses (mortgage interest, state/local taxes up to $10,000, charitable donations, medical expenses above 7.5% of income) exceed the standard deduction.
+    </p>
+
+    <h3 class="font-heading text-lg font-medium mt-8 mb-2">Key Credits You Should Know</h3>
+    <ul class="list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed mt-3">
+      <li><strong>Earned Income Tax Credit (EITC):</strong> For low-to-moderate income workers. Can be worth up to $7,430 for a family with three or more children. It's refundable, meaning you can get it even if you owe no tax.</li>
+      <li><strong>Child Tax Credit:</strong> Up to $2,000 per qualifying child under 17. Up to $1,700 is refundable for 2025.</li>
+      <li><strong>American Opportunity Credit:</strong> Up to $2,500/year for the first four years of college. 40% is refundable.</li>
+      <li><strong>Saver's Credit:</strong> Up to $1,000 ($2,000 married filing jointly) for contributing to a retirement account. Income limits apply — it phases out at $38,250 for single filers in 2025.</li>
+    </ul>
+
+    <h3 class="font-heading text-lg font-medium mt-8 mb-2">Your W-4: The Dial That Controls Your Withholding</h3>
+    <p class="text-base text-foreground leading-relaxed">
+      When you start a job, you fill out a W-4 form telling your employer how much tax to withhold from each paycheck. Since 2020, the W-4 no longer uses "allowances" — instead, you enter dollar amounts for adjustments. The key insight: a big refund isn't a win. It means you overpaid all year. Aim for a small refund or a small amount owed (under $500 either direction). You can update your W-4 anytime through your HR department or payroll portal.
+    </p>
+
+    <h3 class="font-heading text-lg font-medium mt-8 mb-2">Filing Your Taxes</h3>
+    <p class="text-base text-foreground leading-relaxed">
+      Tax filing season runs January through April 15 (or the next business day). If your income is under $84,000, you can use <strong>IRS Free File</strong> — guided tax software at no cost. If your situation is simple (W-2 income, standard deduction), filing takes about 30 minutes. If you're self-employed, have investment income, or itemize deductions, it's more complex — but still manageable with tax software or a reasonably priced preparer. Always file on time, even if you can't pay. The penalty for late filing is 5% of unpaid taxes per month — ten times worse than the penalty for late payment (0.5%/month).
+    </p>
+
+    <!-- Common Mistakes -->
+    <h2 class="font-heading text-2xl font-semibold mt-12 mb-4">Common Mistakes</h2>
+    <ul class="list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+      <li><strong>Celebrating a huge refund.</strong> A $3,000 refund means you overpaid by $250/month all year. That's money you could have been investing or using to pay down debt. Adjust your W-4 to get closer to zero.</li>
+      <li><strong>Not claiming credits you qualify for.</strong> The EITC alone goes unclaimed by about 20% of eligible taxpayers — that's billions of dollars left on the table each year. Credits are free money; always check eligibility.</li>
+      <li><strong>Confusing deductions and credits.</strong> A $1,000 credit saves you $1,000. A $1,000 deduction might only save you $220. Always prioritize claiming credits first.</li>
+      <li><strong>Not filing because you can't pay.</strong> File anyway. The failure-to-file penalty (5%/month) is 10x the failure-to-pay penalty (0.5%/month). You can also request a payment plan from the IRS — they're surprisingly reasonable.</li>
+      <li><strong>Withholding too little as a freelancer.</strong> W-2 employees have taxes withheld automatically. If you're self-employed, you must pay estimated taxes quarterly. Skip them and you'll face penalties plus a massive bill in April.</li>
+      <li><strong>Ignoring state taxes.</strong> Most states have their own income tax with different brackets, deductions, and filing requirements. Don't forget to file your state return too.</li>
+    </ul>
+
+    <!-- Action Steps -->
+    <h2 class="font-heading text-2xl font-semibold mt-12 mb-4">Action Steps</h2>
+    <ol class="list-decimal pl-5 space-y-2 text-base text-foreground leading-relaxed">
+      <li><strong>Check your current W-4.</strong> Log into your payroll portal and review your withholding. If you got a refund over $1,000 last year or owed more than $500, adjust it. The IRS has a free withholding estimator at irs.gov/W4App.</li>
+      <li><strong>Gather your tax documents early.</strong> By late January, you should receive W-2s, 1099s, and other forms. Create a folder (physical or digital) and collect them as they arrive. Don't wait until April.</li>
+      <li><strong>Use IRS Free File or affordable tax software</strong> if your taxes are relatively simple. Free options include IRS Free File (income under $84K), Cash App Taxes (free for any income), and FreeTaxUSA (free federal, ~$15 state).</li>
+      <li><strong>Review last year's return for missed credits.</strong> Look at what you claimed and cross-reference with IRS credit eligibility. If you missed something, you can file an amended return (Form 1040-X) up to three years back.</li>
+      <li><strong>If you're self-employed or have side income,</strong> set aside 25–30% of that income for taxes and make quarterly estimated payments (due April 15, June 15, September 15, and January 15). Open a separate savings account just for tax money.</li>
+    </ol>
+
+    <!-- Quick Reference -->
+    <h2 class="font-heading text-2xl font-semibold mt-12 mb-4">Quick Reference</h2>
+    <div class="overflow-x-auto">
+      <table class="w-full text-base text-foreground leading-relaxed">
+        <thead>
+          <tr class="border-b border-border">
+            <th class="py-3 pr-4 text-left font-medium">Term</th>
+            <th class="py-3 pr-4 text-left font-medium">Definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-border/50">
+            <td class="py-3 pr-4 font-medium">W-2</td>
+            <td class="py-3 pr-4">Form your employer sends showing your wages and taxes withheld. You need it to file your return.</td>
+          </tr>
+          <tr class="border-b border-border/50">
+            <td class="py-3 pr-4 font-medium">1099</td>
+            <td class="py-3 pr-4">Forms reporting non-W-2 income: 1099-NEC (freelance), 1099-INT (interest), 1099-DIV (dividends), 1099-G (unemployment), etc.</td>
+          </tr>
+          <tr class="border-b border-border/50">
+            <td class="py-3 pr-4 font-medium">W-4</td>
+            <td class="py-3 pr-4">Form you fill out to tell your employer how much tax to withhold from each paycheck. Update it when your situation changes.</td>
+          </tr>
+          <tr class="border-b border-border/50">
+            <td class="py-3 pr-4 font-medium">Standard Deduction</td>
+            <td class="py-3 pr-4">A flat amount subtracted from your income before calculating tax. 2025: $15,050 (single), $30,100 (married filing jointly). Most taxpayers take this.</td>
+          </tr>
+          <tr class="border-b border-border/50">
+            <td class="py-3 pr-4 font-medium">Marginal Tax Rate</td>
+            <td class="py-3 pr-4">The tax rate on your last dollar of income. If you're in the "22% bracket," only income above $48,475 is taxed at 22% — not your entire income.</td>
+          </tr>
+          <tr class="border-b border-border/50">
+            <td class="py-3 pr-4 font-medium">Effective Tax Rate</td>
+            <td class="py-3 pr-4">Your total tax divided by your total income. Because of progressive brackets and deductions, this is always lower than your marginal rate.</td>
+          </tr>
+          <tr class="border-b border-border/50">
+            <td class="py-3 pr-4 font-medium">Tax Credit</td>
+            <td class="py-3 pr-4">A dollar-for-dollar reduction in your tax bill. Refundable credits can give you money back even if you owe no tax. Always more valuable than a deduction.</td>
+          </tr>
+          <tr>
+            <td class="py-3 pr-4 font-medium">Estimated Taxes</td>
+            <td class="py-3 pr-4">Quarterly tax payments required of self-employed/freelance workers who don't have withholding. Due April 15, June 15, September 15, and January 15.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-border/50 flex items-center justify-between">
+      <a href="/topics" class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors">
+        ← All topics
+      </a>
+      {nextTopic && (
+        <a href={nextTopic.href} class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors group">
+          <span class="hidden sm:inline">Next:</span> {nextTopic.title}
+          <svg 
+            class="h-4 w-4 transition-transform group-hover:translate-x-0.5" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor" 
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+          </svg>
+        </a>
+      )}
+    </div>
+  </section>
+</Layout>
