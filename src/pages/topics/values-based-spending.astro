@@ -1,0 +1,117 @@
+---
+import Layout from "@/layouts/main.astro"
+import { getNextTopic } from "@/lib/topicNavigation"
+
+const seo = {
+  title: "Values-Based Spending | Financial Handbook",
+  description: "Aligning your money with your priorities, the fulfillment budget, and designing a life you actually want.",
+}
+
+const nextTopic = getNextTopic("/topics/values-based-spending")
+---
+
+<Layout currentPath="/topics/values-based-spending" seo={seo}>
+  <article class="py-12 px-8 max-w-3xl">
+    <!-- Hero -->
+    <h1 class="font-heading text-4xl font-semibold tracking-tight sm:text-5xl">Values-Based Spending</h1>
+    <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
+      Aligning your money with your priorities, the fulfillment budget, and designing a life you actually want.
+    </p>
+
+    <!-- The Big Idea -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Big Idea</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        Traditional budgeting focuses on restriction—cutting spending, denying yourself, living within arbitrary limits. Values-based spending flips this: instead of asking "How little can I spend?" it asks "How can I spend in alignment with what matters most to me?" The goal is to design a spending plan that funds a life you actually want to live, not one that simply keeps you alive. This means identifying your core values, understanding what actually brings you fulfillment (hint: it's rarely more stuff), and ruthlessly cutting spending that doesn't serve your values while generously funding what does. The result isn't deprivation—it's intentionality. You spend less overall, but what you spend on brings genuine satisfaction.
+      </p>
+    </section>
+
+    <!-- Why It Matters -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Why It Matters</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        Consider this: studies consistently show that beyond meeting basic needs, more spending doesn't correlate with more happiness. The hedonic treadmill means you quickly adapt to new purchases—the new car feels amazing for three months, then becomes normal. Meanwhile, many people feel perpetually deprived despite decent incomes because they're spending on things that don't actually matter to them, while underfunding what does. Think of the person who spends $200/month on cable they barely watch, but won't spend $150/month on a gym membership that would improve their health and mood. Or someone who buys lunch out daily ($200+/month) but feels guilty about a $100 concert ticket that would create lasting memories. Values-based spending corrects these mismatches. It asks: What kind of life do you want? Who do you want to be? What experiences, relationships, and contributions matter most? Then it builds a financial plan to create that life. The result is usually lower spending (because you cut the waste) but higher satisfaction (because every dollar serves your values). It's not about living small—it's about living true.
+      </p>
+    </section>
+
+    <!-- The Breakdown -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Breakdown</h2>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Identifying Your Core Values</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Values-based spending starts with clarity about what actually matters to you. Not what should matter, not what matters to your parents or society—what truly matters to you:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>The values clarification exercise:</strong> Imagine you have $10,000 to spend in any way that would bring you the most fulfillment. Not what you should do, not what's responsible—what would genuinely make you happiest? Write down how you'd spend it. Now look at your list. What themes emerge? Travel? Time with family? Learning? Comfort? Security? Adventure? These themes point to your values. Common values include: family, health, freedom, security, learning, adventure, creativity, community, achievement, comfort, nature, spirituality, contribution.</li>
+        <li><strong>The regret minimization framework:</strong> Fast forward to age 80. Looking back on your life, what will you regret not doing? Not spending more time at the office, probably. Not buying more stuff, likely. Probably: not traveling more, not spending more time with loved ones, not pursuing passions, not taking care of your health. These regrets point to values you're currently underfunding. The goal is to live so that your 80-year-old self won't have these regrets.</li>
+        <li><strong>The peak experiences analysis:</strong> Think about the 3–5 best experiences of your life. What were they? What made them so meaningful? Common peak experiences involve: adventure and exploration, deep connection with others, mastery and achievement, contribution and service, creativity and expression, nature and beauty. The patterns in your peak experiences reveal what you value most. Now ask: when was the last time you spent money to create a similar experience? If it's been years, you're underfunding your values.</li>
+        <li><strong>The resentment indicator:</strong> Pay attention to resentment. When you feel resentful about spending money, it's often because you're spending on things that don't align with your values, or you're not spending on things that do. Example: resenting your expensive car payment while wishing you could afford a vacation. This signals that mobility/status (the car) is less important to you than experiences/travel, yet your spending says the opposite. Resentment is data—listen to it.</li>
+        <li><strong>Values are not judgments:</strong> Your values are yours. If you genuinely value comfort and prefer a nice home over travel, that's valid. If you value adventure and prefer backpacking hostels over a comfortable hotel, that's valid too. There's no "correct" set of values. The point is to know your own values and align your spending with them, not to adopt values that aren't truly yours. Don't let societal "shoulds" override your genuine values.</li>
+      </ul>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">The Fulfillment Budget: Aligning Spending with Values</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Once you know your values, you can build a budget that funds them intentionally:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>The values audit:</strong> Review your spending from the last 3 months. Categorize each expense by how much fulfillment it provides: High (strongly aligned with values), Medium (neutral—necessary but not fulfilling), Low (misaligned with values—regret or indifference). Be honest. That daily $5 coffee might be High if it's your cherished morning ritual with social connection, or Low if it's just a habit you barely notice. The gym membership you never use is Low. The concert tickets that created lasting memories are High. Calculate what percentage of your spending is in each category. Most people find 20–30% is High, 50–60% is Medium, and 20–30% is Low. The goal is to shift: increase High to 40–50%, reduce Low to under 10%, keep Medium efficient.</li>
+        <li><strong>Ruthlessly cut low-fulfillment spending:</strong> The Low category is your target. These are expenses you regret, don't remember, or don't value. Common culprits: unused subscriptions (gym, streaming services, apps), impulse purchases (clothes you don't wear, gadgets you don't use), convenience spending you don't truly need (daily takeout when you could batch cook), status purchases that don't make you happy (expensive car, designer clothes for validation). Cancel the subscriptions. Return or sell unused purchases. Change habits that lead to impulse spending (delete saved payment info, implement waiting periods). These cuts free up money for what actually matters to you.</li>
+        <li><strong>Generously fund high-fulfillment categories:</strong> Take the money freed from Low spending and redirect to High. If travel is a core value but you've been underfunding it, now you can. If generosity matters to you, increase charitable giving. If learning is important, invest in courses or books. If health is a priority, invest in quality food, gym membership, or preventive healthcare. The goal isn't to spend less overall—it's to spend differently, so that your money creates the life you want. You're not depriving yourself; you're choosing more intentionally.</li>
+        <li><strong>Optimize the middle:</strong> The Medium category—necessary spending that isn't particularly fulfilling—should be optimized for efficiency. Housing: right-size your home, consider house hacking, negotiate rent. Food: meal planning, buying in bulk, reducing waste. Transportation: reliable used car, proper maintenance, carpooling when possible. Insurance: shop rates annually, increase deductibles if you have savings. Utilities: energy efficiency, conscious usage. These aren't exciting, but optimizing them frees up money for High categories without sacrificing quality of life. Aim for efficient, not miserly.</li>
+        <li><strong>The "guilt-free" spending account:</strong> To make values-based spending sustainable, create a separate account (or cash envelope) for discretionary spending that aligns with your values. Each month, fund it with your "High fulfillment" budget. Spend from this account without guilt—it's allocated for joy. When it's empty, you wait until next month. This prevents overspending while preserving the pleasure of intentional spending. It also creates a physical manifestation of your values budget—when you see it growing, you're reminded of your priorities.</li>
+      </ul>
+    </section>
+
+    <!-- Quick Reference -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Quick Reference</h2>
+      <dl class="space-y-4">
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Values-Based Spending</dt>
+          <dd class="text-base text-foreground leading-relaxed">An approach to budgeting that prioritizes spending on what genuinely matters to you while ruthlessly cutting spending that doesn't align with your values. Goal is to maximize fulfillment per dollar, not just minimize spending. Involves identifying core values, auditing current spending for alignment, and redirecting money from low-fulfillment to high-fulfillment categories.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Fulfillment Budget</dt>
+          <dd class="text-base text-foreground leading-relaxed">A budget structure that categorizes spending by how much fulfillment it provides: High (strongly aligned with values), Medium (necessary but neutral), and Low (misaligned, regret, or indifference). Goal is to shift spending from Low to High categories, optimizing fulfillment while potentially reducing total spending.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Regret Minimization Framework</dt>
+          <dd class="text-base text-foreground leading-relaxed">A decision-making approach imagining yourself at age 80 looking back on your life. What will you regret not doing? This perspective clarifies values and priorities by removing short-term pressure and focusing on what truly matters long-term. Often reveals that experiences, relationships, and personal growth matter more than possessions or status.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Hedonic Treadmill</dt>
+          <dd class="text-base text-foreground leading-relaxed">The tendency to quickly return to a baseline level of happiness despite changes in circumstances or increases in spending. New purchases provide temporary happiness boost, then become the new normal, requiring ever more spending for the same satisfaction. Explains why lifestyle inflation doesn't increase long-term happiness and why cutting spending on non-essentials often doesn't reduce happiness.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Guilt-Free Spending</dt>
+          <dd class="text-base text-foreground leading-relaxed">Creating a designated account or envelope for discretionary spending that aligns with your values, allowing you to spend that money without guilt or second-guessing. When the allocated amount is spent, you wait until next month. This system provides permission to enjoy spending on what matters while maintaining overall budget discipline.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Money Resentment</dt>
+          <dd class="text-base text-foreground leading-relaxed">Negative emotion arising when spending on things that don't align with your values, or when unable to spend on things that do. Signals a mismatch between spending and values. Example: resenting car payment while wishing you could afford travel. Indicates that mobility/status (car) is less important than experiences (travel), yet spending prioritizes the opposite. Resentment is data—use it to identify misalignment.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <div class="mt-12 pt-8 border-t border-border/50 flex items-center justify-between">
+      <a href="/topics" class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors">
+        ← All topics
+      </a>
+      {nextTopic && (
+        <a href={nextTopic.href} class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors group">
+          <span class="hidden sm:inline">Next:</span> {nextTopic.title}
+          <svg 
+            class="h-4 w-4 transition-transform group-hover:translate-x-0.5" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor" 
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+          </svg>
+        </a>
+      )}
+    </div>
+  </article>
+</Layout>

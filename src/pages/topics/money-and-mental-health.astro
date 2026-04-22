@@ -1,0 +1,154 @@
+---
+import Layout from "@/layouts/main.astro"
+import { getNextTopic } from "@/lib/topicNavigation"
+
+const seo = {
+  title: "Money & Mental Health | Financial Handbook",
+  description: "Financial anxiety, money shame, compulsive spending, and resources for financial therapy.",
+}
+
+const nextTopic = getNextTopic("/topics/money-and-mental-health")
+---
+
+<Layout currentPath="/topics/money-and-mental-health" seo={seo}>
+  <article class="py-12 px-8 max-w-3xl">
+    <!-- Hero -->
+    <h1 class="font-heading text-4xl font-semibold tracking-tight sm:text-5xl">Money & Mental Health</h1>
+    <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
+      Financial anxiety, money shame, compulsive spending, and resources for financial therapy.
+    </p>
+
+    <!-- The Big Idea -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Big Idea</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        Money and mental health are deeply intertwined. Financial stress is one of the leading causes of anxiety and depression, while mental health challenges often lead to problematic financial behaviors—compulsive spending, financial avoidance, or inability to maintain employment. Money shame keeps people trapped in cycles of avoidance and secrecy, preventing them from seeking help. Understanding the psychology of money, recognizing when financial behaviors are symptoms of deeper issues, and knowing when to seek professional help are essential skills for both financial and mental well-being. The goal isn't just to budget better—it's to develop a healthy relationship with money that supports your overall life.
+      </p>
+    </section>
+
+    <!-- Why It Matters -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Why It Matters</h2>
+      <p class="text-base text-foreground leading-relaxed">
+        Consider this: studies consistently show that financial stress is a top source of anxiety for Americans, often ranking above health, relationships, or work. Financial problems are cited as a major factor in divorces. Money shame is so powerful that people often hide their financial struggles from partners, family, and even themselves, leading to avoidance behaviors that make problems worse. Conversely, mental health conditions—depression, anxiety, bipolar disorder, ADHD—often manifest in financial behaviors: compulsive spending during manic episodes, financial paralysis during depression, impulsive decisions with ADHD. The relationship is bidirectional and complex. Yet most financial advice ignores psychology, and most mental health treatment ignores finances. Understanding this intersection is essential because you can't solve money problems with willpower alone, and you can't achieve mental wellness while ignoring financial stress. They must be addressed together.
+      </p>
+    </section>
+
+    <!-- The Breakdown -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">The Breakdown</h2>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Understanding Financial Anxiety</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Financial anxiety is a chronic worry about money that interferes with daily functioning. It's different from normal concern about finances—it's persistent, disproportionate, and debilitating:
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Signs of financial anxiety:</strong> Obsessively checking account balances (or avoiding looking at them entirely), difficulty sleeping due to money worries, physical symptoms (headaches, stomach issues) when thinking about finances, avoiding mail or calls from creditors, relationship conflicts about money, inability to make financial decisions due to fear, hoarding money or extreme frugality despite adequate resources, compulsive reassurance-seeking about financial decisions.</li>
+        <li><strong>Sources of financial anxiety:</strong> Income instability (gig work, commission-based pay, frequent job changes), high debt burden, lack of emergency savings, childhood financial trauma (growing up with financial instability), financial shocks (job loss, medical emergency, divorce), lack of financial literacy (not understanding how to manage money), comparison to others (social media, friends), economic uncertainty (recession fears, inflation, market volatility).</li>
+        <li><strong>The cycle of financial anxiety:</strong> Financial anxiety often creates a self-reinforcing cycle. Anxiety leads to avoidance (not checking accounts, not opening bills, not dealing with finances). Avoidance allows problems to grow (missed payments, growing debt, ignored opportunities). Growing problems increase anxiety. Breaking this cycle requires facing finances directly, which anxiety makes difficult. Professional help (financial therapy, CBT for anxiety) can be essential.</li>
+        <li><strong>Coping strategies:</strong> Financial anxiety responds to both practical and psychological interventions. Practical: create a realistic budget, build an emergency fund (even small), automate bill payments, set up account alerts, face finances regularly (weekly money dates). Psychological: limit account checking to scheduled times (not obsessively), practice mindfulness or relaxation techniques, challenge catastrophic thoughts ("What if I lose my job?" → "I have an emergency fund and can find another job"), seek therapy if anxiety is debilitating. Address both the practical finances and the anxiety response—they fuel each other.</li>
+      </ul>
+
+      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Money Shame and Financial Avoidance</h3>
+      <p class="text-base text-foreground leading-relaxed">
+        Money shame is the feeling that you are fundamentally flawed because of your financial situation. It's different from guilt ("I made a mistake")—shame is about identity ("I am a mistake"):
+      </p>
+      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Sources of money shame:</strong> Growing up with financial insecurity and internalizing the message that you're "less than" because your family struggled. Making expensive financial mistakes (bankruptcy, foreclosure, significant debt) and believing they define you. Comparing yourself to others who seem more successful. Cultural or family messages about money and worth ("rich people are better," "poor people are lazy"). Financial abuse or exploitation that made you feel powerless. Perfectionism and unrealistic expectations about financial "success."</li>
+        <li><strong>How shame manifests:</strong> Financial avoidance—not opening bills, not checking accounts, not dealing with money at all. Financial secrecy—hiding debt from partners, lying about spending, keeping financial struggles secret even from close friends. Perfectionism or procrastination—waiting until you "know enough" to start investing, delaying action until you can do it perfectly. Self-sabotage—making poor financial decisions that confirm your shame narrative ("I'm bad with money, so why try?"). Isolation—withdrawing from support because you feel unworthy or embarrassed.</li>
+        <li><strong>Breaking the shame cycle:</strong> The antidote to shame is vulnerability and connection—speaking your truth to safe people. Start by acknowledging your shame to yourself: "I feel shame about my debt." Name it to tame it. Then share with a trusted person: a partner, friend, therapist, or financial counselor. Their acceptance helps you accept yourself. Recognize that financial struggles don't define your worth—millions of good people struggle with money. It's a practical problem, not a moral failing. Separate your identity from your financial situation. Take small, visible actions—checking your account balance, opening a bill, making a budget. Each action builds competence and confidence. Shame thrives in darkness; financial transparency is the light that destroys it.</li>
+        <li><strong>Financial therapy:</strong> If money shame is severe or deeply rooted, consider working with a financial therapist—professionals trained in both finance and mental health who can help you understand the psychological roots of your money behaviors and develop healthier relationships with money. The Financial Therapy Association (financialtherapyassociation.org) can help you find a practitioner. Many offer virtual sessions. Insurance may cover therapy if it's addressing diagnosed mental health conditions (anxiety, depression).</li>
+      </ul>
+    </section>
+
+    <!-- Common Mistakes -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Common Mistakes</h2>
+      <ul class="list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
+        <li><strong>Thinking estate planning is only for rich people.</strong> Believing you don't have an "estate" or that wills are only for wealthy families. Everyone has assets worth protecting, and parents absolutely need guardianship plans. Estate planning is for anyone who wants control over what happens to their assets and family.</li>
+        <li><strong>Not having a will.</strong> Dying intestate (without a will) means state law determines who gets your assets and who raises your children. These decisions may not match your wishes. Creating a simple will is affordable and ensures your intentions are followed.</li>
+        <li><strong>Not naming or updating beneficiaries.</strong> Failing to name beneficiaries on life insurance, retirement accounts, and bank accounts. Or keeping outdated beneficiaries (ex-spouse, deceased parent) after life changes. Beneficiary designations override wills—keep them current.</li>
+        <li><strong>Not planning for incapacity.</strong> Having a will but no durable power of attorney or healthcare directive. If you become incapacitated, no one can legally manage your finances or make medical decisions without court intervention. These documents are essential for everyone, not just the elderly.</li>
+        <li><strong>DIY estate planning without understanding.</strong> Using online templates without understanding what you're creating. Estate laws vary by state; generic templates may not comply. Complex situations (blended families, special needs children, business ownership, significant assets) need professional guidance. The cost of a lawyer is less than the cost of a botched estate plan.</li>
+        <li><strong>Not communicating your wishes.</strong> Creating documents but not telling anyone where they are or what they contain. Your family needs to know: where your will is stored, who your executor is, your general wishes, and where important documents and accounts are located. Have these conversations while you're healthy.</li>
+        <li><strong>Ignoring estate planning because it's uncomfortable.</strong> Avoiding the topic because thinking about death is unpleasant. This avoidance hurts the people you leave behind, who must guess your wishes and clean up the mess. Estate planning is an act of love for your family. It only takes a few hours and provides peace of mind for years.</li>
+      </ul>
+    </section>
+
+    <!-- Action Steps -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Action Steps</h2>
+      <div class="bg-muted/50 rounded-lg p-6">
+        <ol class="list-decimal pl-5 space-y-3 text-base text-foreground leading-relaxed">
+          <li><strong>Create a will if you don't have one.</strong> If you have children, assets, or any preference about who receives your belongings, you need a will. Options: online services (LegalZoom, Rocket Lawyer, Trust & Will) for simple situations ($100–$300), or estate planning attorney for complex situations ($500–$2,000+). Name an executor, beneficiaries, and if applicable, guardians for minor children. Sign and witness according to your state laws. Store the original safely and tell your executor where it is.</li>
+          <li><strong>Review and update all beneficiary designations.</strong> List every account that has beneficiaries: life insurance, 401(k), IRA, bank accounts (POD), investment accounts (TOD). Check who is currently named. Is it up to date? Ex-spouse still listed? Deceased parent as beneficiary? Update forms with the financial institution. Name primary and contingent beneficiaries. Use specific names, not vague descriptions. Keep copies of the designation forms.</li>
+          <li><strong>Create durable power of attorney documents.</strong> Name someone you trust to handle your finances if you become incapacitated. Specify powers (broad or limited). Make it durable (remains in effect if incapacitated). Name an alternate agent. Have it properly witnessed/notarized according to state law. Give copies to your agent and keep the original accessible. Discuss your wishes with your agent so they know how you'd want things handled.</li>
+          <li><strong>Create healthcare directive documents.</strong> Healthcare power of attorney: name someone to make medical decisions if you can't. Living will: specify your wishes for end-of-life care (life support, feeding tubes, etc.). HIPAA authorization: allow your healthcare agent to access your medical information. Discuss your wishes in detail with your agent. Give copies to your doctor, hospital, and family. Keep a card in your wallet indicating you have these documents and where to find them.</li>
+          <li><strong>Organize your important documents and information.</strong> Create a system: physical documents in a fireproof safe or safe deposit box, digital copies in encrypted cloud storage or password manager. Include: will, power of attorney documents, healthcare directives, birth certificate, marriage certificate, Social Security cards, passports, property deeds, vehicle titles, insurance policies, account statements, tax returns, list of all accounts with login information, contact list (attorney, financial advisor, insurance agents). Tell your executor and trusted family members where everything is and how to access it.</li>
+          <li><strong>Communicate your wishes to your family.</strong> Estate planning documents are important, but so are conversations. Tell your family: where your will and other documents are located, who your executor and agents are, your general wishes for asset distribution, your preferences for end-of-life care, any specific bequests or intentions. These conversations can be uncomfortable, but they prevent confusion and conflict later. Have them while you're healthy and of sound mind.</li>
+          <li><strong>Review and update your estate plan regularly.</strong> Set a calendar reminder to review your estate plan annually or after any major life event: marriage, divorce, birth of children, death of a beneficiary or agent, significant change in assets, moving to a different state (laws vary), major changes in your wishes. Update beneficiary designations, will, and other documents as needed. Estate planning is not "set it and forget it"—it evolves with your life.</li>
+          <li><strong>Consult professionals when needed.</strong> While simple estates can be handled with online tools, complex situations need professional guidance: blended families, special needs children, business ownership, significant assets ($1M+), property in multiple states, potential estate tax liability, complex family dynamics. An estate planning attorney can ensure your documents are properly drafted and legally valid. A financial planner can help with asset distribution strategies. The cost of professional help is minor compared to the cost of a botched estate plan.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Quick Reference -->
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-semibold mb-4">Quick Reference</h2>
+      <dl class="space-y-4">
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Will (Last Will and Testament)</dt>
+          <dd class="text-base text-foreground leading-relaxed">Legal document specifying how your assets will be distributed after death, who will manage the distribution (executor), and who will care for minor children (guardian). Takes effect only at death. Must go through probate. Can be changed anytime before death. Requirements: written, signed, witnessed.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Trust (Revocable Living Trust)</dt>
+          <dd class="text-base text-foreground leading-relaxed">Legal entity that holds assets for your benefit during life and distributes them after death. You transfer assets into the trust and manage them as trustee. Assets in trust avoid probate entirely. Can manage assets if you become incapacitated. Can set conditions for distributions. More complex and expensive to set up than a will. Best for larger estates, complex situations, or desire to avoid probate.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Durable Power of Attorney</dt>
+          <dd class="text-base text-foreground leading-relaxed">Legal document giving someone authority to handle your financial affairs if you become incapacitated. "Durable" means it remains in effect if you become incapacitated. Can be immediate or springing. Critical for paying bills, managing investments, and accessing accounts if you can't. Without it, family may need court conservatorship.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Healthcare Power of Attorney</dt>
+          <dd class="text-base text-foreground leading-relaxed">Legal document naming someone to make medical decisions for you if you can't communicate. Different from living will, which specifies what you want, not who decides. Choose someone who understands your values and can advocate under pressure. Name alternates. Essential for ensuring your healthcare wishes are followed when you can't advocate for yourself.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Living Will (Advance Directive)</dt>
+          <dd class="text-base text-foreground leading-relaxed">Document specifying your wishes for end-of-life medical care. Addresses life support, resuscitation, pain management, and organ donation. Takes effect only when you're terminally ill or permanently unconscious and can't communicate. Legally binding in most states. Reduces burden on family—they don't have to guess your wishes during emotional times. Review periodically; your views may change.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Beneficiary Designation</dt>
+          <dd class="text-base text-foreground leading-relaxed">Naming who receives specific assets (life insurance, retirement accounts, bank accounts) upon your death. Takes precedence over your will. Assets with valid beneficiary designations skip probate entirely. Common mistakes: not naming beneficiaries, not updating after life changes, naming minor children directly. Review annually and after major life events.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Probate</dt>
+          <dd class="text-base text-foreground leading-relaxed">The court-supervised legal process of settling an estate after death. Validates the will, inventories assets, pays debts and taxes, and distributes property. Takes 6 months to 2+ years. Costs 3–7% of estate value. Assets are frozen during probate. Public process—will and asset inventory become public record. Can be avoided with proper beneficiary designations and trusts.</dd>
+        </div>
+        <div>
+          <dt class="font-heading text-sm font-medium text-primary">Executor</dt>
+          <dd class="text-base text-foreground leading-relaxed">The person named in your will who manages your estate after death. Responsibilities: gather and inventory assets, pay debts and taxes, distribute property to beneficiaries, file final tax returns. Choose someone responsible, organized, and trustworthy. Name an alternate. Can be a family member, friend, or professional. Discuss with them before naming them—they can decline.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <div class="mt-12 pt-8 border-t border-border/50 flex items-center justify-between">
+      <a href="/topics" class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors">
+        ← All topics
+      </a>
+      {nextTopic && (
+        <a href={nextTopic.href} class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors group">
+          <span class="hidden sm:inline">Next:</span> {nextTopic.title}
+          <svg 
+            class="h-4 w-4 transition-transform group-hover:translate-x-0.5" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor" 
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+          </svg>
+        </a>
+      )}
+    </div>
+  </article>
+</Layout>
