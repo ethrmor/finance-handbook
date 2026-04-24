@@ -1,6 +1,9 @@
 ---
 import Layout from "@/layouts/main.astro"
 import { getNextTopic } from "@/lib/topicNavigation"
+import RentVsBuyCalculator from "@/components/RentVsBuyCalculator"
+import MortgageAffordabilityCalculator from "@/components/MortgageAffordabilityCalculator"
+import HomeEquityVisualizer from "@/components/HomeEquityVisualizer"
 
 const seo = {
   title: "Housing Decisions | Financial Handbook",
@@ -50,6 +53,10 @@ const nextTopic = getNextTopic("/topics/housing-decisions")
         <li><strong>Maintenance and hidden costs:</strong> When you rent, a broken water heater is the landlord's $1,000 problem. When you own, it's yours. Budget 1–3% of home value annually for maintenance and repairs. On a $400,000 home, that's $4,000–$12,000/year. Many first-time buyers dramatically underestimate these costs.</li>
       </ul>
 
+      <div class="mt-6">
+        <RentVsBuyCalculator client:load />
+      </div>
+
       <h3 class="font-heading text-lg font-medium mt-8 mb-3">Mortgages: Understanding the Real Cost</h3>
       <p class="text-base text-foreground leading-relaxed">
         A mortgage is a loan secured by your home. Understanding the full cost helps you make informed decisions:
@@ -62,6 +69,14 @@ const nextTopic = getNextTopic("/topics/housing-decisions")
         <li><strong>Closing costs:</strong> Budget 2–5% of home price for closing costs—loan origination fees, appraisal, title insurance, attorney fees, prepaid interest, and escrow reserves. On a $400,000 home, that's $8,000–$20,000 due at closing. Some costs are negotiable; shop lenders. You can sometimes roll closing costs into the loan, but that increases your balance and interest costs.</li>
         <li><strong>Points:</strong> Paying "points" means prepaying interest to lower your rate. One point = 1% of loan amount. Whether points make sense depends on how long you'll keep the loan. Calculate the break-even point: if points cost $4,000 and save $50/month, you break even in 80 months (6.7 years). If you'll stay in the home longer, points win. If you might refinance or move sooner, skip them.</li>
       </ul>
+
+      <div class="mt-6">
+        <MortgageAffordabilityCalculator client:load />
+      </div>
+
+      <div class="mt-6">
+        <HomeEquityVisualizer client:load />
+      </div>
     </section>
 
     <!-- Common Mistakes -->
