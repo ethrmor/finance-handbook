@@ -1,6 +1,9 @@
 ---
 import Layout from "@/layouts/main.astro"
 import { getNextTopic } from "@/lib/topicNavigation"
+import FiftyThirtyTwentyCalculator from "@/components/FiftyThirtyTwentyCalculator"
+import EmergencyFundCalculator from "@/components/EmergencyFundCalculator"
+import SavingsGoalTracker from "@/components/SavingsGoalTracker"
 
 const seo = {
   title: "Budgeting & Saving | Financial Handbook",
@@ -54,6 +57,10 @@ const nextTopic = getNextTopic("/topics/budgeting-and-saving")
         These percentages are guidelines, not commandments. If you live in a high-cost city, your needs might eat up 60%. That's fine—just adjust the other categories accordingly. The point is to have <em>intentional</em> proportions, not to hit an exact number.
       </p>
 
+      <div class="mt-6">
+        <FiftyThirtyTwentyCalculator client:load />
+      </div>
+
       <h3 class="font-heading text-lg font-medium mt-8 mb-3">Zero-Based Budgeting</h3>
       <p class="text-base text-foreground leading-relaxed">
         An alternative approach where every single dollar is assigned a job. Income minus all expenses, savings, and debt payments equals zero. Not a penny floats unassigned. This method is more hands-on but gives you maximum control—like giving every employee in a company a specific role so nobody sits idle.
@@ -68,6 +75,10 @@ const nextTopic = getNextTopic("/topics/budgeting-and-saving")
       <p class="text-base text-foreground leading-relaxed">
         Before you get fancy with investing or aggressive debt payoff, save at least one month of expenses as a buffer. This prevents a single bad week from derailing your whole plan. Think of it as the guardrails on your financial highway—they're not the point of the drive, but they keep you from going off a cliff.
       </p>
+
+      <div class="mt-6">
+        <EmergencyFundCalculator client:load />
+      </div>
     </section>
 
     <!-- Common Mistakes -->
@@ -93,6 +104,10 @@ const nextTopic = getNextTopic("/topics/budgeting-and-saving")
           <li><strong>Set up automatic savings.</strong> Open a separate savings account (ideally at a different bank than your checking) and schedule an automatic transfer for the day after payday. Start with whatever you can—even $25 creates the habit.</li>
           <li><strong>Choose a system and commit for 90 days.</strong> Pick the 50/30/20 rule, zero-based budgeting, or any framework that appeals to you. Use it for three full months before judging whether it works. The first month is always messy.</li>
         </ol>
+      </div>
+
+      <div class="mt-6">
+        <SavingsGoalTracker client:load />
       </div>
     </section>
 
