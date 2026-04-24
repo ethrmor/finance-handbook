@@ -1,6 +1,9 @@
 ---
 import Layout from "@/layouts/main.astro"
 import { getNextTopic } from "@/lib/topicNavigation"
+import DebtPayoffCalculator from "@/components/DebtPayoffCalculator"
+import InterestCostVisualizer from "@/components/InterestCostVisualizer"
+import PayoffTimeline from "@/components/PayoffTimeline"
 
 const seo = {
   title: "Debt Management | Financial Handbook",
@@ -61,6 +64,14 @@ const nextTopic = getNextTopic("/topics/debt-management")
         Pay the <strong>minimum on every debt</strong>, then put all extra money toward the debt with the <strong>highest interest rate</strong>. Once that's gone, redirect the full amount to the next-highest rate. This is the mathematically optimal strategy—you pay the least total interest over time. It's like putting out the biggest fire first.
       </p>
 
+      <div class="mt-6">
+        <DebtPayoffCalculator client:load />
+      </div>
+
+      <div class="mt-6">
+        <PayoffTimeline client:load />
+      </div>
+
       <h3 class="font-heading text-lg font-medium mt-8 mb-3">The Debt Snowball Method</h3>
       <p class="text-base text-foreground leading-relaxed">
         Pay the minimum on every debt, then put all extra money toward the debt with the <strong>smallest balance</strong>, regardless of interest rate. Once that's eliminated, move to the next smallest. This isn't mathematically optimal, but it's psychologically powerful—quick wins build momentum and motivation. It's like cleaning a messy room by tackling the easiest piles first; the visible progress keeps you going.
@@ -76,6 +87,10 @@ const nextTopic = getNextTopic("/topics/debt-management")
       <p class="text-base text-foreground leading-relaxed">
         Understanding how interest compounds is essential. On a credit card with 24% APR, the daily rate is about 0.0658%. That gets applied to your average daily balance every single day. If you carry a $5,000 balance for a month, you accrue roughly $100 in interest—before you've bought anything new. That's why making only minimum payments feels like running on a treadmill: you're working hard but going nowhere.
       </p>
+
+      <div class="mt-6">
+        <InterestCostVisualizer client:load />
+      </div>
 
       <h3 class="font-heading text-lg font-medium mt-8 mb-3">When to Consider Consolidation</h3>
       <p class="text-base text-foreground leading-relaxed">
