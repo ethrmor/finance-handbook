@@ -1,6 +1,9 @@
 ---
 import Layout from "@/layouts/main.astro"
 import { getNextTopic } from "@/lib/topicNavigation"
+import RothVsTraditionalCalculator from "@/components/RothVsTraditionalCalculator"
+import NestEggCalculator from "@/components/NestEggCalculator"
+import FourPercentRuleVisualizer from "@/components/FourPercentRuleVisualizer"
 
 const seo = {
   title: "Retirement Planning | Financial Handbook",
@@ -52,6 +55,10 @@ const nextTopic = getNextTopic("/topics/retirement-planning")
         <strong>Which should you choose?</strong> Priority order: (1) 401(k) up to the match—free money first. (2) Max out Roth IRA if eligible—tax flexibility. (3) Max out 401(k) to the $23,500 limit. (4) Taxable brokerage account for additional savings. The traditional vs. Roth decision depends on your current tax bracket vs. expected future bracket—when in doubt, diversify with both.
       </p>
 
+      <div class="mt-6">
+        <RothVsTraditionalCalculator client:load />
+      </div>
+
       <h3 class="font-heading text-lg font-medium mt-8 mb-3">The 4% Rule: How Much You Can Withdraw</h3>
       <p class="text-base text-foreground leading-relaxed">
         The 4% rule is a guideline for sustainable retirement withdrawals. Based on historical market data, withdrawing 4% of your portfolio in year one of retirement, then adjusting for inflation each year, gives you a high probability of not running out of money over a 30-year retirement.
@@ -62,6 +69,14 @@ const nextTopic = getNextTopic("/topics/retirement-planning")
       <p class="mt-4 text-base text-foreground leading-relaxed">
         <strong>Important caveats:</strong> The 4% rule assumes a 30-year retirement, a balanced portfolio (50–60% stocks), and that you stick to the plan regardless of market conditions. Early retirees (30–40 year retirements) should use a lower rate (3–3.5%). Sequence of returns risk—the danger of poor market returns in your first years of retirement—can derail the plan. Flexibility helps: being able to reduce spending 10–20% in bad years makes the 4% rule much safer.
       </p>
+
+      <div class="mt-6">
+        <NestEggCalculator client:load />
+      </div>
+
+      <div class="mt-6">
+        <FourPercentRuleVisualizer client:load />
+      </div>
 
       <h3 class="font-heading text-lg font-medium mt-8 mb-3">Social Security: What to Expect</h3>
       <p class="text-base text-foreground leading-relaxed">
