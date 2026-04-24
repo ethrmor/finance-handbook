@@ -1,6 +1,9 @@
 ---
 import Layout from "@/layouts/main.astro"
 import { getNextTopic } from "@/lib/topicNavigation"
+import CompoundInterestCalculator from "@/components/CompoundInterestCalculator"
+import DCASimulator from "@/components/DCASimulator"
+import ExpenseRatioCalculator from "@/components/ExpenseRatioCalculator"
 
 const seo = {
   title: "Investing 101 | Financial Handbook",
@@ -31,6 +34,10 @@ const nextTopic = getNextTopic("/topics/investing-101")
       Meet two people, both 25. Alex invests $300/month starting now. Jordan waits until 35 to invest $300/month. Both earn the stock market's historical average of ~10% per year. At age 65, Alex has about $1.1 million. Jordan has about $570,000. Alex invested $36,000 more out of pocket (10 extra years × $300/month), but ends up with over $500,000 more. Those first 10 years of compounding were worth more than the last 30. Time is the single most powerful force in investing — and it's the one thing you can't get back once it's gone.
     </p>
 
+    <div class="mt-6">
+      <CompoundInterestCalculator client:load />
+    </div>
+
     <!-- The Breakdown -->
     <h2 class="font-heading text-2xl font-semibold mt-12 mb-4">The Breakdown</h2>
 
@@ -53,6 +60,10 @@ const nextTopic = getNextTopic("/topics/investing-101")
       <li><strong>Low cost is everything:</strong> A fund charging 0.03% (like many Vanguard and Fidelity index funds) vs. one charging 1.0% means $970 more in your pocket per $100,000 invested, every single year.</li>
       <li>Think of an index fund as buying the entire orchard instead of trying to guess which single tree will produce the most fruit.</li>
     </ul>
+
+    <div class="mt-6">
+      <DCASimulator client:load />
+    </div>
 
     <h3 class="font-heading text-lg font-medium mt-8 mb-2">Retirement Accounts</h3>
     <p class="text-base text-foreground leading-relaxed">
@@ -85,6 +96,10 @@ const nextTopic = getNextTopic("/topics/investing-101")
       <li><strong>Selling during downturns.</strong> The S&P 500 has suffered double-digit drops in 15 of the last 50 years. It has also recovered every single time. Selling in a panic locks in losses permanently.</li>
       <li><strong>Not taking the employer 401(k) match.</strong> A 50% match on 6% of a $60,000 salary is $1,800/year of free money. Over 30 years at 8% growth, that's over $200,000 you walked away from.</li>
     </ul>
+
+    <div class="mt-6">
+      <ExpenseRatioCalculator client:load />
+    </div>
 
     <!-- Action Steps -->
     <h2 class="font-heading text-2xl font-semibold mt-12 mb-4">Action Steps</h2>
