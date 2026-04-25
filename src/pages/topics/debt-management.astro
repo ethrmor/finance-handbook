@@ -3,8 +3,6 @@ import Layout from "@/layouts/main.astro"
 import { getNextTopic } from "@/lib/topicNavigation"
 import DebtPayoffCalculator from "@/components/DebtPayoffCalculator"
 import InterestCostVisualizer from "@/components/InterestCostVisualizer"
-import PayoffTimeline from "@/components/PayoffTimeline"
-
 const seo = {
   title: "Debt Management | Financial Handbook",
   description: "How debt works, which balances need attention first, and how to pay them down without panic.",
@@ -66,10 +64,6 @@ const nextTopic = getNextTopic("/topics/debt-management")
 
       <div class="mt-6">
         <DebtPayoffCalculator client:load />
-      </div>
-
-      <div class="mt-6">
-        <PayoffTimeline client:load />
       </div>
 
       <h3 class="font-heading text-lg font-medium mt-8 mb-3">The Debt Snowball Method</h3>
