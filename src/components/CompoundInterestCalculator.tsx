@@ -1,11 +1,28 @@
 import { useState, useMemo } from "react";
-import { 
-  CalculatorContainer, 
-  CalculatorHeader, 
-  StatCard, 
-  StatsGrid, 
-  InfoBox 
-} from "@/components/ui/calculator-layouts";
+import {
+  AreaChart,
+  Area,
+  PieChart,
+  Pie,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+} from "recharts";
+import {
+  CalculatorField,
+  StatCard,
+  StatsGrid,
+  InfoBox,
+  CalculatorShell,
+} from "@/components/ui/calculator-shared";
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+  ChartLegend,
+  ChartLegendContent,
+  type ChartConfig,
+} from "@/components/ui/chart";
 
 const DEFAULT_PRINCIPAL = 5_000;
 const DEFAULT_MONTHLY = 300;
@@ -75,6 +92,16 @@ function calculateCompound(
   };
 }
 
+const growthChartConfig = {
+  contributions: { label: "Contributions", color: "var(--color-contributions)" },
+  interest: { label: "Interest", color: "var(--color-interest)" },
+} satisfies ChartConfig;
+
+const compositionChartConfig = {
+  contributions: { label: "Contributions", color: "var(--color-contributions)" },
+  interest: { label: "Interest", color: "var(--color-interest)" },
+} satisfies ChartConfig;
+
 export default function CompoundInterestCalculator() {
   const [principal, setPrincipal] = useState(DEFAULT_PRINCIPAL);
   const [monthly, setMonthly] = useState(DEFAULT_MONTHLY);
@@ -86,8 +113,6 @@ export default function CompoundInterestCalculator() {
     [principal, monthly, rate, years]
   );
 
-  const maxBalance = result.yearData[result.yearData.length - 1]?.balance || 1;
-
   const sampledYears = useMemo(() => {
     const data = result.yearData;
     if (data.length <= 12) return data;
@@ -95,233 +120,146 @@ export default function CompoundInterestCalculator() {
     return data.filter((_, i) => i % step === 0 || i === data.length - 1);
   }, [result.yearData]);
 
+  const chartData = useMemo(
+    () =>
+      sampledYears.map((yd) => ({
+        year: `Yr ${yd.year}`,
+        contributions: Math.round(yd.contributions),
+        interest: Math.round(yd.interest),
+      })),
+    [sampledYears]
+  );
+
+  const compositionData = useMemo(
+    () => [
+      { name: "Contributions", value: Math.round(result.totalContributions), fill: "var(--color-contributions)" },
+      { name: "Interest", value: Math.round(result.totalInterest), fill: "var(--color-interest)" },
+    ],
+    [result.totalContributions, result.totalInterest]
+  );
+
   return (
-    <CalculatorContainer variant="minimal">
-      <CalculatorHeader 
-        variant="minimal"
-        title="Compound Interest Calculator" 
-        description="See how your money grows over time. The earlier you start, the more time does the heavy lifting." 
-      />
-
+    <CalculatorShell
+      title="Compound Interest Calculator"
+      description="See how your money grows over time. The earlier you start, the more time does the heavy lifting."
+    >
       <div className="grid gap-8 sm:grid-cols-2">
-        <div className="space-y-6">
-          <div className="space-y-3">
-            <div className="flex items-center justify-between gap-4">
-              <label htmlFor="ci-principal" className="text-sm text-muted-foreground shrink-0">
-                Starting Principal
-              </label>
-              <div className="flex items-center gap-1.5">
-                <span className="text-sm text-muted-foreground">$</span>
-                <input
-                  id="ci-principal"
-                  type="number"
-                  min={0}
-                  max={MAX_PRINCIPAL}
-                  step={500}
-                  value={principal}
-                  onChange={(e) => {
-                    const v = parseInt(e.target.value, 10);
-                    setPrincipal(isNaN(v) ? 0 : Math.max(0, Math.min(v, MAX_PRINCIPAL)));
-                  }}
-                  className="w-28 rounded-md border-0 border-b border-input bg-transparent px-0 py-1 text-sm font-heading text-right tabular-nums focus:outline-none focus:border-primary transition-colors"
-                />
-              </div>
-            </div>
-            <input
-              type="range"
-              min={0}
-              max={MAX_PRINCIPAL}
-              step={500}
-              value={principal}
-              onChange={(e) => setPrincipal(Number(e.target.value))}
-              className="w-full cursor-pointer accent-primary"
-              aria-label="Starting principal"
-            />
-          </div>
-
-          <div className="space-y-3">
-            <div className="flex items-center justify-between gap-4">
-              <label htmlFor="ci-monthly" className="text-sm text-muted-foreground shrink-0">
-                Monthly Contribution
-              </label>
-              <div className="flex items-center gap-1.5">
-                <span className="text-sm text-muted-foreground">$</span>
-                <input
-                  id="ci-monthly"
-                  type="number"
-                  min={0}
-                  max={MAX_MONTHLY}
-                  step={50}
-                  value={monthly}
-                  onChange={(e) => {
-                    const v = parseInt(e.target.value, 10);
-                    setMonthly(isNaN(v) ? 0 : Math.max(0, Math.min(v, MAX_MONTHLY)));
-                  }}
-                  className="w-28 rounded-md border-0 border-b border-input bg-transparent px-0 py-1 text-sm font-heading text-right tabular-nums focus:outline-none focus:border-primary transition-colors"
-                />
-              </div>
-            </div>
-            <input
-              type="range"
-              min={0}
-              max={MAX_MONTHLY}
-              step={50}
-              value={monthly}
-              onChange={(e) => setMonthly(Number(e.target.value))}
-              className="w-full cursor-pointer accent-primary"
-              aria-label="Monthly contribution"
-            />
-          </div>
-
-          <div className="space-y-3">
-            <div className="flex items-center justify-between gap-4">
-              <label htmlFor="ci-rate" className="text-sm text-muted-foreground shrink-0">
-                Annual Return
-              </label>
-              <div className="flex items-center gap-1.5">
-                <input
-                  id="ci-rate"
-                  type="number"
-                  min={0}
-                  max={MAX_RATE}
-                  step={0.5}
-                  value={rate}
-                  onChange={(e) => {
-                    const v = parseFloat(e.target.value);
-                    setRate(isNaN(v) ? 0 : Math.max(0, Math.min(v, MAX_RATE)));
-                  }}
-                  className="w-20 rounded-md border-0 border-b border-input bg-transparent px-0 py-1 text-sm font-heading text-right tabular-nums focus:outline-none focus:border-primary transition-colors"
-                />
-                <span className="text-sm text-muted-foreground">%</span>
-              </div>
-            </div>
-            <input
-              type="range"
-              min={0}
-              max={MAX_RATE}
-              step={0.5}
-              value={rate}
-              onChange={(e) => setRate(Number(e.target.value))}
-              className="w-full cursor-pointer accent-primary"
-              aria-label="Annual return rate"
-            />
-            <div className="flex justify-between text-xs text-muted-foreground">
-              <span>0%</span>
-              <span>20%</span>
-            </div>
-          </div>
-
-          <div className="space-y-3">
-            <div className="flex items-center justify-between gap-4">
-              <label htmlFor="ci-years" className="text-sm text-muted-foreground shrink-0">
-                Investment Period
-              </label>
-              <div className="flex items-center gap-1.5">
-                <input
-                  id="ci-years"
-                  type="number"
-                  min={1}
-                  max={MAX_YEARS}
-                  step={1}
-                  value={years}
-                  onChange={(e) => {
-                    const v = parseInt(e.target.value, 10);
-                    setYears(isNaN(v) ? 1 : Math.max(1, Math.min(v, MAX_YEARS)));
-                  }}
-                  className="w-20 rounded-md border-0 border-b border-input bg-transparent px-0 py-1 text-sm font-heading text-right tabular-nums focus:outline-none focus:border-primary transition-colors"
-                />
-                <span className="text-sm text-muted-foreground">yrs</span>
-              </div>
-            </div>
-            <input
-              type="range"
-              min={1}
-              max={MAX_YEARS}
-              step={1}
-              value={years}
-              onChange={(e) => setYears(Number(e.target.value))}
-              className="w-full cursor-pointer accent-primary"
-              aria-label="Investment period in years"
-            />
-            <div className="flex justify-between text-xs text-muted-foreground">
-              <span>1 yr</span>
-              <span>50 yrs</span>
-            </div>
-          </div>
+        <div className="flex flex-col gap-6">
+          <CalculatorField
+            id="ci-principal"
+            label="Starting Principal"
+            value={principal}
+            onChange={setPrincipal}
+            min={0}
+            max={MAX_PRINCIPAL}
+            step={500}
+            prefix="$"
+          />
+          <CalculatorField
+            id="ci-monthly"
+            label="Monthly Contribution"
+            value={monthly}
+            onChange={setMonthly}
+            min={0}
+            max={MAX_MONTHLY}
+            step={50}
+            prefix="$"
+          />
+          <CalculatorField
+            id="ci-rate"
+            label="Annual Return"
+            value={rate}
+            onChange={setRate}
+            min={0}
+            max={MAX_RATE}
+            step={0.5}
+            suffix="%"
+          />
+          <CalculatorField
+            id="ci-years"
+            label="Investment Period"
+            value={years}
+            onChange={setYears}
+            min={1}
+            max={MAX_YEARS}
+            step={1}
+            suffix="yrs"
+          />
         </div>
 
-        <div className="space-y-6">
-          <StatsGrid cols={3} variant="minimal">
-            <StatCard variant="minimal" label="Final Balance" value={fmt$(result.finalBalance)} highlight />
-            <StatCard variant="minimal" label="Contributions" value={fmt$(result.totalContributions)} />
-            <StatCard variant="minimal" label="Interest" value={fmt$(result.totalInterest)} />
+        <div className="flex flex-col gap-6">
+          <StatsGrid cols={3}>
+            <StatCard label="Final Balance" value={fmt$(result.finalBalance)} highlight />
+            <StatCard label="Contributions" value={fmt$(result.totalContributions)} />
+            <StatCard label="Interest" value={fmt$(result.totalInterest)} />
           </StatsGrid>
 
           {result.finalBalance > 0 && (
-            <div className="space-y-3">
+            <div className="flex flex-col gap-3">
               <p className="text-xs text-muted-foreground">Balance composition</p>
-              <div className="flex h-3 rounded-full overflow-hidden bg-muted">
-                <div
-                  className="bg-sky-500 h-full transition-all duration-300"
-                  style={{ width: `${(result.totalContributions / result.finalBalance) * 100}%` }}
-                />
-                <div
-                  className="bg-primary h-full transition-all duration-300"
-                  style={{ width: `${(result.totalInterest / result.finalBalance) * 100}%` }}
-                />
-              </div>
-              <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                <span className="flex items-center gap-1.5">
-                  <span className="size-2.5 rounded-sm bg-sky-500 shrink-0" />
-                  Contributions ({((result.totalContributions / result.finalBalance) * 100).toFixed(0)}%)
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <span className="size-2.5 rounded-sm bg-primary shrink-0" />
-                  Interest ({((result.totalInterest / result.finalBalance) * 100).toFixed(0)}%)
-                </span>
-              </div>
+              <ChartContainer
+                config={compositionChartConfig}
+                className="mx-auto aspect-square max-h-[160px]"
+              >
+                <PieChart>
+                  <Pie
+                    data={compositionData}
+                    dataKey="value"
+                    nameKey="name"
+                    cx="50%"
+                    cy="50%"
+                    innerRadius={40}
+                    outerRadius={70}
+                    strokeWidth={2}
+                  />
+                  <ChartTooltip content={<ChartTooltipContent />} />
+                  <ChartLegend content={<ChartLegendContent />} />
+                </PieChart>
+              </ChartContainer>
             </div>
           )}
 
           {result.yearData.length > 0 && (
-            <div className="space-y-3">
+            <div className="flex flex-col gap-3">
               <p className="text-xs text-muted-foreground">Growth over time</p>
-              <div className="flex items-end gap-1 h-32">
-                {sampledYears.map((yd) => {
-                  const contribPct = maxBalance > 0 ? (yd.contributions / maxBalance) * 100 : 0;
-                  const interestPct = maxBalance > 0 ? (yd.interest / maxBalance) * 100 : 0;
-                  return (
-                    <div
-                      key={yd.year}
-                      className="flex-1 flex flex-col justify-end min-w-0"
-                      title={`Year ${yd.year}: ${fmt$(yd.balance)}`}
-                    >
-                      <div
-                        className="bg-primary/80 rounded-t-sm transition-all duration-300"
-                        style={{ height: `${Math.max(interestPct, 0)}%` }}
-                      />
-                      <div
-                        className="bg-sky-500/80 rounded-b-sm transition-all duration-300"
-                        style={{ height: `${Math.max(contribPct, 0)}%` }}
-                      />
-                    </div>
-                  );
-                })}
-              </div>
-              <div className="flex justify-between text-xs text-muted-foreground tabular-nums">
-                <span>Yr 1</span>
-                <span>Yr {years}</span>
-              </div>
+              <ChartContainer
+                config={growthChartConfig}
+                className="aspect-video w-full"
+              >
+                <AreaChart data={chartData}>
+                  <CartesianGrid vertical={false} />
+                  <XAxis dataKey="year" tickLine={false} axisLine={false} />
+                  <YAxis tickLine={false} axisLine={false} tickFormatter={(v: number) => fmt$(v)} />
+                  <ChartTooltip content={<ChartTooltipContent />} />
+                  <ChartLegend content={<ChartLegendContent />} />
+                  <Area
+                    dataKey="contributions"
+                    type="monotone"
+                    stackId="1"
+                    fill="var(--color-contributions)"
+                    stroke="var(--color-contributions)"
+                    fillOpacity={0.6}
+                  />
+                  <Area
+                    dataKey="interest"
+                    type="monotone"
+                    stackId="1"
+                    fill="var(--color-interest)"
+                    stroke="var(--color-interest)"
+                    fillOpacity={0.6}
+                  />
+                </AreaChart>
+              </ChartContainer>
             </div>
           )}
         </div>
       </div>
 
       {result.totalInterest > result.totalContributions && (
-        <InfoBox variant="minimal" type="success">
+        <InfoBox type="success">
           <strong>Interest earned ({fmt$(result.totalInterest)})</strong> surpasses your total contributions ({fmt$(result.totalContributions)}). That's the power of compound interest — your money earned more than you put in.
         </InfoBox>
       )}
-    </CalculatorContainer>
+    </CalculatorShell>
   );
 }

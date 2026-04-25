@@ -1,5 +1,20 @@
 import { useState, useMemo } from "react";
-import { cn } from "@/lib/utils";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid } from "recharts";
+import {
+  CalculatorShell,
+  CalculatorField,
+  StatCard,
+  StatsGrid,
+  InfoBox,
+} from "@/components/ui/calculator-shared";
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+  ChartLegend,
+  ChartLegendContent,
+  type ChartConfig,
+} from "@/components/ui/chart";
 
 function fmt$(n: number): string {
   return n.toLocaleString("en-US", {
@@ -46,25 +61,14 @@ function amortize(balance: number, apr: number, monthlyPayment: number): AmortRe
   return { months, totalInterest, totalPaid: balance + totalInterest };
 }
 
-function StatCard({ label, value, highlight }: { label: string; value: string; highlight?: boolean }) {
-  return (
-    <div className="rounded-lg bg-background p-3">
-      <div className="text-xs text-muted-foreground">{label}</div>
-      <div
-        className={cn(
-          "font-heading text-lg font-semibold tabular-nums",
-          highlight ? "text-primary" : "text-foreground"
-        )}
-      >
-        {value}
-      </div>
-    </div>
-  );
-}
-
 const DEFAULT_BALANCE = 5000;
 const DEFAULT_APR = 24;
 const DEFAULT_MIN_PCT = 2;
+
+const comparisonConfig = {
+  minimum: { label: "Minimum", color: "#f43f5e" },
+  double: { label: "2× Minimum", color: "#10b981" },
+} satisfies ChartConfig;
 
 export default function InterestCostVisualizer() {
   const [balance, setBalance] = useState(DEFAULT_BALANCE);
@@ -87,199 +91,82 @@ export default function InterestCostVisualizer() {
   const interestSaved = minResult.totalInterest - doubleResult.totalInterest;
   const monthsFaster = minResult.months - doubleResult.months;
 
-  const maxBarInterest = Math.max(minResult.totalInterest, 1);
+  const comparisonData = [
+    { metric: "Interest", minimum: minResult.totalInterest, double: doubleResult.totalInterest },
+    { metric: "Total Paid", minimum: minResult.totalPaid, double: doubleResult.totalPaid },
+  ];
 
   return (
-    <div className="bg-muted/50 rounded-lg p-6 space-y-6">
-      <div>
-        <h3 className="font-heading text-lg font-medium mb-1">Interest Cost Visualizer</h3>
-        <p className="text-xs text-muted-foreground">
-          See the true cost of making only minimum payments on a single debt.
-        </p>
-      </div>
+    <CalculatorShell
+      title="Interest Cost Visualizer"
+      description="See the true cost of making only minimum payments on a single debt."
+    >
+      <CalculatorField
+        id="icv-balance"
+        label="Balance"
+        value={balance}
+        onChange={setBalance}
+        min={100}
+        max={100000}
+        step={500}
+        prefix="$"
+      />
 
-      <div className="space-y-4">
-        <div className="space-y-2">
-          <div className="flex items-center justify-between gap-4">
-            <label htmlFor="icv-balance" className="text-sm text-muted-foreground shrink-0">
-              Balance
-            </label>
-            <div className="flex items-center gap-1.5">
-              <span className="text-sm text-muted-foreground">$</span>
-              <input
-                id="icv-balance"
-                type="number"
-                min={100}
-                max={100000}
-                step={500}
-                value={balance}
-                onChange={(e) => {
-                  const v = parseInt(e.target.value, 10);
-                  setBalance(isNaN(v) ? 0 : Math.max(0, Math.min(v, 100000)));
-                }}
-                className="w-28 rounded-md border border-input bg-background px-2 py-1 text-sm font-heading text-right tabular-nums focus:outline-none focus:ring-2 focus:ring-ring/30"
-              />
-            </div>
-          </div>
-          <input
-            type="range"
-            min={100}
-            max={100000}
-            step={500}
-            value={balance}
-            onChange={(e) => setBalance(Number(e.target.value))}
-            className="w-full cursor-pointer accent-primary"
-            aria-label="Balance"
-          />
-          <div className="flex justify-between text-xs text-muted-foreground">
-            <span>$100</span>
-            <span>$100,000</span>
-          </div>
-        </div>
+      <CalculatorField
+        id="icv-apr"
+        label="APR"
+        value={apr}
+        onChange={setApr}
+        min={0.5}
+        max={40}
+        step={0.5}
+        suffix="%"
+      />
 
-        <div className="space-y-2">
-          <div className="flex items-center justify-between gap-4">
-            <label htmlFor="icv-apr" className="text-sm text-muted-foreground shrink-0">
-              APR
-            </label>
-            <div className="flex items-center gap-1.5">
-              <input
-                id="icv-apr"
-                type="number"
-                min={0.5}
-                max={40}
-                step={0.5}
-                value={apr}
-                onChange={(e) => {
-                  const v = parseFloat(e.target.value);
-                  setApr(isNaN(v) ? 0 : Math.max(0, Math.min(v, 40)));
-                }}
-                className="w-20 rounded-md border border-input bg-background px-2 py-1 text-sm font-heading text-right tabular-nums focus:outline-none focus:ring-2 focus:ring-ring/30"
-              />
-              <span className="text-sm text-muted-foreground">%</span>
-            </div>
-          </div>
-          <input
-            type="range"
-            min={0.5}
-            max={40}
-            step={0.5}
-            value={apr}
-            onChange={(e) => setApr(Number(e.target.value))}
-            className="w-full cursor-pointer accent-primary"
-            aria-label="APR"
-          />
-          <div className="flex justify-between text-xs text-muted-foreground">
-            <span>0.5%</span>
-            <span>40%</span>
-          </div>
-        </div>
+      <CalculatorField
+        id="icv-minpct"
+        label="Minimum Payment %"
+        value={minPct}
+        onChange={setMinPct}
+        min={1}
+        max={5}
+        step={0.5}
+        suffix="%"
+      />
 
-        <div className="space-y-2">
-          <div className="flex items-center justify-between gap-4">
-            <label htmlFor="icv-minpct" className="text-sm text-muted-foreground shrink-0">
-              Minimum Payment %
-            </label>
-            <div className="flex items-center gap-1.5">
-              <input
-                id="icv-minpct"
-                type="number"
-                min={1}
-                max={5}
-                step={0.5}
-                value={minPct}
-                onChange={(e) => {
-                  const v = parseFloat(e.target.value);
-                  setMinPct(isNaN(v) ? 1 : Math.max(1, Math.min(v, 5)));
-                }}
-                className="w-16 rounded-md border border-input bg-background px-2 py-1 text-sm font-heading text-right tabular-nums focus:outline-none focus:ring-2 focus:ring-ring/30"
-              />
-              <span className="text-sm text-muted-foreground">%</span>
-            </div>
-          </div>
-          <input
-            type="range"
-            min={1}
-            max={5}
-            step={0.5}
-            value={minPct}
-            onChange={(e) => setMinPct(Number(e.target.value))}
-            className="w-full cursor-pointer accent-primary"
-            aria-label="Minimum payment percentage"
-          />
-          <div className="flex justify-between text-xs text-muted-foreground">
-            <span>1%</span>
-            <span>5%</span>
-          </div>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+      <StatsGrid cols={3}>
         <StatCard label="Time to Pay Off" value={fmtYears(minResult.months)} />
         <StatCard label="Total Interest" value={fmt$(minResult.totalInterest)} highlight />
         <StatCard label="Total Paid" value={fmt$(minResult.totalPaid)} />
-      </div>
+      </StatsGrid>
 
-      <div className="space-y-3">
-        <p className="text-xs text-muted-foreground font-medium">
-          Minimum vs 2× Minimum Payment
-        </p>
-
-        <div className="space-y-2">
-          <div className="flex items-center justify-between text-xs">
-            <span className="text-muted-foreground">
-              Minimum ({fmt$(minPayment)}/mo)
-            </span>
-            <span className="font-heading font-medium text-foreground tabular-nums">
-              {fmt$(minResult.totalInterest)} interest
-            </span>
-          </div>
-          <div className="h-3 rounded-full bg-muted overflow-hidden">
-            <div
-              className="h-full rounded-full bg-rose-500 transition-all duration-300"
-              style={{ width: `${Math.min(100, (minResult.totalInterest / maxBarInterest) * 100)}%` }}
-            />
-          </div>
-          <div className="text-xs text-muted-foreground tabular-nums">
-            {fmtYears(minResult.months)} to pay off &middot; {fmt$(minResult.totalPaid)} total
-          </div>
-        </div>
-
-        <div className="space-y-2">
-          <div className="flex items-center justify-between text-xs">
-            <span className="text-muted-foreground">
-              2× Minimum ({fmt$(doubleMinPayment)}/mo)
-            </span>
-            <span className="font-heading font-medium text-primary tabular-nums">
-              {fmt$(doubleResult.totalInterest)} interest
-            </span>
-          </div>
-          <div className="h-3 rounded-full bg-muted overflow-hidden">
-            <div
-              className="h-full rounded-full bg-emerald-500 transition-all duration-300"
-              style={{ width: `${Math.min(100, (doubleResult.totalInterest / maxBarInterest) * 100)}%` }}
-            />
-          </div>
-          <div className="text-xs text-muted-foreground tabular-nums">
-            {fmtYears(doubleResult.months)} to pay off &middot; {fmt$(doubleResult.totalPaid)} total
-          </div>
-        </div>
-      </div>
+      {balance > 0 && (
+        <ChartContainer config={comparisonConfig} className="aspect-video max-h-[220px]">
+          <BarChart data={comparisonData} layout="vertical">
+            <CartesianGrid horizontal={false} />
+            <XAxis type="number" tickFormatter={(v: number) => fmt$(v)} />
+            <YAxis type="category" dataKey="metric" width={80} tick={{ fontSize: 12 }} />
+            <ChartTooltip content={<ChartTooltipContent />} />
+            <ChartLegend content={<ChartLegendContent />} />
+            <Bar dataKey="minimum" fill="var(--color-minimum)" radius={4} />
+            <Bar dataKey="double" fill="var(--color-double)" radius={4} />
+          </BarChart>
+        </ChartContainer>
+      )}
 
       {interestSaved > 0 && (
-        <div className="rounded-lg bg-primary/5 border border-primary/10 p-3">
-          <p className="text-xs text-muted-foreground leading-relaxed">
-            Doubling your payment saves you{" "}
-            <strong className="text-primary">{fmt$(interestSaved)} in interest</strong>
-            {monthsFaster > 0 && (
-              <>
-                {" "}and gets you debt-free{" "}
-                <strong className="text-primary">{fmtYears(monthsFaster)} faster</strong>
-              </>
-            )}. Minimum payments are designed to keep you paying for years — even a modest increase makes a dramatic difference.
-          </p>
-        </div>
+        <InfoBox type="default">
+          Doubling your payment saves you{" "}
+          <strong className="text-primary">{fmt$(interestSaved)} in interest</strong>
+          {monthsFaster > 0 && (
+            <>
+              {" "}and gets you debt-free{" "}
+              <strong className="text-primary">{fmtYears(monthsFaster)} faster</strong>
+            </>
+          )}. Minimum payments are designed to keep you paying for years — even a modest increase
+          makes a dramatic difference.
+        </InfoBox>
       )}
-    </div>
+    </CalculatorShell>
   );
 }

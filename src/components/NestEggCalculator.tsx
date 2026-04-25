@@ -1,5 +1,28 @@
+"use client";
+
 import { useState, useMemo } from "react";
-import { cn } from "@/lib/utils";
+import {
+  CalculatorField,
+  StatCard,
+  StatsGrid,
+  InfoBox,
+  CalculatorShell,
+} from "@/components/ui/calculator-shared";
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+  ChartLegend,
+  ChartLegendContent,
+} from "@/components/ui/chart";
+import type { ChartConfig } from "@/components/ui/chart";
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+} from "recharts";
 
 function fmt$(n: number): string {
   return n.toLocaleString("en-US", {
@@ -8,83 +31,6 @@ function fmt$(n: number): string {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   });
-}
-
-function fmtPct(n: number): string {
-  return (n * 100).toFixed(1) + "%";
-}
-
-function StatCard({ label, value, highlight }: { label: string; value: string; highlight?: boolean }) {
-  return (
-    <div className="rounded-lg bg-background p-3">
-      <div className="text-xs text-muted-foreground">{label}</div>
-      <div
-        className={cn(
-          "font-heading text-lg font-semibold tabular-nums",
-          highlight ? "text-primary" : "text-foreground"
-        )}
-      >
-        {value}
-      </div>
-    </div>
-  );
-}
-
-interface SliderInputProps {
-  id: string;
-  label: string;
-  prefix?: string;
-  suffix?: string;
-  min: number;
-  max: number;
-  step: number;
-  value: number;
-  onChange: (v: number) => void;
-  minLabel: string;
-  maxLabel: string;
-}
-
-function SliderInput({ id, label, prefix, suffix, min, max, step, value, onChange, minLabel, maxLabel }: SliderInputProps) {
-  return (
-    <div className="space-y-2">
-      <div className="flex items-center justify-between gap-4">
-        <label htmlFor={id} className="text-sm text-muted-foreground shrink-0">
-          {label}
-        </label>
-        <div className="flex items-center gap-1.5">
-          {prefix && <span className="text-sm text-muted-foreground">{prefix}</span>}
-          <input
-            id={id}
-            type="number"
-            min={min}
-            max={max}
-            step={step}
-            value={value}
-            onChange={(e) => {
-              const v = parseFloat(e.target.value);
-              onChange(isNaN(v) ? min : Math.max(min, Math.min(v, max)));
-            }}
-            className="w-28 rounded-md border border-input bg-background px-2 py-1 text-sm font-heading text-right tabular-nums focus:outline-none focus:ring-2 focus:ring-ring/30"
-          />
-          {suffix && <span className="text-sm text-muted-foreground">{suffix}</span>}
-        </div>
-      </div>
-      <input
-        type="range"
-        min={min}
-        max={max}
-        step={step}
-        value={value}
-        onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full cursor-pointer accent-primary"
-        aria-label={label}
-      />
-      <div className="flex justify-between text-xs text-muted-foreground">
-        <span>{minLabel}</span>
-        <span>{maxLabel}</span>
-      </div>
-    </div>
-  );
 }
 
 interface NestEggResult {
@@ -96,19 +42,24 @@ interface NestEggResult {
   interestPct: number;
 }
 
+interface YearPoint {
+  year: number;
+  contributions: number;
+  interest: number;
+  total: number;
+}
+
 function calculateNestEgg(
   currentSavings: number,
   monthlyContribution: number,
   years: number,
   returnRate: number
-): NestEggResult {
+): NestEggResult & { yearPoints: YearPoint[] } {
   const r = returnRate;
   const n = years;
 
-  // FV of current lump sum: PV * (1+r)^n
   const fvCurrent = currentSavings * Math.pow(1 + r, n);
 
-  // FV of monthly annuity: PMT * ((1+r/12)^(n*12) - 1) / (r/12)
   const monthlyRate = r / 12;
   const totalMonths = n * 12;
   const fvContributions = monthlyRate > 0
@@ -123,6 +74,22 @@ function calculateNestEgg(
   const contributionPct = projectedTotal > 0 ? (totalContributions / projectedTotal) * 100 : 0;
   const interestPct = projectedTotal > 0 ? (interestEarned / projectedTotal) * 100 : 0;
 
+  const yearPoints: YearPoint[] = [];
+  let runningTotal = currentSavings;
+  let runningContributions = currentSavings;
+
+  for (let y = 1; y <= n; y++) {
+    runningTotal = runningTotal * (1 + r) + monthlyContribution * 12;
+    runningContributions += monthlyContribution * 12;
+    const interest = runningTotal - runningContributions;
+    yearPoints.push({
+      year: y,
+      contributions: runningContributions,
+      interest: Math.max(interest, 0),
+      total: runningTotal,
+    });
+  }
+
   return {
     projectedTotal,
     totalContributions,
@@ -130,8 +97,20 @@ function calculateNestEgg(
     monthlyIncome,
     contributionPct,
     interestPct,
+    yearPoints,
   };
 }
+
+const chartConfig = {
+  contributions: {
+    label: "Contributions",
+    color: "hsl(var(--chart-1))",
+  },
+  interest: {
+    label: "Interest earned",
+    color: "hsl(var(--chart-4))",
+  },
+} satisfies ChartConfig;
 
 export default function NestEggCalculator() {
   const [currentSavings, setCurrentSavings] = useState(25_000);
@@ -144,107 +123,124 @@ export default function NestEggCalculator() {
     [currentSavings, monthlyContribution, years, returnRate]
   );
 
+  const chartData = useMemo(() => {
+    const data = result.yearPoints;
+    if (data.length <= 20) return data;
+    const step = Math.ceil(data.length / 20);
+    return data.filter((_, i) => i % step === 0 || i === data.length - 1);
+  }, [result.yearPoints]);
+
   return (
-    <div className="bg-muted/50 rounded-lg p-6 space-y-6">
-      <div>
-        <h3 className="font-heading text-lg font-medium mb-3">Nest Egg Calculator</h3>
-        <p className="text-xs text-muted-foreground mb-4">
-          Project your retirement savings based on current balance, monthly contributions, and expected returns.
-        </p>
-        <div className="space-y-4">
-          <SliderInput
-            id="nest-current"
-            label="Current Savings"
-            prefix="$"
-            min={0}
-            max={1_000_000}
-            step={5000}
-            value={currentSavings}
-            onChange={setCurrentSavings}
-            minLabel="$0"
-            maxLabel="$1M"
-          />
-          <SliderInput
-            id="nest-monthly"
-            label="Monthly Contribution"
-            prefix="$"
-            min={0}
-            max={5000}
-            step={50}
-            value={monthlyContribution}
-            onChange={setMonthlyContribution}
-            minLabel="$0"
-            maxLabel="$5,000"
-          />
-          <SliderInput
-            id="nest-years"
-            label="Years to Retirement"
-            min={1}
-            max={45}
-            step={1}
-            value={years}
-            onChange={setYears}
-            minLabel="1"
-            maxLabel="45"
-          />
-          <SliderInput
-            id="nest-return"
-            label="Expected Annual Return"
-            suffix="%"
-            min={0}
-            max={0.15}
-            step={0.005}
-            value={returnRate}
-            onChange={setReturnRate}
-            minLabel="0%"
-            maxLabel="15%"
-          />
-        </div>
+    <CalculatorShell
+      title="Nest Egg Calculator"
+      description="Project your retirement savings based on current balance, monthly contributions, and expected returns."
+    >
+      <div className="flex flex-col gap-4">
+        <CalculatorField
+          id="nest-current"
+          label="Current Savings"
+          prefix="$"
+          value={currentSavings}
+          onChange={setCurrentSavings}
+          min={0}
+          max={1_000_000}
+          step={5000}
+        />
+        <CalculatorField
+          id="nest-monthly"
+          label="Monthly Contribution"
+          prefix="$"
+          value={monthlyContribution}
+          onChange={setMonthlyContribution}
+          min={0}
+          max={5000}
+          step={50}
+        />
+        <CalculatorField
+          id="nest-years"
+          label="Years to Retirement"
+          value={years}
+          onChange={setYears}
+          min={1}
+          max={45}
+          step={1}
+        />
+        <CalculatorField
+          id="nest-return"
+          label="Expected Annual Return"
+          suffix="%"
+          value={returnRate * 100}
+          onChange={(v: number) => setReturnRate(v / 100)}
+          min={0}
+          max={15}
+          step={0.5}
+        />
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <StatsGrid cols={4}>
         <StatCard label="Projected Total" value={fmt$(result.projectedTotal)} highlight />
         <StatCard label="Total Contributions" value={fmt$(result.totalContributions)} />
         <StatCard label="Interest Earned" value={fmt$(result.interestEarned)} />
         <StatCard label="Est. Monthly Income" value={fmt$(result.monthlyIncome)} />
-      </div>
+      </StatsGrid>
 
-      <div>
-        <p className="text-xs text-muted-foreground mb-2">Savings composition</p>
-        <div className="flex h-3.5 rounded-full overflow-hidden bg-muted">
-          <div
-            className="h-full bg-teal-500 transition-all duration-300"
-            style={{ width: `${result.contributionPct}%` }}
-          />
-          <div
-            className="h-full bg-amber-500 transition-all duration-300"
-            style={{ width: `${result.interestPct}%` }}
-          />
+      {chartData.length > 1 && (
+        <div>
+          <p className="text-xs text-muted-foreground mb-3">
+            Nest egg accumulation over time
+          </p>
+          <ChartContainer config={chartConfig} className="h-52 w-full">
+            <AreaChart data={chartData} margin={{ top: 5, right: 10, left: 10, bottom: 5 }}>
+              <CartesianGrid vertical={false} />
+              <XAxis
+                dataKey="year"
+                tickLine={false}
+                axisLine={false}
+                tickFormatter={(v: number) => `Yr ${v}`}
+              />
+              <YAxis
+                tickLine={false}
+                axisLine={false}
+                tickFormatter={(v: number) => fmt$(v)}
+                width={80}
+              />
+              <ChartTooltip
+                content={
+                  <ChartTooltipContent
+                    formatter={(value) => fmt$(Number(value ?? 0))}
+                  />
+                }
+              />
+              <ChartLegend content={<ChartLegendContent />} />
+              <Area
+                type="monotone"
+                dataKey="contributions"
+                stroke="var(--color-contributions)"
+                fill="var(--color-contributions)"
+                fillOpacity={0.4}
+                stackId="1"
+                name="contributions"
+              />
+              <Area
+                type="monotone"
+                dataKey="interest"
+                stroke="var(--color-interest)"
+                fill="var(--color-interest)"
+                fillOpacity={0.4}
+                stackId="1"
+                name="interest"
+              />
+            </AreaChart>
+          </ChartContainer>
         </div>
-        <div className="flex items-center gap-4 mt-2">
-          <div className="flex items-center gap-1.5">
-            <span className="shrink-0 size-2.5 rounded-sm bg-teal-500" />
-            <span className="text-xs text-muted-foreground">
-              Contributions {fmtPct(result.contributionPct / 100)}
-            </span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <span className="shrink-0 size-2.5 rounded-sm bg-amber-500" />
-            <span className="text-xs text-muted-foreground">
-              Interest {fmtPct(result.interestPct / 100)}
-            </span>
-          </div>
-        </div>
-      </div>
+      )}
 
-      <div className="rounded-lg bg-primary/5 border border-primary/10 p-3">
-        <p className="text-xs text-muted-foreground leading-relaxed">
-          Your estimated monthly retirement income of{" "}
-          <strong className="text-foreground">{fmt$(result.monthlyIncome)}</strong> is based on the 4% safe withdrawal
-          rule. This assumes a 30-year retirement with a balanced portfolio. For longer retirements or more
-          conservative planning, use a 3–3.5% rate instead.
-        </p>
-      </div>
-    </div>
+      <InfoBox type="default">
+        Your estimated monthly retirement income of{" "}
+        <strong className="text-foreground">{fmt$(result.monthlyIncome)}</strong> is based on the 4% safe withdrawal
+        rule. This assumes a 30-year retirement with a balanced portfolio. For longer retirements or more
+        conservative planning, use a 3–3.5% rate instead.
+      </InfoBox>
+    </CalculatorShell>
   );
 }

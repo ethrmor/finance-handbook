@@ -1,12 +1,12 @@
 import { useState, useMemo } from "react";
-import { cn } from "@/lib/utils";
-import { 
-  CalculatorContainer, 
-  CalculatorHeader, 
-  StatCard, 
-  StatsGrid, 
-  InfoBox 
-} from "@/components/ui/calculator-layouts";
+import {
+  CalculatorField,
+  StatCard,
+  StatsGrid,
+  InfoBox,
+  CalculatorShell,
+} from "@/components/ui/calculator-shared";
+import { Progress } from "@/components/ui/progress";
 
 const MAX_GOAL = 500_000;
 const DEFAULT_GOAL = 10_000;
@@ -66,143 +66,59 @@ export default function SavingsGoalTracker() {
   const remaining = Math.max(0, goal - current);
 
   return (
-    <CalculatorContainer variant="default">
-      <CalculatorHeader 
-        variant="default"
-        title="Savings Goal Tracker" 
-      />
+    <CalculatorShell title="Savings Goal Tracker">
+      <div className="flex flex-col gap-5">
+        <CalculatorField
+          id="sg-goal"
+          label="Goal Amount"
+          value={goal}
+          onChange={setGoal}
+          min={0}
+          max={MAX_GOAL}
+          step={500}
+          prefix="$"
+        />
 
-      <div className="space-y-5">
-        <div className="space-y-3">
-          <div className="flex items-center justify-between gap-4">
-            <label htmlFor="sg-goal" className="text-sm text-muted-foreground shrink-0">
-              Goal Amount
-            </label>
-            <div className="flex items-center gap-1.5">
-              <span className="text-sm text-muted-foreground">$</span>
-              <input
-                id="sg-goal"
-                type="number"
-                min={0}
-                max={MAX_GOAL}
-                step={500}
-                value={goal}
-                onChange={(e) => {
-                  const v = parseInt(e.target.value, 10);
-                  setGoal(isNaN(v) ? 0 : Math.max(0, Math.min(v, MAX_GOAL)));
-                }}
-                className="w-28 rounded-md border border-input bg-background px-2 py-1 text-sm font-heading text-right tabular-nums focus:outline-none focus:ring-2 focus:ring-ring/30"
-              />
-            </div>
-          </div>
-          <input
-            type="range"
-            min={0}
-            max={MAX_GOAL}
-            step={500}
-            value={goal}
-            onChange={(e) => setGoal(Number(e.target.value))}
-            className="w-full cursor-pointer accent-primary"
-            aria-label="Savings goal amount"
-          />
-          <div className="flex justify-between text-xs text-muted-foreground">
-            <span>$0</span>
-            <span>$500,000</span>
-          </div>
-        </div>
+        <CalculatorField
+          id="sg-current"
+          label="Current Savings"
+          value={current}
+          onChange={setCurrent}
+          min={0}
+          max={MAX_GOAL}
+          step={100}
+          prefix="$"
+          slider={false}
+        />
 
-        <div className="space-y-2">
-          <div className="flex items-center justify-between gap-4">
-            <label htmlFor="sg-current" className="text-sm text-muted-foreground shrink-0">
-              Current Savings
-            </label>
-            <div className="flex items-center gap-1.5">
-              <span className="text-sm text-muted-foreground">$</span>
-              <input
-                id="sg-current"
-                type="number"
-                min={0}
-                max={MAX_GOAL}
-                step={100}
-                value={current}
-                onChange={(e) => {
-                  const v = parseInt(e.target.value, 10);
-                  setCurrent(isNaN(v) ? 0 : Math.max(0, Math.min(v, MAX_GOAL)));
-                }}
-                className="w-28 rounded-md border border-input bg-background px-2 py-1 text-sm font-heading text-right tabular-nums focus:outline-none focus:ring-2 focus:ring-ring/30"
-              />
-            </div>
-          </div>
-        </div>
+        <CalculatorField
+          id="sg-monthly"
+          label="Monthly Contribution"
+          value={monthly}
+          onChange={setMonthly}
+          min={0}
+          max={50_000}
+          step={50}
+          prefix="$"
+          slider={false}
+        />
 
-        <div className="space-y-2">
-          <div className="flex items-center justify-between gap-4">
-            <label htmlFor="sg-monthly" className="text-sm text-muted-foreground shrink-0">
-              Monthly Contribution
-            </label>
-            <div className="flex items-center gap-1.5">
-              <span className="text-sm text-muted-foreground">$</span>
-              <input
-                id="sg-monthly"
-                type="number"
-                min={0}
-                max={50_000}
-                step={50}
-                value={monthly}
-                onChange={(e) => {
-                  const v = parseInt(e.target.value, 10);
-                  setMonthly(isNaN(v) ? 0 : Math.max(0, Math.min(v, 50_000)));
-                }}
-                className="w-28 rounded-md border border-input bg-background px-2 py-1 text-sm font-heading text-right tabular-nums focus:outline-none focus:ring-2 focus:ring-ring/30"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className="space-y-2">
-          <div className="flex items-center justify-between gap-4">
-            <label htmlFor="sg-rate" className="text-sm text-muted-foreground shrink-0">
-              Annual Interest Rate
-            </label>
-            <div className="flex items-center gap-1.5">
-              <input
-                id="sg-rate"
-                type="number"
-                min={0}
-                max={20}
-                step={0.1}
-                value={rate}
-                onChange={(e) => {
-                  const v = parseFloat(e.target.value);
-                  setRate(isNaN(v) ? 0 : Math.max(0, Math.min(v, 20)));
-                }}
-                className="w-20 rounded-md border border-input bg-background px-2 py-1 text-sm font-heading text-right tabular-nums focus:outline-none focus:ring-2 focus:ring-ring/30"
-              />
-              <span className="text-sm text-muted-foreground">%</span>
-            </div>
-          </div>
-          <input
-            type="range"
-            min={0}
-            max={20}
-            step={0.1}
-            value={rate}
-            onChange={(e) => setRate(Number(e.target.value))}
-            className="w-full cursor-pointer accent-primary"
-            aria-label="Annual interest rate"
-          />
-          <div className="flex justify-between text-xs text-muted-foreground">
-            <span>0%</span>
-            <span>20%</span>
-          </div>
-        </div>
+        <CalculatorField
+          id="sg-rate"
+          label="Annual Interest Rate"
+          value={rate}
+          onChange={setRate}
+          min={0}
+          max={20}
+          step={0.1}
+          suffix="%"
+        />
       </div>
 
-      <StatsGrid cols={4} variant="default">
-        <StatCard variant="default" label="Current" value={fmt$(current)} />
-        <StatCard variant="default" label="Remaining" value={fmt$(remaining)} />
+      <StatsGrid cols={4}>
+        <StatCard label="Current" value={fmt$(current)} />
+        <StatCard label="Remaining" value={fmt$(remaining)} />
         <StatCard
-          variant="default"
           label="Months to Goal"
           value={
             result.months === Infinity
@@ -214,7 +130,6 @@ export default function SavingsGoalTracker() {
           highlight
         />
         <StatCard
-          variant="default"
           label="Status"
           value={current >= goal ? "Reached!" : result.onTrack ? "On track" : "Shortfall"}
           highlight={result.onTrack || current >= goal}
@@ -222,22 +137,14 @@ export default function SavingsGoalTracker() {
       </StatsGrid>
 
       {goal > 0 && (
-        <div className="rounded-lg bg-background p-4 space-y-3 border border-border/30">
+        <div className="rounded-lg bg-card p-4 border border-border/40 shadow-sm flex flex-col gap-3">
           <div className="flex items-center justify-between">
             <p className="text-sm font-medium text-muted-foreground">Progress</p>
             <span className="font-heading text-lg font-bold tabular-nums text-primary">
               {progressPct.toFixed(1)}%
             </span>
           </div>
-          <div className="h-4 rounded-full bg-muted overflow-hidden">
-            <div
-              className={cn(
-                "h-full rounded-full transition-all duration-500",
-                current >= goal ? "bg-emerald-500" : "bg-primary"
-              )}
-              style={{ width: `${progressPct}%` }}
-            />
-          </div>
+          <Progress value={progressPct} className="h-4" />
           <div className="flex justify-between text-sm text-muted-foreground">
             <span>{fmt$(current)}</span>
             <span>{fmt$(goal)}</span>
@@ -246,9 +153,9 @@ export default function SavingsGoalTracker() {
       )}
 
       {goal > 0 && current < goal && (
-        <div className="rounded-lg bg-muted/30 border border-border/30 p-4 space-y-2">
+        <div className="rounded-lg bg-muted/30 border border-border/30 p-4 flex flex-col gap-2">
           <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Projection</p>
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2">
             <div className="flex items-center justify-between text-sm">
               <span className="text-muted-foreground">Monthly contribution</span>
               <span className="font-heading font-medium tabular-nums">{fmt$(monthly)}/mo</span>
@@ -271,22 +178,22 @@ export default function SavingsGoalTracker() {
       )}
 
       {goal > 0 && current < goal && !result.onTrack && result.shortfall > 0 && (
-        <InfoBox type="error" variant="default">
+        <InfoBox type="error">
           At this rate, you'll fall <strong className="text-foreground">{fmt$(result.shortfall)}</strong> short of your goal after 50 years. Increase your monthly contribution or adjust your goal to get on track.
         </InfoBox>
       )}
 
       {goal > 0 && current < goal && result.onTrack && (
-        <InfoBox type="default" variant="default">
+        <InfoBox type="default">
           You're <strong className="text-foreground">on track</strong> to reach your goal in <strong className="text-foreground">{result.months} month{result.months !== 1 ? "s" : ""}</strong>. {rate > 0 && ` Interest will help you get there ${Math.round((1 - result.months / (goal > 0 && monthly > 0 ? Math.ceil(remaining / monthly) : result.months)) * 100) > 0 ? "faster" : "steadily"}.`}
         </InfoBox>
       )}
 
       {goal > 0 && current >= goal && (
-        <InfoBox type="success" variant="default">
+        <InfoBox type="success">
           <strong className="text-foreground">Goal reached!</strong> You've already hit your savings target. Consider setting a new goal or redirecting contributions toward investing.
         </InfoBox>
       )}
-    </CalculatorContainer>
+    </CalculatorShell>
   );
 }

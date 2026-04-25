@@ -1,5 +1,20 @@
 import { useState, useMemo } from "react";
-import { cn } from "@/lib/utils";
+import { PieChart, Pie, Cell } from "recharts";
+import {
+  CalculatorField,
+  StatCard,
+  StatsGrid,
+  InfoBox,
+  CalculatorShell,
+} from "@/components/ui/calculator-shared";
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+  ChartLegend,
+  ChartLegendContent,
+  type ChartConfig,
+} from "@/components/ui/chart";
 
 function fmt$(n: number): string {
   return n.toLocaleString("en-US", {
@@ -8,22 +23,6 @@ function fmt$(n: number): string {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   });
-}
-
-function StatCard({ label, value, highlight }: { label: string; value: string; highlight?: boolean }) {
-  return (
-    <div className="rounded-lg bg-background p-3">
-      <div className="text-xs text-muted-foreground">{label}</div>
-      <div
-        className={cn(
-          "font-heading text-lg font-semibold tabular-nums",
-          highlight ? "text-primary" : "text-foreground"
-        )}
-      >
-        {value}
-      </div>
-    </div>
-  );
 }
 
 interface WithdrawalResult {
@@ -41,101 +40,76 @@ function calculateWithdrawal(nestEgg: number): WithdrawalResult {
   return { annualWithdrawal, monthlyWithdrawal, remainingAnnual, withdrawalPct };
 }
 
+const chartConfig = {
+  withdrawal: { label: "Withdrawal", color: "#10b981" },
+  remaining: { label: "Remaining", color: "#94a3b8" },
+} satisfies ChartConfig;
+
 export default function FourPercentRuleVisualizer() {
   const [nestEgg, setNestEgg] = useState(1_000_000);
 
   const result = useMemo(() => calculateWithdrawal(nestEgg), [nestEgg]);
 
+  const chartData = [
+    { name: "Withdrawal", value: result.annualWithdrawal, fill: "var(--color-withdrawal)" },
+    { name: "Remaining", value: result.remainingAnnual, fill: "var(--color-remaining)" },
+  ];
+
   return (
-    <div className="bg-muted/50 rounded-lg p-6 space-y-6">
-      <div>
-        <h3 className="font-heading text-lg font-medium mb-3">4% Rule Visualizer</h3>
-        <p className="text-xs text-muted-foreground mb-4">
-          Enter your nest egg to see the safe annual and monthly withdrawal amounts based on the 4% rule.
-        </p>
-        <div className="space-y-2">
-          <div className="flex items-center justify-between gap-4">
-            <label htmlFor="fourpct-nestegg" className="text-sm text-muted-foreground shrink-0">
-              Nest Egg Amount
-            </label>
-            <div className="flex items-center gap-1.5">
-              <span className="text-sm text-muted-foreground">$</span>
-              <input
-                id="fourpct-nestegg"
-                type="number"
-                min={0}
-                max={10_000_000}
-                step={10_000}
-                value={nestEgg}
-                onChange={(e) => {
-                  const v = parseInt(e.target.value, 10);
-                  setNestEgg(isNaN(v) ? 0 : Math.max(0, Math.min(v, 10_000_000)));
-                }}
-                className="w-32 rounded-md border border-input bg-background px-2 py-1 text-sm font-heading text-right tabular-nums focus:outline-none focus:ring-2 focus:ring-ring/30"
-              />
-            </div>
-          </div>
+    <CalculatorShell
+      title="4% Rule Visualizer"
+      description="Enter your nest egg to see the safe annual and monthly withdrawal amounts based on the 4% rule."
+    >
+      <CalculatorField
+        id="fourpct-nestegg"
+        label="Nest Egg Amount"
+        value={nestEgg}
+        onChange={setNestEgg}
+        min={0}
+        max={10_000_000}
+        step={10_000}
+        prefix="$"
+      />
 
-          <input
-            type="range"
-            min={0}
-            max={10_000_000}
-            step={10_000}
-            value={nestEgg}
-            onChange={(e) => setNestEgg(Number(e.target.value))}
-            className="w-full cursor-pointer accent-primary"
-            aria-label="Nest egg amount"
-          />
-
-          <div className="flex justify-between text-xs text-muted-foreground">
-            <span>$0</span>
-            <span>$10M</span>
-          </div>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+      <StatsGrid cols={3}>
         <StatCard label="Safe Annual Withdrawal" value={fmt$(result.annualWithdrawal)} highlight />
         <StatCard label="Safe Monthly Withdrawal" value={fmt$(result.monthlyWithdrawal)} />
         <StatCard label="Remaining After Year 1" value={fmt$(result.remainingAnnual)} />
-      </div>
+      </StatsGrid>
 
-      <div>
-        <p className="text-xs text-muted-foreground mb-2">Withdrawal as share of nest egg</p>
-        <div className="flex h-6 rounded-full overflow-hidden bg-muted">
-          <div
-            className="h-full bg-emerald-500 transition-all duration-300 flex items-center justify-center"
-            style={{ width: `${result.withdrawalPct}%` }}
-          >
-            <span className="text-[10px] font-heading font-semibold text-white">4%</span>
-          </div>
-          <div
-            className="h-full bg-muted transition-all duration-300"
-            style={{ width: `${100 - result.withdrawalPct}%` }}
-          />
-        </div>
-        <div className="flex items-center gap-4 mt-2">
-          <div className="flex items-center gap-1.5">
-            <span className="shrink-0 size-2.5 rounded-sm bg-emerald-500" />
-            <span className="text-xs text-muted-foreground">Withdrawal (4%)</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <span className="shrink-0 size-2.5 rounded-sm bg-muted" />
-            <span className="text-xs text-muted-foreground">Remaining (96%)</span>
-          </div>
-        </div>
-      </div>
+      {nestEgg > 0 && (
+        <ChartContainer config={chartConfig} className="mx-auto aspect-square max-w-[280px]">
+          <PieChart>
+            <ChartTooltip
+              content={<ChartTooltipContent formatter={(value) => fmt$(Number(value))} nameKey="name" />}
+            />
+            <Pie
+              data={chartData}
+              dataKey="value"
+              nameKey="name"
+              cx="50%"
+              cy="50%"
+              innerRadius={40}
+              outerRadius={80}
+              strokeWidth={2}
+            >
+              {chartData.map((entry, index) => (
+                <Cell key={index} fill={entry.fill} />
+              ))}
+            </Pie>
+            <ChartLegend content={<ChartLegendContent />} />
+          </PieChart>
+        </ChartContainer>
+      )}
 
-      <div className="rounded-lg bg-primary/5 border border-primary/10 p-3">
-        <p className="text-xs text-muted-foreground leading-relaxed">
-          The 4% rule suggests withdrawing{" "}
-          <strong className="text-foreground">{fmt$(result.annualWithdrawal)}/year</strong> ({" "}
-          {fmt$(result.monthlyWithdrawal)}/month) from a{" "}
-          <strong className="text-foreground">{fmt$(nestEgg)}</strong> portfolio with a high probability of
-          sustaining over 30 years. For longer retirements or conservative planning, consider 3–3.5% (
-          {fmt$(nestEgg * 0.03)}/yr–{fmt$(nestEgg * 0.035)}/yr).
-        </p>
-      </div>
-    </div>
+      <InfoBox>
+        The 4% rule suggests withdrawing{" "}
+        <strong className="text-foreground">{fmt$(result.annualWithdrawal)}/year</strong> ({" "}
+        {fmt$(result.monthlyWithdrawal)}/month) from a{" "}
+        <strong className="text-foreground">{fmt$(nestEgg)}</strong> portfolio with a high probability of
+        sustaining over 30 years. For longer retirements or conservative planning, consider 3–3.5% (
+        {fmt$(nestEgg * 0.03)}/yr–{fmt$(nestEgg * 0.035)}/yr).
+      </InfoBox>
+    </CalculatorShell>
   );
 }

@@ -1,5 +1,18 @@
 import { useState, useMemo } from "react";
-import { cn } from "@/lib/utils";
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from "recharts";
+import {
+  CalculatorField,
+  StatCard,
+  StatsGrid,
+  InfoBox,
+  CalculatorShell,
+} from "@/components/ui/calculator-shared";
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+  type ChartConfig,
+} from "@/components/ui/chart";
 
 const BRACKETS_2025_SINGLE = [
   { rate: 0.1, max: 11_925 },
@@ -29,6 +42,16 @@ const BRACKET_COLORS = [
   { fill: "bg-orange-500", text: "text-orange-700 dark:text-orange-400", dot: "bg-orange-500" },
   { fill: "bg-red-500", text: "text-red-700 dark:text-red-400", dot: "bg-red-500" },
   { fill: "bg-rose-500", text: "text-rose-700 dark:text-rose-400", dot: "bg-rose-500" },
+];
+
+const BRACKET_HEX_COLORS = [
+  "#10b981",
+  "#14b8a6",
+  "#0ea5e9",
+  "#f59e0b",
+  "#f97316",
+  "#ef4444",
+  "#f43f5e",
 ];
 
 const MAX_INCOME = 750_000;
@@ -110,73 +133,41 @@ function calculateTax(income: number) {
   };
 }
 
-function StatCard({ label, value, highlight }: { label: string; value: string; highlight?: boolean }) {
-  return (
-    <div className="rounded-lg bg-background p-3">
-      <div className="text-xs text-muted-foreground">{label}</div>
-      <div
-        className={cn(
-          "font-heading text-lg font-semibold tabular-nums",
-          highlight ? "text-primary" : "text-foreground"
-        )}
-      >
-        {value}
-      </div>
-    </div>
-  );
-}
+const chartConfig = {
+  tax: { label: "Tax", color: "#0ea5e9" },
+} satisfies ChartConfig;
 
 export default function TaxBracketVisualizer() {
   const [income, setIncome] = useState(DEFAULT_INCOME);
   const result = useMemo(() => calculateTax(income), [income]);
-  const activeBrackets = result.brackets.filter((b) => b.amountInBracket > 0);
+
+  const chartData = result.brackets
+    .map((b, i) => ({ ...b, idx: i }))
+    .filter((b) => b.active)
+    .map((b) => ({
+      name: b.label,
+      range: fmtRange(b.displayMin, b.displayMax),
+      tax: b.taxInBracket,
+      fill: BRACKET_HEX_COLORS[b.idx],
+    }));
 
   return (
-    <div className="bg-muted/50 rounded-lg p-6 space-y-6">
-      <div>
-        <h3 className="font-heading text-lg font-medium mb-3">Tax Bracket Visualizer</h3>
-        <div className="space-y-2">
-          <div className="flex items-center justify-between gap-4">
-            <label htmlFor="tax-income" className="text-sm text-muted-foreground shrink-0">
-              Annual Income
-            </label>
-            <div className="flex items-center gap-1.5">
-              <span className="text-sm text-muted-foreground">$</span>
-              <input
-                id="tax-income"
-                type="number"
-                min={0}
-                max={MAX_INCOME}
-                step={500}
-                value={income}
-                onChange={(e) => {
-                  const v = parseInt(e.target.value, 10);
-                  setIncome(isNaN(v) ? 0 : Math.max(0, Math.min(v, MAX_INCOME)));
-                }}
-                className="w-28 rounded-md border border-input bg-background px-2 py-1 text-sm font-heading text-right tabular-nums focus:outline-none focus:ring-2 focus:ring-ring/30"
-              />
-            </div>
-          </div>
+    <CalculatorShell
+      title="Tax Bracket Visualizer"
+      description="See how your income is taxed across federal brackets."
+    >
+      <CalculatorField
+        id="tax-income"
+        label="Annual Income"
+        value={income}
+        onChange={setIncome}
+        min={0}
+        max={MAX_INCOME}
+        step={500}
+        prefix="$"
+      />
 
-          <input
-            type="range"
-            min={0}
-            max={MAX_INCOME}
-            step={500}
-            value={income}
-            onChange={(e) => setIncome(Number(e.target.value))}
-            className="w-full cursor-pointer accent-primary"
-            aria-label="Annual income"
-          />
-
-          <div className="flex justify-between text-xs text-muted-foreground">
-            <span>$0</span>
-            <span>$750,000</span>
-          </div>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <StatsGrid cols={4}>
         <StatCard label="Total Tax" value={fmt$(result.totalTax)} />
         <StatCard label="Effective Rate" value={fmtPct(result.effectiveRate)} highlight />
         <StatCard
@@ -184,84 +175,43 @@ export default function TaxBracketVisualizer() {
           value={result.marginalRate > 0 ? `${(result.marginalRate * 100).toFixed(0)}%` : "—"}
         />
         <StatCard label="Take-Home" value={fmt$(result.takeHome)} />
-      </div>
+      </StatsGrid>
 
-      {income > 0 && (
+      {income > 0 && chartData.length > 0 && (
         <div>
-          <p className="text-xs text-muted-foreground mb-1.5">
-            Income distribution across brackets
-          </p>
-          <div className="flex h-3.5 rounded-full overflow-hidden bg-muted">
-            {activeBrackets.map((b, i) => (
-              <div
-                key={i}
-                className={cn(b.color.fill, "h-full transition-all duration-300")}
-                style={{ width: `${(b.amountInBracket / income) * 100}%` }}
+          <p className="text-xs text-muted-foreground mb-1.5">Tax by bracket</p>
+          <ChartContainer config={chartConfig} className="aspect-[3/2]">
+            <BarChart
+              data={chartData}
+              layout="vertical"
+              margin={{ left: 0, right: 12, top: 0, bottom: 0 }}
+            >
+              <CartesianGrid horizontal={false} />
+              <XAxis type="number" tickFormatter={(v: number) => fmt$(v)} />
+              <YAxis dataKey="name" type="category" width={45} tick={{ fontSize: 12 }} />
+              <ChartTooltip
+                content={<ChartTooltipContent formatter={(value) => fmt$(Number(value))} />}
               />
-            ))}
-          </div>
+              <Bar dataKey="tax" radius={[0, 4, 4, 0]}>
+                {chartData.map((entry, index) => (
+                  <Cell key={index} fill={entry.fill} />
+                ))}
+              </Bar>
+            </BarChart>
+          </ChartContainer>
         </div>
       )}
-
-      <div className="space-y-2">
-        <p className="text-xs text-muted-foreground font-medium">Bracket Breakdown</p>
-        {result.brackets.map((b, i) => (
-          <div
-            key={i}
-            className={cn(
-              "rounded-md p-3 transition-opacity duration-200",
-              b.active ? "opacity-100" : "opacity-30"
-            )}
-          >
-            <div className="flex items-center justify-between mb-1.5">
-              <div className="flex items-center gap-2 min-w-0">
-                <span className={cn("shrink-0 size-2.5 rounded-sm", b.color.dot)} />
-                <span
-                  className={cn(
-                    "font-heading text-sm font-medium shrink-0",
-                    b.active ? b.color.text : "text-muted-foreground"
-                  )}
-                >
-                  {b.label}
-                </span>
-                <span className="text-xs text-muted-foreground truncate">
-                  {fmtRange(b.displayMin, b.displayMax)}
-                </span>
-              </div>
-              {b.active && (
-                <div className="flex items-center gap-3 text-xs shrink-0 pl-2">
-                  <span className="text-muted-foreground tabular-nums">
-                    {fmt$(b.amountInBracket)}
-                  </span>
-                  <span className={cn("font-medium tabular-nums", b.color.text)}>
-                    {fmt$(b.taxInBracket)}
-                  </span>
-                </div>
-              )}
-            </div>
-
-            <div className="h-1.5 rounded-full bg-muted overflow-hidden">
-              <div
-                className={cn(b.color.fill, "h-full rounded-full transition-all duration-300")}
-                style={{ width: `${b.fillPct}%` }}
-              />
-            </div>
-          </div>
-        ))}
-      </div>
 
       {income > 0 && result.marginalRate > result.effectiveRate && (
-        <div className="rounded-lg bg-primary/5 border border-primary/10 p-3">
-          <p className="text-xs text-muted-foreground leading-relaxed">
-            Your <strong className="text-foreground">effective rate</strong> (
-            {fmtPct(result.effectiveRate)}) is always lower than your{" "}
-            <strong className="text-foreground">marginal rate</strong> (
-            {(result.marginalRate * 100).toFixed(0)}%) because only the dollars in each bucket are
-            taxed at that rate. Moving into a higher bracket doesn&apos;t change the rate on income
-            in lower brackets.
-          </p>
-        </div>
+        <InfoBox>
+          Your <strong className="text-foreground">effective rate</strong> (
+          {fmtPct(result.effectiveRate)}) is always lower than your{" "}
+          <strong className="text-foreground">marginal rate</strong> (
+          {(result.marginalRate * 100).toFixed(0)}%) because only the dollars in each bucket are
+          taxed at that rate. Moving into a higher bracket doesn&apos;t change the rate on income
+          in lower brackets.
+        </InfoBox>
       )}
-    </div>
+    </CalculatorShell>
   );
 }

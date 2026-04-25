@@ -1,5 +1,27 @@
+"use client";
+
 import { useState, useMemo } from "react";
-import { cn } from "@/lib/utils";
+import {
+  CalculatorField,
+  CalculatorToggle,
+  StatCard,
+  StatsGrid,
+  InfoBox,
+  CalculatorShell,
+} from "@/components/ui/calculator-shared";
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
+import type { ChartConfig } from "@/components/ui/chart";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+} from "recharts";
 
 type Stability = "stable" | "average" | "unstable";
 
@@ -28,21 +50,16 @@ function fmt$(n: number): string {
   });
 }
 
-function StatCard({ label, value, highlight }: { label: string; value: string; highlight?: boolean }) {
-  return (
-    <div className="rounded-lg bg-background p-3">
-      <div className="text-xs text-muted-foreground">{label}</div>
-      <div
-        className={cn(
-          "font-heading text-lg font-semibold tabular-nums",
-          highlight ? "text-primary" : "text-foreground"
-        )}
-      >
-        {value}
-      </div>
-    </div>
-  );
-}
+const chartConfig = {
+  target: {
+    label: "Target fund",
+    color: "hsl(var(--primary))",
+  },
+  perMonth: {
+    label: "Per month",
+    color: "hsl(var(--chart-1))",
+  },
+} satisfies ChartConfig;
 
 export default function EmergencyFundCalculator() {
   const [expenses, setExpenses] = useState(DEFAULT_EXPENSES);
@@ -59,130 +76,121 @@ export default function EmergencyFundCalculator() {
 
   const stabilityInfo = STABILITY_OPTIONS.find((o) => o.value === stability)!;
 
+  const barData = useMemo(
+    () =>
+      Array.from({ length: 12 }, (_, i) => ({
+        month: i + 1,
+        target: i + 1 <= result.recommendedMonths ? expenses : 0,
+        perMonth: expenses,
+      })),
+    [expenses, result.recommendedMonths]
+  );
+
   return (
-    <div className="bg-muted/50 rounded-lg p-6 space-y-6">
-      <div>
-        <h3 className="font-heading text-lg font-medium mb-3">Emergency Fund Calculator</h3>
-        <div className="space-y-4">
-          <div className="space-y-2">
-            <div className="flex items-center justify-between gap-4">
-              <label htmlFor="ef-expenses" className="text-sm text-muted-foreground shrink-0">
-                Monthly Expenses
-              </label>
-              <div className="flex items-center gap-1.5">
-                <span className="text-sm text-muted-foreground">$</span>
-                <input
-                  id="ef-expenses"
-                  type="number"
-                  min={0}
-                  max={MAX_EXPENSES}
-                  step={100}
-                  value={expenses}
-                  onChange={(e) => {
-                    const v = parseInt(e.target.value, 10);
-                    setExpenses(isNaN(v) ? 0 : Math.max(0, Math.min(v, MAX_EXPENSES)));
-                  }}
-                  className="w-28 rounded-md border border-input bg-background px-2 py-1 text-sm font-heading text-right tabular-nums focus:outline-none focus:ring-2 focus:ring-ring/30"
-                />
-              </div>
-            </div>
+    <CalculatorShell
+      title="Emergency Fund Calculator"
+      description="Figure out how many months of expenses you should keep in your emergency fund based on your job stability and household income."
+    >
+      <div className="flex flex-col gap-4">
+        <CalculatorField
+          id="ef-expenses"
+          label="Monthly Expenses"
+          prefix="$"
+          value={expenses}
+          onChange={setExpenses}
+          min={0}
+          max={MAX_EXPENSES}
+          step={100}
+        />
 
-            <input
-              type="range"
-              min={0}
-              max={MAX_EXPENSES}
-              step={100}
-              value={expenses}
-              onChange={(e) => setExpenses(Number(e.target.value))}
-              className="w-full cursor-pointer accent-primary"
-              aria-label="Monthly expenses"
-            />
-
-            <div className="flex justify-between text-xs text-muted-foreground">
-              <span>$0</span>
-              <span>$20,000</span>
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <label className="text-sm text-muted-foreground">Job Stability</label>
-            <div className="flex gap-2">
-              {STABILITY_OPTIONS.map((opt) => (
-                <button
-                  key={opt.value}
-                  onClick={() => setStability(opt.value)}
-                  className={cn(
-                    "flex-1 rounded-md border px-3 py-2 text-sm font-heading font-medium transition-colors",
-                    stability === opt.value
-                      ? "border-primary bg-primary/10 text-primary"
-                      : "border-input bg-background text-muted-foreground hover:bg-muted"
-                  )}
-                >
-                  {opt.label}
-                </button>
-              ))}
-            </div>
-            <p className="text-xs text-muted-foreground">{stabilityInfo.description}</p>
-          </div>
-
-          <div className="space-y-2">
-            <div className="flex items-center justify-between gap-4">
-              <label htmlFor="ef-earners" className="text-sm text-muted-foreground shrink-0">
-                Income Earners
-              </label>
-              <input
-                id="ef-earners"
-                type="number"
-                min={1}
-                max={4}
-                step={1}
-                value={earners}
-                onChange={(e) => {
-                  const v = parseInt(e.target.value, 10);
-                  setEarners(isNaN(v) ? 1 : Math.max(1, Math.min(v, 4)));
-                }}
-                className="w-16 rounded-md border border-input bg-background px-2 py-1 text-sm font-heading text-right tabular-nums focus:outline-none focus:ring-2 focus:ring-ring/30"
-              />
-            </div>
-            <p className="text-xs text-muted-foreground">
-              More earners = less risk per person. Multi-household incomes need smaller buffers per earner.
-            </p>
-          </div>
+        <div className="flex flex-col gap-2">
+          <span className="text-sm text-muted-foreground">Job Stability</span>
+          <CalculatorToggle
+            options={STABILITY_OPTIONS.map((opt) => ({
+              value: opt.value,
+              label: opt.label,
+            }))}
+            value={stability}
+            onChange={(v: Stability) => setStability(v)}
+          />
+          <p className="text-xs text-muted-foreground">{stabilityInfo.description}</p>
         </div>
+
+        <CalculatorField
+          id="ef-earners"
+          label="Income Earners"
+          value={earners}
+          onChange={setEarners}
+          min={1}
+          max={4}
+          step={1}
+          slider={false}
+        />
+        <p className="text-xs text-muted-foreground -mt-2">
+          More earners = less risk per person. Multi-household incomes need smaller buffers per earner.
+        </p>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+      <StatsGrid cols={3}>
         <StatCard label="Recommended Months" value={`${result.recommendedMonths} mo`} highlight />
         <StatCard label="Monthly Expenses" value={fmt$(expenses)} />
         <StatCard label="Target Fund" value={fmt$(result.target)} highlight />
-      </div>
+      </StatsGrid>
 
       {expenses > 0 && (
         <div>
-          <p className="text-xs text-muted-foreground mb-2">Target progress</p>
-          <div className="h-3 rounded-full bg-muted overflow-hidden">
-            <div
-              className="h-full rounded-full bg-primary transition-all duration-500"
-              style={{ width: `${Math.min(100, (result.recommendedMonths / 12) * 100)}%` }}
-            />
-          </div>
-          <div className="flex justify-between mt-1 text-xs text-muted-foreground">
-            <span>0 months</span>
-            <span>12 months</span>
-          </div>
+          <p className="text-xs text-muted-foreground mb-3">
+            Fund progress by month
+          </p>
+          <ChartContainer config={chartConfig} className="h-40 w-full">
+            <BarChart data={barData} margin={{ top: 5, right: 10, left: 10, bottom: 5 }}>
+              <CartesianGrid vertical={false} />
+              <XAxis
+                dataKey="month"
+                tickLine={false}
+                axisLine={false}
+                tickFormatter={(v: number) => `${v}mo`}
+              />
+              <YAxis
+                tickLine={false}
+                axisLine={false}
+                tickFormatter={(v: number) => fmt$(v)}
+                width={70}
+              />
+              <ChartTooltip
+                content={
+                  <ChartTooltipContent
+                    formatter={(value) => fmt$(Number(value ?? 0))}
+                  />
+                }
+              />
+              <Bar
+                dataKey="target"
+                fill="var(--color-target)"
+                radius={[4, 4, 0, 0]}
+                name="target"
+              />
+              <Bar
+                dataKey="perMonth"
+                fill="var(--color-perMonth)"
+                radius={[4, 4, 0, 0]}
+                name="perMonth"
+              />
+            </BarChart>
+          </ChartContainer>
         </div>
       )}
 
-      <div className="space-y-2">
+      <div className="flex flex-col gap-2">
         <p className="text-xs text-muted-foreground font-medium">How the recommendation works</p>
-        <div className="rounded-md p-3 space-y-1.5">
+        <div className="rounded-md p-3 flex flex-col gap-1.5">
           <div className="flex items-center justify-between text-sm">
             <span className="text-muted-foreground">Base ({stabilityInfo.label} job)</span>
             <span className="font-heading font-medium tabular-nums">{result.baseMonths} months</span>
           </div>
           <div className="flex items-center justify-between text-sm">
             <span className="text-muted-foreground">Earner adjustment ({earners} earner{earners > 1 ? "s" : ""})</span>
-            <span className="font-heading font-medium tabular-nums">×{EARNER_MULTIPLIER[earners]}</span>
+            <span className="font-heading font-medium tabular-nums">&times;{EARNER_MULTIPLIER[earners]}</span>
           </div>
           <div className="h-px bg-border my-1" />
           <div className="flex items-center justify-between text-sm">
@@ -195,14 +203,12 @@ export default function EmergencyFundCalculator() {
       </div>
 
       {expenses > 0 && (
-        <div className="rounded-lg bg-primary/5 border border-primary/10 p-3">
-          <p className="text-xs text-muted-foreground leading-relaxed">
-            Start with <strong className="text-foreground">one month of expenses</strong> as your initial
-            target, then build toward the full recommendation. Even a partial fund prevents a single bad
-            week from derailing your whole plan.
-          </p>
-        </div>
+        <InfoBox type="default">
+          Start with <strong className="text-foreground">one month of expenses</strong> as your initial
+          target, then build toward the full recommendation. Even a partial fund prevents a single bad
+          week from derailing your whole plan.
+        </InfoBox>
       )}
-    </div>
+    </CalculatorShell>
   );
 }

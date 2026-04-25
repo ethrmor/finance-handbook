@@ -1,5 +1,26 @@
 import { useState, useMemo } from "react";
-import { cn } from "@/lib/utils";
+import {
+  CalculatorField,
+  StatCard,
+  StatsGrid,
+  InfoBox,
+  CalculatorShell,
+} from "@/components/ui/calculator-shared";
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+  ChartLegend,
+  ChartLegendContent,
+} from "@/components/ui/chart";
+import type { ChartConfig } from "@/components/ui/chart";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+} from "recharts";
 
 function fmt$(n: number): string {
   return n.toLocaleString("en-US", {
@@ -10,92 +31,16 @@ function fmt$(n: number): string {
   });
 }
 
-function StatCard({
-  label,
-  value,
-  highlight,
-}: {
-  label: string;
-  value: string;
-  highlight?: boolean;
-}) {
-  return (
-    <div className="rounded-lg bg-background p-3">
-      <div className="text-xs text-muted-foreground">{label}</div>
-      <div
-        className={cn(
-          "font-heading text-lg font-semibold tabular-nums",
-          highlight ? "text-primary" : "text-foreground"
-        )}
-      >
-        {value}
-      </div>
-    </div>
-  );
+function formatCurrencyAxis(v: number): string {
+  if (v >= 1_000_000) return `$${(v / 1_000_000).toFixed(1)}M`;
+  if (v >= 1_000) return `$${(v / 1_000).toFixed(0)}K`;
+  return `$${v}`;
 }
 
-function InputRow({
-  id,
-  label,
-  value,
-  onChange,
-  min,
-  max,
-  step,
-  prefix,
-  suffix,
-  slider,
-}: {
-  id: string;
-  label: string;
-  value: number;
-  onChange: (v: number) => void;
-  min?: number;
-  max?: number;
-  step?: number;
-  prefix?: string;
-  suffix?: string;
-  slider?: boolean;
-}) {
-  return (
-    <div className="space-y-1">
-      <div className="flex items-center justify-between gap-4">
-        <label htmlFor={id} className="text-sm text-muted-foreground shrink-0">
-          {label}
-        </label>
-        <div className="flex items-center gap-1.5">
-          {prefix && <span className="text-sm text-muted-foreground">{prefix}</span>}
-          <input
-            id={id}
-            type="number"
-            min={min}
-            max={max}
-            step={step}
-            value={value}
-            onChange={(e) => {
-              const v = parseFloat(e.target.value);
-              onChange(isNaN(v) ? 0 : Math.max(min ?? -Infinity, Math.min(v, max ?? Infinity)));
-            }}
-            className="w-24 rounded-md border border-input bg-background px-2 py-1 text-sm font-heading text-right tabular-nums focus:outline-none focus:ring-2 focus:ring-ring/30"
-          />
-          {suffix && <span className="text-sm text-muted-foreground">{suffix}</span>}
-        </div>
-      </div>
-      {slider && (
-        <input
-          type="range"
-          min={min}
-          max={max}
-          step={step}
-          value={value}
-          onChange={(e) => onChange(Number(e.target.value))}
-          className="w-full cursor-pointer accent-primary"
-          aria-label={label}
-        />
-      )}
-    </div>
-  );
-}
+const costChartConfig = {
+  buyCost: { label: "Buying", color: "hsl(var(--primary))" },
+  rentCost: { label: "Renting", color: "hsl(150 60% 45%)" },
+} satisfies ChartConfig;
 
 export default function RentVsBuyCalculator() {
   const [homePrice, setHomePrice] = useState(400_000);
@@ -170,8 +115,10 @@ export default function RentVsBuyCalculator() {
 
     const totalRentCost = totalRent + opportunityCost;
 
-    // Breakeven year
+    // Build yearly data for chart and find breakeven
+    const yearlyData: { year: number; buyCost: number; rentCost: number }[] = [];
     let breakevenYear: number | null = null;
+
     for (let y = 1; y <= 30; y++) {
       const yMonths = y * 12;
       const yMortgagePayments = monthlyPI * yMonths;
@@ -203,9 +150,14 @@ export default function RentVsBuyCalculator() {
       const yOppCost = dp * (Math.pow(1 + investmentReturn / 100, y) - 1);
       const yRentCost = yRent + yOppCost;
 
-      if (yBuyCost <= yRentCost) {
+      yearlyData.push({
+        year: y,
+        buyCost: Math.round(yBuyCost),
+        rentCost: Math.round(yRentCost),
+      });
+
+      if (breakevenYear === null && yBuyCost <= yRentCost) {
         breakevenYear = y;
-        break;
       }
     }
 
@@ -220,6 +172,7 @@ export default function RentVsBuyCalculator() {
       totalMaintenance,
       totalRent,
       opportunityCost,
+      yearlyData,
     };
   }, [
     homePrice,
@@ -234,132 +187,130 @@ export default function RentVsBuyCalculator() {
     yearsStaying,
   ]);
 
-  const maxCost = Math.max(Math.abs(result.totalBuyCost), Math.abs(result.totalRentCost), 1);
-
   return (
-    <div className="bg-muted/50 rounded-lg p-6 space-y-6">
-      <div>
-        <h3 className="font-heading text-lg font-medium mb-3">Rent vs. Buy Calculator</h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
-          <div className="space-y-3">
-            <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-              Buying
-            </p>
-            <InputRow
-              id="rvb-home-price"
-              label="Home Price"
-              value={homePrice}
-              onChange={setHomePrice}
-              min={0}
-              max={2_000_000}
-              step={10_000}
-              prefix="$"
-              slider
-            />
-            <InputRow
-              id="rvb-down-pct"
-              label="Down Payment"
-              value={downPaymentPct}
-              onChange={setDownPaymentPct}
-              min={0}
-              max={100}
-              step={1}
-              suffix="%"
-              slider
-            />
-            <InputRow
-              id="rvb-mortgage-rate"
-              label="Mortgage Rate"
-              value={mortgageRate}
-              onChange={setMortgageRate}
-              min={0}
-              max={15}
-              step={0.1}
-              suffix="%"
-              slider
-            />
-            <InputRow
-              id="rvb-property-tax"
-              label="Property Tax Rate"
-              value={propertyTaxRate}
-              onChange={setPropertyTaxRate}
-              min={0}
-              max={5}
-              step={0.1}
-              suffix="%"
-            />
-            <InputRow
-              id="rvb-insurance"
-              label="Insurance / mo"
-              value={insuranceMonthly}
-              onChange={setInsuranceMonthly}
-              min={0}
-              max={1_000}
-              step={10}
-              prefix="$"
-            />
-            <InputRow
-              id="rvb-maintenance"
-              label="Maintenance / mo"
-              value={maintenanceMonthly}
-              onChange={setMaintenanceMonthly}
-              min={0}
-              max={2_000}
-              step={25}
-              prefix="$"
-            />
-          </div>
+    <CalculatorShell
+      title="Rent vs. Buy Calculator"
+      description="Compare the true cost of renting versus buying over time."
+    >
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
+        <div className="space-y-3">
+          <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+            Buying
+          </p>
+          <CalculatorField
+            id="rvb-home-price"
+            label="Home Price"
+            value={homePrice}
+            onChange={setHomePrice}
+            min={0}
+            max={2_000_000}
+            step={10_000}
+            prefix="$"
+          />
+          <CalculatorField
+            id="rvb-down-pct"
+            label="Down Payment"
+            value={downPaymentPct}
+            onChange={setDownPaymentPct}
+            min={0}
+            max={100}
+            step={1}
+            suffix="%"
+          />
+          <CalculatorField
+            id="rvb-mortgage-rate"
+            label="Mortgage Rate"
+            value={mortgageRate}
+            onChange={setMortgageRate}
+            min={0}
+            max={15}
+            step={0.1}
+            suffix="%"
+          />
+          <CalculatorField
+            id="rvb-property-tax"
+            label="Property Tax Rate"
+            value={propertyTaxRate}
+            onChange={setPropertyTaxRate}
+            min={0}
+            max={5}
+            step={0.1}
+            suffix="%"
+            slider={false}
+          />
+          <CalculatorField
+            id="rvb-insurance"
+            label="Insurance / mo"
+            value={insuranceMonthly}
+            onChange={setInsuranceMonthly}
+            min={0}
+            max={1_000}
+            step={10}
+            prefix="$"
+            slider={false}
+          />
+          <CalculatorField
+            id="rvb-maintenance"
+            label="Maintenance / mo"
+            value={maintenanceMonthly}
+            onChange={setMaintenanceMonthly}
+            min={0}
+            max={2_000}
+            step={25}
+            prefix="$"
+            slider={false}
+          />
+        </div>
 
-          <div className="space-y-3">
-            <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-              Renting
-            </p>
-            <InputRow
-              id="rvb-monthly-rent"
-              label="Monthly Rent"
-              value={monthlyRent}
-              onChange={setMonthlyRent}
-              min={0}
-              max={10_000}
-              step={50}
-              prefix="$"
-              slider
-            />
-            <InputRow
-              id="rvb-rent-increase"
-              label="Rent Increase / yr"
-              value={rentIncreasePct}
-              onChange={setRentIncreasePct}
-              min={0}
-              max={10}
-              step={0.5}
-              suffix="%"
-            />
-            <InputRow
-              id="rvb-invest-return"
-              label="Invest Return"
-              value={investmentReturn}
-              onChange={setInvestmentReturn}
-              min={0}
-              max={15}
-              step={0.5}
-              suffix="%"
-            />
-            <InputRow
-              id="rvb-years"
-              label="Years Staying"
-              value={yearsStaying}
-              onChange={setYearsStaying}
-              min={1}
-              max={30}
-              step={1}
-              slider
-            />
-          </div>
+        <div className="space-y-3">
+          <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+            Renting
+          </p>
+          <CalculatorField
+            id="rvb-monthly-rent"
+            label="Monthly Rent"
+            value={monthlyRent}
+            onChange={setMonthlyRent}
+            min={0}
+            max={10_000}
+            step={50}
+            prefix="$"
+          />
+          <CalculatorField
+            id="rvb-rent-increase"
+            label="Rent Increase / yr"
+            value={rentIncreasePct}
+            onChange={setRentIncreasePct}
+            min={0}
+            max={10}
+            step={0.5}
+            suffix="%"
+            slider={false}
+          />
+          <CalculatorField
+            id="rvb-invest-return"
+            label="Invest Return"
+            value={investmentReturn}
+            onChange={setInvestmentReturn}
+            min={0}
+            max={15}
+            step={0.5}
+            suffix="%"
+            slider={false}
+          />
+          <CalculatorField
+            id="rvb-years"
+            label="Years Staying"
+            value={yearsStaying}
+            onChange={setYearsStaying}
+            min={1}
+            max={30}
+            step={1}
+          />
         </div>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <StatsGrid cols={4}>
         <StatCard
           label="Net Buy Cost"
           value={fmt$(result.totalBuyCost)}
@@ -379,46 +330,43 @@ export default function RentVsBuyCalculator() {
           label="Breakeven Year"
           value={result.breakevenYear !== null ? `Year ${result.breakevenYear}` : "30+ yrs"}
         />
-      </div>
+      </StatsGrid>
 
       <div className="space-y-3">
-        <p className="text-xs text-muted-foreground font-medium">Net Cost Comparison</p>
-        <div className="space-y-2">
-          <div>
-            <div className="flex items-center justify-between text-xs mb-1">
-              <span className="text-muted-foreground">Buying</span>
-              <span className="font-heading font-medium tabular-nums">
-                {fmt$(result.totalBuyCost)}
-              </span>
-            </div>
-            <div className="h-4 rounded-full bg-muted overflow-hidden">
-              <div
-                className={cn(
-                  "h-full rounded-full transition-all duration-300",
-                  result.buyCheaper ? "bg-primary" : "bg-sky-500"
-                )}
-                style={{ width: `${(Math.abs(result.totalBuyCost) / maxCost) * 100}%` }}
-              />
-            </div>
-          </div>
-          <div>
-            <div className="flex items-center justify-between text-xs mb-1">
-              <span className="text-muted-foreground">Renting</span>
-              <span className="font-heading font-medium tabular-nums">
-                {fmt$(result.totalRentCost)}
-              </span>
-            </div>
-            <div className="h-4 rounded-full bg-muted overflow-hidden">
-              <div
-                className={cn(
-                  "h-full rounded-full transition-all duration-300",
-                  !result.buyCheaper ? "bg-primary" : "bg-emerald-500"
-                )}
-                style={{ width: `${(Math.abs(result.totalRentCost) / maxCost) * 100}%` }}
-              />
-            </div>
-          </div>
-        </div>
+        <p className="text-xs text-muted-foreground font-medium">Cumulative Cost Over Time</p>
+        <ChartContainer config={costChartConfig} className="h-[250px] w-full">
+          <LineChart data={result.yearlyData} margin={{ top: 5, right: 10, left: 10, bottom: 5 }}>
+            <CartesianGrid vertical={false} />
+            <XAxis
+              dataKey="year"
+              tickLine={false}
+              axisLine={false}
+              tickFormatter={(v: number) => `Yr ${v}`}
+            />
+            <YAxis
+              tickLine={false}
+              axisLine={false}
+              width={60}
+              tickFormatter={formatCurrencyAxis}
+            />
+            <ChartTooltip content={<ChartTooltipContent />} />
+            <Line
+              type="monotone"
+              dataKey="buyCost"
+              stroke="var(--color-buyCost)"
+              strokeWidth={2}
+              dot={false}
+            />
+            <Line
+              type="monotone"
+              dataKey="rentCost"
+              stroke="var(--color-rentCost)"
+              strokeWidth={2}
+              dot={false}
+            />
+            <ChartLegend content={<ChartLegendContent />} />
+          </LineChart>
+        </ChartContainer>
       </div>
 
       <div className="space-y-2">
@@ -455,26 +403,23 @@ export default function RentVsBuyCalculator() {
         </div>
       </div>
 
-      {result.breakevenYear !== null && (
-        <div className="rounded-lg bg-primary/5 border border-primary/10 p-3">
-          <p className="text-xs text-muted-foreground leading-relaxed">
+      <InfoBox>
+        {result.breakevenYear !== null ? (
+          <>
             Buying becomes cheaper than renting after{" "}
             <strong className="text-foreground">year {result.breakevenYear}</strong>. If you plan to
             stay fewer than {result.breakevenYear} years, renting and investing the difference is
             likely the better financial choice. This assumes no home appreciation — actual
             appreciation could make buying favorable sooner.
-          </p>
-        </div>
-      )}
-      {result.breakevenYear === null && (
-        <div className="rounded-lg bg-primary/5 border border-primary/10 p-3">
-          <p className="text-xs text-muted-foreground leading-relaxed">
+          </>
+        ) : (
+          <>
             Under these assumptions, renting remains cheaper over 30 years. This is common in
             high-cost markets where rent is significantly lower than the full cost of ownership.
             Consider investing the savings from renting to build wealth.
-          </p>
-        </div>
-      )}
-    </div>
+          </>
+        )}
+      </InfoBox>
+    </CalculatorShell>
   );
 }

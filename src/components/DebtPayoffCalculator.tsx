@@ -1,12 +1,21 @@
 import { useState, useMemo } from "react";
 import { cn } from "@/lib/utils";
-import { 
-  CalculatorContainer, 
-  CalculatorHeader, 
-  StatCard, 
-  StatsGrid, 
-  InfoBox 
-} from "@/components/ui/calculator-layouts";
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from "recharts";
+import { Input } from "@/components/ui/input";
+import {
+  CalculatorShell,
+  CalculatorField,
+  CalculatorToggle,
+  StatCard,
+  StatsGrid,
+  InfoBox,
+} from "@/components/ui/calculator-shared";
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+  type ChartConfig,
+} from "@/components/ui/chart";
 
 interface Debt {
   id: string;
@@ -19,11 +28,11 @@ interface Debt {
 type Strategy = "avalanche" | "snowball";
 
 const DEBT_COLORS = [
-  { fill: "bg-rose-500", text: "text-rose-700 dark:text-rose-400", dot: "bg-rose-500" },
-  { fill: "bg-amber-500", text: "text-amber-700 dark:text-amber-400", dot: "bg-amber-500" },
-  { fill: "bg-sky-500", text: "text-sky-700 dark:text-sky-400", dot: "bg-sky-500" },
-  { fill: "bg-emerald-500", text: "text-emerald-700 dark:text-emerald-400", dot: "bg-emerald-500" },
-  { fill: "bg-violet-500", text: "text-violet-700 dark:text-violet-400", dot: "bg-violet-500" },
+  { fill: "bg-rose-500", text: "text-rose-700 dark:text-rose-400", dot: "bg-rose-500", hex: "#f43f5e" },
+  { fill: "bg-amber-500", text: "text-amber-700 dark:text-amber-400", dot: "bg-amber-500", hex: "#f59e0b" },
+  { fill: "bg-sky-500", text: "text-sky-700 dark:text-sky-400", dot: "bg-sky-500", hex: "#0ea5e9" },
+  { fill: "bg-emerald-500", text: "text-emerald-700 dark:text-emerald-400", dot: "bg-emerald-500", hex: "#10b981" },
+  { fill: "bg-violet-500", text: "text-violet-700 dark:text-violet-400", dot: "bg-violet-500", hex: "#8b5cf6" },
 ];
 
 const DEFAULT_DEBTS: Debt[] = [
@@ -184,6 +193,10 @@ function makeId() {
   return String(nextId++);
 }
 
+const payoffChartConfig = {
+  months: { label: "Months to Payoff", color: "#f43f5e" },
+} satisfies ChartConfig;
+
 export default function DebtPayoffCalculator() {
   const [debts, setDebts] = useState<Debt[]>(DEFAULT_DEBTS);
   const [strategy, setStrategy] = useState<Strategy>("avalanche");
@@ -218,38 +231,25 @@ export default function DebtPayoffCalculator() {
     setDebts((prev) => prev.filter((d) => d.id !== id));
   }
 
-  return (
-    <CalculatorContainer variant="card">
-      <CalculatorHeader 
-        variant="card"
-        title="Debt Payoff Calculator" 
-        description="Compare avalanche vs snowball strategies with your actual debts." 
-      />
+  const payoffChartData = result.debtPayoffOrder.map((d) => ({
+    name: d.name,
+    months: d.monthsIn,
+    colorIdx: d.colorIdx,
+  }));
 
-      <div className="flex gap-3">
-        <button
-          onClick={() => setStrategy("avalanche")}
-          className={cn(
-            "flex-1 rounded-lg px-4 py-3 text-sm font-heading font-semibold transition-all",
-            strategy === "avalanche"
-              ? "bg-primary text-primary-foreground shadow-md shadow-primary/20"
-              : "bg-muted/50 border border-border/50 text-muted-foreground hover:text-foreground hover:bg-muted"
-          )}
-        >
-          Avalanche
-        </button>
-        <button
-          onClick={() => setStrategy("snowball")}
-          className={cn(
-            "flex-1 rounded-lg px-4 py-3 text-sm font-heading font-semibold transition-all",
-            strategy === "snowball"
-              ? "bg-primary text-primary-foreground shadow-md shadow-primary/20"
-              : "bg-muted/50 border border-border/50 text-muted-foreground hover:text-foreground hover:bg-muted"
-          )}
-        >
-          Snowball
-        </button>
-      </div>
+  return (
+    <CalculatorShell
+      title="Debt Payoff Calculator"
+      description="Compare avalanche vs snowball strategies with your actual debts."
+    >
+      <CalculatorToggle
+        options={[
+          { value: "avalanche" as const, label: "Avalanche" },
+          { value: "snowball" as const, label: "Snowball" },
+        ]}
+        value={strategy}
+        onChange={setStrategy}
+      />
 
       <div className="space-y-3">
         {debts.map((debt, i) => {
@@ -259,11 +259,11 @@ export default function DebtPayoffCalculator() {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <span className={cn("shrink-0 size-3 rounded-md", color.dot)} />
-                  <input
+                  <Input
                     type="text"
                     value={debt.name}
                     onChange={(e) => updateDebt(debt.id, "name", e.target.value)}
-                    className="bg-transparent text-sm font-heading font-semibold text-foreground focus:outline-none w-28"
+                    className="h-auto w-28 border-none bg-transparent p-0 text-sm font-heading font-semibold text-foreground shadow-none focus-visible:ring-0"
                   />
                 </div>
                 {debts.length > 1 && (
@@ -275,48 +275,36 @@ export default function DebtPayoffCalculator() {
                   </button>
                 )}
               </div>
-              <div className="grid grid-cols-3 gap-3">
-                <div className="space-y-1">
-                  <label className="text-xs font-medium text-muted-foreground">Balance</label>
-                  <div className="flex items-center gap-1">
-                    <span className="text-xs text-muted-foreground">$</span>
-                    <input
-                      type="number"
-                      min={0}
-                      step={100}
-                      value={debt.balance}
-                      onChange={(e) => updateDebt(debt.id, "balance", e.target.value)}
-                      className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm font-heading text-right tabular-nums focus:outline-none focus:ring-2 focus:ring-ring/30"
-                    />
-                  </div>
-                </div>
-                <div className="space-y-1">
-                  <label className="text-xs font-medium text-muted-foreground">APR %</label>
-                  <input
-                    type="number"
-                    min={0}
-                    max={50}
-                    step={0.5}
-                    value={debt.apr}
-                    onChange={(e) => updateDebt(debt.id, "apr", e.target.value)}
-                    className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm font-heading text-right tabular-nums focus:outline-none focus:ring-2 focus:ring-ring/30"
-                  />
-                </div>
-                <div className="space-y-1">
-                  <label className="text-xs font-medium text-muted-foreground">Min. Pmt</label>
-                  <div className="flex items-center gap-1">
-                    <span className="text-xs text-muted-foreground">$</span>
-                    <input
-                      type="number"
-                      min={0}
-                      step={10}
-                      value={debt.minimum}
-                      onChange={(e) => updateDebt(debt.id, "minimum", e.target.value)}
-                      className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm font-heading text-right tabular-nums focus:outline-none focus:ring-2 focus:ring-ring/30"
-                    />
-                  </div>
-                </div>
-              </div>
+              <CalculatorField
+                label="Balance"
+                value={debt.balance}
+                onChange={(v) => updateDebt(debt.id, "balance", v)}
+                min={0}
+                max={100000}
+                step={100}
+                prefix="$"
+                slider={false}
+              />
+              <CalculatorField
+                label="APR"
+                value={debt.apr}
+                onChange={(v) => updateDebt(debt.id, "apr", v)}
+                min={0}
+                max={50}
+                step={0.5}
+                suffix="%"
+                slider={false}
+              />
+              <CalculatorField
+                label="Min. Payment"
+                value={debt.minimum}
+                onChange={(v) => updateDebt(debt.id, "minimum", v)}
+                min={0}
+                max={10000}
+                step={10}
+                prefix="$"
+                slider={false}
+              />
             </div>
           );
         })}
@@ -331,53 +319,42 @@ export default function DebtPayoffCalculator() {
         )}
       </div>
 
-      <div className="rounded-xl bg-muted/30 border border-border/40 p-4 space-y-4">
-        <div className="flex items-center justify-between gap-4">
-          <label htmlFor="extra-payment" className="text-sm font-medium text-muted-foreground shrink-0">
-            Extra Monthly Payment
-          </label>
-          <div className="flex items-center gap-1.5">
-            <span className="text-sm text-muted-foreground">$</span>
-            <input
-              id="extra-payment"
-              type="number"
-              min={0}
-              max={2000}
-              step={25}
-              value={extraPayment}
-              onChange={(e) => {
-                const v = parseInt(e.target.value, 10);
-                setExtraPayment(isNaN(v) ? 0 : Math.max(0, Math.min(v, 2000)));
-              }}
-              className="w-28 rounded-lg border border-input bg-background px-3 py-2 text-sm font-heading text-right tabular-nums focus:outline-none focus:ring-2 focus:ring-ring/30"
-            />
-          </div>
-        </div>
-        <input
-          type="range"
-          min={0}
-          max={2000}
-          step={25}
-          value={extraPayment}
-          onChange={(e) => setExtraPayment(Number(e.target.value))}
-          className="w-full cursor-pointer accent-primary"
-          aria-label="Extra monthly payment"
-        />
-        <div className="flex justify-between text-xs text-muted-foreground font-medium">
-          <span>$0</span>
-          <span>$2,000</span>
-        </div>
-      </div>
+      <CalculatorField
+        id="extra-payment"
+        label="Extra Monthly Payment"
+        value={extraPayment}
+        onChange={setExtraPayment}
+        min={0}
+        max={2000}
+        step={25}
+        prefix="$"
+      />
 
-      <StatsGrid cols={4} variant="card">
-        <StatCard variant="card" label="Total Debt" value={fmt$(totalBalance)} />
-        <StatCard variant="card" label="Total Interest" value={fmt$(result.totalInterest)} highlight />
-        <StatCard variant="card" label="Time to Debt-Free" value={fmtMonths(result.monthsToFreedom)} />
-        <StatCard variant="card" label="Total Paid" value={fmt$(result.totalPaid)} />
+      <StatsGrid cols={4}>
+        <StatCard label="Total Debt" value={fmt$(totalBalance)} />
+        <StatCard label="Total Interest" value={fmt$(result.totalInterest)} highlight />
+        <StatCard label="Time to Debt-Free" value={fmtMonths(result.monthsToFreedom)} />
+        <StatCard label="Total Paid" value={fmt$(result.totalPaid)} />
       </StatsGrid>
 
+      {payoffChartData.length > 0 && (
+        <ChartContainer config={payoffChartConfig} className="aspect-video max-h-[200px]">
+          <BarChart data={payoffChartData}>
+            <CartesianGrid vertical={false} />
+            <XAxis dataKey="name" tick={{ fontSize: 12 }} />
+            <YAxis tickFormatter={(v: number) => `${v}mo`} />
+            <ChartTooltip content={<ChartTooltipContent />} />
+            <Bar dataKey="months" radius={4}>
+              {payoffChartData.map((d) => (
+                <Cell key={d.name} fill={DEBT_COLORS[d.colorIdx % DEBT_COLORS.length].hex} />
+              ))}
+            </Bar>
+          </BarChart>
+        </ChartContainer>
+      )}
+
       {interestSaved > 0 && (
-        <InfoBox variant="card">
+        <InfoBox type="default">
           With the{" "}
           <strong className="text-foreground">
             {strategy === "avalanche" ? "avalanche" : "snowball"}
@@ -413,6 +390,6 @@ export default function DebtPayoffCalculator() {
           })}
         </div>
       )}
-    </CalculatorContainer>
+    </CalculatorShell>
   );
 }
