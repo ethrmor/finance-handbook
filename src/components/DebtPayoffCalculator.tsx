@@ -62,6 +62,7 @@ interface PayoffResult {
   totalInterest: number;
   totalPaid: number;
   monthsToFreedom: number;
+  payoffPossible: boolean;
   debtPayoffOrder: { name: string; monthsIn: number; colorIdx: number }[];
 }
 
@@ -71,12 +72,13 @@ function simulatePayoff(
   extraPayment: number
 ): PayoffResult {
   if (debts.length === 0) {
-    return { totalInterest: 0, totalPaid: 0, monthsToFreedom: 0, debtPayoffOrder: [] };
+    return { totalInterest: 0, totalPaid: 0, monthsToFreedom: 0, payoffPossible: true, debtPayoffOrder: [] };
   }
 
   const balances = debts.map((d) => d.balance);
   const rates = debts.map((d) => d.apr / 100 / 12);
   const minimums = debts.map((d) => d.minimum);
+  const monthlyBudget = minimums.reduce((sum, minimum) => sum + minimum, 0) + extraPayment;
   let totalInterest = 0;
   let months = 0;
   const payoffOrder: { name: string; monthsIn: number; colorIdx: number }[] = [];
@@ -84,48 +86,51 @@ function simulatePayoff(
 
   while (paidOff.size < debts.length && months < 600) {
     months++;
-    let extra = extraPayment;
+    let remainingBudget = monthlyBudget;
+    let monthlyInterest = 0;
 
     for (let i = 0; i < debts.length; i++) {
       if (paidOff.has(i)) continue;
-      balances[i] -= minimums[i];
-      if (balances[i] < 0) {
-        extra += Math.abs(balances[i]);
-        balances[i] = 0;
-        paidOff.add(i);
-        payoffOrder.push({ name: debts[i].name, monthsIn: months, colorIdx: i });
-        continue;
-      }
       const interest = balances[i] * rates[i];
       totalInterest += interest;
+      monthlyInterest += interest;
       balances[i] += interest;
     }
 
-    if (extra > 0) {
+    if (monthlyBudget <= monthlyInterest) {
+      return {
+        totalInterest,
+        totalPaid: debts.reduce((s, d) => s + d.balance, 0) + totalInterest,
+        monthsToFreedom: months,
+        payoffPossible: false,
+        debtPayoffOrder: payoffOrder,
+      };
+    }
+
+    for (let i = 0; i < debts.length; i++) {
+      if (paidOff.has(i)) continue;
+      const minPay = Math.min(minimums[i], balances[i], remainingBudget);
+      balances[i] -= minPay;
+      remainingBudget -= minPay;
+      if (balances[i] <= 0) {
+        balances[i] = 0;
+        paidOff.add(i);
+        payoffOrder.push({ name: debts[i].name, monthsIn: months, colorIdx: i });
+      }
+    }
+
+    while (remainingBudget > 0) {
       const target = getNextTarget(debts, balances, paidOff, strategy);
-      if (target !== -1) {
-        balances[target] -= extra;
-        if (balances[target] <= 0) {
-          const overflow = Math.abs(balances[target]);
-          balances[target] = 0;
-          if (!paidOff.has(target)) {
-            paidOff.add(target);
-            payoffOrder.push({ name: debts[target].name, monthsIn: months, colorIdx: target });
-          }
-          if (overflow > 0) {
-            const nextTarget = getNextTarget(debts, balances, paidOff, strategy);
-            if (nextTarget !== -1) {
-              balances[nextTarget] -= overflow;
-              if (balances[nextTarget] <= 0) {
-                balances[nextTarget] = 0;
-                if (!paidOff.has(nextTarget)) {
-                  paidOff.add(nextTarget);
-                  payoffOrder.push({ name: debts[nextTarget].name, monthsIn: months, colorIdx: nextTarget });
-                }
-              }
-            }
-          }
-        }
+      if (target === -1) break;
+
+      const payment = Math.min(remainingBudget, balances[target]);
+      balances[target] -= payment;
+      remainingBudget -= payment;
+
+      if (balances[target] <= 0) {
+        balances[target] = 0;
+        paidOff.add(target);
+        payoffOrder.push({ name: debts[target].name, monthsIn: months, colorIdx: target });
       }
     }
   }
@@ -135,6 +140,7 @@ function simulatePayoff(
     totalInterest,
     totalPaid,
     monthsToFreedom: months,
+    payoffPossible: paidOff.size === debts.length,
     debtPayoffOrder: payoffOrder,
   };
 }
@@ -152,24 +158,38 @@ function getNextTarget(
       target = i;
     } else if (strategy === "avalanche" && debts[i].apr > debts[target].apr) {
       target = i;
-    } else if (strategy === "snowball" && debts[i].balance < debts[target].balance) {
+    } else if (strategy === "snowball" && balances[i] < balances[target]) {
       target = i;
     }
   }
   return target;
 }
 
-function simulateMinimumOnly(debts: Debt[]): { totalInterest: number; monthsToFreedom: number } {
-  if (debts.length === 0) return { totalInterest: 0, monthsToFreedom: 0 };
+function simulateMinimumOnly(debts: Debt[]): { totalInterest: number; monthsToFreedom: number; payoffPossible: boolean } {
+  if (debts.length === 0) return { totalInterest: 0, monthsToFreedom: 0, payoffPossible: true };
 
   const balances = debts.map((d) => d.balance);
   const rates = debts.map((d) => d.apr / 100 / 12);
+  const monthlyBudget = debts.reduce((sum, debt) => sum + debt.minimum, 0);
   let totalInterest = 0;
   let months = 0;
   const paidOff = new Set<number>();
 
   while (paidOff.size < debts.length && months < 600) {
     months++;
+    let monthlyInterest = 0;
+    for (let i = 0; i < debts.length; i++) {
+      if (paidOff.has(i)) continue;
+      const interest = balances[i] * rates[i];
+      totalInterest += interest;
+      monthlyInterest += interest;
+      balances[i] += interest;
+    }
+
+    if (monthlyBudget <= monthlyInterest) {
+      return { totalInterest, monthsToFreedom: months, payoffPossible: false };
+    }
+
     for (let i = 0; i < debts.length; i++) {
       if (paidOff.has(i)) continue;
       const minPay = Math.min(debts[i].minimum, balances[i]);
@@ -177,15 +197,11 @@ function simulateMinimumOnly(debts: Debt[]): { totalInterest: number; monthsToFr
       if (balances[i] <= 0) {
         balances[i] = 0;
         paidOff.add(i);
-        continue;
       }
-      const interest = balances[i] * rates[i];
-      totalInterest += interest;
-      balances[i] += interest;
     }
   }
 
-  return { totalInterest, monthsToFreedom: months };
+  return { totalInterest, monthsToFreedom: months, payoffPossible: paidOff.size === debts.length };
 }
 
 let nextId = 4;
@@ -209,8 +225,8 @@ export default function DebtPayoffCalculator() {
 
   const minOnlyResult = useMemo(() => simulateMinimumOnly(debts), [debts]);
   const totalBalance = debts.reduce((s, d) => s + d.balance, 0);
-  const interestSaved = minOnlyResult.totalInterest - result.totalInterest;
-  const monthsFaster = minOnlyResult.monthsToFreedom - result.monthsToFreedom;
+  const interestSaved = minOnlyResult.payoffPossible && result.payoffPossible ? minOnlyResult.totalInterest - result.totalInterest : 0;
+  const monthsFaster = minOnlyResult.payoffPossible && result.payoffPossible ? minOnlyResult.monthsToFreedom - result.monthsToFreedom : 0;
 
   function updateDebt(id: string, field: keyof Debt, value: string | number) {
     setDebts((prev) =>
@@ -332,12 +348,12 @@ export default function DebtPayoffCalculator() {
 
       <StatsGrid cols={4}>
         <StatCard label="Total Debt" value={fmt$(totalBalance)} />
-        <StatCard label="Total Interest" value={fmt$(result.totalInterest)} highlight />
-        <StatCard label="Time to Debt-Free" value={fmtMonths(result.monthsToFreedom)} />
-        <StatCard label="Total Paid" value={fmt$(result.totalPaid)} />
+        <StatCard label="Total Interest" value={result.payoffPossible ? fmt$(result.totalInterest) : "—"} highlight />
+        <StatCard label="Time to Debt-Free" value={result.payoffPossible ? fmtMonths(result.monthsToFreedom) : "Not payoffable"} />
+        <StatCard label="Total Paid" value={result.payoffPossible ? fmt$(result.totalPaid) : "—"} />
       </StatsGrid>
 
-      {payoffChartData.length > 0 && (
+      {result.payoffPossible && payoffChartData.length > 0 && (
         <ChartContainer config={payoffChartConfig} className="aspect-video max-h-[200px]">
           <BarChart data={payoffChartData}>
             <CartesianGrid vertical={false} />
@@ -351,6 +367,12 @@ export default function DebtPayoffCalculator() {
             </Bar>
           </BarChart>
         </ChartContainer>
+      )}
+
+      {!result.payoffPossible && (
+        <InfoBox type="warning">
+          These debts are not payoffable with the current minimums and extra payment because monthly interest is at least as high as the monthly payment. Increase the payment amount or lower the balances/APRs to calculate a payoff plan.
+        </InfoBox>
       )}
 
       {interestSaved > 0 && (
@@ -370,7 +392,7 @@ export default function DebtPayoffCalculator() {
         </InfoBox>
       )}
 
-      {result.debtPayoffOrder.length > 0 && (
+      {result.payoffPossible && result.debtPayoffOrder.length > 0 && (
         <div className="space-y-3">
           <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Payoff Order</p>
           {result.debtPayoffOrder.map((d, i) => {
