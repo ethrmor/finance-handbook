@@ -18,6 +18,16 @@ const nextTopic = getNextTopic("/topics/relationships-and-money")
       How couples handle accounts, conflict, red flags, prenups, and splitting up when needed.
     </p>
 
+    <nav class="mt-8 rounded-lg border border-border/50 bg-muted/30 p-4" aria-label="Page summary">
+      <p class="font-heading text-xs font-medium uppercase tracking-widest text-primary">Quick scan</p>
+      <ol class="mt-3 grid gap-2 text-sm text-muted-foreground sm:grid-cols-2">
+        <li><a href="#account-structures" class="rounded-sm hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary transition-colors">Compare account structures</a></li>
+        <li><a href="#red-flags" class="rounded-sm hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary transition-colors">Spot red flags</a></li>
+        <li><a href="#prenups" class="rounded-sm hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary transition-colors">Understand prenups</a></li>
+        <li><a href="#action-steps" class="rounded-sm hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary transition-colors">Choose next steps</a></li>
+      </ol>
+    </nav>
+
     <!-- The Big Idea -->
     <section class="mt-12">
       <h2 class="font-heading text-2xl font-semibold mb-4">The Big Idea</h2>
@@ -42,44 +52,82 @@ const nextTopic = getNextTopic("/topics/relationships-and-money")
       <p class="text-base text-foreground leading-relaxed">
         Understanding your own and your partner's relationship with money is the foundation of financial harmony:
       </p>
-      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
-        <li><strong>The Saver:</strong> Naturally frugal, feels security from seeing account balances grow, may delay gratification excessively, worries about money even when there's plenty. In relationships, may be seen as controlling or joyless by spenders.</li>
-        <li><strong>The Spender:</strong> Derives pleasure from purchases, lives in the present, may struggle with delayed gratification, uses money to cope with emotions or reward themselves. In relationships, may be seen as irresponsible or selfish by savers.</li>
-        <li><strong>The Avoider:</strong> Feels anxiety about money, avoids looking at balances or bills, may not know net worth or monthly expenses, deals with money only when forced. In relationships, may frustrate partners who want financial transparency and planning.</li>
-        <li><strong>The Money Monk:</strong> Views money as morally complicated, may feel guilty about having more than others, may sabotage financial success, uncomfortable with wealth. In relationships, may resist wealth-building strategies that seem "excessive."</li>
-        <li><strong>The Worrier:</strong> Obsessively checks balances, constantly fears financial catastrophe, may be financially secure but never feel secure, money anxiety impacts daily life. In relationships, may create stress for partners even when finances are objectively fine.</li>
-      </ul>
+      <dl class="mt-4 divide-y divide-border/50 rounded-lg border border-border/50">
+        <div class="p-4">
+          <dt class="font-heading text-sm font-medium text-primary">The Saver</dt>
+          <dd class="mt-2 text-base text-foreground leading-relaxed">Naturally frugal, feels security from seeing account balances grow, may delay gratification excessively, worries about money even when there's plenty. In relationships, may be seen as controlling or joyless by spenders.</dd>
+        </div>
+        <div class="p-4">
+          <dt class="font-heading text-sm font-medium text-primary">The Spender</dt>
+          <dd class="mt-2 text-base text-foreground leading-relaxed">Derives pleasure from purchases, lives in the present, may struggle with delayed gratification, uses money to cope with emotions or reward themselves. In relationships, may be seen as irresponsible or selfish by savers.</dd>
+        </div>
+        <div class="p-4">
+          <dt class="font-heading text-sm font-medium text-primary">The Avoider</dt>
+          <dd class="mt-2 text-base text-foreground leading-relaxed">Feels anxiety about money, avoids looking at balances or bills, may not know net worth or monthly expenses, deals with money only when forced. In relationships, may frustrate partners who want financial transparency and planning.</dd>
+        </div>
+        <div class="p-4">
+          <dt class="font-heading text-sm font-medium text-primary">The Money Monk</dt>
+          <dd class="mt-2 text-base text-foreground leading-relaxed">Views money as morally complicated, may feel guilty about having more than others, may sabotage financial success, uncomfortable with wealth. In relationships, may resist wealth-building strategies that seem "excessive."</dd>
+        </div>
+        <div class="p-4">
+          <dt class="font-heading text-sm font-medium text-primary">The Worrier</dt>
+          <dd class="mt-2 text-base text-foreground leading-relaxed">Obsessively checks balances, constantly fears financial catastrophe, may be financially secure but never feel secure, money anxiety impacts daily life. In relationships, may create stress for partners even when finances are objectively fine.</dd>
+        </div>
+      </dl>
       <p class="mt-4 text-base text-foreground leading-relaxed">
-        <strong>Working with different money personalities:</strong> Most couples have different primary money personalities. The saver married to the spender is common. The key isn't to change your partner (that rarely works) but to create systems that honor both: automatic savings that satisfy the saver's need for security, with a "fun money" allowance that gives the spender guilt-free permission to enjoy. Communication and compromise are essential—neither extreme (all saving or all spending) is healthy for a relationship.
+        <strong>Working with different money personalities:</strong> Most couples have different primary money personalities. The saver married to the spender is common. The key isn't to change your partner (that rarely works) but to create systems that honor both: automatic savings that satisfy the saver's need for security, with a "fun money" allowance that gives the spender guilt-free permission to enjoy. Communication and compromise are essential. Neither extreme (all saving or all spending) is healthy for a relationship.
       </p>
 
-      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Account Structures: Joint, Separate, or Hybrid?</h3>
+      <h3 id="account-structures" class="font-heading text-lg font-medium mt-8 mb-3 scroll-mt-20">Account Structures: Joint, Separate, or Hybrid?</h3>
       <p class="text-base text-foreground leading-relaxed">
         There's no one-size-fits-all answer. The right structure depends on your money personalities, relationship dynamics, and financial situation:
       </p>
-      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
-        <li><strong>Fully joint (income pooling):</strong> All income goes into joint accounts; all expenses come out. Complete transparency and shared responsibility. Works best when: both partners have similar money values, both are comfortable with full transparency, neither has significant pre-marital debt or assets to protect, and you want maximum simplicity. Challenges: one partner may feel controlled, individual spending is fully visible, harder to surprise your partner with gifts.</li>
-        <li><strong>Fully separate:</strong> Each partner keeps their own accounts; split expenses somehow (50/50, proportional to income, or assigned bills). Maximum autonomy and privacy. Works best when: both partners value independence strongly, one or both have complex financial situations (business ownership, inheritance, debt), or it's a newer relationship without full commitment. Challenges: less transparency can hide financial problems, splitting expenses can feel transactional, harder to plan joint goals, may feel less like a partnership.</li>
-        <li><strong>Hybrid (yours, mine, and ours):</strong> Joint account for shared expenses (housing, groceries, utilities, joint savings goals), with separate individual accounts for personal spending. Best of both worlds for many couples. Works best when: partners want transparency on shared goals but autonomy on personal spending, partners have different money personalities (saver vs. spender), or you want to reduce conflict about discretionary spending. Implementation: agree on how much each contributes to joint (50/50 or proportional to income), automate transfers, individual accounts are "no questions asked" money.</li>
-      </ul>
-
-      <div class="mt-4 p-4 bg-primary/5 border-l-4 border-primary rounded-r-lg">
-        <p class="text-sm font-medium text-primary mb-1">Editor's Note</p>
-        <p class="text-base text-foreground leading-relaxed">
-          This is the approach my wife and I use, and it's what works best for us. We figure out how much we need month-to-month for shared expenses, then contribute proportionally based on our incomes. Whatever remains goes into our own personal accounts. This approach works particularly well when you have roughly similar incomes—you get the transparency of shared expenses while maintaining autonomy over personal spending. The key is being intentional about what counts as "shared" vs. "personal" and automating those transfers so you never have to think about it.
-        </p>
+      <div class="mt-4 overflow-x-auto rounded-lg border border-border/50">
+        <table class="w-full text-left text-sm text-foreground leading-relaxed">
+          <thead class="bg-muted/50 font-heading text-xs uppercase tracking-wider text-muted-foreground">
+            <tr>
+              <th class="px-4 py-3 font-medium">Structure</th>
+              <th class="px-4 py-3 font-medium">Works best when</th>
+              <th class="px-4 py-3 font-medium">Watch for</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-border/50">
+            <tr>
+              <th scope="row" class="px-4 py-4 align-top font-heading text-sm font-medium text-primary">Fully joint</th>
+              <td class="px-4 py-4 align-top">All income goes into joint accounts and all expenses come out. Best when both partners have similar money values, full-transparency comfort, no major pre-marital complexity, and want maximum simplicity.</td>
+              <td class="px-4 py-4 align-top text-muted-foreground">One partner may feel controlled, individual spending is fully visible, and surprise gifts are harder.</td>
+            </tr>
+            <tr>
+              <th scope="row" class="px-4 py-4 align-top font-heading text-sm font-medium text-primary">Fully separate</th>
+              <td class="px-4 py-4 align-top">Each partner keeps separate accounts and splits expenses 50/50, proportionally, or by assigned bills. Best when independence matters, finances are complex, or the relationship is newer.</td>
+              <td class="px-4 py-4 align-top text-muted-foreground">Less transparency can hide problems, splitting can feel transactional, and joint goals may get harder to plan.</td>
+            </tr>
+            <tr>
+              <th scope="row" class="px-4 py-4 align-top font-heading text-sm font-medium text-primary">Hybrid</th>
+              <td class="px-4 py-4 align-top">A joint account covers shared expenses and goals, while individual accounts handle personal spending. Best when you want shared transparency plus personal autonomy.</td>
+              <td class="px-4 py-4 align-top text-muted-foreground">You need clear rules for what counts as shared, how much each person contributes, and how transfers are automated.</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+
+      <aside class="mt-5 rounded-lg border border-primary/20 bg-primary/5 p-5" aria-label="Editor's note">
+        <p class="font-heading text-sm font-medium text-primary mb-2">Editor's Note</p>
+        <p class="text-base text-foreground leading-relaxed">
+          This is the approach my wife and I use, and it's what works best for us. We figure out how much we need month-to-month for shared expenses, then contribute proportionally based on our incomes. Whatever remains goes into our own personal accounts. This approach works particularly well when you have roughly similar incomes: you get the transparency of shared expenses while maintaining autonomy over personal spending. The key is being intentional about what counts as "shared" vs. "personal" and automating those transfers so you never have to think about it.
+        </p>
+      </aside>
       <p class="mt-4 text-base text-foreground leading-relaxed">
-        <strong>How to choose:</strong> Start with a conversation about money values, autonomy needs, and financial goals. Many couples start with fully separate or hybrid and move toward more joint as trust and commitment grow. Others maintain separate accounts permanently. There's no moral superiority in any approach—only what works for your relationship. The key is intentional choice, not defaulting into whatever happens.
+        <strong>How to choose:</strong> Start with a conversation about money values, autonomy needs, and financial goals. Many couples start with fully separate or hybrid and move toward more joint as trust and commitment grow. Others maintain separate accounts permanently. There's no moral superiority in any approach, only what works for your relationship. The key is intentional choice, not defaulting into whatever happens.
       </p>
 
-      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Financial Red Flags in Relationships</h3>
+      <h3 id="red-flags" class="font-heading text-lg font-medium mt-8 mb-3 scroll-mt-20">Financial Red Flags in Relationships</h3>
       <p class="text-base text-foreground leading-relaxed">
         Certain financial behaviors in a partner can signal trouble ahead. Watch for these red flags:
       </p>
       <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
-        <li><strong>Financial secrecy or refusal to discuss money.</strong> A partner who won't share credit scores, debt levels, or spending habits before serious commitment. Money affects everything—if they won't talk about it, you can't plan a future together.</li>
-        <li><strong>Significant undisclosed debt.</strong> Discovering after marriage that your partner has $50,000 in credit card debt or defaulted student loans. Not the debt itself—life happens—but the hiding of it. Trust is foundational.</li>
+        <li><strong>Financial secrecy or refusal to discuss money.</strong> A partner who won't share credit scores, debt levels, or spending habits before serious commitment. Money affects everything. If they won't talk about it, you can't plan a future together.</li>
+        <li><strong>Significant undisclosed debt.</strong> Discovering after marriage that your partner has $50,000 in credit card debt or defaulted student loans. Not the debt itself, life happens, but the hiding of it. Trust is foundational.</li>
         <li><strong>Compulsive spending or gambling.</strong> Shopping as an emotional crutch, hiding purchases, or gambling losses. This is often a deeper psychological issue that won't be solved by budgeting alone. May require therapy.</li>
         <li><strong>Financial control or abuse.</strong> A partner who restricts your access to money, monitors every purchase, or uses money to control you. This is abuse, not a budgeting disagreement. Seek help from a domestic violence hotline.</li>
         <li><strong>Refusal to participate in financial planning.</strong> "You handle the money, I don't want to think about it." This puts all burden on one partner and leaves the other vulnerable if something happens to them. Both partners need basic financial literacy and involvement.</li>
@@ -87,20 +135,35 @@ const nextTopic = getNextTopic("/topics/relationships-and-money")
         <li><strong>Inability to compromise.</strong> One partner insists on their way with money (all separate accounts, no discussion of spending, refusal to save for joint goals). Healthy relationships require give and take on all issues, including finances.</li>
       </ul>
       <p class="mt-4 text-base text-foreground leading-relaxed">
-        <strong>Addressing red flags:</strong> If you see these behaviors in a partner, have a serious conversation before deepening commitment. Some issues (spending habits, financial anxiety) can be worked on together. Others (financial abuse, compulsive gambling, pathological secrecy) may be dealbreakers. Trust your gut—if something feels wrong, it probably is.
+        <strong>Addressing red flags:</strong> If you see these behaviors in a partner, have a serious conversation before deepening commitment. Some issues (spending habits, financial anxiety) can be worked on together. Others (financial abuse, compulsive gambling, pathological secrecy) may be dealbreakers. Trust your gut. If something feels wrong, it probably is.
       </p>
 
-      <h3 class="font-heading text-lg font-medium mt-8 mb-3">Prenuptial Agreements</h3>
+      <h3 id="prenups" class="font-heading text-lg font-medium mt-8 mb-3 scroll-mt-20">Prenuptial Agreements</h3>
       <p class="text-base text-foreground leading-relaxed">
-        A prenuptial agreement (prenup) is a legal contract signed before marriage that specifies how assets and debts will be divided if the marriage ends. It's not about planning for divorce—it's about clarity and protection:
+        A prenuptial agreement (prenup) is a legal contract signed before marriage that specifies how assets and debts will be divided if the marriage ends. It's not about planning for divorce. It's about clarity and protection:
       </p>
-      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
-        <li><strong>Who should consider one:</strong> People with significant pre-marital assets (inheritance, business, real estate), those with children from previous relationships, those with significant debt disparities, or anyone with family assets they want to protect. Increasingly common for millennials marrying later with established careers and assets.</li>
-        <li><strong>What it can cover:</strong> Division of property and assets, allocation of debts, spousal support/alimony terms, protection of inheritance for children from previous relationships, handling of business interests, and financial responsibilities during marriage. Cannot cover child custody or child support (courts decide based on child's best interest at time of divorce).</li>
-        <li><strong>What makes it enforceable:</strong> Must be in writing, signed voluntarily by both parties (no coercion), with full financial disclosure from both sides. Each party should have independent legal counsel (or waive right to counsel in writing). Should be signed well before the wedding (not days before—looks like coercion). Terms must be fair—not completely one-sided.</li>
-        <li><strong>Cost:</strong> $1,500–$10,000+ depending on complexity and location. Each party typically pays their own attorney. More expensive than no prenup, but far less expensive than a contested divorce without one.</li>
-        <li><strong>Postnuptial agreements:</strong> Similar to prenups but signed after marriage. Harder to enforce (courts scrutinize more carefully for coercion). Useful if circumstances change dramatically after marriage (inheritance, business launch, debt issues).</li>
-      </ul>
+      <div class="mt-4 divide-y divide-border/50 rounded-lg border border-border/50">
+        <details class="group p-4" open>
+          <summary class="cursor-pointer list-none rounded-sm font-heading text-sm font-medium text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary [&::-webkit-details-marker]:hidden">Who should consider one</summary>
+          <p class="mt-2 text-base text-foreground leading-relaxed">People with significant pre-marital assets (inheritance, business, real estate), children from previous relationships, significant debt disparities, or family assets they want to protect. Increasingly common for millennials marrying later with established careers and assets.</p>
+        </details>
+        <details class="group p-4">
+          <summary class="cursor-pointer list-none rounded-sm font-heading text-sm font-medium text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary [&::-webkit-details-marker]:hidden">What it can cover</summary>
+          <p class="mt-2 text-base text-foreground leading-relaxed">Division of property and assets, allocation of debts, spousal support terms, inheritance protection, business interests, and financial responsibilities during marriage. It cannot cover child custody or child support.</p>
+        </details>
+        <details class="group p-4">
+          <summary class="cursor-pointer list-none rounded-sm font-heading text-sm font-medium text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary [&::-webkit-details-marker]:hidden">What makes it enforceable</summary>
+          <p class="mt-2 text-base text-foreground leading-relaxed">Must be in writing, signed voluntarily by both parties, with full financial disclosure from both sides. Each party should have independent legal counsel, or waive that right in writing. It should be signed well before the wedding, and terms must be fair.</p>
+        </details>
+        <details class="group p-4">
+          <summary class="cursor-pointer list-none rounded-sm font-heading text-sm font-medium text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary [&::-webkit-details-marker]:hidden">Cost</summary>
+          <p class="mt-2 text-base text-foreground leading-relaxed">$1,500–$10,000+ depending on complexity and location. Each party typically pays their own attorney. More expensive than no prenup, but far less expensive than a contested divorce without one.</p>
+        </details>
+        <details class="group p-4">
+          <summary class="cursor-pointer list-none rounded-sm font-heading text-sm font-medium text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary [&::-webkit-details-marker]:hidden">Postnuptial agreements</summary>
+          <p class="mt-2 text-base text-foreground leading-relaxed">Similar to prenups but signed after marriage. Courts scrutinize them more carefully for coercion. Useful if circumstances change dramatically after marriage, such as inheritance, business launch, or debt issues.</p>
+        </details>
+      </div>
       <p class="mt-4 text-base text-foreground leading-relaxed">
         <strong>The conversation:</strong> Bringing up a prenup can be sensitive. Frame it as planning for clarity and protection of both parties, not as planning for divorce. "I want us to start our marriage with complete transparency about finances and protection for both of us." Consider premarital financial counseling alongside the legal agreement. Many couples report that the process of creating a prenup actually strengthens their relationship by forcing important conversations about money, values, and expectations.
       </p>
@@ -109,42 +172,98 @@ const nextTopic = getNextTopic("/topics/relationships-and-money")
       <p class="text-base text-foreground leading-relaxed">
         Divorce is emotionally devastating and financially disruptive. If you're facing it, understanding the financial implications helps you protect yourself:
       </p>
-      <ul class="mt-3 list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
-        <li><strong>Property division basics:</strong> Most states are "equitable distribution" states—assets are divided fairly but not necessarily 50/50. Courts consider earning capacity, contributions, length of marriage, and economic circumstances. Nine states are "community property" states (California, Texas, Arizona, etc.) where marital assets are generally split 50/50. Assets acquired before marriage, inheritances, and gifts are typically separate property (not divided), though commingling can change this.</li>
-        <li><strong>Retirement accounts:</strong> Retirement savings accumulated during marriage are usually marital property subject to division. QDRO (Qualified Domestic Relations Order) is needed to divide 401(k)s and pensions without early withdrawal penalties. IRAs can be divided by transfer incident to divorce. Don't cash out retirement accounts to settle the divorce—you'll owe taxes and penalties, and lose decades of growth.</li>
-        <li><strong>Debt division:</strong> Debts incurred during marriage are typically divided along with assets, regardless of whose name is on them. Credit card debt, car loans, mortgages—all fair game. Be careful: your divorce decree assigns responsibility, but creditors don't care about divorce decrees. If your ex doesn't pay a joint debt, creditors can come after you. Best to close joint accounts and refinance debt into individual names during divorce.</li>
-        <li><strong>Alimony/spousal support:</strong> One spouse may be required to pay the other financial support after divorce. Factors include length of marriage, earning capacity of each spouse, standard of living during marriage, and contributions (including non-financial like raising children). Can be temporary (rehabilitative) or permanent. Tax treatment changed in 2019: for divorces finalized after December 31, 2018, alimony is neither deductible by the payer nor taxable to the recipient (unlike earlier rules).</li>
-        <li><strong>Child support:</strong> Non-custodial parent typically pays child support to custodial parent. Calculated by state formulas based on income, custody arrangement, and children's needs. Not tax-deductible for payer, not taxable for recipient. Enforceable by wage garnishment, license suspension, and even jail in extreme cases. Prioritize child support payments—they're not negotiable.</li>
-        <li><strong>Rebuilding financially after divorce:</strong> Divorce often cuts household income while maintaining similar expenses. Create a new budget based on your single income immediately. Build an emergency fund—divorce is expensive and income may be disrupted. Check and improve your credit—close joint accounts, remove authorized users, establish credit in your own name if necessary. Update beneficiaries on all accounts and insurance policies. Review and update estate planning documents. Consider working with a financial planner specializing in divorce transitions.</li>
-        <li><strong>Protecting yourself before marriage:</strong> If you're entering marriage with significant assets, a business, or an inheritance, consider a prenuptial agreement. It's not about planning for divorce—it's about clarity and protection for both parties. Full disclosure of assets and debts before marriage is essential regardless of whether you have a prenup. Premarital financial counseling can help align expectations and create systems for managing money together.</li>
-      </ul>
+      <div class="mt-4 divide-y divide-border/50 rounded-lg border border-border/50">
+        <details class="p-4" open>
+          <summary class="cursor-pointer list-none rounded-sm font-heading text-sm font-medium text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary [&::-webkit-details-marker]:hidden">Property division basics</summary>
+          <p class="mt-2 text-base text-foreground leading-relaxed">Most states are "equitable distribution" states, where assets are divided fairly but not necessarily 50/50. Community property states generally split marital assets 50/50. Assets acquired before marriage, inheritances, and gifts are typically separate property, though commingling can change this.</p>
+        </details>
+        <details class="p-4">
+          <summary class="cursor-pointer list-none rounded-sm font-heading text-sm font-medium text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary [&::-webkit-details-marker]:hidden">Retirement accounts</summary>
+          <p class="mt-2 text-base text-foreground leading-relaxed">Retirement savings accumulated during marriage are usually marital property. A QDRO is needed to divide 401(k)s and pensions without early withdrawal penalties. IRAs can be divided by transfer incident to divorce. Don't cash out retirement accounts to settle the divorce.</p>
+        </details>
+        <details class="p-4">
+          <summary class="cursor-pointer list-none rounded-sm font-heading text-sm font-medium text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary [&::-webkit-details-marker]:hidden">Debt division</summary>
+          <p class="mt-2 text-base text-foreground leading-relaxed">Debts incurred during marriage are typically divided along with assets, regardless of whose name is on them. Creditors do not care about divorce decrees. If your ex does not pay a joint debt, creditors can come after you. Best to close joint accounts and refinance debt into individual names during divorce.</p>
+        </details>
+        <details class="p-4">
+          <summary class="cursor-pointer list-none rounded-sm font-heading text-sm font-medium text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary [&::-webkit-details-marker]:hidden">Alimony and child support</summary>
+          <p class="mt-2 text-base text-foreground leading-relaxed">Spousal support depends on length of marriage, earning capacity, standard of living, and contributions. Child support is calculated by state formulas based on income, custody arrangement, and children's needs. Prioritize child support payments. They are not negotiable.</p>
+        </details>
+        <details class="p-4">
+          <summary class="cursor-pointer list-none rounded-sm font-heading text-sm font-medium text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary [&::-webkit-details-marker]:hidden">Rebuilding financially after divorce</summary>
+          <p class="mt-2 text-base text-foreground leading-relaxed">Create a new budget based on single income, build an emergency fund, check and improve your credit, close joint accounts, establish credit in your own name if needed, update beneficiaries, and revisit estate planning documents.</p>
+        </details>
+        <details class="p-4">
+          <summary class="cursor-pointer list-none rounded-sm font-heading text-sm font-medium text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary [&::-webkit-details-marker]:hidden">Protecting yourself before marriage</summary>
+          <p class="mt-2 text-base text-foreground leading-relaxed">If you're entering marriage with significant assets, a business, or an inheritance, consider a prenuptial agreement. Full disclosure of assets and debts before marriage is essential regardless of whether you have a prenup.</p>
+        </details>
+      </div>
     </section>
 
     <!-- Common Mistakes -->
     <section class="mt-12">
       <h2 class="font-heading text-2xl font-semibold mb-4">Common Mistakes</h2>
-      <ul class="list-disc pl-5 space-y-2 text-base text-foreground leading-relaxed">
-        <li><strong>Keeping finances completely separate without a system.</strong> Never discussing money, never coordinating on goals, essentially living as financial roommates. This works until it doesn't—major decisions, emergencies, or life changes force conversations that should have happened years ago.</li>
-        <li><strong>One partner controlling all finances.</strong> Whether by choice or default, one person handles all money while the other remains ignorant. Creates vulnerability for the non-involved partner and burden for the controller. Both partners need basic financial literacy and access to accounts.</li>
-        <li><strong>Hiding money or debt (financial infidelity).</strong> Secret credit cards, hidden bank accounts, lying about spending. Erodes trust rapidly. Often discovered during crises, making the situation worse. Financial infidelity is cited in many divorces.</li>
-        <li><strong>Not discussing money before marriage.</strong> Avoiding conversations about debt, income, spending habits, and financial goals. Marrying someone without understanding their relationship with money. These conversations are uncomfortable but essential.</li>
-        <li><strong>Merging everything immediately without testing systems.</strong> Going from completely separate to completely joint overnight without establishing how decisions will be made. Creates confusion and conflict. Consider a gradual transition or hybrid system.</li>
-        <li><strong>Not having a prenup when appropriate.</strong> Entering marriage with significant assets, a business, or an inheritance, without protecting them. Prenups aren't just for the wealthy—they're for anyone with assets they want to keep separate. They're about clarity, not mistrust.</li>
-        <li><strong>Ignoring financial red flags.</strong> Dismissing a partner's massive debt, terrible credit, refusal to discuss money, or secretive spending as "not a big deal." These issues get worse, not better, after marriage. Address them before committing.</li>
-      </ul>
+      <dl class="divide-y divide-border/50 rounded-lg border border-border/50">
+        <div class="px-4 py-4">
+          <dt class="font-heading text-sm font-medium text-primary">Keeping finances completely separate without a system</dt>
+          <dd class="mt-2 text-base text-foreground leading-relaxed">Never discussing money, never coordinating on goals, essentially living as financial roommates. This works until it doesn't. Major decisions, emergencies, or life changes force conversations that should have happened years ago.</dd>
+        </div>
+        <div class="px-4 py-4">
+          <dt class="font-heading text-sm font-medium text-primary">One partner controlling all finances</dt>
+          <dd class="mt-2 text-base text-foreground leading-relaxed">Whether by choice or default, one person handles all money while the other remains ignorant. Creates vulnerability for the non-involved partner and burden for the controller. Both partners need basic financial literacy and access to accounts.</dd>
+        </div>
+        <div class="px-4 py-4">
+          <dt class="font-heading text-sm font-medium text-primary">Hiding money or debt</dt>
+          <dd class="mt-2 text-base text-foreground leading-relaxed">Secret credit cards, hidden bank accounts, lying about spending. Erodes trust rapidly. Often discovered during crises, making the situation worse. Financial infidelity is cited in many divorces.</dd>
+        </div>
+        <div class="px-4 py-4">
+          <dt class="font-heading text-sm font-medium text-primary">Not discussing money before marriage</dt>
+          <dd class="mt-2 text-base text-foreground leading-relaxed">Avoiding conversations about debt, income, spending habits, and financial goals. Marrying someone without understanding their relationship with money. These conversations are uncomfortable but essential.</dd>
+        </div>
+        <div class="px-4 py-4">
+          <dt class="font-heading text-sm font-medium text-primary">Merging everything immediately without testing systems</dt>
+          <dd class="mt-2 text-base text-foreground leading-relaxed">Going from completely separate to completely joint overnight without establishing how decisions will be made. Creates confusion and conflict. Consider a gradual transition or hybrid system.</dd>
+        </div>
+        <div class="px-4 py-4">
+          <dt class="font-heading text-sm font-medium text-primary">Not having a prenup when appropriate</dt>
+          <dd class="mt-2 text-base text-foreground leading-relaxed">Entering marriage with significant assets, a business, or an inheritance, without protecting them. Prenups aren't just for the wealthy. They're for anyone with assets they want to keep separate. They're about clarity, not mistrust.</dd>
+        </div>
+        <div class="px-4 py-4">
+          <dt class="font-heading text-sm font-medium text-primary">Ignoring financial red flags</dt>
+          <dd class="mt-2 text-base text-foreground leading-relaxed">Dismissing a partner's massive debt, terrible credit, refusal to discuss money, or secretive spending as "not a big deal." These issues get worse, not better, after marriage. Address them before committing.</dd>
+        </div>
+      </dl>
     </section>
 
     <!-- Action Steps -->
-    <section class="mt-12">
+    <section id="action-steps" class="mt-12 scroll-mt-20">
       <h2 class="font-heading text-2xl font-semibold mb-4">Action Steps</h2>
       <div class="bg-muted/50 rounded-lg p-6">
-        <ol class="list-decimal pl-5 space-y-3 text-base text-foreground leading-relaxed">
-          <li><strong>Have the money conversation early.</strong> Before moving in together, getting engaged, or merging finances significantly, have a comprehensive conversation about money. Share credit scores, debt balances, income, and financial goals. Discuss your money histories—how your parents handled money, what you learned, your fears and values around money. This is foundational.</li>
-          <li><strong>Choose an account structure that fits your relationship.</strong> Discuss the options (fully joint, fully separate, hybrid) and decide what works for your situation. Consider your money personalities, income disparities, and comfort levels. Many couples find hybrid works best—joint account for household expenses, individual accounts for personal spending. There's no wrong choice, only what works for you.</li>
-          <li><strong>Create a system for financial decision-making.</strong> How will you handle disagreements? What's your process for major purchases? Some couples use thresholds (discuss anything over $X), others have specific areas of autonomy (you handle groceries, I handle car maintenance). Agree on the rules and revisit them periodically.</li>
-          <li><strong>Schedule regular money dates.</strong> Monthly or quarterly, sit down together and review your finances. Check account balances, review spending, assess progress toward goals, and discuss any upcoming large expenses. Make it pleasant—go to a coffee shop, order takeout, treat it as quality time. Regular communication prevents surprises and builds teamwork.</li>
-          <li><strong>Consider a prenup if appropriate.</strong> If either partner has significant assets, a business, an inheritance, or substantial debt, discuss a prenuptial agreement. It's not about planning for divorce—it's about clarity, protection, and starting the marriage with transparency. Each partner should have independent legal counsel. Even if you don't create a formal prenup, the conversation about what would happen financially if you split is valuable.</li>
-          <li><strong>Protect yourself in non-marital relationships.</strong> If you're living together but not married, you're in a legal gray area. Create a cohabitation agreement that clarifies: who owns what property, how expenses are shared, what happens to joint purchases if you split, and whether either partner is entitled to support. It feels unromantic, but it prevents ugly disputes later. Also, update beneficiaries on all accounts—unmarried partners have no automatic inheritance rights.</li>
+        <ol class="divide-y divide-border/50 text-base text-foreground leading-relaxed">
+          <li class="grid gap-3 py-4 first:pt-0 sm:grid-cols-[2.5rem_1fr]">
+            <span class="font-heading text-sm font-medium text-primary tabular-nums">01</span>
+            <p><strong>Have the money conversation early.</strong> Before moving in together, getting engaged, or merging finances significantly, have a comprehensive conversation about money. Share credit scores, debt balances, income, and financial goals. Discuss your money histories, how your parents handled money, what you learned, your fears, and your values around money. This is foundational.</p>
+          </li>
+          <li class="grid gap-3 py-4 sm:grid-cols-[2.5rem_1fr]">
+            <span class="font-heading text-sm font-medium text-primary tabular-nums">02</span>
+            <p><strong>Choose an account structure that fits your relationship.</strong> Discuss the options (fully joint, fully separate, hybrid) and decide what works for your situation. Consider your money personalities, income disparities, and comfort levels. Many couples find hybrid works best: joint account for household expenses, individual accounts for personal spending. There's no wrong choice, only what works for you.</p>
+          </li>
+          <li class="grid gap-3 py-4 sm:grid-cols-[2.5rem_1fr]">
+            <span class="font-heading text-sm font-medium text-primary tabular-nums">03</span>
+            <p><strong>Create a system for financial decision-making.</strong> How will you handle disagreements? What's your process for major purchases? Some couples use thresholds (discuss anything over $X), others have specific areas of autonomy (you handle groceries, I handle car maintenance). Agree on the rules and revisit them periodically.</p>
+          </li>
+          <li class="grid gap-3 py-4 sm:grid-cols-[2.5rem_1fr]">
+            <span class="font-heading text-sm font-medium text-primary tabular-nums">04</span>
+            <p><strong>Schedule regular money dates.</strong> Monthly or quarterly, sit down together and review your finances. Check account balances, review spending, assess progress toward goals, and discuss any upcoming large expenses. Make it pleasant: go to a coffee shop, order takeout, treat it as quality time. Regular communication prevents surprises and builds teamwork.</p>
+          </li>
+          <li class="grid gap-3 py-4 sm:grid-cols-[2.5rem_1fr]">
+            <span class="font-heading text-sm font-medium text-primary tabular-nums">05</span>
+            <p><strong>Consider a prenup if appropriate.</strong> If either partner has significant assets, a business, an inheritance, or substantial debt, discuss a prenuptial agreement. It's not about planning for divorce. It's about clarity, protection, and starting the marriage with transparency. Each partner should have independent legal counsel. Even if you don't create a formal prenup, the conversation about what would happen financially if you split is valuable.</p>
+          </li>
+          <li class="grid gap-3 py-4 last:pb-0 sm:grid-cols-[2.5rem_1fr]">
+            <span class="font-heading text-sm font-medium text-primary tabular-nums">06</span>
+            <p><strong>Protect yourself in non-marital relationships.</strong> If you're living together but not married, you're in a legal gray area. Create a cohabitation agreement that clarifies who owns what property, how expenses are shared, what happens to joint purchases if you split, and whether either partner is entitled to support. It feels unromantic, but it prevents ugly disputes later. Also, update beneficiaries on all accounts. Unmarried partners have no automatic inheritance rights.</p>
+          </li>
         </ol>
       </div>
     </section>
@@ -152,30 +271,30 @@ const nextTopic = getNextTopic("/topics/relationships-and-money")
     <!-- Quick Reference -->
     <section class="mt-12">
       <h2 class="font-heading text-2xl font-semibold mb-4">Quick Reference</h2>
-      <dl class="space-y-4">
-        <div>
+      <dl class="divide-y divide-border/50 rounded-lg border border-border/50">
+        <div class="px-4 py-4">
           <dt class="font-heading text-sm font-medium text-primary">Financial Infidelity</dt>
-          <dd class="text-base text-foreground leading-relaxed">Hiding money, debt, or spending from a partner. Includes secret credit cards, hidden bank accounts, lying about purchases. Erodes trust and is cited in many divorces. The deception is often more damaging than the financial impact.</dd>
+          <dd class="mt-2 text-base text-foreground leading-relaxed">Hiding money, debt, or spending from a partner. Includes secret credit cards, hidden bank accounts, lying about purchases. Erodes trust and is cited in many divorces. The deception is often more damaging than the financial impact.</dd>
         </div>
-        <div>
+        <div class="px-4 py-4">
           <dt class="font-heading text-sm font-medium text-primary">Prenuptial Agreement (Prenup)</dt>
-          <dd class="text-base text-foreground leading-relaxed">A legal contract signed before marriage specifying how assets and debts will be divided if the marriage ends. Requires full financial disclosure, voluntary consent, and independent legal counsel for both parties. Not just for the wealthy—protects anyone with significant pre-marital assets, businesses, or inheritances.</dd>
+          <dd class="mt-2 text-base text-foreground leading-relaxed">A legal contract signed before marriage specifying how assets and debts will be divided if the marriage ends. Requires full financial disclosure, voluntary consent, and independent legal counsel for both parties. Not just for the wealthy. Protects anyone with significant pre-marital assets, businesses, or inheritances.</dd>
         </div>
-        <div>
+        <div class="px-4 py-4">
           <dt class="font-heading text-sm font-medium text-primary">Community Property vs. Equitable Distribution</dt>
-          <dd class="text-base text-foreground leading-relaxed">Community property states (9 states including CA, TX, AZ) consider marital assets owned 50/50, generally splitting equally in divorce. Equitable distribution states (41 states) divide assets "fairly" based on multiple factors—may not be 50/50. State law significantly impacts divorce financial outcomes.</dd>
+          <dd class="mt-2 text-base text-foreground leading-relaxed">Community property states (9 states including CA, TX, AZ) consider marital assets owned 50/50, generally splitting equally in divorce. Equitable distribution states (41 states) divide assets "fairly" based on multiple factors. May not be 50/50. State law significantly impacts divorce financial outcomes.</dd>
         </div>
-        <div>
+        <div class="px-4 py-4">
           <dt class="font-heading text-sm font-medium text-primary">QDRO (Qualified Domestic Relations Order)</dt>
-          <dd class="text-base text-foreground leading-relaxed">A court order that divides retirement accounts in divorce without triggering taxes or early withdrawal penalties. Required for 401(k)s and pensions. Without a QDRO, early withdrawals from retirement accounts for divorce purposes are taxable and penalized.</dd>
+          <dd class="mt-2 text-base text-foreground leading-relaxed">A court order that divides retirement accounts in divorce without triggering taxes or early withdrawal penalties. Required for 401(k)s and pensions. Without a QDRO, early withdrawals from retirement accounts for divorce purposes are taxable and penalized.</dd>
         </div>
-        <div>
+        <div class="px-4 py-4">
           <dt class="font-heading text-sm font-medium text-primary">Cohabitation Agreement</dt>
-          <dd class="text-base text-foreground leading-relaxed">A legal contract for unmarried couples living together. Clarifies property ownership, expense sharing, and what happens if you separate. Important because unmarried couples have no automatic legal protections in most states. Prevents disputes over who owns what and who pays for what.</dd>
+          <dd class="mt-2 text-base text-foreground leading-relaxed">A legal contract for unmarried couples living together. Clarifies property ownership, expense sharing, and what happens if you separate. Important because unmarried couples have no automatic legal protections in most states. Prevents disputes over who owns what and who pays for what.</dd>
         </div>
-        <div>
+        <div class="px-4 py-4">
           <dt class="font-heading text-sm font-medium text-primary">Financial Red Flags</dt>
-          <dd class="text-base text-foreground leading-relaxed">Warning signs in a partner's financial behavior: refusal to discuss money, significant hidden debt, secretive spending, controlling behavior around money, inability to compromise, unwillingness to set financial goals together. These often worsen after marriage. Address before commitment.</dd>
+          <dd class="mt-2 text-base text-foreground leading-relaxed">Warning signs in a partner's financial behavior: refusal to discuss money, significant hidden debt, secretive spending, controlling behavior around money, inability to compromise, unwillingness to set financial goals together. These often worsen after marriage. Address before commitment.</dd>
         </div>
       </dl>
     </section>
